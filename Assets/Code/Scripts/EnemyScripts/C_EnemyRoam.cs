@@ -44,6 +44,11 @@ public class C_EnemyRoam : MonoBehaviour
             Debug.Log("Enemy Toutched cube");
             Destroy(col.gameObject);
         }
+
+         if (col.collider.tag == "weapon")
+        {
+            Destroy(gameObject);
+        }
     }
     
 
