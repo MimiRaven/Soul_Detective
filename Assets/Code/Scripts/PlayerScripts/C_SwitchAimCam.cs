@@ -19,7 +19,9 @@ public class C_SwitchAimCam : MonoBehaviour
     public bool ObjectPush;
     public bool ObjectPull;
     public bool GrabObject;
-    
+
+    public bool ObjectGrabbed;
+
     public bool AimOn;
 
 
@@ -34,15 +36,15 @@ public class C_SwitchAimCam : MonoBehaviour
 
     public C_EnemyPossesed c_EnemyPossesed;
 
-    public C_EnemyPossesed  c_Enemy2;
+    public C_EnemyPossesed c_Enemy2;
     //public GameObject EnemyCams;
 
     public C_PlayerController c_PlayerController;
 
-   //[SerializeField]
-   //private Transform playerCameraTransform;
-   //[SerializeField]
-   //private LayerMask pickUpLayerMask;
+    //[SerializeField]
+    //private Transform playerCameraTransform;
+    //[SerializeField]
+    //private LayerMask pickUpLayerMask;
     //float pickUpDistance = 2f;
 
     [SerializeField]
@@ -72,14 +74,21 @@ public class C_SwitchAimCam : MonoBehaviour
         DropAction = playerInput.actions["DropObject"];
     }
 
-    
+
 
     void Update()
     {
         PossesionRayCastShot();
+
+
         ObjectGrabRayCastShot();
         ObjectDropRayCastShot();
 
+        //if (ObjectGrabbed == true)
+        //{
+        //    GrabObject = false;
+        //}
+        //
         if (AimOn == false)
         {
             StopShoot();
@@ -88,40 +97,32 @@ public class C_SwitchAimCam : MonoBehaviour
             GrabStop();
 
         }
-
     }
 
     void ObjectGrabRayCastShot()
     {
-        if(AimOn == true)
+        if (AimOn == true)
         {
+            if (GrabObject == true)
+            {
+                Vector3 direction = Vector3.forward;
+                Ray theRay = new Ray(transform.position, transform.TransformDirection(direction * range));
+                Debug.DrawRay(transform.position, transform.TransformDirection(direction * range));
 
-          if (GrabObject == true)
-          {
-              
+                if (Physics.Raycast(theRay, out RaycastHit hit, range))
+                {
 
-              Vector3 direction = Vector3.forward;
-              Ray theRay = new Ray(transform.position, transform.TransformDirection(direction * range));
-              Debug.DrawRay(transform.position, transform.TransformDirection(direction * range));
+                    if (hit.transform.TryGetComponent<Target>(out ts))
+                    {
+                        ts.Grab(objectGrabPointTransform);
 
-             
-              
-                  if (Physics.Raycast(theRay, out RaycastHit hit, range))
-                  {
-                  
-                      if (hit.transform.TryGetComponent<Target>(out ts))
-                          ts.Grab(objectGrabPointTransform);
-                  
-                  
-                  
-                  }
-
-              
+                        ObjectGrabbed = true;
+                    }
 
 
-          }
 
- 
+                }
+            }
         }
     }
 
@@ -130,7 +131,7 @@ public class C_SwitchAimCam : MonoBehaviour
 
         if (AimOn == true)
         {
-            if (ObjectDropped == true)
+            if (ObjectDropped == true & ObjectGrabbed)
             {
                 Vector3 direction = Vector3.forward;
                 Ray theRay = new Ray(transform.position, transform.TransformDirection(direction * range));
@@ -138,12 +139,14 @@ public class C_SwitchAimCam : MonoBehaviour
 
 
 
-              if (Physics.Raycast(theRay, out RaycastHit hit, range))
-              {
-              
-                  if (hit.transform.TryGetComponent<Target>(out ts))
-                      ts.Dropped = true;
+                if (Physics.Raycast(theRay, out RaycastHit hit, range))
+                {
+
+                    if (hit.transform.TryGetComponent<Target>(out ts))
+                        ts.Dropped = true;
                     Debug.Log("RayCast Hit Obj");
+
+                    ObjectGrabbed = false;
 
                     //ts.Dropped = true;
 
@@ -166,86 +169,86 @@ public class C_SwitchAimCam : MonoBehaviour
         {
 
 
-           if (RayCastShot == true)
-           {
-                    Vector3 direction = Vector3.forward;
-                    Ray theRay = new Ray(transform.position, transform.TransformDirection(direction * range));
-                    Debug.DrawRay(transform.position, transform.TransformDirection(direction * range));
+            if (RayCastShot == true)
+            {
+                Vector3 direction = Vector3.forward;
+                Ray theRay = new Ray(transform.position, transform.TransformDirection(direction * range));
+                Debug.DrawRay(transform.position, transform.TransformDirection(direction * range));
 
-                    Debug.Log("Possesion Ray Shot");
+                Debug.Log("Possesion Ray Shot");
 
 
 
-                    if (Physics.Raycast(theRay, out RaycastHit hit, range))
+                if (Physics.Raycast(theRay, out RaycastHit hit, range))
+                {
+                    //if (ObjectPush == true)
+                    //{
+                    //    Debug.Log("Push button active");
+                    //    if (hit.transform.TryGetComponent<Target>(out Target ts))
+                    //        ts.GetShot(theRay.direction);
+                    //}
+                    //else { Debug.Log("Push button Not active"); }
+
+
+
+                    //Enemy Possesion
+                    if (hit.collider.tag == "Enemy1")
                     {
-                       //if (ObjectPush == true)
-                       //{
-                       //    Debug.Log("Push button active");
-                       //    if (hit.transform.TryGetComponent<Target>(out Target ts))
-                       //        ts.GetShot(theRay.direction);
-                       //}
-                       //else { Debug.Log("Push button Not active"); }
+
+                        Debug.Log("Enemy1 Hit confirmed");
+                        //tpMovement.Possesed = true;
+                        c_EnemyPossesed.Possesed = true;
+                        c_PlayerController.Possesed = false;
+
+                        //EnemyCams.SetActive(true);
+                        //PlayerCams.SetActive(false);
+                        RayCastShot = false;
+                        //virtualCamera.Priority -= priorityBoostAmount;
+                        //c_NonRoamingEnemys.Possesed
+
+                    }
+                    else
+                    {
+                        Debug.Log("Enemy1 Not Hit");
+                        //EnemyCams.SetActive(false);
+                        //PlayerCams.SetActive(true);
+
+                    }
+                    if (hit.collider.tag == "Enemy2")
+                    {
+
+                        Debug.Log("Enemy2 Hit confirmed");
+                        //tpMovement.Possesed = true;
+                        c_PlayerController.Possesed = false;
+                        c_Enemy2.Possesed = true;
+                        //EnemyCams.SetActive(true);
+                        //PlayerCams.SetActive(false);
+                        RayCastShot = false;
+                        //virtualCamera.Priority -= priorityBoostAmount;
+
+                        //c_NonRoamingEnemys.Possesed
 
 
-
-                        //Enemy Possesion
-                        if (hit.collider.tag == "Enemy1")
-                        {
-
-                            Debug.Log("Enemy1 Hit confirmed");
-                            //tpMovement.Possesed = true;
-                            c_EnemyPossesed.Possesed = true;
-                            c_PlayerController.Possesed = false;
-
-                            //EnemyCams.SetActive(true);
-                            //PlayerCams.SetActive(false);
-                            RayCastShot = false;
-                            //virtualCamera.Priority -= priorityBoostAmount;
-                            //c_NonRoamingEnemys.Possesed
-
-                        }
-                        else
-                        {
-                            Debug.Log("Enemy1 Not Hit");
-                            //EnemyCams.SetActive(false);
-                            //PlayerCams.SetActive(true);
-
-                        }
-                        if (hit.collider.tag == "Enemy2")
-                        {
-
-                            Debug.Log("Enemy2 Hit confirmed");
-                            //tpMovement.Possesed = true;
-                            c_PlayerController.Possesed = false;
-                            c_Enemy2.Possesed = true;
-                            //EnemyCams.SetActive(true);
-                            //PlayerCams.SetActive(false);
-                            RayCastShot = false;
-                            //virtualCamera.Priority -= priorityBoostAmount;
-
-                            //c_NonRoamingEnemys.Possesed
-
-
-                        }
-                        else
-                        {
-                            Debug.Log("Enemy2 Not Hit");
-                            //EnemyCams.SetActive(false);
-                            //PlayerCams.SetActive(true);
-
-                        }
+                    }
+                    else
+                    {
+                        Debug.Log("Enemy2 Not Hit");
+                        //EnemyCams.SetActive(false);
+                        //PlayerCams.SetActive(true);
 
                     }
 
-           }
+                }
+
+            }
         }
-        
 
 
-        
+
+
 
     }
-    
+
     private void OnEnable()
     {
         aimAction.performed += _ => StartAim();
@@ -292,25 +295,13 @@ public class C_SwitchAimCam : MonoBehaviour
         DropAction.canceled -= _ => DropStop();
     }
 
-    void DropStart()
-    {
-        Debug.Log("Dropped button Pressed");
-        ObjectDropped = true;
-
-    }
-
-    void DropStop()
-    {
-        Debug.Log("Dropped button Not Pressed");
-        ObjectDropped = false;
-    }
 
 
 
     private void StartAim()
     {
         AimOn = true;
-            virtualCamera.Priority += priorityBoostAmount;
+        virtualCamera.Priority += priorityBoostAmount;
         aimCanvas.SetActive(true);
     }
     private void CancelAim()
@@ -363,22 +354,37 @@ public class C_SwitchAimCam : MonoBehaviour
 
     }
 
+    void DropStart()
+    {
+        if (ObjectGrabbed)
+        {
+            ObjectDropped = true;
+
+        }
+
+    }
+
+    void DropStop()
+    {
+        ObjectDropped = false;
+    }
 
 
     private void GrabStart()
     {
+
         GrabObject = true;
-        
-        
+
 
 
     }
     private void GrabStop()
     {
         GrabObject = false;
-        
+
 
     }
+
 
 
 
