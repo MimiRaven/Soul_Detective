@@ -103,6 +103,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "GrabThrowObject",
+                    "type": "Button",
+                    "id": "e1f401cb-2233-45c8-927f-6d77b377c558",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ThrowObject",
+                    "type": "Button",
+                    "id": "83ace72d-b68a-40a8-b1bb-72c5475f85a8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -252,7 +270,7 @@
                 {
                     "name": "",
                     "id": "3b769509-ec07-4c5a-9913-ec056ee3e6c8",
-                    "path": "<Gamepad>/rightTrigger",
+                    "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -329,7 +347,7 @@
                 {
                     "name": "",
                     "id": "2d8f5bdf-2876-47b3-9bed-e773863d7c7a",
-                    "path": "<Keyboard>/f",
+                    "path": "<Keyboard>/c",
                     "interactions": "Press(behavior=2)",
                     "processors": "",
                     "groups": "KeyBoardAndMouse",
@@ -340,7 +358,7 @@
                 {
                     "name": "",
                     "id": "b3b58cef-9499-4661-940e-fb2d61eae980",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -351,7 +369,7 @@
                 {
                     "name": "",
                     "id": "de2f29d5-31f3-45d9-8b95-ff84f27929dc",
-                    "path": "<Keyboard>/r",
+                    "path": "<Keyboard>/c",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyBoardAndMouse",
@@ -362,7 +380,7 @@
                 {
                     "name": "",
                     "id": "72609c26-65ed-47d1-8029-9bd8db5b90a3",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -378,6 +396,61 @@
                     "processors": "",
                     "groups": "",
                     "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d2aaccb4-6c1a-44bb-848b-ad1bf9686dc4",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "48336ca6-ebde-464e-bcac-6e9a99fb19a1",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GrabThrowObject",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0a7dc16f-aefd-4e5a-90f2-3c4930518f21",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GrabThrowObject",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7a264310-cbfe-4147-93fe-e15f36538acd",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ThrowObject",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "85b3da30-3d26-4fe5-9ae8-8ee467de6cf0",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ThrowObject",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
