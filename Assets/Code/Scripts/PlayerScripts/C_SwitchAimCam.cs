@@ -101,10 +101,10 @@ public class C_SwitchAimCam : MonoBehaviour
 
     void ObjectGrabRayCastShot()
     {
-        if (AimOn == true)
+        if (AimOn == true && GrabObject)
         {
-            if (GrabObject == true)
-            {
+            
+            
                 Vector3 direction = Vector3.forward;
                 Ray theRay = new Ray(transform.position, transform.TransformDirection(direction * range));
                 Debug.DrawRay(transform.position, transform.TransformDirection(direction * range));
@@ -122,7 +122,7 @@ public class C_SwitchAimCam : MonoBehaviour
 
 
                 }
-            }
+            
         }
     }
 
@@ -143,12 +143,15 @@ public class C_SwitchAimCam : MonoBehaviour
                 {
 
                     if (hit.transform.TryGetComponent<Target>(out ts))
+                    {
                         ts.Dropped = true;
-                    Debug.Log("RayCast Hit Obj");
+                        ObjectGrabbed = false;
 
-                    //ObjectGrabbed = false;
+                        Debug.Log("RayCast Hit Obj");
+                    }
 
-                    //ts.Dropped = true;
+
+                    
 
 
                 }
@@ -379,11 +382,8 @@ public class C_SwitchAimCam : MonoBehaviour
     void DropStop()
     {
         ObjectDropped = false;
-
-        if (ObjectGrabbed)
-        {
-            ObjectGrabbed = false;
-        }
+        //ObjectGrabbed = false;
+        
             
     }
 
