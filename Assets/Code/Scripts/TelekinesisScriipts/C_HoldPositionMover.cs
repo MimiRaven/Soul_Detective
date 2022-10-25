@@ -9,6 +9,10 @@ public class C_HoldPositionMover : MonoBehaviour
     public bool ObjectPulled;
     public bool ObjectPushed;
 
+    public int PushandpullRange;
+    
+    
+
     public float moveSpeed = 10f;
 
     //public GameObject StartHoldpos;
@@ -52,8 +56,17 @@ public class C_HoldPositionMover : MonoBehaviour
     {
         Pull();
         Push();
+        if (PushandpullRange == -15)
+        {
+            ObjectPulled = false;
+        }
 
-        childObj.transform.parent = parentObj.transform;
+        if (PushandpullRange == 250)
+        {
+            ObjectPushed = false;
+        }
+
+            childObj.transform.parent = parentObj.transform;
 
         //transform.LookAt(new Vector3(Player.transform.position.x, transform.position.y, Player.transform.position.z));
 
@@ -71,7 +84,7 @@ public class C_HoldPositionMover : MonoBehaviour
 
             
             this.transform.parent = null;
-
+            PushandpullRange --;
         }
 
     }
@@ -85,6 +98,7 @@ public class C_HoldPositionMover : MonoBehaviour
             //objectRb.velocity = new Vector3(0, 0, 5);
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
             this.transform.parent = null;
+            PushandpullRange ++;
 
         }
 

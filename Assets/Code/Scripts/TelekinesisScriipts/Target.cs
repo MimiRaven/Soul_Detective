@@ -13,19 +13,19 @@ public class Target : MonoBehaviour
     public bool Dropped;
 
 
-    void Update()
-    {
-        if (Dropped == true)
-        {
-            this.objectGrabPointTransform = null;
-            objectRb.drag = 0;
-            objectRb.useGravity = true;
-            Debug.Log("Object Dropped");
-            
-
-        }
-       
-    }
+    //void FixedUpdate()
+    //{
+    //    if (Dropped == true)
+    //    {
+    //        this.objectGrabPointTransform = null;
+    //        objectRb.drag = 0;
+    //        objectRb.useGravity = true;
+    //        Debug.Log("Object Dropped");
+    //        
+    //
+    //    }
+    //   
+    //}
 
     private void Awake()
     {
@@ -74,6 +74,16 @@ public class Target : MonoBehaviour
             objectRb.MovePosition(objectGrabPointTransform.position);
             Vector3 newPosition = Vector3.Lerp(transform.position, objectGrabPointTransform.position, Time.deltaTime * lerpSpeed);
             objectRb.MovePosition(newPosition);
+        }
+
+        if (Dropped == true)
+        {
+            this.objectGrabPointTransform = null;
+            objectRb.drag = 0;
+            objectRb.useGravity = true;
+            Debug.Log("Object Dropped");
+
+
         }
     }
 

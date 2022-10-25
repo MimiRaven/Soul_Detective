@@ -146,7 +146,7 @@ public class C_SwitchAimCam : MonoBehaviour
                         ts.Dropped = true;
                     Debug.Log("RayCast Hit Obj");
 
-                    ObjectGrabbed = false;
+                    //ObjectGrabbed = false;
 
                     //ts.Dropped = true;
 
@@ -329,7 +329,13 @@ public class C_SwitchAimCam : MonoBehaviour
     private void PullStart()
     {
         ObjectPull = true;
-        c_HoldPositionMover.ObjectPulled = true;
+
+        if(c_HoldPositionMover.PushandpullRange > -15)
+        {
+            c_HoldPositionMover.ObjectPulled = true;
+
+        }
+
         //c_HoldPositionMover.Pull();
 
 
@@ -343,8 +349,14 @@ public class C_SwitchAimCam : MonoBehaviour
 
     private void PushStart()
     {
+        if (c_HoldPositionMover.PushandpullRange < 250)
+        {
+            c_HoldPositionMover.ObjectPushed = true;
+        }
         ObjectPush = true;
-        c_HoldPositionMover.ObjectPushed = true;
+        
+
+         
         //c_HoldPositionMover.Push();
     }
     private void PushStop()
@@ -367,6 +379,12 @@ public class C_SwitchAimCam : MonoBehaviour
     void DropStop()
     {
         ObjectDropped = false;
+
+        if (ObjectGrabbed)
+        {
+            ObjectGrabbed = false;
+        }
+            
     }
 
 

@@ -179,10 +179,11 @@ public class C_RangeAttack : MonoBehaviour
         {
 
             //  If the player right-clicks, stop pulling
-            if (ThrowRay == true && ObjectGrabbed == true)
-            {
-                break;
-            }
+           //if (ThrowRay == true && ObjectGrabbed == true)
+           //{
+           //    break;
+           //}
+
             float distanceToHand = Vector3.Distance(t.position, hand.position);
             /*
                 If the object is withihn the distance threshold, consider it pulled all the way and:
