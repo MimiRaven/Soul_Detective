@@ -14,6 +14,8 @@ public class C_RangeAttack : MonoBehaviour
     public bool GrabRay;
     public bool ThrowRay;
 
+
+
     public bool ObjectGrabbed;
 
     public C_SwitchAimCam aimCam;
@@ -77,7 +79,11 @@ public class C_RangeAttack : MonoBehaviour
 
     void GrabStart()
     {
-        GrabRay = true;
+        if(ObjectGrabbed == false)
+        {
+             GrabRay = true;
+
+        }
     }
     void GrabStop()
     {
