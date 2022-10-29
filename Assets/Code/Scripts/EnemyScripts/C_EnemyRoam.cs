@@ -16,12 +16,17 @@ public class C_EnemyRoam : MonoBehaviour
     //public float TimeLeft;
     //public bool TimerOn = false;
 
-
+    private C_PlayerController playerController;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
 
+        GameObject playerControllerObject = GameObject.FindWithTag("Player");
+        if (playerControllerObject != null)
+        {
+            playerController = playerControllerObject.GetComponent<C_PlayerController>();
+        }
     }
 
 
@@ -39,6 +44,8 @@ public class C_EnemyRoam : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
+        C_PlayerController player =  col.gameObject.GetComponent<C_PlayerController>();
+
         if(col.gameObject.name == "Cube")
         {
             Debug.Log("Enemy Toutched cube");
@@ -48,6 +55,11 @@ public class C_EnemyRoam : MonoBehaviour
          if (col.collider.tag == "weapon")
         {
             Destroy(gameObject);
+        }
+
+        if (player != null)
+        {
+            player.ChangeHealth(-10);
         }
     }
     

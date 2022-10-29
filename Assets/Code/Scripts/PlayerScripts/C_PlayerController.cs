@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 public class C_PlayerController : MonoBehaviour
@@ -29,7 +30,9 @@ public class C_PlayerController : MonoBehaviour
     public C_EnemyPossesed c_EnemyPossesed;
     public GameObject PlayerCams;
 
-
+    public int maxHealth = 10;
+    public int health { get { return currentHealth; } }
+    int currentHealth;
 
     private void Start()
     {
@@ -40,6 +43,8 @@ public class C_PlayerController : MonoBehaviour
         moveAction = playerInput.actions["Move"];
         jumpAction = playerInput.actions["Jump"];
         //lookAction = playerInput.actions["Look"];
+
+        currentHealth = maxHealth;
 
         Cursor.visible = false;
 
@@ -98,5 +103,15 @@ public class C_PlayerController : MonoBehaviour
         }
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+    }
+
+     public void ChangeHealth(int amount)
+    {
+        if (health <= 1)
+        {
+            playerSpeed = 0;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
     }
 }
