@@ -59,7 +59,7 @@ public class C_EnemyRoam : MonoBehaviour
 
         if (player != null)
         {
-            player.ChangeHealth(-10);
+            player.ChangeHealth(-1);
         }
     }
     
