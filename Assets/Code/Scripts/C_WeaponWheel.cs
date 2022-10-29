@@ -15,12 +15,22 @@ public class C_WeaponWheel : MonoBehaviour
     public GameObject RangeAttack;
     public GameObject Possesion;
 
- 
+    public GameObject telekinesisButton;
+    public GameObject RangeAttackButton;
+    public GameObject PossesionButton;
+
+    public GameObject MainCam;
+    public GameObject AimCam;
+
+    public C_PlayerController c_PlayerController;
+
+
 
     void Awake()
     {
         WheelActivation = playerInput.actions["WeaponWheel"];
         Time.timeScale = 1f;
+
     }
 
     private void OnEnable()
@@ -38,15 +48,22 @@ public class C_WeaponWheel : MonoBehaviour
     void WheelActiveStart()
     {
         WheelCanvas.SetActive(true);
-        Time.timeScale = 0.5f;
+        Time.timeScale = 0f;
+        c_PlayerController.WeaponWheel = true;
+        MainCam.SetActive(false);
+        AimCam.SetActive(false);
         Cursor.visible = true;
+
     }
 
     void WheelActiveStop()
     {
         WheelCanvas.SetActive(false);
         Time.timeScale = 1f;
-        //Cursor.visible = false;
+        c_PlayerController.WeaponWheel = false;
+        MainCam.SetActive(true);
+        AimCam.SetActive(true);
+        Cursor.visible = false;
     }
 
     public void TelekinesisActive()
@@ -54,6 +71,10 @@ public class C_WeaponWheel : MonoBehaviour
         telekinesis.SetActive(true);
         RangeAttack.SetActive(false);
         Possesion.SetActive(false);
+
+        telekinesisButton.SetActive(false);
+        RangeAttackButton.SetActive(true);
+        PossesionButton.SetActive(true);
     }
 
     public void RangeAttackActive()
@@ -61,6 +82,10 @@ public class C_WeaponWheel : MonoBehaviour
         RangeAttack.SetActive(true);
         telekinesis.SetActive(false);
         Possesion.SetActive(false);
+
+        RangeAttackButton.SetActive(false);
+        telekinesisButton.SetActive(true);
+        PossesionButton.SetActive(true);
     }
 
     public void PossesionActive()
@@ -68,5 +93,9 @@ public class C_WeaponWheel : MonoBehaviour
         Possesion.SetActive(true);
         RangeAttack.SetActive(false);
         telekinesis.SetActive(false);
+
+        PossesionButton.SetActive(false);
+        RangeAttackButton.SetActive(true);
+        telekinesisButton.SetActive(true);
     }
 }
