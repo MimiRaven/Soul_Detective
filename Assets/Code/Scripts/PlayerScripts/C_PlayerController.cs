@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 public class C_PlayerController : MonoBehaviour
@@ -35,6 +36,10 @@ public class C_PlayerController : MonoBehaviour
 
     public bool WeaponWheel;
 
+    public int souls;
+    public TextMeshProUGUI soulsUI; 
+
+
     private void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -68,7 +73,7 @@ public class C_PlayerController : MonoBehaviour
 
         }
         
-
+        soulsUI.text = "Souls: " + souls.ToString();
 
     }
 
@@ -120,5 +125,14 @@ public class C_PlayerController : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.collider.tag == "soul")
+        {
+            souls++;
+            Destroy(col.collider.gameObject);
+        }
     }
 }
