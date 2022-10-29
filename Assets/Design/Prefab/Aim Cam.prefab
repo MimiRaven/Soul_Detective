@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 702842471505169602}
   - component: {fileID: 702842471505169604}
   - component: {fileID: 705376500527904341}
+  - component: {fileID: 6387841818355091264}
+  - component: {fileID: 2835587132351947414}
   - component: {fileID: 705376500527904345}
   m_Layer: 0
   m_Name: Aim Cam
@@ -122,6 +124,49 @@ MonoBehaviour:
   AutoEnableInputs: 1
   XYAxis: {fileID: 9145664952735970295, guid: 0a343a1abc14c7944ba74d834b36b9c3, type: 3}
   ZAxis: {fileID: 0}
+--- !u!114 &6387841818355091264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702842471505169601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b851ebe443642748b3abeb1c8805ec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInput: {fileID: 0}
+  range: 100
+  ObjectPush: 0
+  ObjectPull: 0
+  GrabObject: 0
+  ObjectGrabbed: 0
+  AimOn: 0
+  objectGrabPointTransform: {fileID: 0}
+  ObjectDropped: 0
+  c_HoldPositionMover: {fileID: 0}
+  SwitchAimCam: {fileID: 0}
+--- !u!114 &2835587132351947414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702842471505169601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ef7eefa8f88c84991fe3e7d21f1bc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInput: {fileID: 0}
+  RayCastShot: 0
+  range: 100
+  AimOn: 0
+  c_EnemyPossesed: {fileID: 0}
+  c_Enemy2: {fileID: 0}
+  c_PlayerController: {fileID: 0}
+  SwitchAimCam: {fileID: 0}
 --- !u!114 &705376500527904345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,16 +184,10 @@ MonoBehaviour:
   aimCanvas: {fileID: 705376500182443647}
   RayCastShot: 0
   range: 50
-  ObjectPush: 0
-  ObjectPull: 0
-  GrabObject: 0
   AimOn: 0
   c_EnemyPossesed: {fileID: 0}
   c_Enemy2: {fileID: 0}
   c_PlayerController: {fileID: 0}
-  objectGrabPointTransform: {fileID: 705376501226562241}
-  ObjectDropped: 0
-  c_HoldPositionMover: {fileID: 705376501286308700}
 --- !u!1 &702842471718581610
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,6 +643,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectPulled: 0
   ObjectPushed: 0
+  PushandpullRange: 0
   moveSpeed: 10
   Player: {fileID: 705376501445324078}
   parentObj: {fileID: 705376501445324078}
