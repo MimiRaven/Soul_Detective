@@ -9,18 +9,7 @@ public class C_Xray : MonoBehaviour
     [SerializeField]
     private PlayerInput playerInput;
     private InputAction XRayActivation;
-
-    
-
-
-    SkinnedMeshRenderer meshRenderer;
-    Material[] baseMaterials;
-    int baseLayer;
-    bool xRayOn;
-    public Material xRayMaterial;
-    List<Material> xRayMaterials;
-    public UnityEvent onXRay;
-    public UnityEvent offXRay;
+    public GameObject XrayCam;
 
     void Awake()
     {
@@ -29,36 +18,14 @@ public class C_Xray : MonoBehaviour
 
     void Start()
     {
-        meshRenderer = GetComponent<SkinnedMeshRenderer>();
-        baseMaterials = meshRenderer.materials;
-        baseLayer = gameObject.layer;
-        xRayMaterials = new List<Material> { xRayMaterial };
-        for (int i = 0; i <baseMaterials.Length - 1; i++)
-        {
-            xRayMaterials.Add(xRayMaterial);
-        }
+     
 
     }
 
     // Update is called once per frame
     void Update()
     {
-       //if (Input.GetKeyDown(KeyCode.X))
-       //{
-       //    xRayOn = !xRayOn;
-       //}
-       //if(xRayOn != true)
-       //{
-       //    gameObject.layer = baseLayer;
-       //    meshRenderer.materials = baseMaterials;
-       //    offXRay.Invoke();
-       //}
-       //else
-       //{
-       //    gameObject.layer = 8;
-       //    meshRenderer.materials = xRayMaterials.ToArray();
-       //    onXRay.Invoke();
-       //}
+ 
 
     }
 
@@ -76,16 +43,12 @@ public class C_Xray : MonoBehaviour
 
     void XRayActiveStart()
     {
-        gameObject.layer = 8;
-        meshRenderer.materials = xRayMaterials.ToArray();
-        onXRay.Invoke();
+        XrayCam.SetActive(true);
     }
 
     void XRayActiveStop()
     {
-        gameObject.layer = baseLayer;
-        meshRenderer.materials = baseMaterials;
-        offXRay.Invoke();
+        XrayCam.SetActive(false);
 
     }
 
