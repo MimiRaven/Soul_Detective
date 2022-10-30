@@ -27,6 +27,9 @@ public class C_PlayerController : MonoBehaviour
 
     public bool Possesed = true;
 
+    private float boostTimer;
+    private bool boosting;
+
     public C_EnemyPossesed c_EnemyPossesed;
     public GameObject PlayerCams;
 
@@ -48,7 +51,9 @@ public class C_PlayerController : MonoBehaviour
         cameraTransfrom = Camera.main.transform;
         moveAction = playerInput.actions["Move"];
         jumpAction = playerInput.actions["Jump"];
-     
+
+        boostTimer = 0;
+        boosting = false;
 
         currentHealth = maxHealth;
 
@@ -74,6 +79,17 @@ public class C_PlayerController : MonoBehaviour
         }
         
         soulsUI.text = "Souls: " + souls.ToString();
+
+        if(boosting)
+        {
+            boostTimer += Time.deltaTime;
+            if (boostTimer >= 5)
+            {
+                playerSpeed = 2;
+                boostTimer = 0;
+                boosting = false;
+            }
+        }
 
     }
 
@@ -119,12 +135,13 @@ public class C_PlayerController : MonoBehaviour
 
      public void ChangeHealth(int amount)
     {
-        if (health <= 1)
+        if (currentHealth <= 1)
         {
             playerSpeed = 0;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+        UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
     }
 
     void OnCollisionEnter(Collision col)
@@ -133,6 +150,16 @@ public class C_PlayerController : MonoBehaviour
         {
             souls++;
             Destroy(col.collider.gameObject);
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Speed")
+        {
+            boosting = true;
+            playerSpeed = 10;
+            Destroy(other.gameObject);
         }
     }
 }
