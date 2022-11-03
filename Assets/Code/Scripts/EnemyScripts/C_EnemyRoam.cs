@@ -6,12 +6,17 @@ using UnityEngine.AI;
 public class C_EnemyRoam : MonoBehaviour
 {
     public NavMeshAgent agent;
-    public LayerMask whatIsGround;
+    public Transform player;
+    public LayerMask whatIsGround, whatIsPlayer;
 
     //Patroling
     public Vector3 walkPoint;
     public bool walkPointSet;
     public float walkPointRange;
+
+    //States
+    public float sightRange;
+    public bool playerInSightRange;
 
     //public float TimeLeft;
     //public bool TimerOn = false;
@@ -29,17 +34,17 @@ public class C_EnemyRoam : MonoBehaviour
         }
     }
 
-
     private void Update()
     {
-        Patroling();
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+        if (!playerInSightRange) Patroling();
+        if (playerInSightRange) ChasePlayer();
         //Timmer();
 
       //if(walkPointSet = true)
       //{
       //    TimerOn = true;
       //}
-
     }
 
     void OnCollisionEnter(Collision col)
@@ -63,7 +68,6 @@ public class C_EnemyRoam : MonoBehaviour
         }
     }
     
-
     private void Patroling()
     {
         if (!walkPointSet) SearchWalkPoint();
@@ -77,13 +81,10 @@ public class C_EnemyRoam : MonoBehaviour
 
         //Walkpoint reached
         if (distanceToWalkPoint.magnitude < 4f)
-            walkPointSet = false;
-          
+            walkPointSet = false;        
     }
     private void SearchWalkPoint()
     {
-       
-
         //Calculate random point in range
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
@@ -92,9 +93,9 @@ public class C_EnemyRoam : MonoBehaviour
 
         if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
             walkPointSet = true;
-
-     
-
-
+    }
+     private void ChasePlayer()
+    {
+        agent.SetDestination(player.position);
     }
 }
