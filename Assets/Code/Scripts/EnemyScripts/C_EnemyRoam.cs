@@ -51,16 +51,16 @@ public class C_EnemyRoam : MonoBehaviour
     {
         C_PlayerController player =  col.gameObject.GetComponent<C_PlayerController>();
 
-        if(col.gameObject.name == "Cube")
-        {
-            Debug.Log("Enemy Toutched cube");
-            Destroy(col.gameObject);
-        }
-
-         if (col.collider.tag == "weapon")
-        {
-            Destroy(gameObject);
-        }
+       //if(col.gameObject.name == "Cube")
+       //{
+       //    Debug.Log("Enemy Toutched cube");
+       //    Destroy(col.gameObject);
+       //}
+       //
+       // if (col.collider.tag == "weapon")
+       //{
+       //    Destroy(gameObject);
+       //}
 
         if (player != null)
         {

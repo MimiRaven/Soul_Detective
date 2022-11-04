@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 2512735288821005995}
   - component: {fileID: 2512735288821005994}
   - component: {fileID: 2512735288821005998}
+  - component: {fileID: 7520267640807922614}
   - component: {fileID: 2512735288821005988}
   - component: {fileID: 2512735288821005993}
   m_Layer: 6
@@ -192,6 +193,19 @@ MonoBehaviour:
   walkPointRange: 10
   sightRange: 12
   playerInSightRange: 0
+--- !u!114 &7520267640807922614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2512735288821005985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36e6700794c913946b20dff87e8622c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  c_XpScore: {fileID: 0}
 --- !u!54 &2512735288821005988
 Rigidbody:
   m_ObjectHideFlags: 0
