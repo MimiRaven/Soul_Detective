@@ -37,6 +37,10 @@ public class C_Telekinesis : MonoBehaviour
     public C_SwitchAimCam SwitchAimCam;
 
 
+    public float SetCoolDownTime;
+    public float TimeLeft;
+    public bool TimerOn;
+
     private void Awake()
     {
         PullAction = playerInput.actions["PullObject"];
@@ -49,7 +53,7 @@ public class C_Telekinesis : MonoBehaviour
     void Update()
     {
 
-
+        Timmer();
         ObjectGrabRayCastShot();
         ObjectDropRayCastShot();
 
@@ -61,23 +65,59 @@ public class C_Telekinesis : MonoBehaviour
         }
     }
 
+    void Timmer()
+    {
+
+        if (TimerOn)
+        {
+
+            if (TimeLeft > 0)
+            {
+                TimeLeft -= Time.deltaTime;
+                updateTimer(TimeLeft);
+            }
+            else
+            {
+                Debug.Log("Time is Up");
+                //TimeLeft = 0;
+                TimerOn = false;
+
+            }
+
+        }
+    }
+
+    void updateTimer(float currentTime)
+    {
+        currentTime += 1;
+
+        float minutes = Mathf.FloorToInt(currentTime / 60);
+        float seconds = Mathf.FloorToInt(currentTime % 60);
+
+
+    }
+
 
     void ObjectGrabRayCastShot()
     {
         if (SwitchAimCam.AimOn == true && GrabObject)
         {
-            Vector3 direction = Vector3.forward;
-            Ray theRay = new Ray(transform.position, transform.TransformDirection(direction * range));
-            Debug.DrawRay(transform.position, transform.TransformDirection(direction * range));
-
-            if (Physics.Raycast(theRay, out RaycastHit hit, range))
+            if(TimerOn == false)
             {
-                if (hit.transform.TryGetComponent<Target>(out ts))
+                Vector3 direction = Vector3.forward;
+                Ray theRay = new Ray(transform.position, transform.TransformDirection(direction * range));
+                Debug.DrawRay(transform.position, transform.TransformDirection(direction * range));
+                
+                if (Physics.Raycast(theRay, out RaycastHit hit, range))
                 {
-                    ts.Grab(objectGrabPointTransform);
-
-                    ObjectGrabbed = true;
+                    if (hit.transform.TryGetComponent<Target>(out ts))
+                    {
+                        ts.Grab(objectGrabPointTransform);
+                
+                        ObjectGrabbed = true;
+                    }
                 }
+
             }
         }
     }
@@ -97,7 +137,8 @@ public class C_Telekinesis : MonoBehaviour
                     {
                         ts.Dropped = true;
                         ObjectGrabbed = false;
-
+                        TimerOn = true;
+                        TimeLeft = SetCoolDownTime;
                         Debug.Log("RayCast Hit Obj");
                     }
                 }
@@ -198,15 +239,18 @@ public class C_Telekinesis : MonoBehaviour
     {
         ObjectDropped = false;
         //ObjectGrabbed = false;
-
+        
 
     }
 
 
     private void GrabStart()
     {
+        
+        
+             GrabObject = true;
 
-        GrabObject = true;
+        
 
 
 

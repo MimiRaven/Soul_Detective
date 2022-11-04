@@ -29,8 +29,6 @@ public class C_PlayerController : MonoBehaviour
 
     private float boostTimer;
     private bool boosting;
-
-    public C_EnemyPossesed c_EnemyPossesed;
     public GameObject PlayerCams;
 
     public int maxHealth = 10;
@@ -38,9 +36,10 @@ public class C_PlayerController : MonoBehaviour
     int currentHealth;
 
     public bool WeaponWheel;
+    public GameObject Abilitys,WeaponWheelObject,PlayerModle;
 
-   //public int souls;
-   //public TextMeshProUGUI soulsUI; 
+    //public int souls;
+    //public TextMeshProUGUI soulsUI; 
 
 
     private void Start()
@@ -64,19 +63,7 @@ public class C_PlayerController : MonoBehaviour
 
     void Update()
     {
-
-        if (Possesed == true)
-        {
-            Debug.Log("Player Posesed");
-            Movement();
-            PlayerCams.SetActive(true);
-        }
-        else 
-        { 
-            Debug.Log("Player Not Possesd");
-            PlayerCams.SetActive(false);
-
-        }
+        IsPossesed();
         
         //soulsUI.text = "Souls: " + souls.ToString();
 
@@ -89,6 +76,28 @@ public class C_PlayerController : MonoBehaviour
                 boostTimer = 0;
                 boosting = false;
             }
+        }
+
+    }
+
+    void IsPossesed()
+    {
+        if (Possesed == true)
+        {
+            Debug.Log("Player Posesed");
+            Movement();
+            PlayerCams.SetActive(true);
+            Abilitys.SetActive(true);
+            WeaponWheelObject.SetActive(true);
+            PlayerModle.SetActive(true);
+        }
+        else 
+        { 
+            Debug.Log("Player Not Possesd");
+            PlayerCams.SetActive(false);
+            Abilitys.SetActive(false);
+            WeaponWheelObject.SetActive(false);
+            PlayerModle.SetActive(false);
         }
 
     }

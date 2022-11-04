@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
@@ -22,83 +23,133 @@ public class C_EnemyPossesed : MonoBehaviour
 
     private Transform cameraTransfrom;
 
-    //Input System Variables
     private InputAction moveAction;
     private InputAction jumpAction;
+    [SerializeField]
     private PlayerInput playerInput;
     private InputAction StopPosAction;
 
     public bool Possesed;
-   
+
 
     public C_PlayerController c_PlayerController;
     public C_EnemyRoam c_EnemyRoam;
 
     public GameObject EnemyCams;
-    //private CinemachineVirtualCamera virtualCamera;
+
 
     public GameObject PlayerAndCams;
 
+    public float SetCoolDownTime;
+    public float TimeLeft;
+    public bool TimerOn;
+
+    private Rigidbody objectRb;
+    
+    //public NavMeshAgent agent;
+
+    private void Awake()
+    {
+        StopPosAction = playerInput.actions["StopPossesion"];
+        controller = GetComponent<CharacterController>();
+        playerInput = GetComponent<PlayerInput>();
+        objectRb = GetComponent<Rigidbody>();
+        //agent = GetComponent<NavMeshAgent>();
+    }
 
 
     private void Start()
     {
-        controller = GetComponent<CharacterController>();
-        playerInput = GetComponent<PlayerInput>();
 
-        cameraTransfrom = Camera.main.transform;
-        //cameraTransfrom = GameObject.Find("Enemy 3rdPerson Cinima").GetComponent<Transform>();
-
-
+        TimeLeft = SetCoolDownTime;
         moveAction = playerInput.actions["Move"];
         jumpAction = playerInput.actions["Jump"];
-        StopPosAction = playerInput.actions["StopPossesion"];
 
-        Cursor.visible = false;
+        cameraTransfrom = Camera.main.transform;
+        EnemyCams.SetActive(false);
+        //Cursor.visible = false;
+        
+        //Possesed = false;
 
         Possesed = false;
-
         EnemyCams.SetActive(false);
+        
 
-        //virtualCamera = GetComponent<CinemachineVirtualCamera>();
+
     }
 
     void Update()
     {
+        
+        Possesion();
+        
+    }
+
+    void Timmer()
+    {
+
+        if (TimerOn)
+        {
+
+            if (TimeLeft > 0)
+            {
+                TimeLeft -= Time.deltaTime;
+                updateTimer(TimeLeft);
+                
+            }
+            else
+            {
+                Debug.Log("Time is Up");
+                //TimeLeft = 0;
+                TimerOn = false;
+                Possesed = false;
+
+            }
+
+        }
+    }
+
+    void updateTimer(float currentTime)
+    {
+        currentTime += 1;
+
+        float minutes = Mathf.FloorToInt(currentTime / 60);
+        float seconds = Mathf.FloorToInt(currentTime % 60);
+
+
+    }
+
+   
+
+    void Possesion()
+    {
+        //TimeLeft = SetCoolDownTime;
+
 
         if (Possesed == true)
         {
+            Timmer();
+            
             Debug.Log("Enemy Posesed");
             Movement();
             c_EnemyRoam.enabled = false;
             EnemyCams.SetActive(true);
-            //PlayerAndCams.SetActive(false);
-        }
-        else 
-        {
-            Debug.Log("Enemy Not Possesd");
             
+            TimerOn = true;
+            objectRb.drag = 1;
         }
-
-       //if(c_PlayerController.Possesed == false)
-       //{
-       //    Possesed = true;
-       //}
-       //else { Possesed = false; }
-
-
-        if (StopPosAction.triggered && Possesed)
+        else
         {
-            Debug.Log("End Enemy Possesion"); 
+            TimeLeft = SetCoolDownTime;
+            Debug.Log("End Enemy Possesion");
             c_PlayerController.Possesed = true;
-            Possesed = false;
+            TimerOn = false;
             EnemyCams.SetActive(false);
-            //PlayerAndCams.SetActive(true);
-
+            objectRb.drag = 100;
+           //agent.enable = false;
         }
 
     }
-
 
     void Movement()
     {
@@ -131,5 +182,28 @@ public class C_EnemyPossesed : MonoBehaviour
         }
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+    }
+
+    private void OnEnable()
+    {
+        StopPosAction.performed += _ => StartExitPossesion();
+        StopPosAction.canceled += _ => StopExitPossesion();
+    }
+
+    private void OnDisable()
+    {
+        StopPosAction.performed -= _ => StartExitPossesion();
+        StopPosAction.canceled -= _ => StopExitPossesion();
+    }
+
+    //RayCast
+    private void StartExitPossesion()
+    {
+        Possesed = false;
+    }
+    private void StopExitPossesion()
+    {
+        Possesed = false;
+
     }
 }

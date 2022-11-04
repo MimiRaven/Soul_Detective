@@ -14,14 +14,16 @@ public class C_RangeAttack : MonoBehaviour
     public bool GrabRay;
     public bool ThrowRay;
 
-
-
     public bool ObjectGrabbed;
 
     public C_SwitchAimCam aimCam;
 
     public float range = 100;
     private C_Throwableobject ts;
+
+    public float SetCoolDownTime;
+    public float TimeLeft;
+    public bool TimerOn;
 
     //[SerializeField]
     //private InputActionReference actionRefrance;
@@ -52,6 +54,7 @@ public class C_RangeAttack : MonoBehaviour
 
     [Tooltip("The velocity at which the object is thrown")]
     public float throwVelocity;
+  
 
     void Awake()
     {
@@ -79,7 +82,7 @@ public class C_RangeAttack : MonoBehaviour
 
     void GrabStart()
     {
-        if(ObjectGrabbed == false)
+        if(ObjectGrabbed == false & TimerOn == false)
         {
              GrabRay = true;
 
@@ -88,6 +91,7 @@ public class C_RangeAttack : MonoBehaviour
     void GrabStop()
     {
         GrabRay = false;
+       
     }
 
     void ThrowStart()
@@ -101,10 +105,15 @@ public class C_RangeAttack : MonoBehaviour
     void ThrowStop()
     {
         ThrowRay = false;
+       
     }
+
+
 
     void Update()
     {
+        Timmer();
+
         GrabObjectRayCast();
         WeaponActication();
 
@@ -112,6 +121,40 @@ public class C_RangeAttack : MonoBehaviour
         {
             GrabRay = false;
         }
+
+       //Timmer();
+       //TimerOn = true;
+    }
+
+    void Timmer()
+    {
+
+        if (TimerOn)
+        {
+
+            if (TimeLeft > 0)
+            {
+                TimeLeft -= Time.deltaTime;
+                updateTimer(TimeLeft);
+            }
+            else
+            {
+                Debug.Log("Time is Up");
+                TimerOn = false;
+
+            }
+
+        }
+    }
+
+    void updateTimer(float currentTime)
+    {
+        currentTime += 1;
+
+        float minutes = Mathf.FloorToInt(currentTime / 60);
+        float seconds = Mathf.FloorToInt(currentTime % 60);
+
+        
     }
 
     void WeaponActication()
@@ -145,33 +188,40 @@ public class C_RangeAttack : MonoBehaviour
     {
         if (aimCam.AimOn == true)
         {
-            RaycastHit hit;
-            if (GrabRay == true) //Pressing V (Picking up object)
+            if(TimerOn == false)
             {
-                if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
+                RaycastHit hit;
+                if (GrabRay == true)
                 {
-                    Debug.Log("RayAttackShot");
-                    if (hit.transform.tag.Equals(pullableTag))
+                    if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
                     {
-                        StartCoroutine(PullObject(hit.transform));
-                        ObjectGrabbed = true;
-                        ThrowRay = false;
+                        Debug.Log("RayAttackShot");
+                        if (hit.transform.tag.Equals(pullableTag))
+                        {
+                            StartCoroutine(PullObject(hit.transform));
+                            ObjectGrabbed = true;
+                            ThrowRay = false;
+                           
+                        }
                     }
                 }
-            }
-
-
-            if (ThrowRay == true) //Pressing B (throwing object)
-            {
-                if (heldObject != null && ObjectGrabbed)
+                
+                
+                if (ThrowRay == true) //Pressing B (throwing object)
                 {
-                    heldObject.transform.parent = null;
-                    heldObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                    heldObject.GetComponent<Rigidbody>().velocity = transform.forward * throwVelocity;
-                    heldObject = null;
-                    ObjectGrabbed = false;
-                    GrabRay = false;
+                    if (heldObject != null && ObjectGrabbed)
+                    {
+                        heldObject.transform.parent = null;
+                        heldObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                        heldObject.GetComponent<Rigidbody>().velocity = transform.forward * throwVelocity;
+                        heldObject = null;
+                        ObjectGrabbed = false;
+                        GrabRay = false;
+                        TimerOn = true;
+                        TimeLeft = SetCoolDownTime;
+                    }
                 }
+
             }
 
 

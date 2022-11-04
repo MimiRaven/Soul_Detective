@@ -8,19 +8,19 @@ public class C_Possesion : MonoBehaviour
     [SerializeField]
     private PlayerInput playerInput;
 
-    public bool RayCastShot;
+    public bool PossesionRayShot;
     public float range = 100;
 
     public bool AimOn;
 
     private InputAction ShootAction;
 
-    public C_EnemyPossesed c_EnemyPossesed;
-
-    public C_EnemyPossesed c_Enemy2;
-
     public C_PlayerController c_PlayerController;
     public C_SwitchAimCam SwitchAimCam;
+
+    public float SetCoolDownTime;
+    public float TimeLeft;
+    public bool TimerOn;
 
     private void Awake()
     {
@@ -33,6 +33,7 @@ public class C_Possesion : MonoBehaviour
 
     void Update()
     {
+        Timmer();
         PossesionRayCastShot();
 
         if (SwitchAimCam.AimOn == false)
@@ -42,7 +43,36 @@ public class C_Possesion : MonoBehaviour
         }
     }
 
+    void Timmer()
+    {
 
+        if (TimerOn)
+        {
+
+            if (TimeLeft > 0)
+            {
+                TimeLeft -= Time.deltaTime;
+                updateTimer(TimeLeft);
+            }
+            else
+            {
+                Debug.Log("Time is Up");
+                TimerOn = false;
+
+            }
+
+        }
+    }
+
+    void updateTimer(float currentTime)
+    {
+        currentTime += 1;
+
+        float minutes = Mathf.FloorToInt(currentTime / 60);
+        float seconds = Mathf.FloorToInt(currentTime % 60);
+
+
+    }
 
     void PossesionRayCastShot()
     {
@@ -50,7 +80,7 @@ public class C_Possesion : MonoBehaviour
         {
 
 
-            if (RayCastShot == true)
+            if (PossesionRayShot == true)
             {
                 Vector3 direction = Vector3.forward;
                 Ray theRay = new Ray(transform.position, transform.TransformDirection(direction * range));
@@ -62,62 +92,19 @@ public class C_Possesion : MonoBehaviour
 
                 if (Physics.Raycast(theRay, out RaycastHit hit, range))
                 {
-                    //if (ObjectPush == true)
-                    //{
-                    //    Debug.Log("Push button active");
-                    //    if (hit.transform.TryGetComponent<Target>(out Target ts))
-                    //        ts.GetShot(theRay.direction);
-                    //}
-                    //else { Debug.Log("Push button Not active"); }
-
-
-
-                    //Enemy Possesion
-                    if (hit.collider.tag == "Enemy1")
+                    if (PossesionRayShot == true)
                     {
-
-                        Debug.Log("Enemy1 Hit confirmed");
-                        //tpMovement.Possesed = true;
-                        c_EnemyPossesed.Possesed = true;
+                        Debug.Log("Push button active");
+                        if (hit.transform.TryGetComponent<C_EnemyPossesed>(out C_EnemyPossesed ts))
+                            ts.Possesed = true;
                         c_PlayerController.Possesed = false;
-
-                        //EnemyCams.SetActive(true);
-                        //PlayerCams.SetActive(false);
-                        RayCastShot = false;
-                        //virtualCamera.Priority -= priorityBoostAmount;
-                        //c_NonRoamingEnemys.Possesed
-
+                        PossesionRayShot = false;
                     }
-                    else
-                    {
-                        Debug.Log("Enemy1 Not Hit");
-                        //EnemyCams.SetActive(false);
-                        //PlayerCams.SetActive(true);
-
-                    }
-                    if (hit.collider.tag == "Enemy2")
-                    {
-
-                        Debug.Log("Enemy2 Hit confirmed");
-                        //tpMovement.Possesed = true;
-                        c_PlayerController.Possesed = false;
-                        c_Enemy2.Possesed = true;
-                        //EnemyCams.SetActive(true);
-                        //PlayerCams.SetActive(false);
-                        RayCastShot = false;
-                        //virtualCamera.Priority -= priorityBoostAmount;
-
-                        //c_NonRoamingEnemys.Possesed
+                    else { Debug.Log("Push button Not active"); }
 
 
-                    }
-                    else
-                    {
-                        Debug.Log("Enemy2 Not Hit");
-                        //EnemyCams.SetActive(false);
-                        //PlayerCams.SetActive(true);
 
-                    }
+                   
 
                 }
 
@@ -141,11 +128,11 @@ public class C_Possesion : MonoBehaviour
     //RayCast
     private void StartShoot()
     {
-        RayCastShot = true;
+        PossesionRayShot = true;
     }
     private void StopShoot()
     {
-        RayCastShot = false;
+        PossesionRayShot = false;
 
     }
 }
