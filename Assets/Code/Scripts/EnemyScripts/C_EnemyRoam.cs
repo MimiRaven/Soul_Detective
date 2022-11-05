@@ -49,18 +49,7 @@ public class C_EnemyRoam : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        C_PlayerController player =  col.gameObject.GetComponent<C_PlayerController>();
-
-       //if(col.gameObject.name == "Cube")
-       //{
-       //    Debug.Log("Enemy Toutched cube");
-       //    Destroy(col.gameObject);
-       //}
-       //
-       // if (col.collider.tag == "weapon")
-       //{
-       //    Destroy(gameObject);
-       //}
+        C_PlayerHealth player =  col.gameObject.GetComponent<C_PlayerHealth>();
 
         if (player != null)
         {

@@ -31,9 +31,9 @@ public class C_PlayerController : MonoBehaviour
     private bool boosting;
     public GameObject PlayerCams;
 
-    public int maxHealth = 10;
-    public int health { get { return currentHealth; } }
-    int currentHealth;
+   // public int maxHealth = 10;
+   // public int health { get { return currentHealth; } }
+   // int currentHealth;
 
     public bool WeaponWheel;
     public GameObject Abilitys,WeaponWheelObject,PlayerModle;
@@ -54,7 +54,7 @@ public class C_PlayerController : MonoBehaviour
         boostTimer = 0;
         boosting = false;
 
-        currentHealth = maxHealth;
+       // currentHealth = maxHealth;
 
         Cursor.visible = false;
 
@@ -142,16 +142,16 @@ public class C_PlayerController : MonoBehaviour
         }
     }
 
-     public void ChangeHealth(int amount)
-     {
-        if (currentHealth <= 1)
-        {
-            playerSpeed = 0;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
-        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
-     }
+    //public void ChangeHealth(int amount)
+    //{
+    //   if (currentHealth <= 1)
+    //   {
+    //       playerSpeed = 0;
+    //       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    //   }
+    //   currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+    //   UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
+    //}
 
    //void OnCollisionEnter(Collision col)
    //{

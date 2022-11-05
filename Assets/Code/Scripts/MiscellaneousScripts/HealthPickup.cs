@@ -6,7 +6,7 @@ public class HealthPickup : MonoBehaviour
 {
     void OnTriggerEnter(Collider other)
     {
-        C_PlayerController controller = other.GetComponent<C_PlayerController>();
+        C_PlayerHealth controller = other.GetComponent<C_PlayerHealth>();
 
         if (controller != null)
         {
