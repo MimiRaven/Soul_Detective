@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class C_RangeAttack : MonoBehaviour
 {
@@ -54,7 +55,10 @@ public class C_RangeAttack : MonoBehaviour
 
     [Tooltip("The velocity at which the object is thrown")]
     public float throwVelocity;
-  
+
+    public TextMeshProUGUI TimerUI;
+    public GameObject TimerCanvas;
+
 
     void Awake()
     {
@@ -136,11 +140,13 @@ public class C_RangeAttack : MonoBehaviour
             {
                 TimeLeft -= Time.deltaTime;
                 updateTimer(TimeLeft);
+                TimerCanvas.SetActive(true);
             }
             else
             {
                 Debug.Log("Time is Up");
                 TimerOn = false;
+                TimerCanvas.SetActive(false);
 
             }
 
@@ -153,8 +159,8 @@ public class C_RangeAttack : MonoBehaviour
 
         float minutes = Mathf.FloorToInt(currentTime / 60);
         float seconds = Mathf.FloorToInt(currentTime % 60);
+        TimerUI.text = string.Format("{0:0}", seconds);
 
-        
     }
 
     void WeaponActication()
