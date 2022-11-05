@@ -61,6 +61,12 @@ public class C_PlayerController : MonoBehaviour
         Possesed = true;
     }
 
+    void Awake()
+    {
+        //DontDestroyOnLoad(this.gameObject);
+
+    }
+
     void Update()
     {
         IsPossesed();

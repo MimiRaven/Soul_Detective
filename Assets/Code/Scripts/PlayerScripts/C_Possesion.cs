@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+//using TMPro;
 
 public class C_Possesion : MonoBehaviour
 {
@@ -22,6 +24,10 @@ public class C_Possesion : MonoBehaviour
     public float TimeLeft;
     public bool TimerOn;
 
+    //public Text TimerUI;
+    //public TextMeshProUGUI TimerUI;
+
+
     private void Awake()
     {
         ShootAction = playerInput.actions["Shoot"];
@@ -33,6 +39,8 @@ public class C_Possesion : MonoBehaviour
 
     void Update()
     {
+        //TimerUI.text = TimeLeft.ToString();
+
         Timmer();
         PossesionRayCastShot();
 
@@ -70,7 +78,7 @@ public class C_Possesion : MonoBehaviour
 
         float minutes = Mathf.FloorToInt(currentTime / 60);
         float seconds = Mathf.FloorToInt(currentTime % 60);
-
+        //TimerTxt.text = string.Format("{0:0}:{1:00}", minutes, seconds);
 
     }
 

@@ -19,6 +19,11 @@ public class C_XpScore : MonoBehaviour
         MaxScore = 2;
     }
 
+    void Awake()
+    {
+        //DontDestroyOnLoad(this.gameObject);
+    }
+
     // Update is called once per frame
     void Update()
     {

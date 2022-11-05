@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
+using TMPro;
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 
@@ -44,6 +45,9 @@ public class C_EnemyPossesed : MonoBehaviour
     public float TimeLeft;
     public bool TimerOn;
 
+    public TextMeshProUGUI TimerUI;
+    public GameObject TimerCanvas;
+
     private Rigidbody objectRb;
     
     //public NavMeshAgent agent;
@@ -67,8 +71,9 @@ public class C_EnemyPossesed : MonoBehaviour
 
         cameraTransfrom = Camera.main.transform;
         EnemyCams.SetActive(false);
-        //Cursor.visible = false;
         
+        //Cursor.visible = false;
+
         //Possesed = false;
 
         Possesed = false;
@@ -95,14 +100,15 @@ public class C_EnemyPossesed : MonoBehaviour
             {
                 TimeLeft -= Time.deltaTime;
                 updateTimer(TimeLeft);
-                
+                TimerCanvas.SetActive(true);
             }
             else
             {
                 Debug.Log("Time is Up");
-                //TimeLeft = 0;
+                TimeLeft = 0;
                 TimerOn = false;
                 Possesed = false;
+                TimerCanvas.SetActive(false);
 
             }
 
@@ -116,7 +122,7 @@ public class C_EnemyPossesed : MonoBehaviour
         float minutes = Mathf.FloorToInt(currentTime / 60);
         float seconds = Mathf.FloorToInt(currentTime % 60);
 
-
+        TimerUI.text = string.Format("{0:0}", seconds);
     }
 
    
@@ -196,10 +202,11 @@ public class C_EnemyPossesed : MonoBehaviour
         StopPosAction.canceled -= _ => StopExitPossesion();
     }
 
-    //RayCast
+    
     private void StartExitPossesion()
     {
         Possesed = false;
+        TimerCanvas.SetActive(false);
     }
     private void StopExitPossesion()
     {

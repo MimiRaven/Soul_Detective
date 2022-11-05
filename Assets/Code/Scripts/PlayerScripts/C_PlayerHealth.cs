@@ -36,9 +36,10 @@ public class C_PlayerHealth : MonoBehaviour
 
     public void Respwan()
     {
+        Debug.Log("PlayerRespawned");
         player.transform.position = respawnPoint;
         currentHealth = maxHealth;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void SetSpawnPoint(Vector3 newPosition)

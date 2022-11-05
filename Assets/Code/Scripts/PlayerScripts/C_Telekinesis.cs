@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
+
 
 public class C_Telekinesis : MonoBehaviour
 {
@@ -41,6 +43,9 @@ public class C_Telekinesis : MonoBehaviour
     public float TimeLeft;
     public bool TimerOn;
 
+    public TextMeshProUGUI TimerUI;
+    public GameObject TimerCanvas;
+
     private void Awake()
     {
         PullAction = playerInput.actions["PullObject"];
@@ -75,12 +80,14 @@ public class C_Telekinesis : MonoBehaviour
             {
                 TimeLeft -= Time.deltaTime;
                 updateTimer(TimeLeft);
+                TimerCanvas.SetActive(true);
             }
             else
             {
                 Debug.Log("Time is Up");
                 //TimeLeft = 0;
                 TimerOn = false;
+                TimerCanvas.SetActive(false);
 
             }
 
@@ -93,7 +100,7 @@ public class C_Telekinesis : MonoBehaviour
 
         float minutes = Mathf.FloorToInt(currentTime / 60);
         float seconds = Mathf.FloorToInt(currentTime % 60);
-
+        TimerUI.text = string.Format("{0:0}", seconds);
 
     }
 
