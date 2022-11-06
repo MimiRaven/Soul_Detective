@@ -19,6 +19,10 @@ public class C_PlayerController : MonoBehaviour
     private Vector3 playerVelocity;
     private bool groundedPlayer;
 
+    float stamina = 5, maxStamina = 5;
+    float walkSpeed, runSpeed;
+    bool isRunning;
+
     private Transform cameraTransfrom;
 
     private InputAction moveAction;
@@ -46,6 +50,9 @@ public class C_PlayerController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
+
+        walkSpeed = playerSpeed;
+        runSpeed = walkSpeed *4;
         
         cameraTransfrom = Camera.main.transform;
         moveAction = playerInput.actions["Move"];
@@ -84,6 +91,29 @@ public class C_PlayerController : MonoBehaviour
             }
         }
 
+        //  if (Input.GetKeyDown(KeyCode.LeftShift))
+        // {
+        //     SetRunning(true);
+        // }
+
+        //  if (Input.GetKeyUp(KeyCode.LeftShift))
+        // {
+        //     SetRunning(false);
+        // }
+
+        // if (isRunning)
+        // {
+        //     stamina -= Time.deltaTime;
+        //     if (stamina < 0)
+        //     {
+        //         stamina = 0;
+        //         SetRunning(false);
+        //     }
+        // }
+        // else if(stamina<maxStamina)
+        // {
+        //     stamina += Time.deltaTime;
+        // }
     }
 
     void IsPossesed()
@@ -105,12 +135,17 @@ public class C_PlayerController : MonoBehaviour
             WeaponWheelObject.SetActive(false);
             PlayerModle.SetActive(false);
         }
-
     }
 
+    void SetRunning(bool isRunning)
+    {
+        this.isRunning = isRunning;
+       playerSpeed = isRunning ? runSpeed : walkSpeed;
+    }
 
     void Movement()
     {
+        Sprinter.instance.SetValue(stamina/ maxStamina);
         if (WeaponWheel == false)
         {
             Cursor.visible = false;
