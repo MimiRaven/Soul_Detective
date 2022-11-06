@@ -1231,6 +1231,7 @@ GameObject:
   - component: {fileID: 209568458}
   - component: {fileID: 209568452}
   - component: {fileID: 209568451}
+  - component: {fileID: 209568460}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
@@ -1306,6 +1307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   c_XpScore: {fileID: 1538193063}
+  enemyHealth: {fileID: 0}
 --- !u!114 &209568454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1378,7 +1380,7 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 1
-  speed: 5
+  speed: 2
   Player: {fileID: 1538193056}
   playerObject: {fileID: 1538193054}
   Attacking: 0
@@ -1398,6 +1400,20 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 1
+--- !u!114 &209568460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209568449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83ab18b7e395d1e41b7556c92f966b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  currentHealth: 0
 --- !u!1 &212608306
 GameObject:
   m_ObjectHideFlags: 0
@@ -5089,6 +5105,7 @@ GameObject:
   - component: {fileID: 643767760}
   - component: {fileID: 643767759}
   - component: {fileID: 643767758}
+  - component: {fileID: 643767766}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
@@ -5199,6 +5216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   c_XpScore: {fileID: 1538193063}
+  enemyHealth: {fileID: 0}
 --- !u!114 &643767763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5256,6 +5274,20 @@ CapsuleCollider:
   m_Height: 2.3711925
   m_Direction: 1
   m_Center: {x: 0, y: -0.15562057, z: 0}
+--- !u!114 &643767766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643767756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83ab18b7e395d1e41b7556c92f966b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  currentHealth: 0
 --- !u!1 &645332260
 GameObject:
   m_ObjectHideFlags: 0
@@ -9169,6 +9201,25 @@ Transform:
   m_Father: {fileID: 236461374}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1270200242 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2512735288821005985, guid: 89ba54148885d6149bfa194831791da1, type: 3}
+  m_PrefabInstance: {fileID: 491598872}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1270200250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270200242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83ab18b7e395d1e41b7556c92f966b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  currentHealth: 0
 --- !u!1 &1294401997
 GameObject:
   m_ObjectHideFlags: 0
@@ -11046,6 +11097,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1587934326 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5407280480827609365, guid: 08f8e5214eb522b48a3031b11dc4c206, type: 3}
+  m_PrefabInstance: {fileID: 1947977898}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1631417110
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11841,6 +11897,7 @@ GameObject:
   - component: {fileID: 1715988553}
   - component: {fileID: 1715988552}
   - component: {fileID: 1715988551}
+  - component: {fileID: 1715988559}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
@@ -11951,6 +12008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   c_XpScore: {fileID: 1538193063}
+  enemyHealth: {fileID: 0}
 --- !u!114 &1715988556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12008,6 +12066,20 @@ CapsuleCollider:
   m_Height: 2.3711925
   m_Direction: 1
   m_Center: {x: 0, y: -0.15562057, z: 0}
+--- !u!114 &1715988559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715988549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83ab18b7e395d1e41b7556c92f966b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  currentHealth: 0
 --- !u!1 &1720019010
 GameObject:
   m_ObjectHideFlags: 0
@@ -13321,7 +13393,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1883224067}
   m_LocalRotation: {x: 0.028532261, y: 0, z: 0, w: 0.9995929}
-  m_LocalPosition: {x: 11.783652, y: 2.8268993, z: -6.183844}
+  m_LocalPosition: {x: 11.930187, y: 2.8268993, z: -6.183844}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14637,6 +14709,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4630074656195496879, guid: 08f8e5214eb522b48a3031b11dc4c206, type: 3}
   m_PrefabInstance: {fileID: 1947977898}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2031684871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587934326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28ff700a5b538464cba955b3cf481cde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2039070765
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15433,7 +15517,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 702842471505169603, guid: 66fd8030382a9e945bed7976197c8a13, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -35.607048
+      value: -35.22812
       objectReference: {fileID: 0}
     - target: {fileID: 702842471505169603, guid: 66fd8030382a9e945bed7976197c8a13, type: 3}
       propertyPath: m_LocalPosition.y
@@ -16931,7 +17015,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7992783340447196850, guid: 075af7ef722389c47898cb34398ecab8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -36.42169
+      value: -36.275154
       objectReference: {fileID: 0}
     - target: {fileID: 7992783340447196850, guid: 075af7ef722389c47898cb34398ecab8, type: 3}
       propertyPath: m_LocalPosition.y

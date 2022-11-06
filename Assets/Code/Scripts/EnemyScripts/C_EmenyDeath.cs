@@ -6,6 +6,7 @@ public class C_EmenyDeath : MonoBehaviour
 {
     public C_XpScore c_XpScore;
     private bool isColliding = true;
+    public EnemyHealth enemyHealth;
 
     void Update()
     {
@@ -20,8 +21,10 @@ public class C_EmenyDeath : MonoBehaviour
         if (col.collider.tag == "weapon")
         {
             EnemyDeath();
-           // Destroy(gameObject);
-
+            //col.collider.GetComponent<EnemyHealth>().TakeDamage(1);
+            // Destroy(gameObject);
+            //script.TakeDamage(1);
+            Debug.Log("Enemy Damaged");
         }
 
         if (col.collider.tag == "Active")
@@ -37,8 +40,8 @@ public class C_EmenyDeath : MonoBehaviour
     {
         
         c_XpScore.CurrentScore += 1;
-        Destroy(gameObject);
-
+        //Destroy(gameObject);
+        enemyHealth.TakeDamage(1);
 
     }
 

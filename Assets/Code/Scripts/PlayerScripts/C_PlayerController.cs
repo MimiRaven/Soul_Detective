@@ -194,14 +194,12 @@ public class C_PlayerController : MonoBehaviour
     //   UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
     //}
 
-   //void OnCollisionEnter(Collision col)
-   //{
-   //    if (col.collider.tag == "soul")
-   //    {
-   //        souls++;
-   //        Destroy(col.collider.gameObject);
-   //    }
-   //}
+  //void OnCollisionEnter(Collision col)
+  //{
+  //    if (col.collider.tag == "Enemy")
+  //    {
+  //    }
+  //}
 
     void OnTriggerEnter(Collider other)
     {
