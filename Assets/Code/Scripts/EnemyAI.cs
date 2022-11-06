@@ -3,108 +3,64 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    //public Team Team => _team;
-    //[SerializeField] private Team _team;
     [SerializeField] private LayerMask _layerMask;
 
-    // private float _attackRange = 20f;
     private float _rayDistance = 5.0f;
     private float _stoppingDistance = 1.5f;
+    public float speed;
 
     private Vector3 _destination;
     private Quaternion _desiredRotation;
     private Vector3 _direction;
-    //public Transform _target;
-    //private DroneState _currentState;
 
+    //public GameObject Self;
+    private Rigidbody objectRb;
+    public Transform Player;
+    public GameObject playerObject;
+
+    public bool Attacking;
+    //public bool Roaming;
+
+    void Awake()
+    {
+        objectRb = GetComponent<Rigidbody>();
+    }
 
     private void Update()
     {
-        //switch (_currentState)
-        //{
-        //    case DroneState.Wander:
-        //    {
-        //        if (NeedsDestination())
-        //        {
-        //            GetDestination();
-        //        }
-        //
-        //        transform.rotation = _desiredRotation;
-        //
-        //        transform.Translate(Vector3.forward * Time.deltaTime * 5f);
-        //
-        //        var rayColor = IsPathBlocked() ? Color.red : Color.green;
-        //        Debug.DrawRay(transform.position, _direction * _rayDistance, rayColor);
-        //
-        //        while (IsPathBlocked())
-        //        {
-        //            Debug.Log("Path Blocked");
-        //            GetDestination();
-        //        }
-        //
-        //        //var targetToAggro = CheckForAggro();
-        //        //if (targetToAggro != null)
-        //        //{
-        //        //        _target = targetToAggro;
-        //        //    _currentState = DroneState.Chase;
-        //        //}
-        //        //
-        //        //break;
-        //    }
-        //   //case DroneState.Chase:
-        //   //{
-        //   //    if (_target == null)
-        //   //    {
-        //   //        _currentState = DroneState.Wander;
-        //   //        return;
-        //   //    }
-        //   //    
-        //   //    transform.LookAt(_target.transform);
-        //   //    transform.Translate(Vector3.forward * Time.deltaTime * 5f);
-        //   //
-        //   //    if (Vector3.Distance(transform.position, _target.transform.position) < _attackRange)
-        //   //    {
-        //   //        _currentState = DroneState.Attack;
-        //   //    }
-        //   //    break;
-        //   //}
-        //   //case DroneState.Attack:
-        //   //{
-        //   //    if (_target != null)
-        //   //    {
-        //   //        Destroy(_target.gameObject);
-        //   //    }
-        //   //    
-        //   //    // play laser beam
-        //   //    
-        //   //    _currentState = DroneState.Wander;
-        //   //    break;
-        //   //}
-        //}
+        if(Attacking == false)
+        {
+            Wander();
 
-        Wander();
+        }
         AgroCheck();
+        AttackingFunction();
     }
 
     void Wander()
     {
-        if (NeedsDestination())
-        {
-            GetDestination();
-        }
+        
+        
 
-        transform.rotation = _desiredRotation;
+            if (NeedsDestination())
+            {
+                GetDestination();
+            }
 
-        transform.Translate(Vector3.forward * Time.deltaTime * 5f);
+            transform.rotation = _desiredRotation;
 
-        var rayColor = IsPathBlocked() ? Color.red : Color.green;
-        Debug.DrawRay(transform.position, _direction * _rayDistance, rayColor);
+            transform.Translate(Vector3.forward * Time.deltaTime * speed);
 
-        while (IsPathBlocked())
-        {
-            Debug.Log("Path Blocked");
-            GetDestination();
-        }
+            var rayColor = IsPathBlocked() ? Color.red : Color.green;
+            Debug.DrawRay(transform.position, _direction * _rayDistance, rayColor);
+
+            while (IsPathBlocked())
+            {
+                Debug.Log("Path Blocked");
+                GetDestination();
+            }
+
+        
     }
 
     private bool IsPathBlocked()
@@ -148,81 +104,56 @@ public class EnemyAI : MonoBehaviour
 
     void AgroCheck()
     {
-        float aggroRadius = 5f;
+        
+        float aggroRadius = 10f;
 
         RaycastHit hit;
         var angle = transform.rotation * startingAngle;
         var direction = angle * Vector3.forward;
         var pos = transform.position;
-        for (var i = 0; i < 24; i++)
+        for (var i = 0; i < 100; i++)
         {
 
             Debug.DrawRay(pos, direction * aggroRadius, Color.white);
 
-            //if(Physics.Raycast(pos, direction, out hit, aggroRadius))
-            //{
-            //    var drone = hit.collider.GetComponent<Drone>();
-            //    if(drone != null && drone.Team != gameObject.GetComponent<Drone>().Team)
-            //    {
-            //        Debug.DrawRay(pos, direction * hit.distance, Color.red);
-            //        return drone.transform;
-            //    }
-            //    else
-            //    {
-            //        Debug.DrawRay(pos, direction * hit.distance, Color.yellow);
-            //    }
-            //}
-            //else
-            //{
-            //    Debug.DrawRay(pos, direction * aggroRadius, Color.white);
-            //}
-            //direction = stepAngle * direction;
+            if (Physics.Raycast(pos, direction, out hit, aggroRadius))
+            {
+                //var drone = hit.collider.GetComponent<C_PlayerController>();
+                if (hit.transform.tag == "Player")
+                {
+                    //objectRb.MovePosition(Player.position);
+                    Debug.DrawRay(pos, direction * hit.distance, Color.red);
+                    Attacking = true;
+                }
+                else
+                {
+                    Debug.DrawRay(pos, direction * hit.distance, Color.yellow);
+                    
+                    Attacking = false;
+                }
+
+                //if(drone = null )
+                //{
+                //    Attacking = false;
+                //} 
+            }
+            else
+            {
+                //Attacking = false;
+                Debug.DrawRay(pos, direction * aggroRadius, Color.white);
+            }
+            direction = stepAngle * direction;
         }
     }
 
-    //private Transform CheckForAggro()
-    //{
-    //    float aggroRadius = 5f;
-    //    
-    //    RaycastHit hit;
-    //    var angle = transform.rotation * startingAngle;
-    //    var direction = angle * Vector3.forward;
-    //    var pos = transform.position;
-    //    for(var i = 0; i < 24; i++)
-    //    {
-    //        if(Physics.Raycast(pos, direction, out hit, aggroRadius))
-    //        {
-    //            var drone = hit.collider.GetComponent<Drone>();
-    //            if(drone != null && drone.Team != gameObject.GetComponent<Drone>().Team)
-    //            {
-    //                Debug.DrawRay(pos, direction * hit.distance, Color.red);
-    //                return drone.transform;
-    //            }
-    //            else
-    //            {
-    //                Debug.DrawRay(pos, direction * hit.distance, Color.yellow);
-    //            }
-    //        }
-    //        else
-    //        {
-    //            Debug.DrawRay(pos, direction * aggroRadius, Color.white);
-    //        }
-    //        direction = stepAngle * direction;
-    //    }
-    //
-    //    return null;
-    //}
-}
+    void AttackingFunction()
+    {
+        if(Attacking == true)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, playerObject.transform.position, speed * Time.deltaTime);
+            transform.LookAt(Player);
 
-//public enum Team
-//{
-//    Red,
-//    Blue
-//}
-//
-//public enum DroneState
-//{
-//    Wander,
-//    Chase,
-//    Attack
-//}
+        }
+    }
+
+}

@@ -8,7 +8,7 @@ public class C_PlayerController : MonoBehaviour
 {
     //Player Values
     [SerializeField]
-    private float playerSpeed = 2.0f;
+    private float playerSpeed = 5f;
     [SerializeField]
     private float jumpHeight = 1.0f;
     [SerializeField]
@@ -85,7 +85,7 @@ public class C_PlayerController : MonoBehaviour
             boostTimer += Time.deltaTime;
             if (boostTimer >= 5)
             {
-                playerSpeed = 2;
+                playerSpeed = 5;
                 boostTimer = 0;
                 boosting = false;
             }
