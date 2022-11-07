@@ -43,6 +43,12 @@ public class C_EmenyDeath : MonoBehaviour
             PlayerTakeDamage();
         }
 
+        if(col.collider.tag == "Player")
+        {
+            C_PlayerHealth p = col.gameObject.GetComponent<C_PlayerHealth>();
+            p.ChangeHealth(-1);
+        }
+
     }
 
     void PlayerTakeDamage()
