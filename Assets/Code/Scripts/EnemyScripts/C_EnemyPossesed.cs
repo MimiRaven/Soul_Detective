@@ -34,7 +34,7 @@ public class C_EnemyPossesed : MonoBehaviour
 
 
     public C_PlayerController c_PlayerController;
-    public C_EnemyRoam c_EnemyRoam;
+    //public C_EnemyRoam c_EnemyRoam;
 
     public GameObject EnemyCams;
 
@@ -138,7 +138,7 @@ public class C_EnemyPossesed : MonoBehaviour
             
             Debug.Log("Enemy Posesed");
             Movement();
-            c_EnemyRoam.enabled = false;
+            //c_EnemyRoam.enabled = false;
             EnemyCams.SetActive(true);
             
             TimerOn = true;
