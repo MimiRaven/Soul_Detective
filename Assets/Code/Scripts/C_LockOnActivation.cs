@@ -12,6 +12,7 @@ public class C_LockOnActivation : MonoBehaviour
     public bool LockonBool;
 
     public C_CameraTarget LockOnCamScript;
+    public C_LocOnRange LockRangeScript;
 
     void Awake()
     {
@@ -22,13 +23,22 @@ public class C_LockOnActivation : MonoBehaviour
 
     public void Update()
     {
-        if (LockonBool)
+        if (LockRangeScript.EnemyInRange == true)
         {
-            LockOnCam.SetActive(true);
-            LockOnCamScript.enemyContact = true;
+           if (LockonBool)
+           {
+               LockOnCam.SetActive(true);
+               LockOnCamScript.enemyContact = true;
+           }
+           else 
+           { 
+               LockOnCam.SetActive(false);
+               LockOnCamScript.enemyContact = false;
+           }
+
         }
-        else 
-        { 
+        else
+        {
             LockOnCam.SetActive(false);
             LockOnCamScript.enemyContact = false;
         }
