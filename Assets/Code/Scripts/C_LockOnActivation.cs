@@ -34,13 +34,15 @@ public class C_LockOnActivation : MonoBehaviour
            { 
                LockOnCam.SetActive(false);
                LockOnCamScript.enemyContact = false;
-           }
+                LockOnCamScript.ClosestEnemyFound = false;
+            }
 
         }
         else
         {
             LockOnCam.SetActive(false);
             LockOnCamScript.enemyContact = false;
+            LockOnCamScript.ClosestEnemyFound = false;
         }
     }
 

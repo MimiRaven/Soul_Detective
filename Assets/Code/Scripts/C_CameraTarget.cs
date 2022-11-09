@@ -17,6 +17,8 @@ public class C_CameraTarget : MonoBehaviour
     public float closestDistance;
     public float currentDistance;
 
+    public bool ClosestEnemyFound;
+
     void Start()
     {
         //target = GameObject.FindWithTag("Eg").transform;
@@ -31,10 +33,18 @@ public class C_CameraTarget : MonoBehaviour
         if (enemyContact == true)
         {
             transform.LookAt(closestEnemy);
-
+            //closestEnemy = getClosestEnemy();
         }
 
+       //if (ClosestEnemyFound == false)
+       //{
+       //    closestEnemy = null;
+       //}
         closestEnemy = getClosestEnemy();
+        //else { closestEnemy = null; }
+
+        //closestEnemy = getClosestEnemy();
+
     }
 
     void Update()
@@ -53,90 +63,40 @@ public class C_CameraTarget : MonoBehaviour
     public Transform getClosestEnemy()
     {
         multipeEnemys = GameObject.FindGameObjectsWithTag("Eg");
-         closestDistance = Mathf.Infinity;
+        closestDistance = Mathf.Infinity;
         Transform trans = null;
+
 
         foreach (GameObject go in multipeEnemys)
         {
-            
+
             currentDistance = Vector3.Distance(transform.position, go.transform.position);
-            if(currentDistance < closestDistance)
+            ClosestEnemyFound = true;
+            if (currentDistance < closestDistance)
             {
                 closestDistance = currentDistance;
                 trans = go.transform;
+
             }
         }
         return trans;
 
     }
 
-   //void OnTriggerEnter(Collider collided)
-   //{
-   //    if(collided.tag("Eg"))
-   //    {
-   //        Debug.Log("Enemy in trigger");
-   //        //closestEnemy = getClosestEnemy();
-   //        //enemyContact = true;
-   //        //transform.LookAt(closestEnemy);
-   //    }
-   //}
-
-    //void OnTriggerStay(Collider other)
+    //Transform GetClosestEnemy(Transform[] enemies)
     //{
-    //    if (other.tag == "Eg")
+    //    enemies = GameObject.FindGameObjectsWithTag("Eg");
+    //    Transform tMin = null;
+    //    float minDist = Mathf.Infinity;
+    //    Vector3 currentPos = transform.position;
+    //    foreach (Transform t in enemies)
     //    {
-    //        Debug.Log("Enemy in trigger");
-    //        
-    //        enemyContact = true;
-    //
-    //        //enemyContact = true;
-    //
-    //        //closestEnemy = getClosestEnemy();
-    //
+    //        float dist = Vector3.Distance(t.position, currentPos);
+    //        if (dist < minDist)
+    //        {
+    //            tMin = t;
+    //            minDist = dist;
+    //        }
     //    }
-    //}
-    //
-    //void OnTriggerExit(Collider other)
-    //{
-    //    if (other.tag == "Eg")
-    //    {
-    //        Debug.Log("Enemy in trigger");
-    //        enemyContact = false;
-    //        //closestEnemy = null;
-    //
-    //
-    //    }
-    //}
-
-    //private void OntriggerExit(Collider collision)
-    //{
-    //    if (collision.isTrigger = !true && collision.CompareTag("Eg"))
-    //    {
-    //        enemyContact = false;
-    //        Debug.Log("Enemy Not in trigger");
-    //    }
-    //}
-
-    // Update is called once per frame
-    //void Update()
-    //{
-    //    //transform.LookAt(target);
-    //    //
-    //    //EnemyInRange = Physics.CheckSphere(transform.position, sightRange, targetMask);
-    //
-    //    //RaycastHit hit;
-    //    //if (Physics.Raycast(transform.position, Vector3.forward, out hit))
-    //    //{
-    //    //    Vector3 hitPosition = hit.point;
-    //    //    turret.LookAt(hitPosition);
-    //    //}
-    //}
-
-    //private void OnDrawGizmosSelected()
-    //{
-    //    //Gizmos.color = Color.red;
-    //    //Gizmos.DrawWireSphere(transform.position, attackRange);
-    //    Gizmos.color = Color.yellow;
-    //    Gizmos.DrawWireSphere(transform.position, sightRange);
-    //}
+    //    return tMin;
 }
