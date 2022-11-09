@@ -32,6 +32,8 @@ public class C_EnemyPossesed : MonoBehaviour
 
     public bool Possesed;
 
+    public GameObject WeaponWheel;
+
 
     public C_PlayerController c_PlayerController;
     //public C_EnemyRoam c_EnemyRoam;
@@ -143,6 +145,8 @@ public class C_EnemyPossesed : MonoBehaviour
             
             TimerOn = true;
             objectRb.drag = 1;
+            WeaponWheel.SetActive(false);
+
         }
         else
         {
@@ -152,7 +156,8 @@ public class C_EnemyPossesed : MonoBehaviour
             TimerOn = false;
             EnemyCams.SetActive(false);
             objectRb.drag = 100;
-           //agent.enable = false;
+            WeaponWheel.SetActive(true);
+            //agent.enable = false;
         }
 
     }

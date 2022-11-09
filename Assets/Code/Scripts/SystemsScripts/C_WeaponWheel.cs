@@ -24,6 +24,9 @@ public class C_WeaponWheel : MonoBehaviour
 
     public C_PlayerController c_PlayerController;
 
+    public PlayerAttack playerAttack;
+
+    
 
 
     void Awake()
@@ -53,6 +56,13 @@ public class C_WeaponWheel : MonoBehaviour
         MainCam.SetActive(false);
         AimCam.SetActive(false);
         Cursor.visible = true;
+        playerAttack.IsAbleToAttack = false;
+
+        //if(c_PlayerController.Possesed == false)
+        //{
+        //    Time.timeScale = 0f;
+        //    Cursor.visible = true;
+        //}
 
     }
 
@@ -64,6 +74,9 @@ public class C_WeaponWheel : MonoBehaviour
         MainCam.SetActive(true);
         AimCam.SetActive(true);
         Cursor.visible = false;
+        playerAttack.IsAbleToAttack = true;
+
+        //if (c_PlayerController.Possesed == false)
     }
 
     public void TelekinesisActive()

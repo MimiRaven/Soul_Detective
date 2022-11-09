@@ -16,6 +16,8 @@ public class C_SwitchAimCam : MonoBehaviour
     private CinemachineVirtualCamera virtualCamera;
     private InputAction aimAction;
 
+    public GameObject XrayCam;
+
     private void Awake()
     {
         virtualCamera = GetComponent<CinemachineVirtualCamera>();
@@ -40,6 +42,7 @@ public class C_SwitchAimCam : MonoBehaviour
         AimOn = true;
         virtualCamera.Priority += priorityBoostAmount;
         aimCanvas.SetActive(true);
+        XrayCam.SetActive(false);
     }
     private void CancelAim()
     {

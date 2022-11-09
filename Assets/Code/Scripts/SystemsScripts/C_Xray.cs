@@ -10,6 +10,7 @@ public class C_Xray : MonoBehaviour
     private PlayerInput playerInput;
     private InputAction XRayActivation;
     public GameObject XrayCam;
+    public C_SwitchAimCam c_SwitchAimCam;
 
     void Awake()
     {
@@ -29,6 +30,14 @@ public class C_Xray : MonoBehaviour
 
     }
 
+    void AimXray()
+    {
+        if (c_SwitchAimCam.AimOn == false)
+        {
+            XrayCam.SetActive(true);
+        }
+    }
+
     private void OnEnable()
     {
         XRayActivation.performed += _ => XRayActiveStart();
@@ -43,7 +52,13 @@ public class C_Xray : MonoBehaviour
 
     void XRayActiveStart()
     {
-        XrayCam.SetActive(true);
+        //if (c_SwitchAimCam.AimOn == false)
+        //{
+        //    XrayCam.SetActive(true);
+        //}
+
+        AimXray();
+
     }
 
     void XRayActiveStop()
