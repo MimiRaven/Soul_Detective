@@ -25,7 +25,7 @@ public class C_PlayerHealth : MonoBehaviour
 
     public void ChangeHealth(int amount)
     {
-        if (currentHealth <= 1)
+        if (currentHealth == 0)
         {
             Respwan();
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
