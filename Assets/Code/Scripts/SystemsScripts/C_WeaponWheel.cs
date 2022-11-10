@@ -15,6 +15,8 @@ public class C_WeaponWheel : MonoBehaviour
     public GameObject RangeAttack;
     public GameObject Possesion;
 
+    public GameObject TeleTimer, RangeTimer, PosTimer;
+
     public GameObject telekinesisButton;
     public GameObject RangeAttackButton;
     public GameObject PossesionButton;
@@ -106,6 +108,8 @@ public class C_WeaponWheel : MonoBehaviour
         telekinesisButton.SetActive(false);
         RangeAttackButton.SetActive(true);
         PossesionButton.SetActive(true);
+        PosTimer.SetActive(false);
+        RangeTimer.SetActive(false);
     }
 
     public void RangeAttackActive()
@@ -117,6 +121,8 @@ public class C_WeaponWheel : MonoBehaviour
         RangeAttackButton.SetActive(false);
         telekinesisButton.SetActive(true);
         PossesionButton.SetActive(true);
+        TeleTimer.SetActive(false);
+        PosTimer.SetActive(false);
     }
 
     public void PossesionActive()
@@ -128,5 +134,8 @@ public class C_WeaponWheel : MonoBehaviour
         PossesionButton.SetActive(false);
         RangeAttackButton.SetActive(true);
         telekinesisButton.SetActive(true);
+        RangeTimer.SetActive(false);
+        TeleTimer.SetActive(false);
+        
     }
 }
