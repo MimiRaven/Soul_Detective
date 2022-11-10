@@ -26,6 +26,8 @@ public class C_WeaponWheel : MonoBehaviour
 
     public PlayerAttack playerAttack;
 
+    public bool WheelIsOn;
+
     
 
 
@@ -34,6 +36,20 @@ public class C_WeaponWheel : MonoBehaviour
         WheelActivation = playerInput.actions["WeaponWheel"];
         Time.timeScale = 1f;
 
+    }
+
+    void Update()
+    {
+        if(WheelIsOn == true)
+        {
+            Time.timeScale = 0f;
+            Cursor.visible = true;
+        }
+        else 
+        { 
+            Time.timeScale = 1f;
+            Cursor.visible = false;
+        }
     }
 
     private void OnEnable()
@@ -51,12 +67,13 @@ public class C_WeaponWheel : MonoBehaviour
     void WheelActiveStart()
     {
         WheelCanvas.SetActive(true);
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
         c_PlayerController.WeaponWheel = true;
         MainCam.SetActive(false);
         AimCam.SetActive(false);
-        Cursor.visible = true;
+        //Cursor.visible = true;
         playerAttack.IsAbleToAttack = false;
+        WheelIsOn = true;
 
         //if(c_PlayerController.Possesed == false)
         //{
@@ -69,12 +86,13 @@ public class C_WeaponWheel : MonoBehaviour
     void WheelActiveStop()
     {
         WheelCanvas.SetActive(false);
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
         c_PlayerController.WeaponWheel = false;
         MainCam.SetActive(true);
         AimCam.SetActive(true);
-        Cursor.visible = false;
+        //Cursor.visible = false;
         playerAttack.IsAbleToAttack = true;
+        WheelIsOn = false;
 
         //if (c_PlayerController.Possesed == false)
     }
