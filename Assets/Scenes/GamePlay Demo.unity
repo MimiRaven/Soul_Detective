@@ -8373,6 +8373,7 @@ GameObject:
   - component: {fileID: 1030491120}
   - component: {fileID: 1030491119}
   - component: {fileID: 1030491121}
+  - component: {fileID: 1030491122}
   m_Layer: 0
   m_Name: New Enemy
   m_TagString: Eg
@@ -8501,6 +8502,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 5173489332905441132}
   IsAttacking: 0
+  player: {fileID: 1538193054}
+  Enemy: {fileID: 1030491114}
+  Distance_: 0
+--- !u!114 &1030491122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030491114}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aebbc1f782265d043b2b3fc7754294fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1538193054}
+  Enemy: {fileID: 1030491114}
+  Distance_: 0
 --- !u!1 &1033133835 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3095888958151098, guid: 9b1790ddc868248478d47e21117a825e, type: 3}
