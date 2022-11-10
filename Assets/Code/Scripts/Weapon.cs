@@ -4,14 +4,44 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision col)
+
+    [SerializeField] private float knockbackStrength;
+
+    
+    //public float 
+
+    
+  //void OnCollisionEnter(Collision collision)
+  //{
+  //    Rigidbody rb = collision.collider.GetComponent<Rigidbody>();
+  //
+  //    if (rb != null)
+  //    {
+  //        Vector3 direction = collision.transform.position - transform.position;
+  //        direction.y = 0;
+  //
+  //        rb.AddForce(direction.normalized * knockbackStrength, ForceMode.Impulse);
+  //    }
+  //    //Destroy(gameObject);
+  //}
+
+    void OnCollisionEnter(Collision collision)
     {
-        if(col.gameObject.TryGetComponent<EnemyHealth>(out EnemyHealth enemyComponent))
+        //Rigidbody rb = collision.collider.GetComponent<Rigidbody>();
+
+        if (collision.gameObject.tag == "Enemy")
         {
-            enemyComponent.TakeDamage(1);
+            //Vector3 direction = collision.transform.position - transform.position;
+            //direction.y = 0;
+            //
+            //rb.AddForce(direction.normalized * knockbackStrength, ForceMode.Impulse);
+
+            Debug.Log("WeponScriptHit");
         }
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,4 +54,14 @@ public class Weapon : MonoBehaviour
     {
         
     }
+
+
+   //void OnCollisionEnter(Collision col)
+   //{
+   //    Debug.Log("Collision!");
+   //    if (col.gameObject.name == "Enemy")
+   //    {
+   //        col.gameObject.GetComponent<Rigidbody>().AddForce(0, forceApplied, 0);
+   //    }
+   //}
 }

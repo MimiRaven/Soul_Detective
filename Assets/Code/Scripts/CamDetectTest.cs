@@ -27,14 +27,7 @@ public class CamDetectTest : MonoBehaviour
 		//EnemyInRange = false;
 	}
 
-	//IEnumerator FindTargetsWithDelay(float delay)
-	//{
-	//	while (true)
-	//	{
-	//		yield return new WaitForSeconds(delay);
-	//		FindVisibleTargets();
-	//	}
-	//}
+
 
 	void FindVisibleTargets()
 	{
@@ -53,11 +46,9 @@ public class CamDetectTest : MonoBehaviour
 				if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
 				{
 
-					//Quaternion lookRotation = Quaternion.LookRotation(target.position - transform.position);
-					//var targetRotation = Quaternion.LookRotation(target.transform.position - transform.position);
-					//transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, speed * Time.deltaTime);
+					
 					visibleTargets.Add(target);
-					transform.LookAt(target);
+					
 					EnemyInRange = true;
 				}
 			}

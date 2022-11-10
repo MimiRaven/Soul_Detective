@@ -100,15 +100,13 @@ public class C_Possesion : MonoBehaviour
 
                 if (Physics.Raycast(theRay, out RaycastHit hit, range))
                 {
-                    if (PossesionRayShot == true)
-                    {
+                   
                         Debug.Log("Push button active");
                         if (hit.transform.TryGetComponent<C_EnemyPossesed>(out C_EnemyPossesed ts))
                             ts.Possesed = true;
                         c_PlayerController.Possesed = false;
                         PossesionRayShot = false;
-                    }
-                    else { Debug.Log("Push button Not active"); }
+                   
 
 
 
