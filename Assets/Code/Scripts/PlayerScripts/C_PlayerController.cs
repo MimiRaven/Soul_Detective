@@ -33,6 +33,7 @@ public class C_PlayerController : MonoBehaviour
 
     private float boostTimer;
     private bool boosting;
+    private bool quit;
     public GameObject PlayerCams;
 
    // public int maxHealth = 10;
@@ -60,6 +61,7 @@ public class C_PlayerController : MonoBehaviour
 
         boostTimer = 0;
         boosting = false;
+        quit = false;
 
        // currentHealth = maxHealth;
 
@@ -114,6 +116,12 @@ public class C_PlayerController : MonoBehaviour
         // {
         //     stamina += Time.deltaTime;
         // }
+
+        if(quit == true)
+        {
+            //OnQuit();
+            QuitGame();
+        }
     }
 
     void IsPossesed()
@@ -183,6 +191,17 @@ public class C_PlayerController : MonoBehaviour
         }
     }
 
+    void OnQuit()
+    {
+        quit = true;
+
+    }
+
+    void QuitGame()
+    {
+        Application.Quit();
+    }
+
     //public void ChangeHealth(int amount)
     //{
     //   if (currentHealth <= 1)
@@ -194,12 +213,12 @@ public class C_PlayerController : MonoBehaviour
     //   UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
     //}
 
-  //void OnCollisionEnter(Collision col)
-  //{
-  //    if (col.collider.tag == "Enemy")
-  //    {
-  //    }
-  //}
+    //void OnCollisionEnter(Collision col)
+    //{
+    //    if (col.collider.tag == "Enemy")
+    //    {
+    //    }
+    //}
 
     void OnTriggerEnter(Collider other)
     {
