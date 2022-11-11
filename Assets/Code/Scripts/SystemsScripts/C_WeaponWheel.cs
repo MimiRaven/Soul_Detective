@@ -30,7 +30,8 @@ public class C_WeaponWheel : MonoBehaviour
 
     public bool WheelIsOn;
 
-    
+    public C_Telekinesis c_Telekinesis;
+
 
 
     void Awake()
@@ -68,20 +69,25 @@ public class C_WeaponWheel : MonoBehaviour
 
     void WheelActiveStart()
     {
-        WheelCanvas.SetActive(true);
-        //Time.timeScale = 0f;
-        c_PlayerController.WeaponWheel = true;
-        MainCam.SetActive(false);
-        AimCam.SetActive(false);
-        //Cursor.visible = true;
-        playerAttack.IsAbleToAttack = false;
-        WheelIsOn = true;
+        if(c_Telekinesis.ObjectGrabbed == false)
+        {
+         WheelCanvas.SetActive(true);
+         //Time.timeScale = 0f;
+         c_PlayerController.WeaponWheel = true;
+         MainCam.SetActive(false);
+         AimCam.SetActive(false);
+         //Cursor.visible = true;
+         playerAttack.IsAbleToAttack = false;
+         WheelIsOn = true;
 
-        //if(c_PlayerController.Possesed == false)
-        //{
-        //    Time.timeScale = 0f;
-        //    Cursor.visible = true;
-        //}
+         //if(c_PlayerController.Possesed == false)
+         //{
+         //    Time.timeScale = 0f;
+         //    Cursor.visible = true;
+         //}
+
+
+        }
 
     }
 
