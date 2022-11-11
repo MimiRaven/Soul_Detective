@@ -8,7 +8,7 @@ public class C_PlayerController : MonoBehaviour
 {
     //Player Values
     [SerializeField]
-    private float playerSpeed = 5f;
+    public float playerSpeed = 5f;
     [SerializeField]
     private float jumpHeight = 1.0f;
     [SerializeField]
@@ -19,14 +19,15 @@ public class C_PlayerController : MonoBehaviour
     private Vector3 playerVelocity;
     private bool groundedPlayer;
 
-    float stamina = 5, maxStamina = 5;
-    float walkSpeed, runSpeed;
-    bool isRunning;
+   // float stamina = 10, maxStamina = 10;
+   // float walkSpeed, runSpeed;
+   // bool isRunning;
 
     private Transform cameraTransfrom;
 
     private InputAction moveAction;
     private InputAction jumpAction;
+   // private InputAction sprintAction;
     private PlayerInput playerInput;
 
     public bool Possesed = true;
@@ -52,12 +53,13 @@ public class C_PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
 
-        walkSpeed = playerSpeed;
-        runSpeed = walkSpeed *4;
+        //walkSpeed = playerSpeed;
+        //runSpeed = walkSpeed + 5;
         
         cameraTransfrom = Camera.main.transform;
         moveAction = playerInput.actions["Move"];
         jumpAction = playerInput.actions["Jump"];
+        //sprintAction = playerInput.actions["Sprint"];
 
         boostTimer = 0;
         boosting = false;
@@ -93,33 +95,8 @@ public class C_PlayerController : MonoBehaviour
             }
         }
 
-        //  if (Input.GetKeyDown(KeyCode.LeftShift))
-        // {
-        //     SetRunning(true);
-        // }
-
-        //  if (Input.GetKeyUp(KeyCode.LeftShift))
-        // {
-        //     SetRunning(false);
-        // }
-
-        // if (isRunning)
-        // {
-        //     stamina -= Time.deltaTime;
-        //     if (stamina < 0)
-        //     {
-        //         stamina = 0;
-        //         SetRunning(false);
-        //     }
-        // }
-        // else if(stamina<maxStamina)
-        // {
-        //     stamina += Time.deltaTime;
-        // }
-
         if(quit == true)
         {
-            //OnQuit();
             QuitGame();
         }
     }
@@ -145,15 +122,32 @@ public class C_PlayerController : MonoBehaviour
         }
     }
 
-    void SetRunning(bool isRunning)
-    {
-        this.isRunning = isRunning;
-       playerSpeed = isRunning ? runSpeed : walkSpeed;
-    }
+    //void OnSprint()
+    //{
+    //    if (isRunning)
+    //    {
+    //        stamina -= Time.deltaTime;
+    //        if (stamina < 0)
+    //        {
+    //            stamina = 0;
+    //            SetRunning(false);
+    //        }
+    //    }
+    //    else if (stamina < maxStamina)
+    //    {
+    //        stamina += Time.deltaTime;
+    //    }
+    // Sprinter.instance.SetValue(stamina/ maxStamina);
+    //}
+    //
+    //void SetRunning(bool isRunning)
+    //{
+    //    this.isRunning = isRunning;
+    //   playerSpeed = isRunning ? runSpeed : walkSpeed;
+    //}
 
     void Movement()
     {
-        Sprinter.instance.SetValue(stamina/ maxStamina);
         if (WeaponWheel == false)
         {
             Cursor.visible = false;
