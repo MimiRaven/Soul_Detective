@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class C_WeaponWheel : MonoBehaviour
 {
@@ -17,9 +18,10 @@ public class C_WeaponWheel : MonoBehaviour
 
     public GameObject TeleTimer, RangeTimer, PosTimer;
 
-    public GameObject telekinesisButton;
-    public GameObject RangeAttackButton;
-    public GameObject PossesionButton;
+    public Button telekinesisButton;
+    public Button RangeAttackButton;
+    public Button PossesionButton;
+   // public Button yourButton;
 
     public GameObject MainCam;
     public GameObject AimCam;
@@ -110,10 +112,10 @@ public class C_WeaponWheel : MonoBehaviour
         telekinesis.SetActive(true);
         RangeAttack.SetActive(false);
         Possesion.SetActive(false);
-
-        telekinesisButton.SetActive(false);
-        RangeAttackButton.SetActive(true);
-        PossesionButton.SetActive(true);
+    
+       telekinesisButton.interactable = false;
+       RangeAttackButton.interactable = true;
+       PossesionButton.interactable = true;
         PosTimer.SetActive(false);
         RangeTimer.SetActive(false);
     }
@@ -123,23 +125,25 @@ public class C_WeaponWheel : MonoBehaviour
         RangeAttack.SetActive(true);
         telekinesis.SetActive(false);
         Possesion.SetActive(false);
+    
+        RangeAttackButton.interactable = false;
+        telekinesisButton.interactable = true;
+        PossesionButton.interactable = true;
 
-        RangeAttackButton.SetActive(false);
-        telekinesisButton.SetActive(true);
-        PossesionButton.SetActive(true);
         TeleTimer.SetActive(false);
         PosTimer.SetActive(false);
     }
-
+    
     public void PossesionActive()
     {
         Possesion.SetActive(true);
         RangeAttack.SetActive(false);
         telekinesis.SetActive(false);
+    
+        PossesionButton.interactable = false;
+        RangeAttackButton.interactable = true;
+        telekinesisButton.interactable = true;
 
-        PossesionButton.SetActive(false);
-        RangeAttackButton.SetActive(true);
-        telekinesisButton.SetActive(true);
         RangeTimer.SetActive(false);
         TeleTimer.SetActive(false);
         

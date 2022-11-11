@@ -5,12 +5,7 @@ using UnityEngine.InputSystem;
 
 public class C_PlayerSprint : MonoBehaviour
 {
-    public C_PlayerController playerController;
-
-    float stamina = 10, maxStamina = 10;
-    float walkSpeed, runSpeed;
-    bool isRunning;
-
+    public C_PlayerController c_PlayerController;
     private InputAction sprintAction;
 
     [SerializeField]
@@ -19,18 +14,18 @@ public class C_PlayerSprint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerInput = GetComponent<PlayerInput>();
-        sprintAction = playerInput.actions["Sprint"];
+    
+    }
 
-        //float playerSpeed = playerController.playerSpeed;
-        walkSpeed = playerController.playerSpeed;
-        runSpeed = walkSpeed + 5;
+    void Awake()
+    {
+        sprintAction = playerInput.actions["Sprint"];
     }
 
     // Update is called once per frame
     void Update()
     {
-        Sprinter.instance.SetValue(stamina / maxStamina);
+        //Sprinter.instance.SetValue(stamina / maxStamina);
     }
 
     private void OnEnable()
@@ -49,12 +44,12 @@ public class C_PlayerSprint : MonoBehaviour
     public void StartRun()
     {
         Debug.Log("IsRunning");
-        playerController.playerSpeed = 10;
+        c_PlayerController.isRunning = true;
     }
 
     public void CancelRun()
     {
         Debug.Log("NotRunning");
-        playerController.playerSpeed = 5;
+       c_PlayerController.isRunning = false;
     }
 }

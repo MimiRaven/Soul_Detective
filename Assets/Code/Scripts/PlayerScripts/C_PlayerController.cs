@@ -27,7 +27,9 @@ public class C_PlayerController : MonoBehaviour
 
     private InputAction moveAction;
     private InputAction jumpAction;
-   // private InputAction sprintAction;
+    private InputAction sprintAction;
+
+    [SerializeField]
     private PlayerInput playerInput;
 
     public bool Possesed = true;
@@ -44,6 +46,10 @@ public class C_PlayerController : MonoBehaviour
     public bool WeaponWheel;
     public GameObject Abilitys,WeaponWheelObject,PlayerModle;
 
+    public bool isRunning;
+    public float CurrentStamina;
+    public float MaxStamina;
+
     //public int souls;
     //public TextMeshProUGUI soulsUI; 
 
@@ -59,7 +65,7 @@ public class C_PlayerController : MonoBehaviour
         cameraTransfrom = Camera.main.transform;
         moveAction = playerInput.actions["Move"];
         jumpAction = playerInput.actions["Jump"];
-        //sprintAction = playerInput.actions["Sprint"];
+        sprintAction = playerInput.actions["Sprint"];
 
         boostTimer = 0;
         boosting = false;
@@ -70,6 +76,48 @@ public class C_PlayerController : MonoBehaviour
         Cursor.visible = false;
 
         Possesed = true;
+
+        CurrentStamina = MaxStamina;
+        isRunning = false;
+    }
+
+    void RunningFunction()
+    {
+        Sprinter.instance.SetValue(CurrentStamina / MaxStamina);
+        if (isRunning)
+        {
+            ActiveRunning();
+        }
+        else
+        {
+            Resting();
+           
+        }
+
+    }
+
+    void ActiveRunning()
+    {
+        if (CurrentStamina >= 0)
+        {
+            playerSpeed = 10;
+            CurrentStamina -= Time.deltaTime;
+
+        }
+        else
+        {
+            playerSpeed = 5;
+        }
+    }
+
+    void Resting()
+    {
+        playerSpeed = 5;
+        if (CurrentStamina < MaxStamina)
+        {
+            
+            CurrentStamina += Time.deltaTime;
+        }
     }
 
     void Awake()
@@ -81,10 +129,10 @@ public class C_PlayerController : MonoBehaviour
     void Update()
     {
         IsPossesed();
-        
+        RunningFunction();
         //soulsUI.text = "Souls: " + souls.ToString();
 
-        if(boosting)
+        if (boosting)
         {
             boostTimer += Time.deltaTime;
             if (boostTimer >= 5)
@@ -99,6 +147,11 @@ public class C_PlayerController : MonoBehaviour
         {
             QuitGame();
         }
+
+        
+
+
+
     }
 
     void IsPossesed()
@@ -122,24 +175,24 @@ public class C_PlayerController : MonoBehaviour
         }
     }
 
-    //void OnSprint()
-    //{
-    //    if (isRunning)
-    //    {
-    //        stamina -= Time.deltaTime;
-    //        if (stamina < 0)
-    //        {
-    //            stamina = 0;
-    //            SetRunning(false);
-    //        }
-    //    }
-    //    else if (stamina < maxStamina)
-    //    {
-    //        stamina += Time.deltaTime;
-    //    }
-    // Sprinter.instance.SetValue(stamina/ maxStamina);
-    //}
-    //
+   //void OnSprint()
+   //{
+   //    if (isRunning)
+   //    {
+   //        stamina -= Time.deltaTime;
+   //        if (stamina < 0)
+   //        {
+   //            stamina = 0;
+   //            SetRunning(false);
+   //        }
+   //    }
+   //    else if (stamina < maxStamina)
+   //    {
+   //        stamina += Time.deltaTime;
+   //    }
+   // Sprinter.instance.SetValue(stamina/ maxStamina);
+   //}
+    
     //void SetRunning(bool isRunning)
     //{
     //    this.isRunning = isRunning;
@@ -196,23 +249,6 @@ public class C_PlayerController : MonoBehaviour
         Application.Quit();
     }
 
-    //public void ChangeHealth(int amount)
-    //{
-    //   if (currentHealth <= 1)
-    //   {
-    //       playerSpeed = 0;
-    //       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    //   }
-    //   currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-    //   UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
-    //}
-
-    //void OnCollisionEnter(Collision col)
-    //{
-    //    if (col.collider.tag == "Enemy")
-    //    {
-    //    }
-    //}
 
     void OnTriggerEnter(Collider other)
     {
@@ -223,4 +259,7 @@ public class C_PlayerController : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+
+
+
 }
