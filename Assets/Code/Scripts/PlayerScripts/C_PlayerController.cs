@@ -112,10 +112,10 @@ public class C_PlayerController : MonoBehaviour
 
     void Resting()
     {
-        playerSpeed = 5;
+        
         if (CurrentStamina < MaxStamina)
         {
-            
+            playerSpeed = 5;
             CurrentStamina += Time.deltaTime;
         }
     }
@@ -135,6 +135,7 @@ public class C_PlayerController : MonoBehaviour
         if (boosting)
         {
             boostTimer += Time.deltaTime;
+            playerSpeed = 10;
             if (boostTimer >= 5)
             {
                 playerSpeed = 5;
@@ -175,29 +176,6 @@ public class C_PlayerController : MonoBehaviour
         }
     }
 
-   //void OnSprint()
-   //{
-   //    if (isRunning)
-   //    {
-   //        stamina -= Time.deltaTime;
-   //        if (stamina < 0)
-   //        {
-   //            stamina = 0;
-   //            SetRunning(false);
-   //        }
-   //    }
-   //    else if (stamina < maxStamina)
-   //    {
-   //        stamina += Time.deltaTime;
-   //    }
-   // Sprinter.instance.SetValue(stamina/ maxStamina);
-   //}
-    
-    //void SetRunning(bool isRunning)
-    //{
-    //    this.isRunning = isRunning;
-    //   playerSpeed = isRunning ? runSpeed : walkSpeed;
-    //}
 
     void Movement()
     {
@@ -255,7 +233,6 @@ public class C_PlayerController : MonoBehaviour
         if (other.tag == "Speed")
         {
             boosting = true;
-            playerSpeed = 10;
             Destroy(other.gameObject);
         }
     }
