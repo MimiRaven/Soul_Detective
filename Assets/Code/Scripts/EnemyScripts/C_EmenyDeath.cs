@@ -12,25 +12,25 @@ public class C_EmenyDeath : MonoBehaviour
     public int MaxHealth;
     public int PlayerCurrentHealth;
 
-    public GameObject healthBarUI;
-    public Slider slider;
+    //public GameObject healthBarUI;
+    //public Slider slider;
 
     void Start()
     {
         PlayerCurrentHealth = MaxHealth;
-        slider.value = CalculateHealth();
+        //slider.value = CalculateHealth();
     }
 
     void Update()
     {
         isColliding = false;
-        slider.value = CalculateHealth();
+        //slider.value = CalculateHealth();
         EnemyDeath();
 
-        if (PlayerCurrentHealth <= MaxHealth)
-        {
-            healthBarUI.SetActive(true);
-        }
+        //if (PlayerCurrentHealth <= MaxHealth)
+        //{
+        //    healthBarUI.SetActive(true);
+        //}
     }
 
     void OnCollisionEnter(Collision col)
@@ -77,19 +77,19 @@ public class C_EmenyDeath : MonoBehaviour
             
         }
 
-        if(PlayerCurrentHealth == 0)
-        {
-            healthBarUI.SetActive(false);
-        }
+        //if(PlayerCurrentHealth == 0)
+        //{
+        //    healthBarUI.SetActive(false);
+        //}
 
         //Destroy(gameObject);
         //enemyHealth.TakeDamage(1);
 
     }
 
-    float CalculateHealth()
-    {
-        return PlayerCurrentHealth / MaxHealth;
-    }
+    //float CalculateHealth()
+    //{
+    //    return PlayerCurrentHealth / MaxHealth;
+    //}
 
 }
