@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class C_EmenyDeath : MonoBehaviour
 {
@@ -11,16 +12,25 @@ public class C_EmenyDeath : MonoBehaviour
     public int MaxHealth;
     public int PlayerCurrentHealth;
 
+    public GameObject healthBarUI;
+    public Slider slider;
+
     void Start()
     {
         PlayerCurrentHealth = MaxHealth;
+        slider.value = CalculateHealth();
     }
 
     void Update()
     {
         isColliding = false;
-        
+        slider.value = CalculateHealth();
         EnemyDeath();
+
+        if (PlayerCurrentHealth <= MaxHealth)
+        {
+            healthBarUI.SetActive(true);
+        }
     }
 
     void OnCollisionEnter(Collision col)
@@ -59,17 +69,27 @@ public class C_EmenyDeath : MonoBehaviour
 
     void EnemyDeath()
     {
-
         if(PlayerCurrentHealth <= 0)
         {
             c_XpScore.CurrentScore += 1;
+            //healthBarUI.SetActive(false);
             Destroy(gameObject);
             
+        }
+
+        if(PlayerCurrentHealth == 0)
+        {
+            healthBarUI.SetActive(false);
         }
 
         //Destroy(gameObject);
         //enemyHealth.TakeDamage(1);
 
+    }
+
+    float CalculateHealth()
+    {
+        return PlayerCurrentHealth / MaxHealth;
     }
 
 }
