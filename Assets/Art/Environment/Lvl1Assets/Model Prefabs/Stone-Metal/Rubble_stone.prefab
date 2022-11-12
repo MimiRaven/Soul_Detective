@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 1296478876459773615}
   - component: {fileID: 4194039667933487463}
   - component: {fileID: 4301881823429569703}
+  - component: {fileID: 6321771782549360270}
   m_Layer: 0
   m_Name: Rubble_Combined
   m_TagString: Untagged
@@ -198,6 +199,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6321771782549360270
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3076583371738441890}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.8215299, y: 0.19991294, z: 1.799055}
+  m_Center: {x: 0.04629469, y: 0.0008695349, z: 0.10754877}
 --- !u!1 &3389762050651359702
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,7 +236,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3389762050651359702}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0, z: -0.141}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
