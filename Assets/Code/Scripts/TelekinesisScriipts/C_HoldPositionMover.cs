@@ -56,12 +56,12 @@ public class C_HoldPositionMover : MonoBehaviour
     {
         Pull();
         Push();
-        if (PushandpullRange == -15)
+        if (PushandpullRange == -100)
         {
             ObjectPulled = false;
         }
 
-        if (PushandpullRange == 250)
+        if (PushandpullRange == 10)
         {
             ObjectPushed = false;
         }
