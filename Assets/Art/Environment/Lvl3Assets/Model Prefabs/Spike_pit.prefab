@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5365085724878117110}
   - component: {fileID: 917518083137946442}
   - component: {fileID: 5314703875336826230}
+  - component: {fileID: 4924230425823562805}
   m_Layer: 0
   m_Name: SpikePit_spikes
   m_TagString: Untagged
@@ -83,6 +84,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4924230425823562805
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287909075839463544}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.0590837, y: 1.3594323, z: 2.110097}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &686009679216251445
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,6 +141,7 @@ GameObject:
   - component: {fileID: 4346636479863666303}
   - component: {fileID: 6533547895640304585}
   - component: {fileID: 5132152050755179299}
+  - component: {fileID: 2758493669073219988}
   m_Layer: 0
   m_Name: SpikePit_ground
   m_TagString: Untagged
@@ -199,3 +214,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2758493669073219988
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5072371545836560450}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.332405, y: 0.37344354, z: 2.9379966}
+  m_Center: {x: -0.16952282, y: 0.18672177, z: 0.058297157}
