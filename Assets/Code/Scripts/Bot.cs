@@ -46,7 +46,7 @@ public class Bot : MonoBehaviour
         wanderTarget.Normalize();
         wanderTarget *= wanderRadius;
 
-        Vector3 targetLocal = wanderTarget + new Vector3(0, 0, wanderDistance);
+        Vector3 targetLocal = wanderTarget + new Vector3(-2, 8, wanderDistance);
         Vector3 targetWorld = this.gameObject.transform.InverseTransformVector(targetLocal);
 
         Seek(targetWorld);
