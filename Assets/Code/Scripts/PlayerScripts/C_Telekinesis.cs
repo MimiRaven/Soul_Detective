@@ -100,7 +100,7 @@ public class C_Telekinesis : MonoBehaviour
 
         float minutes = Mathf.FloorToInt(currentTime / 60);
         float seconds = Mathf.FloorToInt(currentTime % 60);
-        TimerUI.text = string.Format("{0:0}", seconds);
+        TimerUI.text = "Telekinesis Cooldown: " + string.Format("{0:0}", seconds);
 
     }
 

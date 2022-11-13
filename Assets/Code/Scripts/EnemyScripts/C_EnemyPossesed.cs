@@ -232,12 +232,12 @@ public class C_EnemyPossesed : MonoBehaviour
     
     private void StartExitPossesion()
     {
-        Possesed = false;
+        //Possesed = false;
         //TimerCanvas.SetActive(false);
     }
     private void StopExitPossesion()
     {
-        Possesed = false;
+       // Possesed = false;
 
     }
 }

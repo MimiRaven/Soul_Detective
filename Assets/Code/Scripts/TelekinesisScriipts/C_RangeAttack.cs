@@ -159,7 +159,7 @@ public class C_RangeAttack : MonoBehaviour
 
         float minutes = Mathf.FloorToInt(currentTime / 60);
         float seconds = Mathf.FloorToInt(currentTime % 60);
-        TimerUI.text = string.Format("{0:0}", seconds);
+        TimerUI.text = "Range Cooldown: " + string.Format("{0:0}", seconds);
 
     }
 

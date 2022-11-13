@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class C_LockOnActivation : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class C_LockOnActivation : MonoBehaviour
 
     public C_CameraTarget LockOnCamScript;
     public C_LocOnRange LockRangeScript;
+    public C_Telekinesis c_Telekinesis;
+
+    public GameObject LockOnCanvas;
+    public TextMeshProUGUI LockOnUI;
 
     void Awake()
     {
@@ -23,23 +28,34 @@ public class C_LockOnActivation : MonoBehaviour
 
     public void Update()
     {
+        if (c_Telekinesis.ObjectGrabbed == true)
+        {
+            LockonBool = false;
+        }
+
         if (LockRangeScript.EnemyInRange == true)
         {
+            LockOnCanvas.SetActive(true);
+
            if (LockonBool)
            {
+                LockOnUI.text = "LockOn:Enabled";
                LockOnCam.SetActive(true);
                LockOnCamScript.enemyContact = true;
            }
            else 
-           { 
+           {
+                LockOnUI.text = "LockOn:Disabled";
                LockOnCam.SetActive(false);
                LockOnCamScript.enemyContact = false;
-                LockOnCamScript.ClosestEnemyFound = false;
-            }
+               LockOnCamScript.ClosestEnemyFound = false;
+           }
 
         }
         else
         {
+            LockonBool = false;
+            LockOnCanvas.SetActive(false);
             LockOnCam.SetActive(false);
             LockOnCamScript.enemyContact = false;
             LockOnCamScript.ClosestEnemyFound = false;
@@ -60,7 +76,14 @@ public class C_LockOnActivation : MonoBehaviour
 
     public void LockOnStart()
     {
-        LockonBool = !LockonBool;
+
+        if (LockRangeScript.EnemyInRange == true)
+        {
+            LockonBool = !LockonBool;
+
+        }
+
+        
 
     }
 

@@ -85,7 +85,7 @@ public class C_PlayerHealth : MonoBehaviour
 
         float minutes = Mathf.FloorToInt(currentTime / 60);
         float seconds = Mathf.FloorToInt(currentTime % 60);
-        TimerUI.text = string.Format("{0:0}", seconds);
+        TimerUI.text = "invincibility Frames: " + string.Format("{0:0}", seconds);
 
     }
 
