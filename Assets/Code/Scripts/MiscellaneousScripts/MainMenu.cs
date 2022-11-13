@@ -17,7 +17,7 @@ public class MainMenu : MonoBehaviour
   void Start()
   {
     audioSource = GetComponent<AudioSource>();
-  
+        UnlockMouse();
   }
   public void StartGame()
   {
@@ -28,6 +28,12 @@ public class MainMenu : MonoBehaviour
   {
     Application.Quit();
   }
+
+    void UnlockMouse()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
 
   public void SeeControls()
   {
