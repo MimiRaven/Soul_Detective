@@ -51,7 +51,9 @@ public class C_EnemyPossesed : MonoBehaviour
     public GameObject TimerCanvas;
 
     private Rigidbody objectRb;
-    
+
+    public GameObject Door;
+
     //public NavMeshAgent agent;
 
     private void Awake()
@@ -83,6 +85,26 @@ public class C_EnemyPossesed : MonoBehaviour
         
 
 
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Key")
+        {
+
+            Possesed = false;
+            
+            //Destroy(gameObject);
+
+            //Debug.Log("Key Touched");
+            //c_EnemyPossesed.Possesed = false;
+            ////Self.SetActive(false);
+            //Door.SetActive(false);
+            ////OtherEnemy.SetActive(true);
+            //
+            //Destroy(other.gameObject);
+            //Destroy(gameObject);
+        }
     }
 
     void Update()
