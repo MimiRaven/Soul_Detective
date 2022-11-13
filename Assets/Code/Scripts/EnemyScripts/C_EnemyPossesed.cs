@@ -43,9 +43,9 @@ public class C_EnemyPossesed : MonoBehaviour
 
     public GameObject PlayerAndCams;
 
-    public float SetCoolDownTime;
-    public float TimeLeft;
-    public bool TimerOn;
+   //public float SetCoolDownTime;
+   //public float TimeLeft;
+   //public bool TimerOn;
 
     public TextMeshProUGUI TimerUI;
     public GameObject TimerCanvas;
@@ -69,7 +69,7 @@ public class C_EnemyPossesed : MonoBehaviour
     private void Start()
     {
 
-        TimeLeft = SetCoolDownTime;
+        //TimeLeft = SetCoolDownTime;
         moveAction = playerInput.actions["Move"];
         jumpAction = playerInput.actions["Jump"];
 
@@ -114,40 +114,40 @@ public class C_EnemyPossesed : MonoBehaviour
         
     }
 
-    void Timmer()
-    {
+   //void Timmer()
+   //{
+   //
+   //    if (TimerOn)
+   //    {
+   //
+   //        if (TimeLeft > 0)
+   //        {
+   //            TimeLeft -= Time.deltaTime;
+   //            updateTimer(TimeLeft);
+   //            TimerCanvas.SetActive(true);
+   //        }
+   //        else
+   //        {
+   //            Debug.Log("Time is Up");
+   //            TimeLeft = 0;
+   //            TimerOn = false;
+   //            Possesed = false;
+   //            TimerCanvas.SetActive(false);
+   //
+   //        }
+   //
+   //    }
+   //}
 
-        if (TimerOn)
-        {
-
-            if (TimeLeft > 0)
-            {
-                TimeLeft -= Time.deltaTime;
-                updateTimer(TimeLeft);
-                TimerCanvas.SetActive(true);
-            }
-            else
-            {
-                Debug.Log("Time is Up");
-                TimeLeft = 0;
-                TimerOn = false;
-                Possesed = false;
-                TimerCanvas.SetActive(false);
-
-            }
-
-        }
-    }
-
-    void updateTimer(float currentTime)
-    {
-        currentTime += 1;
-
-        float minutes = Mathf.FloorToInt(currentTime / 60);
-        float seconds = Mathf.FloorToInt(currentTime % 60);
-
-        TimerUI.text = string.Format("{0:0}", seconds);
-    }
+   //void updateTimer(float currentTime)
+   //{
+   //    currentTime += 1;
+   //
+   //    float minutes = Mathf.FloorToInt(currentTime / 60);
+   //    float seconds = Mathf.FloorToInt(currentTime % 60);
+   //
+   //    TimerUI.text = string.Format("{0:0}", seconds);
+   //}
 
    
 
@@ -158,24 +158,24 @@ public class C_EnemyPossesed : MonoBehaviour
 
         if (Possesed == true)
         {
-            Timmer();
+            //Timmer();
             
             Debug.Log("Enemy Posesed");
             Movement();
             //c_EnemyRoam.enabled = false;
             EnemyCams.SetActive(true);
             
-            TimerOn = true;
+            //TimerOn = true;
             objectRb.drag = 1;
             WeaponWheel.SetActive(false);
 
         }
         else
         {
-            TimeLeft = SetCoolDownTime;
+            //TimeLeft = SetCoolDownTime;
             Debug.Log("End Enemy Possesion");
             c_PlayerController.Possesed = true;
-            TimerOn = false;
+           // TimerOn = false;
             EnemyCams.SetActive(false);
             objectRb.drag = 100;
             WeaponWheel.SetActive(true);
@@ -233,7 +233,7 @@ public class C_EnemyPossesed : MonoBehaviour
     private void StartExitPossesion()
     {
         Possesed = false;
-        TimerCanvas.SetActive(false);
+        //TimerCanvas.SetActive(false);
     }
     private void StopExitPossesion()
     {
