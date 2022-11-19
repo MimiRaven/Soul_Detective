@@ -23,6 +23,7 @@ public class C_Possesion : MonoBehaviour
     public float SetCoolDownTime;
     public float TimeLeft;
     public bool TimerOn;
+    //public C_PlayerController c_PlayerController;
 
     //public Text TimerUI;
     //public TextMeshProUGUI TimerUI;
@@ -106,11 +107,13 @@ public class C_Possesion : MonoBehaviour
                             ts.Possesed = true;
                         c_PlayerController.Possesed = false;
                         PossesionRayShot = false;
-                   
+                    
 
 
 
-                   
+
+
+
 
                 }
 

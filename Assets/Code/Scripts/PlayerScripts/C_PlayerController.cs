@@ -3,9 +3,13 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 //using TMPro;
 
-[RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
+[RequireComponent(typeof(CharacterController))]
 public class C_PlayerController : MonoBehaviour
 {
+
+    [SerializeField]
+    private PlayerInput playerInput;
+
     //Player Values
     [SerializeField]
     public float playerSpeed = 5f;
@@ -29,10 +33,10 @@ public class C_PlayerController : MonoBehaviour
     private InputAction jumpAction;
     private InputAction sprintAction;
 
-    [SerializeField]
-    private PlayerInput playerInput;
+    //[SerializeField]
+    //private PlayerInput playerInput;
 
-    public bool Possesed = true;
+    public bool Possesed;
 
     private float boostTimer;
     private bool boosting;
@@ -50,6 +54,8 @@ public class C_PlayerController : MonoBehaviour
     public float CurrentStamina;
     public float MaxStamina;
 
+    public GameObject PlayerInputObject;
+
     //public int souls;
     //public TextMeshProUGUI soulsUI; 
 
@@ -57,7 +63,7 @@ public class C_PlayerController : MonoBehaviour
     private void Start()
     {
         controller = GetComponent<CharacterController>();
-        playerInput = GetComponent<PlayerInput>();
+        //playerInput = GetComponent<PlayerInput>();
 
         //walkSpeed = playerSpeed;
         //runSpeed = walkSpeed + 5;
@@ -165,6 +171,7 @@ public class C_PlayerController : MonoBehaviour
             Abilitys.SetActive(true);
             WeaponWheelObject.SetActive(true);
             PlayerModle.SetActive(true);
+            //PlayerInputObject.SetActive(true);
         }
         else 
         { 
@@ -173,6 +180,7 @@ public class C_PlayerController : MonoBehaviour
             Abilitys.SetActive(false);
             WeaponWheelObject.SetActive(false);
             PlayerModle.SetActive(false);
+            //PlayerInputObject.SetActive(false);
         }
     }
 

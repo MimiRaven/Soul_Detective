@@ -166,7 +166,7 @@ public class C_EnemyPossesed : MonoBehaviour
         if (Possesed == true)
         {
             //Timmer();
-            
+            c_PlayerController.Possesed = false;
             Debug.Log("Enemy Posesed");
             Movement();
             //c_EnemyRoam.enabled = false;
@@ -182,7 +182,7 @@ public class C_EnemyPossesed : MonoBehaviour
         {
             //TimeLeft = SetCoolDownTime;
             Debug.Log("End Enemy Possesion");
-            c_PlayerController.Possesed = true;
+            //c_PlayerController.Possesed = true;
            // TimerOn = false;
             EnemyCams.SetActive(false);
             objectRb.drag = 100;
@@ -245,6 +245,8 @@ public class C_EnemyPossesed : MonoBehaviour
 
         Debug.Log("QuitPressed");
         Possesed = false;
+        c_PlayerController.Possesed = true;
+
         //TimerCanvas.SetActive(false);
     }
     private void StopExitPossesion()
