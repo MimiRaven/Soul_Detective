@@ -10,14 +10,14 @@ public class C_EmenyDeath : MonoBehaviour
     //public EnemyHealth enemyHealth;
 
     public int MaxHealth;
-    public int PlayerCurrentHealth;
+    public int EnemyCurrentHealth;
 
     //public GameObject healthBarUI;
     //public Slider slider;
 
     void Start()
     {
-        PlayerCurrentHealth = MaxHealth;
+        EnemyCurrentHealth = MaxHealth;
         //slider.value = CalculateHealth();
     }
 
@@ -40,36 +40,51 @@ public class C_EmenyDeath : MonoBehaviour
 
         if (col.collider.tag == "weapon")
         {
-            PlayerTakeDamage();
+            EnemyTakeDamage();
             //col.collider.GetComponent<EnemyHealth>().TakeDamage(1);
             // Destroy(gameObject);
             //script.TakeDamage(1);
             Debug.Log("Enemy Damaged");
         }
 
+
         if (col.collider.tag == "Active")
         {
             Debug.Log("Attack hit");
-            PlayerTakeDamage();
+            EnemyTakeDamage();
         }
 
-       //if(col.collider.tag == "Player")
-       //{
-       //    C_PlayerHealth p = col.gameObject.GetComponent<C_PlayerHealth>();
-       //    p.ChangeHealth(-1);
-       //}
+
+        if (col.collider.tag == "BoostedWeapon")
+        {
+            BoostedWeaponDamage();
+            
+            Debug.Log("Enemy Damaged");
+        }
+
+        //if(col.collider.tag == "Player")
+        //{
+        //    C_PlayerHealth p = col.gameObject.GetComponent<C_PlayerHealth>();
+        //    p.ChangeHealth(-1);
+        //}
 
     }
 
-    void PlayerTakeDamage()
+    void EnemyTakeDamage()
     {
-        PlayerCurrentHealth -= 1;
+        EnemyCurrentHealth -= 1;
         
     }
 
+    void BoostedWeaponDamage()
+    {
+        EnemyCurrentHealth -= 3;
+    }
+    
+
     void EnemyDeath()
     {
-        if(PlayerCurrentHealth <= 0)
+        if(EnemyCurrentHealth <= 0)
         {
             c_XpScore.CurrentScore += 1;
             //healthBarUI.SetActive(false);
