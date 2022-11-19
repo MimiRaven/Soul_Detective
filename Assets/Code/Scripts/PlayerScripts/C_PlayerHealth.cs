@@ -12,14 +12,16 @@ public class C_PlayerHealth : MonoBehaviour
     public int health { get { return currentHealth; } }
     public int currentHealth;
 
+    private GameObject shield;
+
     private bool isRespawning;
     private Vector3 respawnPoint;
 
     public bool isColliding;
 
-   //public float Invicablitylength;
-   //
-   //private float InvicablityCounter;
+    //public float Invicablitylength;
+    //
+    //private float InvicablityCounter;
 
     public TextMeshProUGUI TimerUI;
     public GameObject TimerCanvas;
@@ -36,6 +38,9 @@ public class C_PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
 
         respawnPoint = player.transform.position;
+
+        shield = transform.Find("Shield").gameObject;
+        shield.SetActive(false);
     }
 
     void Update()
@@ -91,30 +96,37 @@ public class C_PlayerHealth : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
-
         if (TimeLeft <= 0)
         {
+            if (isColliding) return;
+            isColliding = true;
 
-              if (isColliding) return;
-              isColliding = true;
-    
-              if (collision.gameObject.tag == "EnemyWeapon")
-              {
+            if (collision.gameObject.tag == "EnemyWeapon")
+            {
+                if (shield.activeInHierarchy)
+                {
+                    shield.SetActive(false);
+                }
+                else
+                {
+                    TimerOn = true;
+                    TimeLeft = SetCoolDownTime;
+                    ChangeHealth(-1);
+                }
+            }
 
-                TimerOn = true;
-                TimeLeft = SetCoolDownTime;
-                ChangeHealth(-1);
-                
-              }
-
+            if (collision.gameObject.tag == "ShieldPickup")
+            {
+                shield.SetActive(true);
+                Destroy(collision.gameObject);
+            }
         }
-    
     }
 
-   //public void EnemyWepDam()
-   //{
-   //    currentHealth -= 1;
-   //}
+    //public void EnemyWepDam()
+    //{
+    //    currentHealth -= 1;
+    //}
 
     public void ChangeHealth(int amount)
     {
