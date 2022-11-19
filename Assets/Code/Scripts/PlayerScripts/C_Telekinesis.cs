@@ -122,6 +122,7 @@ public class C_Telekinesis : MonoBehaviour
                         ts.Grab(objectGrabPointTransform);
                 
                         ObjectGrabbed = true;
+                        GrabObject = false;
                     }
                 }
 
@@ -253,9 +254,12 @@ public class C_Telekinesis : MonoBehaviour
 
     private void GrabStart()
     {
-        
-        
+
+        //if (ObjectGrabbed == false)
+       // {
              GrabObject = true;
+
+        //}
 
         
 
