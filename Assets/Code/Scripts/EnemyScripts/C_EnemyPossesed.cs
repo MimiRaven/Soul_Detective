@@ -5,10 +5,14 @@ using UnityEngine.AI;
 using UnityEngine.InputSystem;
 using TMPro;
 
-[RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
+[RequireComponent(typeof(CharacterController))]
 
 public class C_EnemyPossesed : MonoBehaviour
 {
+
+    [SerializeField]
+    private PlayerInput playerInput;
+
     //Player Values
     [SerializeField]
     private float playerSpeed = 2.0f;
@@ -26,8 +30,8 @@ public class C_EnemyPossesed : MonoBehaviour
 
     private InputAction moveAction;
     private InputAction jumpAction;
-    [SerializeField]
-    private PlayerInput playerInput;
+    //[SerializeField]
+   
     private InputAction StopPosAction;
 
     public bool Possesed;
@@ -54,13 +58,15 @@ public class C_EnemyPossesed : MonoBehaviour
 
     public GameObject Door;
 
+    public GameObject PlayerInputObject;
+
     //public NavMeshAgent agent;
 
     private void Awake()
     {
         StopPosAction = playerInput.actions["StopPossesion"];
         controller = GetComponent<CharacterController>();
-        playerInput = GetComponent<PlayerInput>();
+        //playerInput = GetComponent<PlayerInput>();
         objectRb = GetComponent<Rigidbody>();
         //agent = GetComponent<NavMeshAgent>();
     }
@@ -72,6 +78,7 @@ public class C_EnemyPossesed : MonoBehaviour
         //TimeLeft = SetCoolDownTime;
         moveAction = playerInput.actions["Move"];
         jumpAction = playerInput.actions["Jump"];
+        //StopPosAction = playerInput.actions["StopPossesion"];
 
         cameraTransfrom = Camera.main.transform;
         EnemyCams.SetActive(false);
@@ -168,6 +175,7 @@ public class C_EnemyPossesed : MonoBehaviour
             //TimerOn = true;
             objectRb.drag = 1;
             WeaponWheel.SetActive(false);
+            PlayerInputObject.SetActive(true);
 
         }
         else
@@ -179,6 +187,8 @@ public class C_EnemyPossesed : MonoBehaviour
             EnemyCams.SetActive(false);
             objectRb.drag = 100;
             WeaponWheel.SetActive(true);
+            PlayerInputObject.SetActive(false);
+
             //agent.enable = false;
         }
 
@@ -232,12 +242,14 @@ public class C_EnemyPossesed : MonoBehaviour
     
     private void StartExitPossesion()
     {
-        //Possesed = false;
+
+        Debug.Log("QuitPressed");
+        Possesed = false;
         //TimerCanvas.SetActive(false);
     }
     private void StopExitPossesion()
     {
-       // Possesed = false;
+        Possesed = false;
 
     }
 }
