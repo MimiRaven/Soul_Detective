@@ -12,6 +12,7 @@ Shader "Unlit/celShader"
     {
         Tags { "RenderType"="Opaque" }
         LOD 100
+        //AlphaToMask On
 
         //Pass for Toon shader
         Pass
