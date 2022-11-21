@@ -232,8 +232,8 @@ public class C_PlayerController : MonoBehaviour
 
     void QuitGame()
     {
-        //Application.Quit();
-        SceneManager.LoadScene(0);
+        Application.Quit();
+        //SceneManager.LoadScene(0);
     }
 
 
