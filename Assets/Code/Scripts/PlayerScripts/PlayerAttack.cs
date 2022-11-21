@@ -14,6 +14,9 @@ public class PlayerAttack : MonoBehaviour
 
     public bool IsAbleToAttack;
 
+    AudioSource audioSource;
+    public AudioClip[] audioClipArray;
+
     public void Awake()
     {
         AttackAction = playerInput.actions["Attack"];
@@ -22,6 +25,7 @@ public class PlayerAttack : MonoBehaviour
     public void Start()
     {
         animator = GetComponentInChildren<Animator>();
+        audioSource = GetComponent<AudioSource>();
         IsAbleToAttack = true;
     }
 
@@ -61,7 +65,8 @@ public class PlayerAttack : MonoBehaviour
         if(IsAbleToAttack == true)
         {
             animator.SetTrigger("attack");
-
+            audioSource.clip = audioClipArray[Random.Range(0, audioClipArray.Length)];
+            audioSource.PlayOneShot(audioSource.clip);
         }
     }
 }

@@ -7,6 +7,9 @@ public class Target : MonoBehaviour
     private Rigidbody objectRb;
     public Transform objectGrabPointTransform;
 
+    AudioSource audioSource;
+    public AudioClip selectTelekinesis;
+
     public float pushForce = 0;
     float lerpSpeed = 10f;
 
@@ -31,7 +34,7 @@ public class Target : MonoBehaviour
     {
         objectRb = GetComponent<Rigidbody>();
 
-
+        audioSource = GetComponent<AudioSource>();
 
     }
 
@@ -51,6 +54,7 @@ public class Target : MonoBehaviour
 
     public void Grab(Transform objectGrabPointTransform)
     {
+        PlaySound(selectTelekinesis);
         this.objectGrabPointTransform = objectGrabPointTransform;
         objectRb.useGravity = false;
         objectRb.drag = 5;
@@ -87,7 +91,8 @@ public class Target : MonoBehaviour
         }
     }
 
-
-
-
+    void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
+    }
 }

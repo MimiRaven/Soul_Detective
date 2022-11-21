@@ -11,7 +11,8 @@ public class C_HoldPositionMover : MonoBehaviour
 
     public int PushandpullRange;
     
-    
+    AudioSource audioSource;
+    public AudioClip holdTelekinesis;
 
     public float moveSpeed = 10f;
 
@@ -37,7 +38,7 @@ public class C_HoldPositionMover : MonoBehaviour
     {
 
         Player = GameObject.Find("Player/ThirdPersonPlayer");
-
+        audioSource = GetComponent<AudioSource>();
 
 
         //playerCombat = FindObjectOfType< "Move Hold Position" >();
@@ -76,6 +77,7 @@ public class C_HoldPositionMover : MonoBehaviour
     {
         if(ObjectPulled == true)
         {
+            PlaySound(holdTelekinesis);
             //transform.LookAt(new Vector3(playerCombat.transform.position.x, transform.position.y, playerCombat.transform.position.z));
 
             Debug.Log("Object Pulled");
@@ -93,7 +95,7 @@ public class C_HoldPositionMover : MonoBehaviour
     {
         if (ObjectPushed == true)
         {
-            
+            PlaySound(holdTelekinesis);
             Debug.Log("Object Pulled");
             //objectRb.velocity = new Vector3(0, 0, 5);
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
@@ -102,5 +104,10 @@ public class C_HoldPositionMover : MonoBehaviour
 
         }
 
+    }
+
+    void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
     }
 }

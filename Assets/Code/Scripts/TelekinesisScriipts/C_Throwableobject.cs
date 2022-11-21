@@ -6,12 +6,19 @@ public class C_Throwableobject : MonoBehaviour
 {
     public bool WeaponActive;
 
-    
+    AudioSource audioSource;
+    public AudioClip holdTelekinesis;
 
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     void Update()
     {
        if (WeaponActive == true)
        {
+           PlaySound(holdTelekinesis);
            gameObject.tag = "Active";
        }
        
@@ -47,5 +54,9 @@ public class C_Throwableobject : MonoBehaviour
 
     }
 
+    void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
+    }
  
 }
