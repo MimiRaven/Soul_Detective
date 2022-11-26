@@ -103,6 +103,7 @@ public class C_PlayerHealth : MonoBehaviour
 
             if (collision.gameObject.tag == "EnemyWeapon")
             {
+                ChangeHealth(-1);
                 if (shield.activeInHierarchy)
                 {
                     shield.SetActive(false);
@@ -132,8 +133,8 @@ public class C_PlayerHealth : MonoBehaviour
     {
         if (currentHealth == 0)
         {
-            Respwan();
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            // Respwan();
+            SceneManager.LoadScene(2);
         }
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
