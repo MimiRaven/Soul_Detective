@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Lose : MonoBehaviour
+public class Win : MonoBehaviour
 {
-    public Button checkButton = null;
     public Button restartButton = null;
     public Button menuButton = null;
     public Button quitButton = null;
@@ -22,12 +21,7 @@ public class Lose : MonoBehaviour
         Cursor.visible = true;
     }
 
-    public void RetryCheckpoint()
-    {
-      
-    }
-
-    public void RestartLevel()
+    public void RestartGame()
     {
         SceneManager.LoadScene(1);
     }

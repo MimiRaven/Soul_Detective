@@ -244,6 +244,11 @@ public class C_PlayerController : MonoBehaviour
             boosting = true;
             Destroy(other.gameObject);
         }
+
+        if(other.tag == "End")
+        {
+            SceneManager.LoadScene("Win Screen");
+        }
     }
 
 
