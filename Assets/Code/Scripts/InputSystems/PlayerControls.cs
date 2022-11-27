@@ -188,6 +188,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NavigationArrow"",
+                    ""type"": ""Button"",
+                    ""id"": ""e4e46f18-085b-4d4c-a94f-c547f97a43ed"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -619,6 +628,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Sprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d6ad70e7-5be1-40cb-a38d-9cdcd81835f3"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NavigationArrow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -695,6 +715,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_LockOn = m_Player.FindAction("LockOn", throwIfNotFound: true);
         m_Player_Quit = m_Player.FindAction("Quit", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
+        m_Player_NavigationArrow = m_Player.FindAction("NavigationArrow", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Pause = m_Menu.FindAction("Pause", throwIfNotFound: true);
@@ -775,6 +796,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_LockOn;
     private readonly InputAction m_Player_Quit;
     private readonly InputAction m_Player_Sprint;
+    private readonly InputAction m_Player_NavigationArrow;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -797,6 +819,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @LockOn => m_Wrapper.m_Player_LockOn;
         public InputAction @Quit => m_Wrapper.m_Player_Quit;
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
+        public InputAction @NavigationArrow => m_Wrapper.m_Player_NavigationArrow;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -860,6 +883,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Sprint.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
                 @Sprint.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
                 @Sprint.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
+                @NavigationArrow.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNavigationArrow;
+                @NavigationArrow.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNavigationArrow;
+                @NavigationArrow.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNavigationArrow;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -918,6 +944,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Sprint.started += instance.OnSprint;
                 @Sprint.performed += instance.OnSprint;
                 @Sprint.canceled += instance.OnSprint;
+                @NavigationArrow.started += instance.OnNavigationArrow;
+                @NavigationArrow.performed += instance.OnNavigationArrow;
+                @NavigationArrow.canceled += instance.OnNavigationArrow;
             }
         }
     }
@@ -984,6 +1013,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnLockOn(InputAction.CallbackContext context);
         void OnQuit(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
+        void OnNavigationArrow(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {
