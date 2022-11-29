@@ -18,6 +18,7 @@ public class C_Telekinesis : MonoBehaviour
     public bool GrabObject;
 
     public bool ObjectGrabbed;
+    
 
     public bool AimOn;
 
@@ -68,6 +69,8 @@ public class C_Telekinesis : MonoBehaviour
             GrabStop();
 
         }
+
+       
     }
 
     void Timmer()
