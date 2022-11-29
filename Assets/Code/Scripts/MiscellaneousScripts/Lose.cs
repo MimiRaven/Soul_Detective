@@ -29,7 +29,7 @@ public class Lose : MonoBehaviour
 
     public void RestartLevel()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("GamePlay Demo");
     }
 
     public void MainMenu()

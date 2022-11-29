@@ -11,6 +11,7 @@ public class C_PlayerHealth : MonoBehaviour
     public int maxHealth = 10;
     public int health { get { return currentHealth; } }
     public int currentHealth;
+    public int PlayerLives;
 
     private GameObject shield;
 
@@ -29,6 +30,9 @@ public class C_PlayerHealth : MonoBehaviour
     public float SetCoolDownTime;
     private float TimeLeft;
     public bool TimerOn;
+
+    public GameObject HealthUI1, HealthUI2, HealthUI3;
+
 
     //public bool 
 
@@ -56,6 +60,8 @@ public class C_PlayerHealth : MonoBehaviour
         //}
 
         Timmer();
+        PlayerLoss();
+        PlayerDeath();
 
 
         isColliding = false;
@@ -133,8 +139,9 @@ public class C_PlayerHealth : MonoBehaviour
     {
         if (currentHealth == 0)
         {
-            // Respwan();
-            SceneManager.LoadScene(2);
+            PlayerLives -= 1;
+            Respwan();
+            //SceneManager.LoadScene(2);
         }
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
@@ -153,5 +160,46 @@ public class C_PlayerHealth : MonoBehaviour
     public void SetSpawnPoint(Vector3 newPosition)
     {
         respawnPoint = newPosition;
+    }
+
+    public void PlayerLoss()
+    {
+        if(PlayerLives == 0)
+        {
+            SceneManager.LoadScene("Lose Screen");
+        }
+    }
+
+    void PlayerDeath()
+    {
+        if (PlayerLives <= 2)
+        {
+            HealthUI3.SetActive(false);
+        }
+        else
+        {
+            HealthUI3.SetActive(true);
+        }
+
+        if (PlayerLives <= 1)
+        {
+            HealthUI2.SetActive(false);
+        }
+        else
+        {
+            HealthUI2.SetActive(true);
+        }
+
+        if (PlayerLives <= 0)
+        {
+            HealthUI1.SetActive(false);
+        }
+        else
+        {
+            HealthUI1.SetActive(true);
+        }
+
+
+
     }
 }
