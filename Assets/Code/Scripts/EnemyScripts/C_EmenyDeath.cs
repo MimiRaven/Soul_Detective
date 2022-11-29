@@ -9,25 +9,30 @@ public class C_EmenyDeath : MonoBehaviour
     private bool isColliding = true;
     //public EnemyHealth enemyHealth;
 
-    public int MaxHealth;
-    public int EnemyCurrentHealth;
+    public float MaxHealth;
+    public float EnemyCurrentHealth;
 
-    //public GameObject healthBarUI;
-    //public Slider slider;
+    public GameObject healthBarUI;
+    public Slider slider;
 
     void Start()
     {
         EnemyCurrentHealth = MaxHealth;
-        //slider.value = CalculateHealth();
+        slider.value = CalculateHealth();
     }
 
     void Update()
     {
         isColliding = false;
-        //slider.value = CalculateHealth();
+        slider.value = CalculateHealth();
         EnemyDeath();
 
-        //if (PlayerCurrentHealth <= MaxHealth)
+        if (EnemyCurrentHealth == 0)
+        {
+            healthBarUI.SetActive(false);
+        }
+
+        //if (EnemyCurrentHealth < MaxHealth)
         //{
         //    healthBarUI.SetActive(true);
         //}
@@ -58,7 +63,7 @@ public class C_EmenyDeath : MonoBehaviour
         if (col.collider.tag == "BoostedWeapon")
         {
             BoostedWeaponDamage();
-            
+
             Debug.Log("Enemy Damaged");
         }
 
@@ -73,38 +78,35 @@ public class C_EmenyDeath : MonoBehaviour
     void EnemyTakeDamage()
     {
         EnemyCurrentHealth -= 1;
-        
+
     }
 
     void BoostedWeaponDamage()
     {
         EnemyCurrentHealth -= 3;
     }
-    
+
 
     void EnemyDeath()
     {
-        if(EnemyCurrentHealth <= 0)
+        if (EnemyCurrentHealth <= 0)
         {
             c_XpScore.CurrentScore += 1;
             //healthBarUI.SetActive(false);
             Destroy(gameObject);
-            
+
         }
 
-        //if(PlayerCurrentHealth == 0)
-        //{
-        //    healthBarUI.SetActive(false);
-        //}
+
 
         //Destroy(gameObject);
         //enemyHealth.TakeDamage(1);
 
     }
 
-    //float CalculateHealth()
-    //{
-    //    return PlayerCurrentHealth / MaxHealth;
-    //}
+    float CalculateHealth()
+    {
+        return EnemyCurrentHealth / MaxHealth;
+    }
 
 }
