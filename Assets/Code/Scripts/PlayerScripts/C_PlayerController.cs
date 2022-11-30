@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(CharacterController))]
 public class C_PlayerController : MonoBehaviour
 {
-    Animator animator;
+    public Animator animator;
 
     [SerializeField]
     private PlayerInput playerInput;
@@ -63,7 +63,7 @@ public class C_PlayerController : MonoBehaviour
     private void Start()
     {
         controller = GetComponent<CharacterController>();
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
         //playerInput = GetComponent<PlayerInput>();
 
         //walkSpeed = playerSpeed;
