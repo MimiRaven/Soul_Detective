@@ -43,8 +43,8 @@ public class C_PlayerHealth : MonoBehaviour
 
         respawnPoint = player.transform.position;
 
-        shield = transform.Find("Shield").gameObject;
-        shield.SetActive(false);
+        //shield = transform.Find("ShieldPickup").gameObject;
+        //shield.SetActive(false);
     }
 
     void Update()

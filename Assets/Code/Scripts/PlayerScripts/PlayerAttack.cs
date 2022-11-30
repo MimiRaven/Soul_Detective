@@ -65,8 +65,8 @@ public class PlayerAttack : MonoBehaviour
         if(IsAbleToAttack == true)
         {
             animator.SetTrigger("attack");
-            audioSource.clip = audioClipArray[Random.Range(0, audioClipArray.Length)];
-            audioSource.PlayOneShot(audioSource.clip);
+            //audioSource.clip = audioClipArray[Random.Range(0, audioClipArray.Length)];
+            //audioSource.PlayOneShot(audioSource.clip);
         }
     }
 }
