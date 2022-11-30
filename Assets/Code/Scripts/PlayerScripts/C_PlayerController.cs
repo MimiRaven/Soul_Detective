@@ -49,7 +49,7 @@ public class C_PlayerController : MonoBehaviour
    // int currentHealth;
 
     public bool WeaponWheel;
-    public GameObject Abilitys,WeaponWheelObject,PlayerModle;
+    public GameObject Abilitys,WeaponWheelObject,PlayerModel;
 
     public bool isRunning;
     public float CurrentStamina;
@@ -162,7 +162,7 @@ public class C_PlayerController : MonoBehaviour
             PlayerCams.SetActive(true);
             Abilitys.SetActive(true);
             WeaponWheelObject.SetActive(true);
-            PlayerModle.SetActive(true);
+            PlayerModel.SetActive(true);
             //PlayerInputObject.SetActive(true);
         }
         else 
@@ -171,7 +171,7 @@ public class C_PlayerController : MonoBehaviour
             PlayerCams.SetActive(false);
             Abilitys.SetActive(false);
             WeaponWheelObject.SetActive(false);
-            PlayerModle.SetActive(false);
+            PlayerModel.SetActive(false);
             //PlayerInputObject.SetActive(false);
         }
     }
