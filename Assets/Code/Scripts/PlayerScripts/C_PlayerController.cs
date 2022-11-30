@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(CharacterController))]
 public class C_PlayerController : MonoBehaviour
 {
+    Animator animator;
 
     [SerializeField]
     private PlayerInput playerInput;
@@ -59,10 +60,10 @@ public class C_PlayerController : MonoBehaviour
     //public int souls;
     //public TextMeshProUGUI soulsUI; 
 
-
     private void Start()
     {
         controller = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
         //playerInput = GetComponent<PlayerInput>();
 
         //walkSpeed = playerSpeed;
@@ -96,10 +97,8 @@ public class C_PlayerController : MonoBehaviour
         }
         else
         {
-            Resting();
-           
+            Resting();         
         }
-
     }
 
     void ActiveRunning()
@@ -117,8 +116,7 @@ public class C_PlayerController : MonoBehaviour
     }
 
     void Resting()
-    {
-        
+    {       
         if (CurrentStamina < MaxStamina)
         {
             playerSpeed = 5;
@@ -129,7 +127,6 @@ public class C_PlayerController : MonoBehaviour
     void Awake()
     {
         //DontDestroyOnLoad(this.gameObject);
-
     }
 
     void Update()
@@ -154,11 +151,6 @@ public class C_PlayerController : MonoBehaviour
         {
             QuitGame();
         }
-
-        
-
-
-
     }
 
     void IsPossesed()
@@ -184,7 +176,6 @@ public class C_PlayerController : MonoBehaviour
         }
     }
 
-
     void Movement()
     {
         if (WeaponWheel == false)
@@ -203,6 +194,17 @@ public class C_PlayerController : MonoBehaviour
           move = move.x * cameraTransfrom.right.normalized + move.z * cameraTransfrom.forward.normalized;
           move.y = 0f;
           controller.Move(move * Time.deltaTime * playerSpeed);
+
+          if (move.x > 0 || move.x < 0|| move.z > 0 || move.z < 0)
+        {
+            animator.SetBool("Walking", true);
+            animator.SetBool("Idleing", false);
+        }
+        else
+        {
+            animator.SetBool("Walking", false);
+            animator.SetBool("Idleing", true);
+        } 
 
 
           //Player Rotation  
@@ -227,7 +229,6 @@ public class C_PlayerController : MonoBehaviour
     void OnQuit()
     {
         quit = true;
-
     }
 
     void QuitGame()
@@ -235,7 +236,6 @@ public class C_PlayerController : MonoBehaviour
         Application.Quit();
         //SceneManager.LoadScene(0);
     }
-
 
     void OnTriggerEnter(Collider other)
     {
@@ -250,7 +250,4 @@ public class C_PlayerController : MonoBehaviour
             SceneManager.LoadScene("Win Screen");
         }
     }
-
-
-
 }
