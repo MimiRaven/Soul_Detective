@@ -24,7 +24,6 @@ public class PlayerAttack : MonoBehaviour
 
     public void Start()
     {
-        animator = GetComponentInChildren<Animator>();
         audioSource = GetComponent<AudioSource>();
         IsAbleToAttack = true;
     }
@@ -64,15 +63,9 @@ public class PlayerAttack : MonoBehaviour
     {
         if(IsAbleToAttack == true)
         {
-            animator.SetBool("Ideling", false);
-            animator.SetBool("Melee", true);
+            animator.SetTrigger("Melee0");
             //audioSource.clip = audioClipArray[Random.Range(0, audioClipArray.Length)];
             //audioSource.PlayOneShot(audioSource.clip);
-        }
-        else
-        {
-            animator.SetBool("Melee", false);
-            animator.SetBool("Ideling", true);
         }
     }
 }

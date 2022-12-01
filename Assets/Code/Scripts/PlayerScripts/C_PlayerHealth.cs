@@ -45,8 +45,8 @@ public class C_PlayerHealth : MonoBehaviour
 
         respawnPoint = player.transform.position;
 
-        //shield = transform.Find("ShieldPickup").gameObject;
-        //shield.SetActive(false);
+       // shield = transform.Find("Shield").gameObject;
+       // shield.SetActive(false);
     }
 
     void Update()
@@ -112,27 +112,24 @@ public class C_PlayerHealth : MonoBehaviour
             if (collision.gameObject.tag == "EnemyWeapon")
             {
                 ChangeHealth(-1);
-                animator.SetBool("Ideling", false);
-                animator.SetBool("Hurt", true);
-               // if (shield.activeInHierarchy)
-               // {
-               //     shield.SetActive(false);
-               // }
-               // else
-               // {
-               //     TimerOn = true;
-               //     TimeLeft = SetCoolDownTime;
-               //     ChangeHealth(-1);
-               // }
-                animator.SetBool("Ideling", true);
-                animator.SetBool("Hurt", false);
+                animator.SetTrigger("Hurt0");
+            //    if (shield.activeInHierarchy)
+            //    {
+            //        shield.SetActive(false);
+            //    }
+            //    else
+            //    {
+            //        TimerOn = true;
+            //        TimeLeft = SetCoolDownTime;
+            //        ChangeHealth(-1);
+            //    }
             }
-
-            if (collision.gameObject.tag == "ShieldPickup")
-            {
-                shield.SetActive(true);
-                Destroy(collision.gameObject);
-            }
+            
+            //if (collision.gameObject.tag == "Shield")
+            //{
+            //    shield.SetActive(true);
+            //    Destroy(collision.gameObject);
+            //}
         }
     }
 
@@ -176,7 +173,7 @@ public class C_PlayerHealth : MonoBehaviour
         }
     }
 
-    void PlayerDeath()
+    public void PlayerDeath()
     {
         if (PlayerLives <= 2)
         {

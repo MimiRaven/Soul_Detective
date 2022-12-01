@@ -17,6 +17,7 @@ public class PauseMenu : MonoBehaviour
 
     public C_TimeManagement c_TimeManagement;
     public C_PlayerController c_PlayerController;
+    public C_WeaponWheel c_WeaponWheel;
 
     void Awake()
     {
@@ -68,6 +69,7 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         pauseUI.SetActive(true);
+        c_WeaponWheel.WheelIsOn = true;
     }
 
     public void DeactivateMenu()
@@ -82,6 +84,7 @@ public class PauseMenu : MonoBehaviour
         Cursor.visible = false;
         pauseUI.SetActive(false);
         //isPaused = false;
+        c_WeaponWheel.WheelIsOn = false;
     }
 
 }
