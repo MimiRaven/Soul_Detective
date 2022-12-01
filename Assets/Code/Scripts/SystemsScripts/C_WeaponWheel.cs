@@ -34,12 +34,14 @@ public class C_WeaponWheel : MonoBehaviour
 
     public C_Telekinesis c_Telekinesis;
 
+    public C_TimeManagement c_TimeManagement;
+
 
 
     void Awake()
     {
         WheelActivation = playerInput.actions["WeaponWheel"];
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
 
     }
 
@@ -47,12 +49,14 @@ public class C_WeaponWheel : MonoBehaviour
     {
         if(WheelIsOn == true)
         {
-            Time.timeScale = 0f;
+            //c_TimeManagement.TimeStop = true;
+            //Time.timeScale = 0f;
             Cursor.visible = true;
         }
         else 
-        { 
-            Time.timeScale = 1f;
+        {
+            //c_TimeManagement.TimeStop = false;
+            //Time.timeScale = 1f;
             Cursor.visible = false;
         }
     }
@@ -73,7 +77,8 @@ public class C_WeaponWheel : MonoBehaviour
     {
         if(c_Telekinesis.ObjectGrabbed == false)
         {
-         WheelCanvas.SetActive(true);
+            c_TimeManagement.TimeStop = true;
+            WheelCanvas.SetActive(true);
          //Time.timeScale = 0f;
          c_PlayerController.WeaponWheel = true;
          MainCam.SetActive(false);
@@ -95,6 +100,7 @@ public class C_WeaponWheel : MonoBehaviour
 
     void WheelActiveStop()
     {
+        c_TimeManagement.TimeStop = false;
         WheelCanvas.SetActive(false);
         //Time.timeScale = 1f;
         c_PlayerController.WeaponWheel = false;

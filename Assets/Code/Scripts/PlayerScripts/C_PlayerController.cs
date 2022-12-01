@@ -93,7 +93,11 @@ public class C_PlayerController : MonoBehaviour
         Sprinter.instance.SetValue(CurrentStamina / MaxStamina);
         if (isRunning)
         {
-            ActiveRunning();
+            if (WeaponWheel == false)
+            {
+                ActiveRunning();
+
+            }
         }
         else
         {

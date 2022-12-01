@@ -11,8 +11,13 @@ public class PauseMenu : MonoBehaviour
     private GameObject pauseUI;
 
     [SerializeField]
-    private bool isPaused;
-  
+    public bool isPaused;
+    public GameObject MainCam;
+    public GameObject AimCam;
+
+    public C_TimeManagement c_TimeManagement;
+    public C_PlayerController c_PlayerController;
+
     void Awake()
     {
         playerContols = new PlayerControls();
@@ -54,7 +59,11 @@ public class PauseMenu : MonoBehaviour
     }
     void ActivateMenu()
     {
-        Time.timeScale = 0;
+        //Time.timeScale = 0f;
+        c_TimeManagement.TimeStop = true;
+        MainCam.SetActive(false);
+        AimCam.SetActive(false);
+        c_PlayerController.WeaponWheel = true;
         AudioListener.pause = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -63,12 +72,16 @@ public class PauseMenu : MonoBehaviour
 
     public void DeactivateMenu()
     {
-        Time.timeScale = 1;
+        //Time.timeScale = 1f;
+        c_TimeManagement.TimeStop = false;
+        MainCam.SetActive(true);
+        AimCam.SetActive(true);
+        c_PlayerController.WeaponWheel = false;
         AudioListener.pause = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         pauseUI.SetActive(false);
-        isPaused = false;
+        //isPaused = false;
     }
 
 }
