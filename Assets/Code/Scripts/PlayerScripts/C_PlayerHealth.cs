@@ -45,8 +45,8 @@ public class C_PlayerHealth : MonoBehaviour
 
         respawnPoint = player.transform.position;
 
-       // shield = transform.Find("Shield").gameObject;
-       // shield.SetActive(false);
+       shield = transform.Find("Shield").gameObject;
+       shield.SetActive(false);
     }
 
     void Update()
@@ -112,24 +112,25 @@ public class C_PlayerHealth : MonoBehaviour
             if (collision.gameObject.tag == "EnemyWeapon")
             {
                 ChangeHealth(-1);
-                animator.SetTrigger("Hurt0");
-            //    if (shield.activeInHierarchy)
-            //    {
-            //        shield.SetActive(false);
-            //    }
-            //    else
-            //    {
-            //        TimerOn = true;
-            //        TimeLeft = SetCoolDownTime;
-            //        ChangeHealth(-1);
-            //    }
+                animator.SetTrigger("Hurt 0");
+                
+               if (shield.activeInHierarchy)
+               {
+                   shield.SetActive(false);
+               }
+               else
+               {
+                   TimerOn = true;
+                   TimeLeft = SetCoolDownTime;
+                   ChangeHealth(-1);
+               }
             }
             
-            //if (collision.gameObject.tag == "Shield")
-            //{
-            //    shield.SetActive(true);
-            //    Destroy(collision.gameObject);
-            //}
+            if (collision.gameObject.tag == "Shield")
+            {
+               shield.SetActive(true);
+               Destroy(collision.gameObject);
+            }
         }
     }
 

@@ -63,7 +63,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if(IsAbleToAttack == true)
         {
-            animator.SetTrigger("Melee0");
+            animator.SetTrigger("Melee 0");
             //audioSource.clip = audioClipArray[Random.Range(0, audioClipArray.Length)];
             //audioSource.PlayOneShot(audioSource.clip);
         }
