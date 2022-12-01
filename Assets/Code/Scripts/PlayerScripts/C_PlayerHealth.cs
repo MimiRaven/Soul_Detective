@@ -8,6 +8,8 @@ public class C_PlayerHealth : MonoBehaviour
 {
     public C_PlayerController player;
 
+    public Animator animator;
+
     public int maxHealth = 10;
     public int health { get { return currentHealth; } }
     public int currentHealth;
@@ -110,16 +112,20 @@ public class C_PlayerHealth : MonoBehaviour
             if (collision.gameObject.tag == "EnemyWeapon")
             {
                 ChangeHealth(-1);
-                if (shield.activeInHierarchy)
-                {
-                    shield.SetActive(false);
-                }
-                else
-                {
-                    TimerOn = true;
-                    TimeLeft = SetCoolDownTime;
-                    ChangeHealth(-1);
-                }
+                animator.SetBool("Ideling", false);
+                animator.SetBool("Hurt", true);
+               // if (shield.activeInHierarchy)
+               // {
+               //     shield.SetActive(false);
+               // }
+               // else
+               // {
+               //     TimerOn = true;
+               //     TimeLeft = SetCoolDownTime;
+               //     ChangeHealth(-1);
+               // }
+                animator.SetBool("Ideling", true);
+                animator.SetBool("Hurt", false);
             }
 
             if (collision.gameObject.tag == "ShieldPickup")

@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour
 {
-    Animator animator;
+    public Animator animator;
 
     [SerializeField]
     private PlayerInput playerInput;
@@ -64,9 +64,15 @@ public class PlayerAttack : MonoBehaviour
     {
         if(IsAbleToAttack == true)
         {
-            animator.SetTrigger("attack");
+            animator.SetBool("Ideling", false);
+            animator.SetBool("Melee", true);
             //audioSource.clip = audioClipArray[Random.Range(0, audioClipArray.Length)];
             //audioSource.PlayOneShot(audioSource.clip);
+        }
+        else
+        {
+            animator.SetBool("Melee", false);
+            animator.SetBool("Ideling", true);
         }
     }
 }
