@@ -12,10 +12,15 @@ public class PlayerAttack : MonoBehaviour
 
     private InputAction AttackAction;
 
-    public bool IsAbleToAttack;
+    public bool isAttacking;
 
     AudioSource audioSource;
     public AudioClip[] audioClipArray;
+
+    [SerializeField]
+    private float animationFinishedTime = 0.9f;
+
+    public bool IsAbleToAttack;
 
     public void Awake()
     {
@@ -30,7 +35,10 @@ public class PlayerAttack : MonoBehaviour
 
     public void Update()
     {
-
+        if(isAttacking && animator.GetCurrentAnimatorStateInfo(1).normalizedTime >= animationFinishedTime)
+        {
+            isAttacking = false;
+        }
     }
 
     private void OnEnable()
@@ -51,7 +59,13 @@ public class PlayerAttack : MonoBehaviour
 
     public void AttackStart()
     {
-        Attacking();
+        if (IsAbleToAttack == true)
+        {
+
+            Attacking();
+        }
+
+
     }
 
     public void AttackStop()
@@ -59,13 +73,21 @@ public class PlayerAttack : MonoBehaviour
 
     }
 
+
     public void Attacking()
     {
-        if(IsAbleToAttack == true)
+        if (!isAttacking)
         {
-            animator.SetTrigger("Melee 0");
-            //audioSource.clip = audioClipArray[Random.Range(0, audioClipArray.Length)];
-            //audioSource.PlayOneShot(audioSource.clip);
+        animator.SetTrigger("IsAttacking");
+        StartCoroutine(InitialiseAttack());
+
         }
     }
+
+    IEnumerator InitialiseAttack()
+    {
+        yield return new WaitForSeconds(0.1f);
+        isAttacking = true;
+    }
+
 }

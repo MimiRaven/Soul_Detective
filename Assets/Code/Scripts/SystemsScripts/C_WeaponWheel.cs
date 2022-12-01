@@ -84,7 +84,9 @@ public class C_WeaponWheel : MonoBehaviour
          MainCam.SetActive(false);
          AimCam.SetActive(false);
          //Cursor.visible = true;
+
          playerAttack.IsAbleToAttack = false;
+
          WheelIsOn = true;
 
          //if(c_PlayerController.Possesed == false)
