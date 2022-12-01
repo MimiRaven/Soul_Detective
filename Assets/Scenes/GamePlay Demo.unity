@@ -21278,7 +21278,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1883224067}
   m_LocalRotation: {x: 0.0043633096, y: 0, z: 0, w: 0.9999905}
-  m_LocalPosition: {x: 13.979623, y: 1.0622544, z: -6.2932425}
+  m_LocalPosition: {x: 13.901976, y: 1.8376064, z: -5.286438}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23063,7 +23063,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3095888213859889}
   m_LocalRotation: {x: 0.0043633096, y: -0, z: -0, w: 0.9999905}
-  m_LocalPosition: {x: -5.220378, y: -1.1077456, z: -9.603243}
+  m_LocalPosition: {x: -5.298025, y: -0.33239365, z: -8.596437}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -23158,8 +23158,8 @@ MonoBehaviour:
   m_ZDamping: 1
   m_TargetMovementOnly: 1
   m_ScreenX: 0.44
-  m_ScreenY: 0.331
-  m_CameraDistance: 6.28
+  m_ScreenY: 0.503
+  m_CameraDistance: 5.28
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
@@ -23300,7 +23300,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3095889322225139}
   m_LocalRotation: {x: 0.028518954, y: -0.030526083, z: 0.0008713329, w: 0.9991267}
-  m_LocalPosition: {x: -4.349702, y: -0.9138596, z: -4.8692527}
+  m_LocalPosition: {x: -4.3557024, y: 0.1038661, z: -5.26294}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -23510,9 +23510,9 @@ MonoBehaviour:
   m_YDamping: 0.2
   m_ZDamping: 1
   m_TargetMovementOnly: 1
-  m_ScreenX: -0.109
-  m_ScreenY: -0.029
-  m_CameraDistance: 1.6
+  m_ScreenX: 0.036
+  m_ScreenY: 0.753
+  m_CameraDistance: 2.05
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
@@ -23520,7 +23520,7 @@ MonoBehaviour:
   m_SoftZoneWidth: 0.3672515
   m_SoftZoneHeight: 0.4778598
   m_BiasX: 0.000000040574815
-  m_BiasY: 0.00000034301436
+  m_BiasY: 0.00000049893
   m_CenterOnActivate: 0
   m_GroupFramingMode: 2
   m_AdjustmentMode: 2
@@ -25577,9 +25577,10 @@ GameObject:
   - component: {fileID: 3957611045386575938}
   - component: {fileID: 1813280545670897965}
   - component: {fileID: 1884573145695656369}
+  - component: {fileID: 3957611045386575939}
   m_Layer: 0
   m_Name: weapon
-  m_TagString: Untagged
+  m_TagString: weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28903,6 +28904,19 @@ Transform:
   m_Father: {fileID: 7690357309549213978}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3957611045386575939
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786809659418376662}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.44347325, y: 0.83427125, z: 0.039876267}
+  m_Center: {x: 0.00000023841858, y: 0.00000047683716, z: -0.00000023841858}
 --- !u!1 &3970649438664513633
 GameObject:
   m_ObjectHideFlags: 0
@@ -34101,7 +34115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 969b158674e68f2499fb0ae2d302c6c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerWeapon: {fileID: 200283452}
+  PlayerWeapon: {fileID: 1786809659418376662}
   LockOnCanvas: {fileID: 1549807245}
   BoostedUI: {fileID: 1549807247}
 --- !u!114 &9151151482519671072
