@@ -14,10 +14,12 @@ public class EnemyAttack : MonoBehaviour
     public GameObject Enemy;
     public float Distance_;
 
+   // public GameObject Weapon;
+
     // Start is called before the first frame update
     void Start()
     {
-        //animator = GetComponentInChildren<Animator>();
+        //Weapon.SetActive(true);
     }
 
     
@@ -40,12 +42,13 @@ public class EnemyAttack : MonoBehaviour
         if (IsAttacking == true && c_EmenyDeath.EnemyCurrentHealth > 0)
         {
 
-        animator.SetBool("IsAttacking", true);
+             animator.SetBool("IsAttacking", true);
+            //Weapon.SetActive(true);
         }
         else
         {
-
-             animator.SetBool("IsAttacking", false);
+           // Weapon.SetActive(false);
+            animator.SetBool("IsAttacking", false);
         }
         //is attacking
 
