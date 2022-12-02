@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class Bot : MonoBehaviour
 {
+    public Animator animator;
+
     NavMeshAgent agent;
     public GameObject target;
     //Drive ds;
@@ -13,6 +15,7 @@ public class Bot : MonoBehaviour
     public float wanderDistance = 5;
     public float wanderJitter = 5;
     public CamDetectTest camDetectTest;
+    public C_EmenyDeath c_EmenyDeath;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +26,11 @@ public class Bot : MonoBehaviour
 
     void Seek(Vector3 location)
     {
+        if(c_EmenyDeath.EnemyIsDead == false)
+        {
+
         agent.SetDestination(location);
+        }
     }
 
     void Flee(Vector3 location)
@@ -76,6 +83,11 @@ public class Bot : MonoBehaviour
         else
         {
             Seek(target.transform.position);
+        }
+
+        if (agent.speed > 1)
+        {
+            animator.SetBool("IsWalking", true);
         }
 
         //Seek(target.transform.position);

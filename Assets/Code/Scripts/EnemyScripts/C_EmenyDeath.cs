@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class C_EmenyDeath : MonoBehaviour
 {
+    public Animator animator;
     public C_XpScore c_XpScore;
     private bool isColliding = true;
     //public EnemyHealth enemyHealth;
@@ -15,11 +16,20 @@ public class C_EmenyDeath : MonoBehaviour
     public GameObject healthBarUI;
     public Slider slider;
 
+    public float DeathTimer;
+    public bool TimerOn;
+
+    public bool EnemyIsDead;
+
     void Start()
     {
         EnemyCurrentHealth = MaxHealth;
         slider.value = CalculateHealth();
+        DeathTimer = 5;
+        TimerOn = false;
+        EnemyIsDead = false;
     }
+    
 
     void Update()
     {
@@ -36,6 +46,17 @@ public class C_EmenyDeath : MonoBehaviour
         //{
         //    healthBarUI.SetActive(true);
         //}
+        if (TimerOn)
+        {
+            
+            DeathTimer -= Time.deltaTime;
+            if (DeathTimer <= 0)
+            {
+                c_XpScore.CurrentScore += 1;
+                Destroy(gameObject);
+            }
+        }
+       
     }
 
     void OnCollisionEnter(Collision col)
@@ -91,9 +112,13 @@ public class C_EmenyDeath : MonoBehaviour
     {
         if (EnemyCurrentHealth <= 0)
         {
-            c_XpScore.CurrentScore += 1;
-            //healthBarUI.SetActive(false);
-            Destroy(gameObject);
+           
+            healthBarUI.SetActive(false);
+            animator.SetTrigger("Death");
+            animator.SetBool("IsAttacking", false);
+            TimerOn = true;
+            EnemyIsDead = true;
+            //Destroy(gameObject);
 
         }
 

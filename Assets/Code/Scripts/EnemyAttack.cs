@@ -6,6 +6,7 @@ public class EnemyAttack : MonoBehaviour
 {
 
     public Animator animator;
+    public C_EmenyDeath c_EmenyDeath;
 
     public bool IsAttacking;
 
@@ -16,7 +17,7 @@ public class EnemyAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponentInChildren<Animator>();
+        //animator = GetComponentInChildren<Animator>();
     }
 
     
@@ -35,16 +36,16 @@ public class EnemyAttack : MonoBehaviour
         {
             IsAttacking = false;
         }
-        
-        if(IsAttacking == true)
+
+        if (IsAttacking == true && c_EmenyDeath.EnemyCurrentHealth > 0)
         {
 
-        animator.SetBool("Attack", true);
+        animator.SetBool("IsAttacking", true);
         }
         else
         {
 
-             animator.SetBool("Attack", false);
+             animator.SetBool("IsAttacking", false);
         }
         //is attacking
 
