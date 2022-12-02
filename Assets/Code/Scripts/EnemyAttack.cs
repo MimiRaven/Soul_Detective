@@ -28,11 +28,11 @@ public class EnemyAttack : MonoBehaviour
 
         Distance_ = Vector3.Distance(player.transform.position, Enemy.transform.position);
 
-        if(Distance_ < 3)
+        if(Distance_ < 5)
         {
             IsAttacking = true;
         }
-        else if (Distance_ > 3)
+        else if (Distance_ > 5)
         {
             IsAttacking = false;
         }
