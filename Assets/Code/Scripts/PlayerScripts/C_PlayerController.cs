@@ -200,15 +200,15 @@ public class C_PlayerController : MonoBehaviour
           controller.Move(move * Time.deltaTime * playerSpeed);
 
           if (move.x > 0 || move.x < 0|| move.z > 0 || move.z < 0)
-        {
+          {
             animator.SetBool("Walking", true);
             animator.SetBool("Idleing", false);
-        }
-        else
-        {
+          }
+          else
+          {
             animator.SetBool("Walking", false);
             animator.SetBool("Idleing", true);
-        } 
+          } 
 
 
           //Player Rotation  

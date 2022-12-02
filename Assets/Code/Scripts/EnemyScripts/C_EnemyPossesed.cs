@@ -9,6 +9,7 @@ using TMPro;
 
 public class C_EnemyPossesed : MonoBehaviour
 {
+    public Animator animator;
 
     [SerializeField]
     private PlayerInput playerInput;
@@ -209,6 +210,17 @@ public class C_EnemyPossesed : MonoBehaviour
         move.y = 0f;
         controller.Move(move * Time.deltaTime * playerSpeed);
 
+        if (move.x > 0 || move.x < 0 || move.z > 0 || move.z < 0)
+        {
+            animator.SetBool("IsWalking", true);
+            animator.SetBool("Idleing", false);
+        }
+        else
+        {
+            animator.SetBool("IsWalking", false);
+            animator.SetBool("Idleing", true);
+        }
+
 
         //Player Rotation  
         if (move != Vector3.zero)
@@ -225,6 +237,8 @@ public class C_EnemyPossesed : MonoBehaviour
         }
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+
+        
     }
 
     private void OnEnable()

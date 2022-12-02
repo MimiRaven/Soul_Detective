@@ -105,8 +105,13 @@ public class C_Possesion : MonoBehaviour
                         Debug.Log("Push button active");
                         if (hit.transform.TryGetComponent<C_EnemyPossesed>(out C_EnemyPossesed ts))
                             ts.Possesed = true;
+
+                        if(ts.Possesed == true)
+                         {
                         c_PlayerController.Possesed = false;
                         PossesionRayShot = false;
+
+                         }
                     
 
 
