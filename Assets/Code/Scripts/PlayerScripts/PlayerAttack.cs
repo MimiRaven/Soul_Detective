@@ -22,6 +22,8 @@ public class PlayerAttack : MonoBehaviour
 
     public bool IsAbleToAttack;
 
+    public GameObject AttackColider;
+
     public void Awake()
     {
         AttackAction = playerInput.actions["Attack"];
@@ -39,6 +41,20 @@ public class PlayerAttack : MonoBehaviour
         {
             isAttacking = false;
         }
+
+
+        if (isAttacking == true)
+        {
+            AttackColider.SetActive(true);
+            
+        }
+        else
+        {
+            AttackColider.SetActive(false);
+           
+        }
+
+
     }
 
     private void OnEnable()

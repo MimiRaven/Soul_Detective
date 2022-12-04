@@ -14,6 +14,8 @@ public class C_PossesedEnemyAttack : MonoBehaviour
 
     public bool isAttacking;
 
+    public GameObject RightHand, LeftHand;
+
     AudioSource audioSource;
     public AudioClip[] audioClipArray;
 
@@ -38,6 +40,17 @@ public class C_PossesedEnemyAttack : MonoBehaviour
         if (isAttacking && animator.GetCurrentAnimatorStateInfo(1).normalizedTime >= animationFinishedTime)
         {
             isAttacking = false;
+        }
+
+        if(isAttacking == true)
+        {
+            RightHand.SetActive(true);
+            LeftHand.SetActive(true);
+        }
+        else
+        {
+            RightHand.SetActive(false);
+            LeftHand.SetActive(false);
         }
     }
 
