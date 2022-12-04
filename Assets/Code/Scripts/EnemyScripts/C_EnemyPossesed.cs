@@ -57,16 +57,16 @@ public class C_EnemyPossesed : MonoBehaviour
 
     private Rigidbody objectRb;
 
-    public GameObject Door;
+    //public GameObject Door;
 
     public GameObject PlayerInputObject;
 
-    public ParticleSystem leaveBody;
+    //public ParticleSystem leaveBody;
 
-    public AudioClip Key;
-    public AudioSource audioSource;
+   // public AudioClip Key;
+    //public AudioSource audioSource;
 
-    //public NavMeshAgent agent;
+   
 
     private void Awake()
     {
@@ -96,9 +96,9 @@ public class C_EnemyPossesed : MonoBehaviour
         Possesed = false;
         EnemyCams.SetActive(false);
 
-        leaveBody.Stop();
+        //leaveBody.Stop();                                             //
 
-        audioSource.Stop();
+        //audioSource.Stop();                                         //
 
     }
 
@@ -108,7 +108,7 @@ public class C_EnemyPossesed : MonoBehaviour
         {
 
             Possesed = false;
-            audioSource.Play();
+           // audioSource.Play();                                       //
 
             //Destroy(gameObject);
 
@@ -130,41 +130,7 @@ public class C_EnemyPossesed : MonoBehaviour
         
     }
 
-   //void Timmer()
-   //{
-   //
-   //    if (TimerOn)
-   //    {
-   //
-   //        if (TimeLeft > 0)
-   //        {
-   //            TimeLeft -= Time.deltaTime;
-   //            updateTimer(TimeLeft);
-   //            TimerCanvas.SetActive(true);
-   //        }
-   //        else
-   //        {
-   //            Debug.Log("Time is Up");
-   //            TimeLeft = 0;
-   //            TimerOn = false;
-   //            Possesed = false;
-   //            TimerCanvas.SetActive(false);
-   //
-   //        }
-   //
-   //    }
-   //}
-
-   //void updateTimer(float currentTime)
-   //{
-   //    currentTime += 1;
-   //
-   //    float minutes = Mathf.FloorToInt(currentTime / 60);
-   //    float seconds = Mathf.FloorToInt(currentTime % 60);
-   //
-   //    TimerUI.text = string.Format("{0:0}", seconds);
-   //}
-
+  
    
 
     void Possesion()
@@ -178,7 +144,7 @@ public class C_EnemyPossesed : MonoBehaviour
             c_PlayerController.Possesed = false;
             Debug.Log("Enemy Posesed");
             Movement();
-            leaveBody.Play();
+            //leaveBody.Play();                                         //
             //c_EnemyRoam.enabled = false;
             EnemyCams.SetActive(true);
             
@@ -271,7 +237,7 @@ public class C_EnemyPossesed : MonoBehaviour
         Debug.Log("QuitPressed");
         Possesed = false;
         c_PlayerController.Possesed = true;
-        leaveBody.Play();
+        //leaveBody.Play();                                     //
         //leaveBody.Stop();
 
         //TimerCanvas.SetActive(false);
@@ -280,6 +246,6 @@ public class C_EnemyPossesed : MonoBehaviour
     {
         Possesed = false;
         //leaveBody.Play();
-        leaveBody.Stop();
+        //leaveBody.Stop();                                     //
     }
 }
