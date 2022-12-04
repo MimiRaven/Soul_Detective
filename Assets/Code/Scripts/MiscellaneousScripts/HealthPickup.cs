@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class HealthPickup : MonoBehaviour
 {
+    public AudioSource audioSource;
+
+    public void Start()
+    {
+        audioSource = GetComponent<AudioSource>(); 
+    }
+
     void OnTriggerEnter(Collider other)
     {
         C_PlayerHealth controller = other.GetComponent<C_PlayerHealth>();
@@ -13,9 +20,15 @@ public class HealthPickup : MonoBehaviour
             if (controller.health < controller.maxHealth)
             {
                 controller.ChangeHealth(1);
+                audioSource.Play();
                 Destroy(gameObject);
                 Debug.Log("HealthPickedUp");
             }
         }
+    }
+
+    public void Update()
+    {
+        transform.Rotate(0f, 80f * Time.deltaTime, 0f, Space.Self);
     }
 }

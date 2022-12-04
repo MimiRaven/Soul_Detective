@@ -17,10 +17,16 @@ public class CamDetectTest : MonoBehaviour
 
 	public bool EnemyInRange;
 
+	public AudioSource audioSource;
+	public AudioClip bossMusic;
+
 	void Start()
 	{
-		//StartCoroutine("FindTargetsWithDelay", .2f);
-	}
+        //StartCoroutine("FindTargetsWithDelay", .2f);
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = bossMusic;
+        audioSource.Stop();
+    }
 	void Update()
 	{
 		FindVisibleTargets();
@@ -50,11 +56,12 @@ public class CamDetectTest : MonoBehaviour
 					visibleTargets.Add(target);
 
 					EnemyInRange = true;
-				}
+                }
 			}
 		}
 	}
 
+	
 
 	public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal)
 	{

@@ -45,6 +45,15 @@ public class C_Throwableobject : MonoBehaviour
           
       }
 
+      if(collision.gameObject.tag == "Fence")
+        {
+            if(WeaponActive == true)
+            {
+                Destroy(gameObject);
+                Destroy(collision.gameObject);
+            }
+        }
+
         if (collision.gameObject.tag == "Ground")
         {
             WeaponActive = false;

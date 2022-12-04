@@ -63,6 +63,9 @@ public class C_EnemyPossesed : MonoBehaviour
 
     public ParticleSystem leaveBody;
 
+    public AudioClip Key;
+    public AudioSource audioSource;
+
     //public NavMeshAgent agent;
 
     private void Awake()
@@ -94,8 +97,8 @@ public class C_EnemyPossesed : MonoBehaviour
         EnemyCams.SetActive(false);
 
         leaveBody.Stop();
-        
 
+        audioSource.Stop();
 
     }
 
@@ -105,7 +108,8 @@ public class C_EnemyPossesed : MonoBehaviour
         {
 
             Possesed = false;
-            
+            audioSource.Play();
+
             //Destroy(gameObject);
 
             //Debug.Log("Key Touched");
@@ -174,6 +178,7 @@ public class C_EnemyPossesed : MonoBehaviour
             c_PlayerController.Possesed = false;
             Debug.Log("Enemy Posesed");
             Movement();
+            leaveBody.Play();
             //c_EnemyRoam.enabled = false;
             EnemyCams.SetActive(true);
             
@@ -181,7 +186,6 @@ public class C_EnemyPossesed : MonoBehaviour
             objectRb.drag = 1;
             WeaponWheel.SetActive(false);
             PlayerInputObject.SetActive(true);
-            //leaveBody.Play();
             //leaveBody.Stop();
 
         }

@@ -57,6 +57,8 @@ public class C_PlayerController : MonoBehaviour
 
     public GameObject PlayerInputObject;
 
+    public ParticleSystem leaveBody;
+
     //public int souls;
     //public TextMeshProUGUI soulsUI; 
 
@@ -88,6 +90,8 @@ public class C_PlayerController : MonoBehaviour
         isRunning = false;
 
         gameObject.layer = 2;
+
+        leaveBody.Stop();
 
     }
 
@@ -166,13 +170,14 @@ public class C_PlayerController : MonoBehaviour
         {
             Debug.Log("Player Posesed");
             Movement();
+            leaveBody.Play();
             PlayerCams.SetActive(true);
             Abilitys.SetActive(true);
             WeaponWheelObject.SetActive(true);
             PlayerModel.SetActive(true);
             //PlayerInputObject.SetActive(true);
             gameObject.layer = 7;
-
+            leaveBody.Stop();
         }
         else 
         { 
@@ -183,6 +188,8 @@ public class C_PlayerController : MonoBehaviour
             PlayerModel.SetActive(false);
             //PlayerInputObject.SetActive(false);
             gameObject.layer = 0;
+
+            leaveBody.Stop();
 
         }
     }
