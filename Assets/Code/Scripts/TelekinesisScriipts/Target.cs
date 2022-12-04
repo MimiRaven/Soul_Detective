@@ -15,6 +15,8 @@ public class Target : MonoBehaviour
 
     public bool Dropped;
 
+    public ParticleSystem telekinesis;
+
 
     //void FixedUpdate()
     //{
@@ -36,6 +38,11 @@ public class Target : MonoBehaviour
 
         audioSource = GetComponent<AudioSource>();
 
+    }
+
+    public void Start()
+    {
+        telekinesis.Stop();
     }
 
     public void Pull(Vector3 direction)
@@ -60,6 +67,7 @@ public class Target : MonoBehaviour
         objectRb.drag = 5;
         Debug.Log("Object Grabbed");
         Dropped = false;
+        telekinesis.Play();
     }
 
    //public void Drop(Transform objectGrabPointTransform)
@@ -86,6 +94,7 @@ public class Target : MonoBehaviour
             objectRb.drag = 0;
             objectRb.useGravity = true;
             Debug.Log("Object Dropped");
+            telekinesis.Stop();
 
 
         }

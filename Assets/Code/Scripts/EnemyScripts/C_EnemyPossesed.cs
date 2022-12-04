@@ -61,6 +61,8 @@ public class C_EnemyPossesed : MonoBehaviour
 
     public GameObject PlayerInputObject;
 
+    public ParticleSystem leaveBody;
+
     //public NavMeshAgent agent;
 
     private void Awake()
@@ -90,6 +92,8 @@ public class C_EnemyPossesed : MonoBehaviour
 
         Possesed = false;
         EnemyCams.SetActive(false);
+
+        leaveBody.Stop();
         
 
 
@@ -177,6 +181,8 @@ public class C_EnemyPossesed : MonoBehaviour
             objectRb.drag = 1;
             WeaponWheel.SetActive(false);
             PlayerInputObject.SetActive(true);
+            //leaveBody.Play();
+            //leaveBody.Stop();
 
         }
         else
@@ -189,7 +195,8 @@ public class C_EnemyPossesed : MonoBehaviour
             objectRb.drag = 100;
             WeaponWheel.SetActive(true);
             PlayerInputObject.SetActive(false);
-
+            //leaveBody.Play();
+            //leaveBody.Stop();
             //agent.enable = false;
         }
 
@@ -260,12 +267,15 @@ public class C_EnemyPossesed : MonoBehaviour
         Debug.Log("QuitPressed");
         Possesed = false;
         c_PlayerController.Possesed = true;
+        leaveBody.Play();
+        //leaveBody.Stop();
 
         //TimerCanvas.SetActive(false);
     }
     private void StopExitPossesion()
     {
         Possesed = false;
-
+        //leaveBody.Play();
+        leaveBody.Stop();
     }
 }
