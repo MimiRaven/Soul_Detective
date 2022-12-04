@@ -6,15 +6,18 @@ using UnityEngine.SceneManagement;
 public class C_PauseManager : MonoBehaviour
 {
     public PauseMenu pauseMenu;
+    public AudioSource audioSource;
 
     public void MainMenu()
     {
         SceneManager.LoadScene("Main Menu");
+        audioSource.Play();
     }
 
     public void ResetGame()
     {
-        SceneManager.LoadScene("GamePlay Demo");
+        SceneManager.LoadScene("Vertical Slice Level");
+        audioSource.Play();
     }
 
     public void Quit()
@@ -24,6 +27,7 @@ public class C_PauseManager : MonoBehaviour
 
     public void Resume()
     {
+        audioSource.Play();
         pauseMenu.isPaused = false;
         pauseMenu.DeactivateMenu();
     }
