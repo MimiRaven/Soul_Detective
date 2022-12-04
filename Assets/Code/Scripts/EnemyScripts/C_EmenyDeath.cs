@@ -7,7 +7,7 @@ public class C_EmenyDeath : MonoBehaviour
 {
     public Animator animator;
     public C_XpScore c_XpScore;
-    private bool isColliding = true;
+    public bool isColliding ;
     //public EnemyHealth enemyHealth;
 
     public float MaxHealth;
