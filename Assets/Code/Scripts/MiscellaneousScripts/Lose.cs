@@ -29,7 +29,7 @@ public class Lose : MonoBehaviour
 
     public void RestartLevel()
     {
-        SceneManager.LoadScene("GamePlay Demo");
+        SceneManager.LoadScene("Vertical Slice Level");
     }
 
     public void MainMenu()

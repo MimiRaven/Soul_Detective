@@ -23,7 +23,7 @@ public class Win : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Vertical Slice Level");
     }
 
     public void MainMenu()
