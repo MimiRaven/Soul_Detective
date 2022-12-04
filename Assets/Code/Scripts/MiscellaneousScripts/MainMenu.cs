@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
 
-  AudioSource audioSource;
+  public AudioSource audioSource;
   public Button startButton = null;
   public Button ctrlBackButton = null;
   public Button credBackButton = null;
@@ -18,6 +18,7 @@ public class MainMenu : MonoBehaviour
   {
     audioSource = GetComponent<AudioSource>();
         UnlockMouse();
+    audioSource.Stop();
   }
   public void StartGame()
   {
@@ -42,6 +43,7 @@ public class MainMenu : MonoBehaviour
     creditsScreen.SetActive(false);
 
     ctrlBackButton.Select();
+    audioSource.Play();
   }
 
   public void SeeCredits()
@@ -51,6 +53,7 @@ public class MainMenu : MonoBehaviour
     creditsScreen.SetActive(true);
 
     credBackButton.Select();
+    audioSource.Play();
   }
 
   public void GoBack()
@@ -60,6 +63,7 @@ public class MainMenu : MonoBehaviour
     creditsScreen.SetActive(false);
 
     startButton.Select();
+    audioSource.Play();
   }
 
   [SerializeField]
