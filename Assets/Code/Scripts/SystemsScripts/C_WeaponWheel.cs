@@ -18,6 +18,8 @@ public class C_WeaponWheel : MonoBehaviour
 
     public GameObject TeleTimer, RangeTimer, PosTimer;
 
+    public GameObject TeleIcon, RangeIcon, PosIcon;
+
     public Button telekinesisButton;
     public Button RangeAttackButton;
     public Button PossesionButton;
@@ -120,12 +122,17 @@ public class C_WeaponWheel : MonoBehaviour
         telekinesis.SetActive(true);
         RangeAttack.SetActive(false);
         Possesion.SetActive(false);
-    
-       telekinesisButton.interactable = false;
+
+        RangeIcon.SetActive(false);
+        TeleIcon.SetActive(true);
+        PosIcon.SetActive(false);
+
+        telekinesisButton.interactable = false;
        RangeAttackButton.interactable = true;
        PossesionButton.interactable = true;
         PosTimer.SetActive(false);
         RangeTimer.SetActive(false);
+        
     }
 
     public void RangeAttackActive()
@@ -133,7 +140,11 @@ public class C_WeaponWheel : MonoBehaviour
         RangeAttack.SetActive(true);
         telekinesis.SetActive(false);
         Possesion.SetActive(false);
-    
+
+        RangeIcon.SetActive(true);
+        TeleIcon.SetActive(false);
+        PosIcon.SetActive(false);
+
         RangeAttackButton.interactable = false;
         telekinesisButton.interactable = true;
         PossesionButton.interactable = true;
@@ -147,7 +158,11 @@ public class C_WeaponWheel : MonoBehaviour
         Possesion.SetActive(true);
         RangeAttack.SetActive(false);
         telekinesis.SetActive(false);
-    
+
+        RangeIcon.SetActive(false);
+        TeleIcon.SetActive(false);
+        PosIcon.SetActive(true);
+
         PossesionButton.interactable = false;
         RangeAttackButton.interactable = true;
         telekinesisButton.interactable = true;

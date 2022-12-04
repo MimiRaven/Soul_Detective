@@ -446,9 +446,7 @@ MonoBehaviour:
   PlayerAndCams: {fileID: 1540955074}
   TimerUI: {fileID: 646752924}
   TimerCanvas: {fileID: 646752922}
-  Door: {fileID: 420501021}
   PlayerInputObject: {fileID: 240035979}
-  leaveBody: {fileID: 0}
 --- !u!54 &62146134
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1288,6 +1286,7 @@ MonoBehaviour:
   player: {fileID: 8549948093929445301}
   Enemy: {fileID: 144333055}
   Distance_: 0
+  c_PlayerController: {fileID: 0}
 --- !u!136 &144333057
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1316,6 +1315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 4277131489947403906}
   c_XpScore: {fileID: 8276228993693881307}
+  isColliding: 0
   MaxHealth: 2
   EnemyCurrentHealth: 0
   healthBarUI: {fileID: 8454097599534891168}
@@ -1323,6 +1323,7 @@ MonoBehaviour:
   DeathTimer: 0
   TimerOn: 0
   EnemyIsDead: 0
+  audioSource: {fileID: 0}
 --- !u!114 &144333059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1345,6 +1346,8 @@ MonoBehaviour:
     m_Bits: 512
   visibleTargets: []
   EnemyInRange: 0
+  audioSource: {fileID: 0}
+  bossMusic: {fileID: 0}
 --- !u!114 &144333060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1986,7 +1989,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectGrabPointTransform: {fileID: 0}
-  selectTelekinesis: {fileID: 0}
   pushForce: 500
   Dropped: 0
   telekinesis: {fileID: 2009114741}
@@ -2763,6 +2765,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   c_XpScore: {fileID: 0}
+  isColliding: 0
   MaxHealth: 2
   EnemyCurrentHealth: 0
   healthBarUI: {fileID: 0}
@@ -2770,6 +2773,7 @@ MonoBehaviour:
   DeathTimer: 0
   TimerOn: 0
   EnemyIsDead: 0
+  audioSource: {fileID: 0}
 --- !u!143 &209568455
 CharacterController:
   m_ObjectHideFlags: 0
@@ -3289,6 +3293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   c_XpScore: {fileID: 919132147864911125}
+  isColliding: 0
   MaxHealth: 4
   EnemyCurrentHealth: 0
   healthBarUI: {fileID: 0}
@@ -3296,6 +3301,7 @@ MonoBehaviour:
   DeathTimer: 0
   TimerOn: 0
   EnemyIsDead: 0
+  audioSource: {fileID: 0}
 --- !u!143 &224955510
 CharacterController:
   m_ObjectHideFlags: 0
@@ -3710,6 +3716,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   c_XpScore: {fileID: 919132147864911125}
+  isColliding: 0
   MaxHealth: 2
   EnemyCurrentHealth: 0
   healthBarUI: {fileID: 0}
@@ -3717,6 +3724,7 @@ MonoBehaviour:
   DeathTimer: 0
   TimerOn: 0
   EnemyIsDead: 0
+  audioSource: {fileID: 0}
 --- !u!143 &257057476
 CharacterController:
   m_ObjectHideFlags: 0
@@ -6073,6 +6081,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   c_XpScore: {fileID: 919132147864911125}
+  isColliding: 0
   MaxHealth: 2
   EnemyCurrentHealth: 0
   healthBarUI: {fileID: 77918303}
@@ -6080,6 +6089,7 @@ MonoBehaviour:
   DeathTimer: 0
   TimerOn: 0
   EnemyIsDead: 0
+  audioSource: {fileID: 0}
 --- !u!143 &420459213
 CharacterController:
   m_ObjectHideFlags: 0
@@ -7245,6 +7255,7 @@ MonoBehaviour:
   player: {fileID: 8549948093929445301}
   Enemy: {fileID: 474329976}
   Distance_: 0
+  c_PlayerController: {fileID: 0}
 --- !u!136 &474329978
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7273,6 +7284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 6839916422244297978}
   c_XpScore: {fileID: 8276228993693881307}
+  isColliding: 0
   MaxHealth: 2
   EnemyCurrentHealth: 0
   healthBarUI: {fileID: 1991851200}
@@ -7280,6 +7292,7 @@ MonoBehaviour:
   DeathTimer: 0
   TimerOn: 0
   EnemyIsDead: 0
+  audioSource: {fileID: 0}
 --- !u!114 &474329980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7302,6 +7315,8 @@ MonoBehaviour:
     m_Bits: 512
   visibleTargets: []
   EnemyInRange: 0
+  audioSource: {fileID: 0}
+  bossMusic: {fileID: 0}
 --- !u!114 &474329981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7805,6 +7820,7 @@ MonoBehaviour:
   player: {fileID: 0}
   Enemy: {fileID: 496933443}
   Distance_: 0
+  c_PlayerController: {fileID: 0}
 --- !u!136 &496933445
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7833,6 +7849,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   c_XpScore: {fileID: 0}
+  isColliding: 0
   MaxHealth: 2
   EnemyCurrentHealth: 0
   healthBarUI: {fileID: 0}
@@ -7840,6 +7857,7 @@ MonoBehaviour:
   DeathTimer: 0
   TimerOn: 0
   EnemyIsDead: 0
+  audioSource: {fileID: 0}
 --- !u!114 &496933447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7862,6 +7880,8 @@ MonoBehaviour:
     m_Bits: 512
   visibleTargets: []
   EnemyInRange: 0
+  audioSource: {fileID: 0}
+  bossMusic: {fileID: 0}
 --- !u!114 &496933448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8132,7 +8152,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectGrabPointTransform: {fileID: 0}
-  selectTelekinesis: {fileID: 0}
   pushForce: 500
   Dropped: 0
   telekinesis: {fileID: 0}
@@ -10985,6 +11004,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   c_XpScore: {fileID: 0}
+  isColliding: 0
   MaxHealth: 2
   EnemyCurrentHealth: 0
   healthBarUI: {fileID: 0}
@@ -10992,6 +11012,7 @@ MonoBehaviour:
   DeathTimer: 0
   TimerOn: 0
   EnemyIsDead: 0
+  audioSource: {fileID: 0}
 --- !u!143 &703506540
 CharacterController:
   m_ObjectHideFlags: 0
@@ -13434,6 +13455,8 @@ MonoBehaviour:
   animator: {fileID: 252014946}
   playerInput: {fileID: 1452071668}
   isAttacking: 0
+  RightHand: {fileID: 0}
+  LeftHand: {fileID: 0}
   audioClipArray: []
   animationFinishedTime: 0.9
   IsAbleToAttack: 0
@@ -13462,9 +13485,7 @@ MonoBehaviour:
   PlayerAndCams: {fileID: 1540955074}
   TimerUI: {fileID: 646752924}
   TimerCanvas: {fileID: 646752922}
-  Door: {fileID: 420501021}
   PlayerInputObject: {fileID: 1452071666}
-  leaveBody: {fileID: 1221903536}
 --- !u!54 &916383481
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13753,7 +13774,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectGrabPointTransform: {fileID: 0}
-  selectTelekinesis: {fileID: 0}
   pushForce: 500
   Dropped: 0
   telekinesis: {fileID: 0}
@@ -15011,6 +15031,8 @@ MonoBehaviour:
     m_Bits: 512
   visibleTargets: []
   EnemyInRange: 0
+  audioSource: {fileID: 0}
+  bossMusic: {fileID: 0}
 --- !u!136 &1030491119
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -15039,6 +15061,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   c_XpScore: {fileID: 0}
+  isColliding: 0
   MaxHealth: 2
   EnemyCurrentHealth: 0
   healthBarUI: {fileID: 0}
@@ -15046,6 +15069,7 @@ MonoBehaviour:
   DeathTimer: 0
   TimerOn: 0
   EnemyIsDead: 0
+  audioSource: {fileID: 0}
 --- !u!114 &1030491121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15064,6 +15088,7 @@ MonoBehaviour:
   player: {fileID: 0}
   Enemy: {fileID: 1030491114}
   Distance_: 0
+  c_PlayerController: {fileID: 0}
 --- !u!1 &1033133835 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3095888958151098, guid: 9b1790ddc868248478d47e21117a825e, type: 3}
@@ -16749,11 +16774,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7166903911999502661, guid: b4b7e3343d0e2224ab3b283158f8c3fb, type: 3}
   m_PrefabInstance: {fileID: 1111418126}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &1221903536 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 7166903911999502660, guid: b4b7e3343d0e2224ab3b283158f8c3fb, type: 3}
-  m_PrefabInstance: {fileID: 1111418126}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1225498715
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18184,7 +18204,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectGrabPointTransform: {fileID: 0}
-  selectTelekinesis: {fileID: 0}
   pushForce: 500
   Dropped: 0
   telekinesis: {fileID: 0}
@@ -20087,7 +20106,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectGrabPointTransform: {fileID: 0}
-  selectTelekinesis: {fileID: 0}
   pushForce: 500
   Dropped: 0
   telekinesis: {fileID: 311111225}
@@ -20936,6 +20954,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 9151151482519671073}
+  audioSource: {fileID: 0}
 --- !u!4 &1576326054
 Transform:
   m_ObjectHideFlags: 0
@@ -21015,6 +21034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0a9d51be3abbbc469ff8c7a01f06468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
 --- !u!135 &1616951933
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -23015,9 +23035,7 @@ MonoBehaviour:
   PlayerAndCams: {fileID: 1540955074}
   TimerUI: {fileID: 646752924}
   TimerCanvas: {fileID: 646752922}
-  Door: {fileID: 420501021}
   PlayerInputObject: {fileID: 348857214}
-  leaveBody: {fileID: 2070163428}
 --- !u!54 &1771102206
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -23081,6 +23099,8 @@ MonoBehaviour:
   animator: {fileID: 4277131490510917069}
   playerInput: {fileID: 348857216}
   isAttacking: 0
+  RightHand: {fileID: 0}
+  LeftHand: {fileID: 0}
   audioClipArray: []
   animationFinishedTime: 0.9
   IsAbleToAttack: 0
@@ -23146,9 +23166,7 @@ MonoBehaviour:
   PlayerAndCams: {fileID: 1540955074}
   TimerUI: {fileID: 646752924}
   TimerCanvas: {fileID: 646752922}
-  Door: {fileID: 420501021}
   PlayerInputObject: {fileID: 1150016736}
-  leaveBody: {fileID: 0}
 --- !u!54 &1780823801
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -24715,7 +24733,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1883224067}
   m_LocalRotation: {x: 0.0043639075, y: 0, z: 0, w: 0.99999046}
-  m_LocalPosition: {x: -2.2387114, y: 1.8176126, z: -5.286438}
+  m_LocalPosition: {x: -2.2381968, y: 1.8176126, z: -5.286438}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25621,9 +25639,7 @@ MonoBehaviour:
   PlayerAndCams: {fileID: 1540955074}
   TimerUI: {fileID: 646752924}
   TimerCanvas: {fileID: 646752922}
-  Door: {fileID: 420501021}
   PlayerInputObject: {fileID: 1884547421}
-  leaveBody: {fileID: 0}
 --- !u!1001 &1948814176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26781,11 +26797,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7166903911999502661, guid: b4b7e3343d0e2224ab3b283158f8c3fb, type: 3}
   m_PrefabInstance: {fileID: 1903570801}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &2070163428 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 7166903911999502660, guid: b4b7e3343d0e2224ab3b283158f8c3fb, type: 3}
-  m_PrefabInstance: {fileID: 1903570801}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2074756678
 GameObject:
   m_ObjectHideFlags: 0
@@ -26923,9 +26934,7 @@ MonoBehaviour:
   PlayerAndCams: {fileID: 0}
   TimerUI: {fileID: 0}
   TimerCanvas: {fileID: 0}
-  Door: {fileID: 0}
   PlayerInputObject: {fileID: 0}
-  leaveBody: {fileID: 0}
 --- !u!114 &2090121346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27238,7 +27247,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3095888213859889}
   m_LocalRotation: {x: 0.0043639075, y: -0, z: -0, w: 0.99999046}
-  m_LocalPosition: {x: -5.2987113, y: -0.022387385, z: -8.596437}
+  m_LocalPosition: {x: -5.298197, y: -0.022387385, z: -8.596437}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -27475,7 +27484,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3095889322225139}
   m_LocalRotation: {x: 0.028518954, y: -0.030526083, z: 0.0008713329, w: 0.9991267}
-  m_LocalPosition: {x: -4.3577595, y: 0.4138664, z: -5.2630663}
+  m_LocalPosition: {x: -4.3562174, y: 0.4138664, z: -5.262972}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -29072,6 +29081,7 @@ MonoBehaviour:
   CurrentStamina: 0
   MaxStamina: 2
   PlayerInputObject: {fileID: 1318148781}
+  leaveBody: {fileID: 0}
 --- !u!95 &919132147864911116
 Animator:
   serializedVersion: 4
@@ -29263,6 +29273,7 @@ MonoBehaviour:
   audioClipArray: []
   animationFinishedTime: 0.9
   IsAbleToAttack: 0
+  AttackColider: {fileID: 0}
 --- !u!114 &919132147864911127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33973,7 +33984,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectGrabPointTransform: {fileID: 0}
-  selectTelekinesis: {fileID: 0}
   pushForce: 500
   Dropped: 0
   telekinesis: {fileID: 1829073893}
@@ -34136,6 +34146,7 @@ MonoBehaviour:
   audioClipArray: []
   animationFinishedTime: 0.9
   IsAbleToAttack: 0
+  AttackColider: {fileID: 0}
 --- !u!4 &2754586302235039059
 Transform:
   m_ObjectHideFlags: 0
@@ -34762,7 +34773,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &2811771818345630241
 GameObject:
   m_ObjectHideFlags: 0
@@ -39430,6 +39441,7 @@ MonoBehaviour:
   CurrentStamina: 0
   MaxStamina: 2
   PlayerInputObject: {fileID: 1318148781}
+  leaveBody: {fileID: 0}
 --- !u!4 &4981672675248981361
 Transform:
   m_ObjectHideFlags: 0
@@ -42398,6 +42410,8 @@ MonoBehaviour:
     m_Bits: 512
   visibleTargets: []
   EnemyInRange: 0
+  audioSource: {fileID: 0}
+  bossMusic: {fileID: 0}
 --- !u!114 &6435131421770619925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42412,6 +42426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 8326926370289276571}
   c_XpScore: {fileID: 8276228993693881307}
+  isColliding: 0
   MaxHealth: 2
   EnemyCurrentHealth: 0
   healthBarUI: {fileID: 3178645335774807479}
@@ -42419,6 +42434,7 @@ MonoBehaviour:
   DeathTimer: 0
   TimerOn: 0
   EnemyIsDead: 0
+  audioSource: {fileID: 0}
 --- !u!136 &6435131421770619926
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -42451,6 +42467,7 @@ MonoBehaviour:
   player: {fileID: 8549948093929445301}
   Enemy: {fileID: 6435131421770620392}
   Distance_: 0
+  c_PlayerController: {fileID: 0}
 --- !u!1 &6435131421770620392
 GameObject:
   m_ObjectHideFlags: 0
