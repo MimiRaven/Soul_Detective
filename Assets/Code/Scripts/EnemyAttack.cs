@@ -14,7 +14,9 @@ public class EnemyAttack : MonoBehaviour
     public GameObject Enemy;
     public float Distance_;
 
-   // public GameObject Weapon;
+    public C_PlayerController c_PlayerController;
+
+    // public GameObject Weapon;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +32,8 @@ public class EnemyAttack : MonoBehaviour
 
         Distance_ = Vector3.Distance(player.transform.position, Enemy.transform.position);
 
-        if(Distance_ < 5)
+        
+        if(Distance_ < 5 && c_PlayerController.Possesed == true)
         {
             IsAttacking = true;
         }

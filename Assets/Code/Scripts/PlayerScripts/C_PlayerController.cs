@@ -86,6 +86,9 @@ public class C_PlayerController : MonoBehaviour
 
         CurrentStamina = MaxStamina;
         isRunning = false;
+
+        gameObject.layer = 2;
+
     }
 
     void RunningFunction()
@@ -168,6 +171,8 @@ public class C_PlayerController : MonoBehaviour
             WeaponWheelObject.SetActive(true);
             PlayerModel.SetActive(true);
             //PlayerInputObject.SetActive(true);
+            gameObject.layer = 7;
+
         }
         else 
         { 
@@ -177,6 +182,8 @@ public class C_PlayerController : MonoBehaviour
             WeaponWheelObject.SetActive(false);
             PlayerModel.SetActive(false);
             //PlayerInputObject.SetActive(false);
+            gameObject.layer = 0;
+
         }
     }
 
