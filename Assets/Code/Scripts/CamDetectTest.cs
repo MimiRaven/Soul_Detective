@@ -22,7 +22,7 @@ public class CamDetectTest : MonoBehaviour
 		//StartCoroutine("FindTargetsWithDelay", .2f);
 	}
 	void Update()
-    {
+	{
 		FindVisibleTargets();
 		//EnemyInRange = false;
 	}
@@ -46,9 +46,9 @@ public class CamDetectTest : MonoBehaviour
 				if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
 				{
 
-					
+
 					visibleTargets.Add(target);
-					
+
 					EnemyInRange = true;
 				}
 			}
