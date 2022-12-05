@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
   public Button startButton = null;
   public Button ctrlBackButton = null;
   public Button credBackButton = null;
+  public Button quitButton = null;
   
 
 
@@ -27,7 +28,9 @@ public class MainMenu : MonoBehaviour
 
   public void Quit()
   {
-    Application.Quit();
+        quitButton.Select();
+        audioSource.Play();
+        Application.Quit();
   }
 
     void UnlockMouse()

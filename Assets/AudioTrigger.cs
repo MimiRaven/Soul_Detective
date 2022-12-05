@@ -28,11 +28,11 @@ public class AudioTrigger : MonoBehaviour
         }
     }
 
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            audioSource.Stop();
-        }
-    }
+   public void OnTriggerExit(Collider other)
+   {
+       if (other.tag == "Player")
+       {
+           audioSource.Stop();
+       }
+   }
 }

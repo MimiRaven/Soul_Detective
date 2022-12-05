@@ -13,7 +13,7 @@ public class KeyInventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -22,6 +22,7 @@ public class KeyInventory : MonoBehaviour
         if(KeyCount == 2)
         {
             Door.SetActive(false);
+            audioSource.Play();
         }
 
        
