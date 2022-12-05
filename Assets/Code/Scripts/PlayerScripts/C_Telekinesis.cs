@@ -47,6 +47,8 @@ public class C_Telekinesis : MonoBehaviour
     public TextMeshProUGUI TimerUI;
     public GameObject TimerCanvas;
 
+    public AudioSource audioSource;
+
     private void Awake()
     {
         PullAction = playerInput.actions["PullObject"];
@@ -126,6 +128,8 @@ public class C_Telekinesis : MonoBehaviour
                 
                         ObjectGrabbed = true;
                         GrabObject = false;
+
+                        audioSource.Play();
                     }
                 }
 
@@ -151,6 +155,7 @@ public class C_Telekinesis : MonoBehaviour
                         TimerOn = true;
                         TimeLeft = SetCoolDownTime;
                         Debug.Log("RayCast Hit Obj");
+                        audioSource.Stop();
                     }
                 }
             }

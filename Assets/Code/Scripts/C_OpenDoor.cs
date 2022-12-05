@@ -9,6 +9,8 @@ public class C_OpenDoor : MonoBehaviour
     public C_EnemyPossesed c_EnemyPossesed;
     public C_PlayerController c_PlayerController;
 
+    public AudioSource audioSource;
+
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Key")
@@ -18,6 +20,7 @@ public class C_OpenDoor : MonoBehaviour
             keyInventory.KeyCount += 1;
             c_EnemyPossesed.Possesed = false;
             c_PlayerController.Possesed = true;
+            audioSource.Play();
         }
     }
 }

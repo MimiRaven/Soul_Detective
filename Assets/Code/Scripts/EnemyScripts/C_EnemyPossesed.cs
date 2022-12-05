@@ -63,10 +63,11 @@ public class C_EnemyPossesed : MonoBehaviour
 
     //public ParticleSystem leaveBody;
 
-   // public AudioClip Key;
+    // public AudioClip Key;
     //public AudioSource audioSource;
 
-   
+    public AudioSource audioSource;
+
 
     private void Awake()
     {
@@ -153,7 +154,7 @@ public class C_EnemyPossesed : MonoBehaviour
             WeaponWheel.SetActive(false);
             PlayerInputObject.SetActive(true);
             //leaveBody.Stop();
-
+            audioSource.Play();
         }
         else
         {
@@ -168,6 +169,7 @@ public class C_EnemyPossesed : MonoBehaviour
             //leaveBody.Play();
             //leaveBody.Stop();
             //agent.enable = false;
+            audioSource.Stop();
         }
 
     }

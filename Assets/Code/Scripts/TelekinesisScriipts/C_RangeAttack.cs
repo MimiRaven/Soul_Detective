@@ -59,6 +59,10 @@ public class C_RangeAttack : MonoBehaviour
     public TextMeshProUGUI TimerUI;
     public GameObject TimerCanvas;
 
+    public AudioSource HoldSound;
+    public AudioSource ThrowSound;
+
+
 
     void Awake()
     {
@@ -104,6 +108,7 @@ public class C_RangeAttack : MonoBehaviour
         {
             ThrowRay = true;
             //ObjectGrabbed = false;
+            
         }
     }
     void ThrowStop()
@@ -207,7 +212,7 @@ public class C_RangeAttack : MonoBehaviour
                             StartCoroutine(PullObject(hit.transform));
                             ObjectGrabbed = true;
                             ThrowRay = false;
-                           
+                            HoldSound.Play();
                         }
                     }
                 }
@@ -225,6 +230,8 @@ public class C_RangeAttack : MonoBehaviour
                         GrabRay = false;
                         TimerOn = true;
                         TimeLeft = SetCoolDownTime;
+                        HoldSound.Stop();
+                        ThrowSound.Play();
                     }
                 }
 

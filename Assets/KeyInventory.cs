@@ -6,6 +6,10 @@ public class KeyInventory : MonoBehaviour
 {
     public float KeyCount;
     public GameObject Door;
+
+    public AudioSource audioSource;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,5 +23,7 @@ public class KeyInventory : MonoBehaviour
         {
             Door.SetActive(false);
         }
+
+       
     }
 }
