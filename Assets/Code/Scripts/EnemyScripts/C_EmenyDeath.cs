@@ -22,7 +22,7 @@ public class C_EmenyDeath : MonoBehaviour
     public bool EnemyIsDead;
 
     public AudioSource audioSource;
-    private AudioClip clip;
+    //private AudioClip clip;
 
     void Start()
     {
@@ -31,8 +31,8 @@ public class C_EmenyDeath : MonoBehaviour
         DeathTimer = 5;
         TimerOn = false;
         EnemyIsDead = false;
-        audioSource = GetComponent<AudioSource>(); 
-        audioSource.Stop();
+        //audioSource = GetComponent<AudioSource>(); 
+        //audioSource.Stop();
     }
     
 
@@ -76,6 +76,8 @@ public class C_EmenyDeath : MonoBehaviour
             // Destroy(gameObject);
             //script.TakeDamage(1);
             Debug.Log("Enemy Damaged");
+
+            audioSource.Play();
         }
 
 
@@ -104,7 +106,7 @@ public class C_EmenyDeath : MonoBehaviour
     void EnemyTakeDamage()
     {
         EnemyCurrentHealth -= 1;
-        audioSource.PlayOneShot(clip);
+        //audioSource.PlayOneShot(clip);
     }
 
     void BoostedWeaponDamage()
