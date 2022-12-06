@@ -43,7 +43,8 @@ GameObject:
   - component: {fileID: 4851396752140440490}
   - component: {fileID: 7381510004144637211}
   - component: {fileID: 2716702660506810264}
-  - component: {fileID: 7911084245203148515}
+  - component: {fileID: 1353105324415533437}
+  - component: {fileID: 3993571104927033714}
   m_Layer: 0
   m_Name: stone_cornerwall
   m_TagString: Untagged
@@ -116,8 +117,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7911084245203148515
-CapsuleCollider:
+--- !u!65 &1353105324415533437
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -126,7 +127,19 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1.044647
-  m_Height: 3.138218
-  m_Direction: 1
-  m_Center: {x: -0.00000023841858, y: 0, z: -0.30130553}
+  serializedVersion: 2
+  m_Size: {x: 2.6223137, y: 3.138218, z: 0.54097176}
+  m_Center: {x: 0.034795403, y: 0, z: -0.83718586}
+--- !u!65 &3993571104927033714
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6747350411210465038}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.58289576, y: 3.138218, z: 1.7614925}
+  m_Center: {x: -0.98494077, y: 0, z: 0.27920282}
