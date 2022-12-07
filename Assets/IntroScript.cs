@@ -2,45 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 public class IntroScript : MonoBehaviour
 {
-	public float setTime;
-	public float TimeLeft;
-	public bool TimerOn;
-	// Start is called before the first frame update
+	public VideoPlayer VideoPlayer; // Drag & Drop the GameObject holding the VideoPlayer component
+	public string SceneName;
+
 	void Start()
 	{
-		TimerOn = true;
-		TimeLeft = 44;
+		VideoPlayer.loopPointReached += LoadScene;
 	}
-
-	// Update is called once per frame
-	void Update()
+	void LoadScene(VideoPlayer vp)
 	{
-		Timmer();
-
+		SceneManager.LoadScene("Vertical Slice Level");
 	}
 
-	void Timmer()
-	{
 
-		if (TimerOn)
-		{
 
-			if (TimeLeft > 0)
-			{
-				TimeLeft -= Time.deltaTime;
 
-			}
-			else
-			{
-				Debug.Log("Time is Up");
-				TimerOn = false;
-				SceneManager.LoadScene("Vertical Slice Level");
 
-			}
 
-		}
-	}
+
+
+
+
+
+
+
 }
+
+
+
+
+

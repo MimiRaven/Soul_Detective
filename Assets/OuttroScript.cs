@@ -2,46 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 public class OuttroScript : MonoBehaviour
 {
 
-    public float setTime;
-    public float TimeLeft;
-    public bool TimerOn;
-    // Start is called before the first frame update
-    void Start()
-    {
-		TimerOn = true;
-		TimeLeft = 17;
-    }
+	public VideoPlayer VideoPlayer; // Drag & Drop the GameObject holding the VideoPlayer component
+	public string SceneName;
 
-    // Update is called once per frame
-    void Update()
-    {
-		Timmer();
-		
-    }
-
-	void Timmer()
+	void Start()
 	{
-
-		if (TimerOn)
-		{
-
-			if (TimeLeft > 0)
-			{
-				TimeLeft -= Time.deltaTime;
-
-			}
-			else
-			{
-				Debug.Log("Time is Up");
-				TimerOn = false;
-				SceneManager.LoadScene("Win Screen");
-
-			}
-
-		}
+		VideoPlayer.loopPointReached += LoadScene;
 	}
+	void LoadScene(VideoPlayer vp)
+	{
+		SceneManager.LoadScene("Win Screen");
+	}
+
+	
 }
