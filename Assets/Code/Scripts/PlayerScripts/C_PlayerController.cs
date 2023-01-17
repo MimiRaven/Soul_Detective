@@ -52,6 +52,7 @@ public class C_PlayerController : MonoBehaviour
     public GameObject Abilitys,WeaponWheelObject,PlayerModel;
 
     public bool isRunning;
+    public bool isDodging;
     public float CurrentStamina;
     public float MaxStamina;
 
@@ -95,10 +96,12 @@ public class C_PlayerController : MonoBehaviour
 
     }
 
+   
+
     void RunningFunction()
     {
         Sprinter.instance.SetValue(CurrentStamina / MaxStamina);
-        if (isRunning)
+        if (isRunning & !isDodging)
         {
             if (WeaponWheel == false)
             {
@@ -120,10 +123,7 @@ public class C_PlayerController : MonoBehaviour
             CurrentStamina -= Time.deltaTime;
 
         }
-        else
-        {
-            playerSpeed = 5;
-        }
+        
     }
 
     void Resting()
@@ -135,6 +135,33 @@ public class C_PlayerController : MonoBehaviour
         }
     }
 
+   //void DodgeFunction()
+   //{
+   //    //Sprinter.instance.SetValue(CurrentStamina / MaxStamina);
+   //   if (isDodging & !isRunning)
+   //   {
+   //       if (WeaponWheel == false)
+   //       {
+   //           ActiveDodge();
+   //       }
+   //   }
+   //   else
+   //   {
+   //       Resting();
+   //   }
+   //}
+   //
+   //void ActiveDodge()
+   //{
+   //   if (CurrentStamina >= 0)
+   //   {
+   //       playerSpeed = 30;
+   //       CurrentStamina -= Time.deltaTime;
+   //   
+   //   }
+   //   
+   //}
+
     void Awake()
     {
         //DontDestroyOnLoad(this.gameObject);
@@ -142,8 +169,10 @@ public class C_PlayerController : MonoBehaviour
 
     void Update()
     {
+        Sprinter.instance.SetValue(CurrentStamina / MaxStamina);
         IsPossesed();
         RunningFunction();
+       // DodgeFunction();
         //soulsUI.text = "Souls: " + souls.ToString();
 
         if (boosting)

@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.ProBuilder.Shapes;
 
 public class C_PlayerSprint : MonoBehaviour
 {
@@ -12,10 +14,19 @@ public class C_PlayerSprint : MonoBehaviour
     [SerializeField]
     private PlayerInput playerInput;
 
+    public float pushForce = 0;
+
+    public Rigidbody rb;
+    //public float Magnitude;
+
+    //Vector3 ImpulseVector = new Vector3(0, 0, 0);
+
     // Start is called before the first frame update
     void Start()
     {
-    
+      // rb = GetComponent<Rigidbody>();
+        //m_Rigidbody = GetComponent<Rigidbody>();
+
     }
 
     void Awake()
@@ -29,7 +40,8 @@ public class C_PlayerSprint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Sprinter.instance.SetValue(stamina / maxStamina);
+        
+
     }
 
     private void OnEnable()
@@ -63,14 +75,47 @@ public class C_PlayerSprint : MonoBehaviour
        c_PlayerController.isRunning = false;
     }
 
+ 
     public void StartDodge()
     {
-       // GetComponent<Rigidbody>().AddForce(transform.forward * 1000);
-        
+       // Doudge();
+
+       // c_PlayerController.isDodging = true;
+        Debug.Log("Doudge pressed");
+        DoudgeFunction();
+
+        //rb.AddForce(transform.forward * 100);
+
+        //rb.AddForce(0, 0, pushForce, ForceMode.Impulse);
     }
 
     public void StopDodge()
     {
+        //c_PlayerController.isDodging = false;
+    }
+
+   public void DoudgeFunction()
+   {
+       if(c_PlayerController.CurrentStamina >=0)
+       {
+         c_PlayerController.playerSpeed = 500;
+         c_PlayerController.CurrentStamina -= 1;
+   
+       }
+   }
+
+   //public void Doudge(Vector3 direction)
+   //{
+   //    
+   //    Vector3 force = direction * pushForce + Vector3.zero * 500;
+   //    this.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
+   //    this.transform.parent = null;
+   //}
+
+    private void FixedUpdate()
+    {
+        //rb.AddForce(transform.forward * 100);
 
     }
+
 }
