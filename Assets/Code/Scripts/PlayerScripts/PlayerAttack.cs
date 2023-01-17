@@ -37,22 +37,22 @@ public class PlayerAttack : MonoBehaviour
 
     public void Update()
     {
-        if(isAttacking && animator.GetCurrentAnimatorStateInfo(1).normalizedTime >= animationFinishedTime)
-        {
-            isAttacking = false;
-        }
+       if(isAttacking && animator.GetCurrentAnimatorStateInfo(1).normalizedTime >= animationFinishedTime)
+       {
+           isAttacking = false;
+       }
 
 
-        if (isAttacking == true)
-        {
-            AttackColider.SetActive(true);
-            
-        }
-        else
-        {
-            AttackColider.SetActive(false);
-           
-        }
+        //if (isAttacking == true)
+        //{
+        //    AttackColider.SetActive(true);
+        //    
+        //}
+        //else
+        //{
+        //    AttackColider.SetActive(false);
+        //   
+        //}
 
 
     }
@@ -86,9 +86,19 @@ public class PlayerAttack : MonoBehaviour
 
     public void AttackStop()
     {
-
+        //isAttacking = false;
     }
 
+
+    public void ColliderON()
+    {
+        AttackColider.SetActive(true);
+    }
+
+    public void ColliderOff()
+    {
+        AttackColider.SetActive(false);
+    }
 
     public void Attacking()
     {

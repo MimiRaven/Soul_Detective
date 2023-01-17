@@ -67,7 +67,8 @@ public class C_EmenyDeath : MonoBehaviour
     void OnCollisionEnter(Collision col)
     {
         if (isColliding) return;
-        isColliding = true;
+        isColliding = false;
+        Debug.Log("Collided");
 
         if (col.collider.tag == "weapon")
         {
@@ -76,7 +77,7 @@ public class C_EmenyDeath : MonoBehaviour
             // Destroy(gameObject);
             //script.TakeDamage(1);
             Debug.Log("Enemy Damaged");
-
+            isColliding = true;
             audioSource.Play();
         }
 
@@ -103,9 +104,22 @@ public class C_EmenyDeath : MonoBehaviour
 
     }
 
+   //void OnCollisionExit(Collision col)
+   //{
+   //    if (col.collider.tag == "weapon")
+   //    {
+   //        isColliding = false;
+   //        Debug.Log("Collison Exit");
+   //    }
+   //
+   //
+   //}
+
+
     void EnemyTakeDamage()
     {
         EnemyCurrentHealth -= 1;
+
         //audioSource.PlayOneShot(clip);
     }
 
