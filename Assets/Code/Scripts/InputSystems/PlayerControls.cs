@@ -197,6 +197,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dodge"",
+                    ""type"": ""Button"",
+                    ""id"": ""80a1ab44-e826-4f36-ab72-7280f6a9d28b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -639,6 +648,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""StopPossesion"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""af5ce87e-fb82-4ee3-bda5-5dcddcc0351b"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dodge"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -727,6 +747,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Quit = m_Player.FindAction("Quit", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_NavigationArrow = m_Player.FindAction("NavigationArrow", throwIfNotFound: true);
+        m_Player_Dodge = m_Player.FindAction("Dodge", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Pause = m_Menu.FindAction("Pause", throwIfNotFound: true);
@@ -808,6 +829,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Quit;
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_NavigationArrow;
+    private readonly InputAction m_Player_Dodge;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -831,6 +853,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Quit => m_Wrapper.m_Player_Quit;
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputAction @NavigationArrow => m_Wrapper.m_Player_NavigationArrow;
+        public InputAction @Dodge => m_Wrapper.m_Player_Dodge;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -897,6 +920,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @NavigationArrow.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNavigationArrow;
                 @NavigationArrow.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNavigationArrow;
                 @NavigationArrow.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNavigationArrow;
+                @Dodge.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDodge;
+                @Dodge.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDodge;
+                @Dodge.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDodge;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -958,6 +984,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @NavigationArrow.started += instance.OnNavigationArrow;
                 @NavigationArrow.performed += instance.OnNavigationArrow;
                 @NavigationArrow.canceled += instance.OnNavigationArrow;
+                @Dodge.started += instance.OnDodge;
+                @Dodge.performed += instance.OnDodge;
+                @Dodge.canceled += instance.OnDodge;
             }
         }
     }
@@ -1025,6 +1054,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnQuit(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnNavigationArrow(InputAction.CallbackContext context);
+        void OnDodge(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {

@@ -7,6 +7,7 @@ public class C_PlayerSprint : MonoBehaviour
 {
     public C_PlayerController c_PlayerController;
     private InputAction sprintAction;
+    private InputAction dodgeAction;
 
     [SerializeField]
     private PlayerInput playerInput;
@@ -20,6 +21,9 @@ public class C_PlayerSprint : MonoBehaviour
     void Awake()
     {
         sprintAction = playerInput.actions["Sprint"];
+        dodgeAction = playerInput.actions["Dodge"];
+
+
     }
 
     // Update is called once per frame
@@ -32,12 +36,18 @@ public class C_PlayerSprint : MonoBehaviour
     {
         sprintAction.performed += _ => StartRun();
         sprintAction.canceled += _ => CancelRun();
+
+        dodgeAction.performed += _ => StartDodge();
+        dodgeAction.canceled += _ => StopDodge();
     }
 
     private void OnDisable()
     {
         sprintAction.performed -= _ => StartRun();
         sprintAction.canceled -= _ => CancelRun();
+
+        dodgeAction.performed -= _ => StartDodge();
+        dodgeAction.canceled -= _ => StopDodge();
     }
 
 
@@ -51,5 +61,16 @@ public class C_PlayerSprint : MonoBehaviour
     {
         Debug.Log("NotRunning");
        c_PlayerController.isRunning = false;
+    }
+
+    public void StartDodge()
+    {
+       // GetComponent<Rigidbody>().AddForce(transform.forward * 1000);
+        
+    }
+
+    public void StopDodge()
+    {
+
     }
 }
