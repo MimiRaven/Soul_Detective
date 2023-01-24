@@ -43,7 +43,12 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Level 3");
     }
 
-  public void Quit()
+    public void GamePlayDemo()
+    {
+        SceneManager.LoadScene("GamePlay Demo");
+    }
+
+    public void Quit()
   {
         quitButton.Select();
         audioSource.Play();
@@ -56,13 +61,24 @@ public class MainMenu : MonoBehaviour
         Cursor.visible = true;
     }
 
+    public void SeeLevels()
+    {
+        levelsScreen.SetActive(true);
+        mainMenuScreen.SetActive(false);
+        ctrlsScreen.SetActive(false);
+        creditsScreen.SetActive(false);
+
+        ctrlBackButton.Select();
+        audioSource.Play();
+    }
   public void SeeControls()
   {
     mainMenuScreen.SetActive(false);
     ctrlsScreen.SetActive(true);
     creditsScreen.SetActive(false);
+        levelsScreen.SetActive(false);
 
-    ctrlBackButton.Select();
+        ctrlBackButton.Select();
     audioSource.Play();
   }
 
@@ -71,8 +87,9 @@ public class MainMenu : MonoBehaviour
     mainMenuScreen.SetActive(false);
     ctrlsScreen.SetActive(false);
     creditsScreen.SetActive(true);
+        levelsScreen.SetActive(false);
 
-    credBackButton.Select();
+        credBackButton.Select();
     audioSource.Play();
   }
 
@@ -81,11 +98,12 @@ public class MainMenu : MonoBehaviour
     mainMenuScreen.SetActive(true);
     ctrlsScreen.SetActive(false);
     creditsScreen.SetActive(false);
+        levelsScreen.SetActive(false);
 
-    startButton.Select();
+        startButton.Select();
     audioSource.Play();
   }
 
   [SerializeField]
-  GameObject mainMenuScreen = null, ctrlsScreen = null, creditsScreen = null;
+  GameObject mainMenuScreen = null, ctrlsScreen = null, creditsScreen = null, levelsScreen = null;
 }

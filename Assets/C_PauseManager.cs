@@ -38,6 +38,14 @@ public class C_PauseManager : MonoBehaviour
     {
         SceneManager.LoadScene("Level 3");
     }
+    public void GamePlayDemo()
+    {
+        SceneManager.LoadScene("GamePlay Demo");
+    }
+    public void VerticalSlice()
+    {
+        SceneManager.LoadScene("IntroCutscene");
+    }
 
     public void ResetGame()
     {
