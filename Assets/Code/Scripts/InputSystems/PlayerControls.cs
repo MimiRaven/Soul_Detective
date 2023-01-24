@@ -206,6 +206,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SkipCutsceen"",
+                    ""type"": ""Button"",
+                    ""id"": ""224f40dd-a6bf-4d67-be94-b6d8424cf306"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -670,6 +679,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Dodge"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c035987e-bbcc-47aa-97d7-fcb641825cf9"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SkipCutsceen"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -759,6 +779,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_NavigationArrow = m_Player.FindAction("NavigationArrow", throwIfNotFound: true);
         m_Player_Dodge = m_Player.FindAction("Dodge", throwIfNotFound: true);
+        m_Player_SkipCutsceen = m_Player.FindAction("SkipCutsceen", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Pause = m_Menu.FindAction("Pause", throwIfNotFound: true);
@@ -841,6 +862,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_NavigationArrow;
     private readonly InputAction m_Player_Dodge;
+    private readonly InputAction m_Player_SkipCutsceen;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -865,6 +887,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputAction @NavigationArrow => m_Wrapper.m_Player_NavigationArrow;
         public InputAction @Dodge => m_Wrapper.m_Player_Dodge;
+        public InputAction @SkipCutsceen => m_Wrapper.m_Player_SkipCutsceen;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -934,6 +957,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Dodge.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDodge;
                 @Dodge.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDodge;
                 @Dodge.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDodge;
+                @SkipCutsceen.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkipCutsceen;
+                @SkipCutsceen.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkipCutsceen;
+                @SkipCutsceen.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkipCutsceen;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -998,6 +1024,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Dodge.started += instance.OnDodge;
                 @Dodge.performed += instance.OnDodge;
                 @Dodge.canceled += instance.OnDodge;
+                @SkipCutsceen.started += instance.OnSkipCutsceen;
+                @SkipCutsceen.performed += instance.OnSkipCutsceen;
+                @SkipCutsceen.canceled += instance.OnSkipCutsceen;
             }
         }
     }
@@ -1066,6 +1095,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnSprint(InputAction.CallbackContext context);
         void OnNavigationArrow(InputAction.CallbackContext context);
         void OnDodge(InputAction.CallbackContext context);
+        void OnSkipCutsceen(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {
