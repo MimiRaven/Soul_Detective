@@ -12,8 +12,10 @@ public class MainMenu : MonoBehaviour
   public Button ctrlBackButton = null;
   public Button credBackButton = null;
   public Button quitButton = null;
+  public Button Level1Button = null;
+  public Button Level2Button = null;
+  public Button Level3Button = null;
   
-
 
   void Start()
   {
@@ -25,6 +27,21 @@ public class MainMenu : MonoBehaviour
   {
     SceneManager.LoadScene("IntroCutscene"); 
   }
+
+  public void Level1()
+    {
+        SceneManager.LoadScene("Level 1");
+    }
+
+    public void Level2()
+    {
+        SceneManager.LoadScene("Level 2");
+    }
+
+    public void Level3()
+    {
+        SceneManager.LoadScene("Level 3");
+    }
 
   public void Quit()
   {

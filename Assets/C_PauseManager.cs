@@ -13,12 +13,30 @@ public class C_PauseManager : MonoBehaviour
     public Button mainmenuButton = null;
     public Button resetButton = null;
     public Button quitButton = null;
+    public Button Level1Button = null;
+    public Button Level2Button = null;
+    public Button Level3Button = null;
 
     public void MainMenu()
     {
         mainmenuButton.Select();
         audioSource.Play();
         SceneManager.LoadScene("Main Menu");
+    }
+
+      public void Level1()
+    {
+        SceneManager.LoadScene("Level 1");
+    }
+
+    public void Level2()
+    {
+        SceneManager.LoadScene("Level 2");
+    }
+
+    public void Level3()
+    {
+        SceneManager.LoadScene("Level 3");
     }
 
     public void ResetGame()
