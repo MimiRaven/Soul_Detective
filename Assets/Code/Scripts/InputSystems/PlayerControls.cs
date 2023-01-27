@@ -242,6 +242,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GodMode"",
+                    ""type"": ""Button"",
+                    ""id"": ""653cca50-e813-4122-9671-6aeb7c4aa311"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -761,6 +770,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""PossesionAttackActivation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b7b7f8a8-e2bb-4319-b41a-4fbea159d4e5"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GodMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -854,6 +874,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_RangeAttackActivation = m_Player.FindAction("RangeAttackActivation", throwIfNotFound: true);
         m_Player_TelekinisisAttackActivation = m_Player.FindAction("TelekinisisAttackActivation", throwIfNotFound: true);
         m_Player_PossesionAttackActivation = m_Player.FindAction("PossesionAttackActivation", throwIfNotFound: true);
+        m_Player_GodMode = m_Player.FindAction("GodMode", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Pause = m_Menu.FindAction("Pause", throwIfNotFound: true);
@@ -940,6 +961,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_RangeAttackActivation;
     private readonly InputAction m_Player_TelekinisisAttackActivation;
     private readonly InputAction m_Player_PossesionAttackActivation;
+    private readonly InputAction m_Player_GodMode;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -968,6 +990,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @RangeAttackActivation => m_Wrapper.m_Player_RangeAttackActivation;
         public InputAction @TelekinisisAttackActivation => m_Wrapper.m_Player_TelekinisisAttackActivation;
         public InputAction @PossesionAttackActivation => m_Wrapper.m_Player_PossesionAttackActivation;
+        public InputAction @GodMode => m_Wrapper.m_Player_GodMode;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1049,6 +1072,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @PossesionAttackActivation.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPossesionAttackActivation;
                 @PossesionAttackActivation.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPossesionAttackActivation;
                 @PossesionAttackActivation.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPossesionAttackActivation;
+                @GodMode.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGodMode;
+                @GodMode.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGodMode;
+                @GodMode.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGodMode;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1125,6 +1151,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @PossesionAttackActivation.started += instance.OnPossesionAttackActivation;
                 @PossesionAttackActivation.performed += instance.OnPossesionAttackActivation;
                 @PossesionAttackActivation.canceled += instance.OnPossesionAttackActivation;
+                @GodMode.started += instance.OnGodMode;
+                @GodMode.performed += instance.OnGodMode;
+                @GodMode.canceled += instance.OnGodMode;
             }
         }
     }
@@ -1197,6 +1226,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnRangeAttackActivation(InputAction.CallbackContext context);
         void OnTelekinisisAttackActivation(InputAction.CallbackContext context);
         void OnPossesionAttackActivation(InputAction.CallbackContext context);
+        void OnGodMode(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {
