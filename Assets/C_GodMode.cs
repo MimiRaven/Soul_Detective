@@ -13,6 +13,7 @@ public class C_GodMode : MonoBehaviour
 
     public C_PlayerController PlayerController;
     public C_PlayerHealth PlayerHealth;
+    public GameObject GodModeCanvas;
 
     public bool GodModeActive;
 
@@ -33,17 +34,19 @@ public class C_GodMode : MonoBehaviour
         if(GodModeActive == true)
         {
             //PlayerHealth.currentHealth = PlayerHealth.maxHealth;
-           PlayerHealth.TimeLeft = 11;
+            PlayerHealth.TimeLeft = 1;
             PlayerHealth.TimerOn = true;
             PlayerController.CurrentStamina =PlayerController.MaxStamina;
-
+            PlayerHealth.TimerCanvas.SetActive(false);
+            GodModeCanvas.SetActive(true);
         }
         else
         {
             // PlayerHealth.currentHealth = PlayerHealth.maxHealth;
             //PlayerController.CurrentStamina = PlayerController.MaxStamina;
-           // PlayerHealth.TimerOn = false;
-            PlayerHealth.TimeLeft = 0;
+            // PlayerHealth.TimerOn = false;
+            //PlayerHealth.TimeLeft = 0;
+            GodModeCanvas.SetActive(false);
         }
     }
 
