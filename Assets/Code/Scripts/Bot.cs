@@ -17,6 +17,11 @@ public class Bot : MonoBehaviour
     public CamDetectTest camDetectTest;
     public C_EmenyDeath c_EmenyDeath;
 
+    public float knockBackForce;
+    public float knockBackTime;
+    private float knockBackCounter;
+    private Vector3 moveDirection;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -76,21 +81,34 @@ public class Bot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (camDetectTest.EnemyInRange == false)
-        {
-            Wander();
-        }
-        else
-        {
-            Seek(target.transform.position);
-        }
+        //if (knockBackCounter <= 0)
+        //{
+            if (camDetectTest.EnemyInRange == false)
+            {
+                Wander();
+            }
+            else
+            {
+                Seek(target.transform.position);
+            }
 
-        if (agent.speed > 1)
-        {
-            animator.SetBool("IsWalking", true);
-        }
-
+            if (agent.speed > 1)
+            {
+                animator.SetBool("IsWalking", true);
+            }
+        //}
+        //else
+        //{
+        //    knockBackCounter -= Time.deltaTime;
+        //}
         //Seek(target.transform.position);
         //Wander();
     }
+
+    //public void Knockback(Vector3 direction)
+    //{
+    //    knockBackCounter = knockBackTime;
+    //
+    //    moveDirection = direction * knockBackForce;
+    //}
 }

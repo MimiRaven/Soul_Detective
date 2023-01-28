@@ -21,6 +21,10 @@ public class C_EmenyDeath : MonoBehaviour
 
     public bool EnemyIsDead;
 
+    public GameObject Bot;
+    public float range = 100f;
+    public float KnockbackForce = 250;
+
     public AudioSource audioSource;
     //private AudioClip clip;
 
@@ -77,6 +81,7 @@ public class C_EmenyDeath : MonoBehaviour
             // Destroy(gameObject);
             //script.TakeDamage(1);
             Debug.Log("Enemy Damaged");
+            Knockback();
             isColliding = true;
             audioSource.Play();
         }
@@ -85,6 +90,7 @@ public class C_EmenyDeath : MonoBehaviour
         if (col.collider.tag == "Active")
         {
             Debug.Log("Attack hit");
+            Knockback();
             EnemyTakeDamage();
         }
 
@@ -92,6 +98,7 @@ public class C_EmenyDeath : MonoBehaviour
         if (col.collider.tag == "BoostedWeapon")
         {
             BoostedWeaponDamage();
+            Knockback();
 
             Debug.Log("Enemy Damaged");
         }
@@ -153,6 +160,11 @@ public class C_EmenyDeath : MonoBehaviour
     float CalculateHealth()
     {
         return EnemyCurrentHealth / MaxHealth;
+    }
+
+    void Knockback()
+    {
+        Bot.transform.position += transform.forward * Time.deltaTime * KnockbackForce;
     }
 
 }
