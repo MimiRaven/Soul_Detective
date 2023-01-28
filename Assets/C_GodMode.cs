@@ -48,6 +48,11 @@ public class C_GodMode : MonoBehaviour
             //PlayerHealth.TimeLeft = 0;
             GodModeCanvas.SetActive(false);
         }
+
+        if (GodModeActive == true & PlayerController.isRunning == false) 
+        {
+            PlayerController.playerSpeed = 5;
+        }
     }
 
     private void OnEnable()
