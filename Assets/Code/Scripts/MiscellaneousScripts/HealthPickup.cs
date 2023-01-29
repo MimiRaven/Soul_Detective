@@ -19,7 +19,7 @@ public class HealthPickup : MonoBehaviour
         {
             if (controller.health < controller.maxHealth)
             {
-                controller.ChangeHealth(1);
+                controller.ChangeHealth(3);
                 audioSource.Play();
                 Destroy(gameObject);
                 Debug.Log("HealthPickedUp");
