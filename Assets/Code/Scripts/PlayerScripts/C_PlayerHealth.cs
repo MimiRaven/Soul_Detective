@@ -30,7 +30,7 @@ public class C_PlayerHealth : MonoBehaviour
     public GameObject TimerCanvas;
 
     public float SetCoolDownTime;
-    private float TimeLeft;
+    public float TimeLeft;
     public bool TimerOn;
 
     public GameObject HealthUI1, HealthUI2, HealthUI3;

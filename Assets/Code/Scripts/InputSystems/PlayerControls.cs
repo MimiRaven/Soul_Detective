@@ -215,6 +215,42 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RangeAttackActivation"",
+                    ""type"": ""Button"",
+                    ""id"": ""09fea8b0-0365-4523-a94d-c2126b44ffca"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TelekinisisAttackActivation"",
+                    ""type"": ""Button"",
+                    ""id"": ""d2017a02-1b06-4d77-b5cb-7668881e25dd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PossesionAttackActivation"",
+                    ""type"": ""Button"",
+                    ""id"": ""5bfbed53-5681-4e53-8da2-ef3ab5541b30"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GodMode"",
+                    ""type"": ""Button"",
+                    ""id"": ""653cca50-e813-4122-9671-6aeb7c4aa311"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -701,6 +737,50 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""SkipCutsceen"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b7db1d4b-6961-45ae-82d6-d7073cae370a"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RangeAttackActivation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d2394ce4-f5f5-4b3d-be17-12520ae27e38"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TelekinisisAttackActivation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""18374a1f-e8bf-4155-bb6f-cb2fccb3865d"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PossesionAttackActivation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b7b7f8a8-e2bb-4319-b41a-4fbea159d4e5"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GodMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -791,6 +871,10 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_NavigationArrow = m_Player.FindAction("NavigationArrow", throwIfNotFound: true);
         m_Player_Dodge = m_Player.FindAction("Dodge", throwIfNotFound: true);
         m_Player_SkipCutsceen = m_Player.FindAction("SkipCutsceen", throwIfNotFound: true);
+        m_Player_RangeAttackActivation = m_Player.FindAction("RangeAttackActivation", throwIfNotFound: true);
+        m_Player_TelekinisisAttackActivation = m_Player.FindAction("TelekinisisAttackActivation", throwIfNotFound: true);
+        m_Player_PossesionAttackActivation = m_Player.FindAction("PossesionAttackActivation", throwIfNotFound: true);
+        m_Player_GodMode = m_Player.FindAction("GodMode", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Pause = m_Menu.FindAction("Pause", throwIfNotFound: true);
@@ -874,6 +958,10 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_NavigationArrow;
     private readonly InputAction m_Player_Dodge;
     private readonly InputAction m_Player_SkipCutsceen;
+    private readonly InputAction m_Player_RangeAttackActivation;
+    private readonly InputAction m_Player_TelekinisisAttackActivation;
+    private readonly InputAction m_Player_PossesionAttackActivation;
+    private readonly InputAction m_Player_GodMode;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -899,6 +987,10 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @NavigationArrow => m_Wrapper.m_Player_NavigationArrow;
         public InputAction @Dodge => m_Wrapper.m_Player_Dodge;
         public InputAction @SkipCutsceen => m_Wrapper.m_Player_SkipCutsceen;
+        public InputAction @RangeAttackActivation => m_Wrapper.m_Player_RangeAttackActivation;
+        public InputAction @TelekinisisAttackActivation => m_Wrapper.m_Player_TelekinisisAttackActivation;
+        public InputAction @PossesionAttackActivation => m_Wrapper.m_Player_PossesionAttackActivation;
+        public InputAction @GodMode => m_Wrapper.m_Player_GodMode;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -971,6 +1063,18 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @SkipCutsceen.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkipCutsceen;
                 @SkipCutsceen.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkipCutsceen;
                 @SkipCutsceen.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkipCutsceen;
+                @RangeAttackActivation.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRangeAttackActivation;
+                @RangeAttackActivation.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRangeAttackActivation;
+                @RangeAttackActivation.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRangeAttackActivation;
+                @TelekinisisAttackActivation.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTelekinisisAttackActivation;
+                @TelekinisisAttackActivation.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTelekinisisAttackActivation;
+                @TelekinisisAttackActivation.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTelekinisisAttackActivation;
+                @PossesionAttackActivation.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPossesionAttackActivation;
+                @PossesionAttackActivation.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPossesionAttackActivation;
+                @PossesionAttackActivation.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPossesionAttackActivation;
+                @GodMode.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGodMode;
+                @GodMode.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGodMode;
+                @GodMode.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGodMode;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1038,6 +1142,18 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @SkipCutsceen.started += instance.OnSkipCutsceen;
                 @SkipCutsceen.performed += instance.OnSkipCutsceen;
                 @SkipCutsceen.canceled += instance.OnSkipCutsceen;
+                @RangeAttackActivation.started += instance.OnRangeAttackActivation;
+                @RangeAttackActivation.performed += instance.OnRangeAttackActivation;
+                @RangeAttackActivation.canceled += instance.OnRangeAttackActivation;
+                @TelekinisisAttackActivation.started += instance.OnTelekinisisAttackActivation;
+                @TelekinisisAttackActivation.performed += instance.OnTelekinisisAttackActivation;
+                @TelekinisisAttackActivation.canceled += instance.OnTelekinisisAttackActivation;
+                @PossesionAttackActivation.started += instance.OnPossesionAttackActivation;
+                @PossesionAttackActivation.performed += instance.OnPossesionAttackActivation;
+                @PossesionAttackActivation.canceled += instance.OnPossesionAttackActivation;
+                @GodMode.started += instance.OnGodMode;
+                @GodMode.performed += instance.OnGodMode;
+                @GodMode.canceled += instance.OnGodMode;
             }
         }
     }
@@ -1107,6 +1223,10 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnNavigationArrow(InputAction.CallbackContext context);
         void OnDodge(InputAction.CallbackContext context);
         void OnSkipCutsceen(InputAction.CallbackContext context);
+        void OnRangeAttackActivation(InputAction.CallbackContext context);
+        void OnTelekinisisAttackActivation(InputAction.CallbackContext context);
+        void OnPossesionAttackActivation(InputAction.CallbackContext context);
+        void OnGodMode(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {

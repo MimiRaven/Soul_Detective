@@ -114,11 +114,10 @@ public class C_PlayerController : MonoBehaviour
         Sprinter.instance.SetValue(CurrentStamina / MaxStamina);
         if (isRunning & !isDodging)
         {
-            if (WeaponWheel == false)
-            {
-                ActiveRunning();
+            
+             ActiveRunning();
 
-            }
+            
         }
         else
         {
@@ -134,7 +133,13 @@ public class C_PlayerController : MonoBehaviour
             CurrentStamina -= Time.deltaTime;
 
         }
-        
+        else
+        {
+            playerSpeed = 5;
+
+
+        }
+
     }
 
     void Resting()
