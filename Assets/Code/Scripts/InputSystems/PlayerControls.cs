@@ -251,6 +251,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Diolouge"",
+                    ""type"": ""Button"",
+                    ""id"": ""016f91fc-2bef-4b3f-ba96-10a81ede8387"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -781,6 +790,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""GodMode"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""70824cdb-d1d1-4127-b2e7-542fedb69426"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Diolouge"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -875,6 +895,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_TelekinisisAttackActivation = m_Player.FindAction("TelekinisisAttackActivation", throwIfNotFound: true);
         m_Player_PossesionAttackActivation = m_Player.FindAction("PossesionAttackActivation", throwIfNotFound: true);
         m_Player_GodMode = m_Player.FindAction("GodMode", throwIfNotFound: true);
+        m_Player_Diolouge = m_Player.FindAction("Diolouge", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Pause = m_Menu.FindAction("Pause", throwIfNotFound: true);
@@ -962,6 +983,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_TelekinisisAttackActivation;
     private readonly InputAction m_Player_PossesionAttackActivation;
     private readonly InputAction m_Player_GodMode;
+    private readonly InputAction m_Player_Diolouge;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -991,6 +1013,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @TelekinisisAttackActivation => m_Wrapper.m_Player_TelekinisisAttackActivation;
         public InputAction @PossesionAttackActivation => m_Wrapper.m_Player_PossesionAttackActivation;
         public InputAction @GodMode => m_Wrapper.m_Player_GodMode;
+        public InputAction @Diolouge => m_Wrapper.m_Player_Diolouge;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1075,6 +1098,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @GodMode.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGodMode;
                 @GodMode.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGodMode;
                 @GodMode.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGodMode;
+                @Diolouge.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDiolouge;
+                @Diolouge.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDiolouge;
+                @Diolouge.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDiolouge;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1154,6 +1180,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @GodMode.started += instance.OnGodMode;
                 @GodMode.performed += instance.OnGodMode;
                 @GodMode.canceled += instance.OnGodMode;
+                @Diolouge.started += instance.OnDiolouge;
+                @Diolouge.performed += instance.OnDiolouge;
+                @Diolouge.canceled += instance.OnDiolouge;
             }
         }
     }
@@ -1227,6 +1256,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnTelekinisisAttackActivation(InputAction.CallbackContext context);
         void OnPossesionAttackActivation(InputAction.CallbackContext context);
         void OnGodMode(InputAction.CallbackContext context);
+        void OnDiolouge(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {
