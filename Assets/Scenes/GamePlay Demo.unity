@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1639,7 +1639,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &51945120
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3689,7 +3689,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &158231642
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20417,7 +20417,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 665025351}
   m_LocalRotation: {x: 0.02853157, y: -0, z: -0, w: 0.9995929}
-  m_LocalPosition: {x: -5.1182837, y: 1.0705369, z: -10.896352}
+  m_LocalPosition: {x: -5.118081, y: 1.0705369, z: -10.896353}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -32163,7 +32163,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1100586814
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32695,7 +32695,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1110042033}
   m_LocalRotation: {x: 0.028518954, y: -0.030526038, z: 0.00087133225, w: 0.9991267}
-  m_LocalPosition: {x: -3.7628706, y: 1.3310882, z: -6.1154575}
+  m_LocalPosition: {x: -3.7622647, y: 1.3310882, z: -6.1154184}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -46561,10 +46561,6 @@ MonoBehaviour:
   MaxStamina: 2
   PlayerInputObject: {fileID: 1308391887}
   leaveBody: {fileID: 7166903911999502660, guid: b4b7e3343d0e2224ab3b283158f8c3fb, type: 3}
-  displayTime: 4
-  dialogBox1: {fileID: 1308940923}
-  dialogBox2: {fileID: 551803449}
-  dialogBox3: {fileID: 1181959055}
 --- !u!114 &1747400728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49821,6 +49817,55 @@ Transform:
   m_Father: {fileID: 1314425166}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1859926298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1859926300}
+  - component: {fileID: 1859926299}
+  m_Layer: 0
+  m_Name: EnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1859926299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859926298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08952484bece843449990e041b720c6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swarmerPrefab: {fileID: 1104182434}
+  bigSwarmerPrefab: {fileID: 176712107}
+  swarmerInterval: 1
+  bigSwarmerInterval: 5
+  waves: 2
+--- !u!4 &1859926300
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859926298}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 63
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1863128783
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50290,7 +50335,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1883224067}
   m_LocalRotation: {x: 0.020174868, y: -0.70681894, z: 0.020174868, w: 0.70681894}
-  m_LocalPosition: {x: 22.357162, y: 2.1844356, z: 0.37082243}
+  m_LocalPosition: {x: 22.357162, y: 2.1844356, z: 0.37096307}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -57570,10 +57615,6 @@ MonoBehaviour:
   MaxStamina: 2
   PlayerInputObject: {fileID: 1318148781}
   leaveBody: {fileID: 0}
-  displayTime: 14
-  dialogBox1: {fileID: 0}
-  dialogBox2: {fileID: 0}
-  dialogBox3: {fileID: 0}
 --- !u!95 &919132147864911116
 Animator:
   serializedVersion: 4
@@ -67952,10 +67993,6 @@ MonoBehaviour:
   MaxStamina: 2
   PlayerInputObject: {fileID: 1318148781}
   leaveBody: {fileID: 0}
-  displayTime: 14
-  dialogBox1: {fileID: 0}
-  dialogBox2: {fileID: 0}
-  dialogBox3: {fileID: 0}
 --- !u!4 &4981672675248981361
 Transform:
   m_ObjectHideFlags: 0

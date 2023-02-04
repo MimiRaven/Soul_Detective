@@ -60,11 +60,11 @@ public class C_PlayerController : MonoBehaviour
 
     public ParticleSystem leaveBody;
 
-    public float displayTime = 4.0f;
-    public GameObject dialogBox1;
-    public GameObject dialogBox2;
-    public GameObject dialogBox3;
-    float timerDisplay;
+    // public float displayTime = 4.0f;
+    // public GameObject dialogBox1;
+    // public GameObject dialogBox2;
+    // public GameObject dialogBox3;
+    // float timerDisplay;
 
 
     //public int souls;
@@ -84,10 +84,10 @@ public class C_PlayerController : MonoBehaviour
         jumpAction = playerInput.actions["Jump"];
         sprintAction = playerInput.actions["Sprint"];
 
-        dialogBox1.SetActive(false);
-        dialogBox2.SetActive(false);
-        dialogBox3.SetActive(false);
-        timerDisplay = -1.0f;
+        // dialogBox1.SetActive(false);
+        // dialogBox2.SetActive(false);
+        // dialogBox3.SetActive(false);
+        // timerDisplay = -1.0f;
 
         boostTimer = 0;
         boosting = false;
@@ -191,16 +191,16 @@ public class C_PlayerController : MonoBehaviour
        // DodgeFunction();
         //soulsUI.text = "Souls: " + souls.ToString();
 
-         if (timerDisplay >= 0)
-        {
-            timerDisplay -= Time.deltaTime;
-            if (timerDisplay < 0)
-            {
-                dialogBox1.SetActive(false);
-                dialogBox2.SetActive(false);
-                dialogBox3.SetActive(false);
-            }
-        }
+        //  if (timerDisplay >= 0)
+        // {
+        //     timerDisplay -= Time.deltaTime;
+        //     if (timerDisplay < 0)
+        //     {
+        //         dialogBox1.SetActive(false);
+        //         dialogBox2.SetActive(false);
+        //         dialogBox3.SetActive(false);
+        //     }
+        // }
 
         if (boosting)
         {
@@ -324,37 +324,37 @@ public class C_PlayerController : MonoBehaviour
             SceneManager.LoadScene("Win Screen");
         }
 
-        if(other.tag == "Dialogue")
-        {
-            DisplayDialog();
-        }
+        // if(other.tag == "Dialogue")
+        // {
+        //     DisplayDialog();
+        // }
 
-        if(other.tag == "Dialogue2")
-        {
-            DisplayDialog2();
-        }
+        // if(other.tag == "Dialogue2")
+        // {
+        //     DisplayDialog2();
+        // }
 
-        if(other.tag == "Dialogue3")
-        {
-            DisplayDialog3();
-        }
+        // if(other.tag == "Dialogue3")
+        // {
+        //     DisplayDialog3();
+        // }
     }
 
-     public void DisplayDialog()
-    {
-        timerDisplay = displayTime;
-        dialogBox1.SetActive(true);
-    }
+    //  public void DisplayDialog()
+    // {
+    //     timerDisplay = displayTime;
+    //     dialogBox1.SetActive(true);
+    // }
 
-    public void DisplayDialog2()
-    {
-        timerDisplay = displayTime;
-        dialogBox2.SetActive(true);
-    }
+    // public void DisplayDialog2()
+    // {
+    //     timerDisplay = displayTime;
+    //     dialogBox2.SetActive(true);
+    // }
 
-    public void DisplayDialog3()
-    {
-        timerDisplay = displayTime;
-        dialogBox3.SetActive(true);
-    }
+    // public void DisplayDialog3()
+    // {
+    //     timerDisplay = displayTime;
+    //     dialogBox3.SetActive(true);
+    // }
 }
