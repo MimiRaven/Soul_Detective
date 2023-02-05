@@ -28,6 +28,11 @@ public class MainMenu : MonoBehaviour
     SceneManager.LoadScene("IntroCutscene"); 
   }
 
+   public void HubWorld()
+    {
+        SceneManager.LoadScene("HubWorld");
+    }
+
   public void Level1()
     {
         SceneManager.LoadScene("Level 1");

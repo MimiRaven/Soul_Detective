@@ -251,6 +251,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Diolouge"",
+                    ""type"": ""Button"",
+                    ""id"": ""016f91fc-2bef-4b3f-ba96-10a81ede8387"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -751,8 +760,30 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""09c0451f-daca-43fe-94fc-7def080dbd02"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RangeAttackActivation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""d2394ce4-f5f5-4b3d-be17-12520ae27e38"",
                     ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TelekinisisAttackActivation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""33f4df10-1b55-496d-b4f4-0fe0b15d6edd"",
+                    ""path"": ""<Gamepad>/dpad/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -773,12 +804,56 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""c10bbf15-4bf0-44d9-bd74-d4bec6aeb53f"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PossesionAttackActivation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""b7b7f8a8-e2bb-4319-b41a-4fbea159d4e5"",
                     ""path"": ""<Keyboard>/4"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""GodMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""31a98996-0f9e-44f2-be1f-8ec3eaaa38ed"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GodMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""70824cdb-d1d1-4127-b2e7-542fedb69426"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Diolouge"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9c211c8f-3739-4e7c-a903-b72c3ea0c604"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Diolouge"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -875,6 +950,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_TelekinisisAttackActivation = m_Player.FindAction("TelekinisisAttackActivation", throwIfNotFound: true);
         m_Player_PossesionAttackActivation = m_Player.FindAction("PossesionAttackActivation", throwIfNotFound: true);
         m_Player_GodMode = m_Player.FindAction("GodMode", throwIfNotFound: true);
+        m_Player_Diolouge = m_Player.FindAction("Diolouge", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Pause = m_Menu.FindAction("Pause", throwIfNotFound: true);
@@ -962,6 +1038,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_TelekinisisAttackActivation;
     private readonly InputAction m_Player_PossesionAttackActivation;
     private readonly InputAction m_Player_GodMode;
+    private readonly InputAction m_Player_Diolouge;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -991,6 +1068,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @TelekinisisAttackActivation => m_Wrapper.m_Player_TelekinisisAttackActivation;
         public InputAction @PossesionAttackActivation => m_Wrapper.m_Player_PossesionAttackActivation;
         public InputAction @GodMode => m_Wrapper.m_Player_GodMode;
+        public InputAction @Diolouge => m_Wrapper.m_Player_Diolouge;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1075,6 +1153,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @GodMode.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGodMode;
                 @GodMode.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGodMode;
                 @GodMode.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGodMode;
+                @Diolouge.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDiolouge;
+                @Diolouge.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDiolouge;
+                @Diolouge.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDiolouge;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1154,6 +1235,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @GodMode.started += instance.OnGodMode;
                 @GodMode.performed += instance.OnGodMode;
                 @GodMode.canceled += instance.OnGodMode;
+                @Diolouge.started += instance.OnDiolouge;
+                @Diolouge.performed += instance.OnDiolouge;
+                @Diolouge.canceled += instance.OnDiolouge;
             }
         }
     }
@@ -1227,6 +1311,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnTelekinisisAttackActivation(InputAction.CallbackContext context);
         void OnPossesionAttackActivation(InputAction.CallbackContext context);
         void OnGodMode(InputAction.CallbackContext context);
+        void OnDiolouge(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {

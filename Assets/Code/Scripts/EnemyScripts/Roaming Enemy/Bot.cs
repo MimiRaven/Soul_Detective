@@ -22,11 +22,30 @@ public class Bot : MonoBehaviour
     private float knockBackCounter;
     private Vector3 moveDirection;
 
+    [Range(0, 100)] public float speed;
+    [Range(1, 500)] public float walkRadius;
+
+
     // Start is called before the first frame update
     void Start()
     {
         agent = this.GetComponent<NavMeshAgent>();
-       // ds = target.GetComponent<Drive>();
+        // ds = target.GetComponent<Drive>();
+
+        agent.speed= speed;
+        agent.SetDestination(RandomNavMeshLocation());
+    }
+
+    public Vector3 RandomNavMeshLocation() 
+    {
+        Vector3 finalposition = Vector3.zero;
+        Vector3 randomPosition = Random.insideUnitSphere * walkRadius;
+        randomPosition += transform.position;
+        if(NavMesh.SamplePosition(randomPosition, out NavMeshHit hit, walkRadius, 1))
+        {
+            finalposition= hit.position;
+        }
+        return finalposition;
     }
 
     void Seek(Vector3 location)
@@ -48,20 +67,30 @@ public class Bot : MonoBehaviour
     Vector3 wanderTarget = Vector3.zero;
     void Wander()
     {
-       //float wanderRadius = 1;
-       //float wanderDistance = 5;
-       //float wanderJitter = 5;
+        if (agent != null && agent.remainingDistance <= agent.stoppingDistance)
+        {
+            agent.SetDestination(RandomNavMeshLocation());
+        }
 
-        wanderTarget += new Vector3(Random.Range(-1.0f, 1.0f) * wanderJitter,
-                                        0,
-                                        Random.Range(-1.0f, 1.0f) * wanderJitter);
-        wanderTarget.Normalize();
-        wanderTarget *= wanderRadius;
 
-        Vector3 targetLocal = wanderTarget + new Vector3(-2, 8, wanderDistance);
-        Vector3 targetWorld = this.gameObject.transform.InverseTransformVector(targetLocal);
 
-        Seek(targetWorld);
+        //float wanderRadius = 1;
+        //float wanderDistance = 5;
+        //float wanderJitter = 5;
+
+
+        //////////
+
+        //wanderTarget += new Vector3(Random.Range(-1.0f, 1.0f) * wanderJitter,
+        //                                0,
+        //                                Random.Range(-1.0f, 1.0f) * wanderJitter);
+        //wanderTarget.Normalize();
+        //wanderTarget *= wanderRadius;
+        //
+        //Vector3 targetLocal = wanderTarget + new Vector3(0, 0, wanderDistance);
+        //Vector3 targetWorld = this.gameObject.transform.InverseTransformVector(targetLocal);
+        //
+        //Seek(targetWorld);
     }
 
   //bool CanSeeTarget()
@@ -79,7 +108,7 @@ public class Bot : MonoBehaviour
 
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         //if (knockBackCounter <= 0)
         //{
@@ -92,10 +121,12 @@ public class Bot : MonoBehaviour
                 Seek(target.transform.position);
             }
 
-            if (agent.speed > 1)
+            if (agent.speed >= 1)
             {
                 animator.SetBool("IsWalking", true);
             }
+
+       
         //}
         //else
         //{

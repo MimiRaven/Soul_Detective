@@ -24,6 +24,11 @@ public class C_PauseManager : MonoBehaviour
         SceneManager.LoadScene("Main Menu");
     }
 
+    public void HubWorld()
+    {
+        SceneManager.LoadScene("HubWorld");
+    }
+
       public void Level1()
     {
         SceneManager.LoadScene("Level 1");
