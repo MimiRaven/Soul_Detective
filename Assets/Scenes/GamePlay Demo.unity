@@ -5077,8 +5077,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 40c2150fc1fad94438add7d26a33a3e6, type: 2}
+  m_sharedMaterial: {fileID: 6601664946603092167, guid: 40c2150fc1fad94438add7d26a33a3e6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -14759,7 +14759,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Vertical SLice
+  m_text: Hub World
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 40c2150fc1fad94438add7d26a33a3e6, type: 2}
   m_sharedMaterial: {fileID: 6601664946603092167, guid: 40c2150fc1fad94438add7d26a33a3e6, type: 2}
@@ -29366,7 +29366,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1154422529}
         m_TargetAssemblyTypeName: C_PauseManager, Assembly-CSharp
-        m_MethodName: VerticalSlice
+        m_MethodName: HubWorld
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -30207,6 +30207,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e81b1cfe69d764a4ca8ccf2a08d04cbe, type: 3}
+--- !u!1 &607950308 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2419941295523219375, guid: e81b1cfe69d764a4ca8ccf2a08d04cbe, type: 3}
+  m_PrefabInstance: {fileID: 607950307}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &610843401
 GameObject:
   m_ObjectHideFlags: 0
@@ -32370,7 +32375,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 665025351}
   m_LocalRotation: {x: 0.02853157, y: -0, z: -0, w: 0.9995929}
-  m_LocalPosition: {x: -5.1170964, y: 1.0705371, z: -10.896365}
+  m_LocalPosition: {x: -5.1188283, y: 1.0705371, z: -10.896364}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -40254,6 +40259,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e81b1cfe69d764a4ca8ccf2a08d04cbe, type: 3}
+--- !u!1 &825828929 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2419941295523219375, guid: e81b1cfe69d764a4ca8ccf2a08d04cbe, type: 3}
+  m_PrefabInstance: {fileID: 825828928}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &827415980
 GameObject:
   m_ObjectHideFlags: 0
@@ -41017,6 +41027,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3089059664261127445, guid: e81b1cfe69d764a4ca8ccf2a08d04cbe, type: 3}
   m_PrefabInstance: {fileID: 607950307}
   m_PrefabAsset: {fileID: 0}
+--- !u!136 &851935025
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607950308}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.43834785
+  m_Height: 1.591494
+  m_Direction: 1
+  m_Center: {x: -0.0011605346, y: 0.7549013, z: 1.709832e-19}
 --- !u!1 &852849707
 GameObject:
   m_ObjectHideFlags: 0
@@ -51248,8 +51272,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 40c2150fc1fad94438add7d26a33a3e6, type: 2}
+  m_sharedMaterial: {fileID: 6601664946603092167, guid: 40c2150fc1fad94438add7d26a33a3e6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -54365,7 +54389,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1110042033}
   m_LocalRotation: {x: 0.028518954, y: -0.030526038, z: 0.00087133225, w: 0.9991267}
-  m_LocalPosition: {x: -3.7593122, y: 1.3310891, z: -6.1152744}
+  m_LocalPosition: {x: -3.7645023, y: 1.3310891, z: -6.1155925}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -70926,6 +70950,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e81b1cfe69d764a4ca8ccf2a08d04cbe, type: 3}
+--- !u!1 &1557379040 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2419941295523219375, guid: e81b1cfe69d764a4ca8ccf2a08d04cbe, type: 3}
+  m_PrefabInstance: {fileID: 1557379039}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &1557379041
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557379040}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.43856248
+  m_Height: 1.5914935
+  m_Direction: 1
+  m_Center: {x: 0.009396963, y: 0.75490123, z: 0}
 --- !u!1 &1557640052
 GameObject:
   m_ObjectHideFlags: 0
@@ -85512,7 +85555,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1883224067}
   m_LocalRotation: {x: 0.020174868, y: -0.70681894, z: 0.020174868, w: 0.70681894}
-  m_LocalPosition: {x: 82.42717, y: 2.1844358, z: -1.6783521}
+  m_LocalPosition: {x: 82.42717, y: 2.1844358, z: -1.6795565}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -88094,8 +88137,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 40c2150fc1fad94438add7d26a33a3e6, type: 2}
+  m_sharedMaterial: {fileID: 6601664946603092167, guid: 40c2150fc1fad94438add7d26a33a3e6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -89107,6 +89150,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3089059664261127445, guid: e81b1cfe69d764a4ca8ccf2a08d04cbe, type: 3}
   m_PrefabInstance: {fileID: 825828928}
   m_PrefabAsset: {fileID: 0}
+--- !u!136 &1965049349
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825828929}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.46071133
+  m_Height: 1.5914935
+  m_Direction: 1
+  m_Center: {x: 0.0016905142, y: 0.75490123, z: 0}
 --- !u!1 &1966004867
 GameObject:
   m_ObjectHideFlags: 0
