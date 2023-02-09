@@ -67,7 +67,7 @@ public class PauseMenu : MonoBehaviour
         c_PlayerController.WeaponWheel = true;
         AudioListener.pause = true;
         //Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        //Cursor.visible = true;
         pauseUI.SetActive(true);
         c_WeaponWheel.WheelIsOn = true;
     }
@@ -81,7 +81,7 @@ public class PauseMenu : MonoBehaviour
         c_PlayerController.WeaponWheel = false;
         AudioListener.pause = false;
         //Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.visible = false;
         pauseUI.SetActive(false);
         //isPaused = false;
         c_WeaponWheel.WheelIsOn = false;
