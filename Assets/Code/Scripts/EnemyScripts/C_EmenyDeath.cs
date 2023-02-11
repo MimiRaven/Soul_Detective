@@ -103,6 +103,32 @@ public class C_EmenyDeath : MonoBehaviour
             Debug.Log("Enemy Damaged");
         }
 
+
+
+        if (col.collider.tag == "WeaponUpgraded1")
+        {
+            EnemyCurrentHealth -= 2;
+            Knockback();
+
+            Debug.Log("Enemy Damaged");
+        }
+
+        if (col.collider.tag == "WeaponUpgraded2")
+        {
+            EnemyCurrentHealth -= 3;
+            Knockback();
+
+            Debug.Log("Enemy Damaged");
+        }
+
+        if (col.collider.tag == "WeaponUpgraded3")
+        {
+            EnemyCurrentHealth -= 4;
+            Knockback();
+
+            Debug.Log("Enemy Damaged");
+        }
+
         //if(col.collider.tag == "Player")
         //{
         //    C_PlayerHealth p = col.gameObject.GetComponent<C_PlayerHealth>();

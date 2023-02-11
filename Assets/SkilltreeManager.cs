@@ -40,6 +40,26 @@ public class SkilltreeManager : MonoBehaviour
     public bool RangeAttTimeUpgrade2;
     public bool RangeAttTimeUpgrade3;
 
+    public Button PossesionTimmerUpgradeButton1;
+    public Button PossesionTimmerUpgradeButton2;
+    public Button PossesionTimmerUpgradeButton3;
+
+    public bool PossesionTimeUpgrade1;
+    public bool PossesionTimeUpgrade2;
+    public bool PossesionTimeUpgrade3;
+
+
+
+    public GameObject PlayerWeapon;
+
+    public Button PlayerWeaponUpgradeButton1;
+    public Button PlayerWeaponUpgradeButton2;
+    public Button PlayerWeaponUpgradeButton3;
+
+    public bool PlayerWeaponUpgrade1;
+    public bool PlayerWeaponUpgrade2;
+    public bool PlayerWeaponUpgrade3;
+
     // public Button yourButton;
 
     public GameObject MainCam;
@@ -212,86 +232,77 @@ public class SkilltreeManager : MonoBehaviour
         }
     }
 
+    //Possesion Timmer Upgrades
+    public void PossesionTimmerUpgrade1()
+    {
+        if (c_XpScore.SkillPoints >= 1)
+        {
+            PossesionTimmerUpgradeButton1.interactable = false;
+            c_Possesion.SetCoolDownTime += 1;
+            c_XpScore.SkillPoints -= 1;
+            PossesionTimeUpgrade1 = true;
+        }
+
+    }
+
+    public void PossesionTimmerUpgrade2()
+    {
+        if (c_XpScore.SkillPoints >= 2 && PossesionTimeUpgrade1 == true)
+        {
+            PossesionTimmerUpgradeButton2.interactable = false;
+            c_Possesion.SetCoolDownTime += 1;
+            c_XpScore.SkillPoints -= 2;
+            PossesionTimeUpgrade2 = true;
+        }
+    }
+
+    public void PossesionTimmerUpgrade3()
+    {
+        if (c_XpScore.SkillPoints >= 3 && PossesionTimeUpgrade2 == true)
+        {
+            PossesionTimmerUpgradeButton3.interactable = false;
+            c_Possesion.SetCoolDownTime += 1;
+            c_XpScore.SkillPoints -= 3;
+            PossesionTimeUpgrade3 = true;
+
+        }
+    }
+
+    public void WeaponDamadgeUpgrade1()
+    {
+        if (c_XpScore.SkillPoints >= 1)
+        {
+            PlayerWeaponUpgradeButton1.interactable = false;
+            PlayerWeapon.tag = "WeaponUpgraded1";
+            c_XpScore.SkillPoints -= 1;
+            PlayerWeaponUpgrade1 = true;
+        }
+    }
+
+    public void WeaponDamadgeUpgrade2()
+    {
+        if (c_XpScore.SkillPoints >= 2 && PlayerWeaponUpgrade1 == true)
+        {
+            PlayerWeaponUpgradeButton2.interactable = false;
+            PlayerWeapon.tag = "WeaponUpgraded2";
+            c_XpScore.SkillPoints -= 2;
+            PlayerWeaponUpgrade2 = true;
+        }
+    }
+
+    public void WeaponDamadgeUpgrade3()
+    {
+        if (c_XpScore.SkillPoints >= 3 && PlayerWeaponUpgrade2 == true)
+        {
+            PlayerWeaponUpgradeButton3.interactable = false;
+            PlayerWeapon.tag = "WeaponUpgraded3";
+            c_XpScore.SkillPoints -= 3;
+            PlayerWeaponUpgrade3 = true;
+
+        }
+    }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //public void TelekinesisActive()
-    //{
-    //   //telekinesis.SetActive(true);
-    //   //RangeAttack.SetActive(false);
-    //   //Possesion.SetActive(false);
-    //   //
-    //   //RangeIcon.SetActive(false);
-    //   //TeleIcon.SetActive(true);
-    //   //PosIcon.SetActive(false);
-    //
-    //    telekinesisButton.interactable = false;
-    //    RangeAttackButton.interactable = true;
-    //    PossesionButton.interactable = true;
-    //    PosTimer.SetActive(false);
-    //    RangeTimer.SetActive(false);
-    //
-    //}
-    //
-    //public void RangeAttackActive()
-    //{
-    //    RangeAttack.SetActive(true);
-    //    telekinesis.SetActive(false);
-    //    Possesion.SetActive(false);
-    //
-    //    RangeIcon.SetActive(true);
-    //    TeleIcon.SetActive(false);
-    //    PosIcon.SetActive(false);
-    //
-    //    RangeAttackButton.interactable = false;
-    //    telekinesisButton.interactable = true;
-    //    PossesionButton.interactable = true;
-    //
-    //    TeleTimer.SetActive(false);
-    //    PosTimer.SetActive(false);
-    //}
-    //
-    //public void PossesionActive()
-    //{
-    //    Possesion.SetActive(true);
-    //    RangeAttack.SetActive(false);
-    //    telekinesis.SetActive(false);
-    //
-    //    RangeIcon.SetActive(false);
-    //    TeleIcon.SetActive(false);
-    //    PosIcon.SetActive(true);
-    //
-    //    PossesionButton.interactable = false;
-    //    RangeAttackButton.interactable = true;
-    //    telekinesisButton.interactable = true;
-    //
-    //    RangeTimer.SetActive(false);
-    //    TeleTimer.SetActive(false);
-    //
-    //}
 }
