@@ -60,6 +60,8 @@ public class C_PlayerController : MonoBehaviour
 
     public ParticleSystem leaveBody;
 
+    public AudioSource audioSource;
+
     // public float displayTime = 4.0f;
     // public GameObject dialogBox1;
     // public GameObject dialogBox2;
@@ -70,15 +72,15 @@ public class C_PlayerController : MonoBehaviour
     //public int souls;
     //public TextMeshProUGUI soulsUI; 
 
-    private void Start()
+    public void Start()
     {
         controller = GetComponent<CharacterController>();
         //animator = GetComponent<Animator>();
         //playerInput = GetComponent<PlayerInput>();
-
+        audioSource = GetComponent<AudioSource>();
         //walkSpeed = playerSpeed;
         //runSpeed = walkSpeed + 5;
-        
+
         cameraTransfrom = Camera.main.transform;
         moveAction = playerInput.actions["Move"];
         jumpAction = playerInput.actions["Jump"];

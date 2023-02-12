@@ -17,6 +17,11 @@ public class C_PauseManager : MonoBehaviour
     public Button Level2Button = null;
     public Button Level3Button = null;
 
+    public void Start()
+    {
+        Cursor.visible = true;
+    }
+
     public void MainMenu()
     {
         mainmenuButton.Select();
@@ -56,7 +61,8 @@ public class C_PauseManager : MonoBehaviour
     {
         resetButton.Select();
         audioSource.Play();
-        SceneManager.LoadScene("Vertical Slice Level");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        AudioListener.pause = false;
     }
 
     public void Quit()
@@ -72,5 +78,6 @@ public class C_PauseManager : MonoBehaviour
         audioSource.Play();
         pauseMenu.isPaused = false;
         pauseMenu.DeactivateMenu();
+        Cursor.visible = false;
     }
 }
