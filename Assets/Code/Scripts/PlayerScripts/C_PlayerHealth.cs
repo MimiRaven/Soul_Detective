@@ -16,6 +16,7 @@ public class C_PlayerHealth : MonoBehaviour
     public int PlayerLives;
 
     private GameObject shield;
+    int hits = 3;
 
     private bool isRespawning;
     private Vector3 respawnPoint;
@@ -114,10 +115,18 @@ public class C_PlayerHealth : MonoBehaviour
                 ChangeHealth(-1);
                 animator.SetTrigger("Hurt 0");
                 
-               if (shield.activeInHierarchy)
+                if (shield.activeInHierarchy)
                {
-                   shield.SetActive(false);
-               }
+                    if (hits > 1)
+                    {
+                        shield.SetActive(true);
+                        hits -= 1;
+                    }
+                    else
+                    {
+                        shield.SetActive(false);
+                    }
+               } 
                else
                {
                    TimerOn = true;
