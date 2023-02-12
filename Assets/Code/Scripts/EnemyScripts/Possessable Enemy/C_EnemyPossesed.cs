@@ -66,7 +66,9 @@ public class C_EnemyPossesed : MonoBehaviour
     // public AudioClip Key;
     //public AudioSource audioSource;
 
-    public AudioSource audioSource;
+   // public AudioSource audioSource;
+
+    //public ParticleSystem leaveBody;
 
 
     private void Awake()
@@ -96,6 +98,8 @@ public class C_EnemyPossesed : MonoBehaviour
 
         Possesed = false;
         EnemyCams.SetActive(false);
+
+        //leaveBody.Stop();
 
         //leaveBody.Stop();                                             //
 
@@ -154,7 +158,8 @@ public class C_EnemyPossesed : MonoBehaviour
             WeaponWheel.SetActive(false);
             PlayerInputObject.SetActive(true);
             //leaveBody.Stop();
-            audioSource.Play();
+            // audioSource.Play();
+            //leaveBody.Play();
         }
         else
         {
@@ -169,7 +174,7 @@ public class C_EnemyPossesed : MonoBehaviour
             //leaveBody.Play();
             //leaveBody.Stop();
             //agent.enable = false;
-            audioSource.Stop();
+            //audioSource.Stop();
         }
 
     }

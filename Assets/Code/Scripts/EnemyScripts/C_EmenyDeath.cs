@@ -21,7 +21,7 @@ public class C_EmenyDeath : MonoBehaviour
 
     public bool EnemyIsDead;
 
-    public GameObject Bot;
+   // public GameObject Bot;
     public float range = 100f;
     public float KnockbackForce = 250;
 
@@ -190,7 +190,7 @@ public class C_EmenyDeath : MonoBehaviour
 
     void Knockback()
     {
-        Bot.transform.position += transform.forward * Time.deltaTime * KnockbackForce;
+       // Bot.transform.position += transform.forward * Time.deltaTime * KnockbackForce;
     }
 
 }

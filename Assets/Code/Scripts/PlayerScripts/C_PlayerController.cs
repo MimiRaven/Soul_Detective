@@ -53,6 +53,7 @@ public class C_PlayerController : MonoBehaviour
 
     public bool isRunning;
     public bool isDodging;
+    public bool isMoving;
     public float CurrentStamina;
     public float MaxStamina;
 
@@ -114,7 +115,7 @@ public class C_PlayerController : MonoBehaviour
     void RunningFunction()
     {
         Sprinter.instance.SetValue(CurrentStamina / MaxStamina);
-        if (isRunning & !isDodging)
+        if (isRunning & !isDodging & isMoving)
         {
             
              ActiveRunning();
@@ -275,11 +276,13 @@ public class C_PlayerController : MonoBehaviour
           {
             animator.SetBool("Walking", true);
             animator.SetBool("Idleing", false);
+                isMoving = true;
           }
           else
           {
             animator.SetBool("Walking", false);
             animator.SetBool("Idleing", true);
+                isMoving = false;
           } 
 
 
