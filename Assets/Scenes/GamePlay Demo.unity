@@ -4529,12 +4529,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f010481db3df24382e4a48e13bb1ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BotScript: {fileID: 120920038}
   animator: {fileID: 1973040036}
   c_EmenyDeath: {fileID: 120920036}
   IsAttacking: 0
   player: {fileID: 1747400723}
   Enemy: {fileID: 120920033}
   Distance_: 0
+  AttackDistance: 2.5
+  StopAttackingDistance: 3
   c_PlayerController: {fileID: 1747400727}
 --- !u!136 &120920035
 CapsuleCollider:
@@ -4614,15 +4617,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1973040036}
   target: {fileID: 1747400723}
-  wanderRadius: 50
-  wanderDistance: 25
-  wanderJitter: 8
   camDetectTest: {fileID: 120920037}
   c_EmenyDeath: {fileID: 120920036}
   knockBackForce: 0
   knockBackTime: 0
   speed: 3
   walkRadius: 25
+  enemyAttack: {fileID: 120920034}
 --- !u!195 &120920039
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4637,7 +4638,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 44
   m_AngularSpeed: 120
-  m_StoppingDistance: 1.18
+  m_StoppingDistance: 2.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -5372,12 +5373,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f010481db3df24382e4a48e13bb1ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BotScript: {fileID: 0}
   animator: {fileID: 4277131489947403906}
   c_EmenyDeath: {fileID: 144333058}
   IsAttacking: 0
   player: {fileID: 8549948093929445301}
   Enemy: {fileID: 144333055}
   Distance_: 0
+  AttackDistance: 0
+  StopAttackingDistance: 0
   c_PlayerController: {fileID: 0}
 --- !u!136 &144333057
 CapsuleCollider:
@@ -5457,15 +5461,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 4277131489947403906}
   target: {fileID: 8549948093929445301}
-  wanderRadius: 50
-  wanderDistance: 25
-  wanderJitter: 8
   camDetectTest: {fileID: 144333059}
   c_EmenyDeath: {fileID: 144333058}
   knockBackForce: 0
   knockBackTime: 0
   speed: 0
   walkRadius: 0
+  enemyAttack: {fileID: 0}
 --- !u!195 &144333061
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -7165,12 +7167,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f010481db3df24382e4a48e13bb1ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BotScript: {fileID: 120920038}
   animator: {fileID: 122897472}
   c_EmenyDeath: {fileID: 176712110}
   IsAttacking: 0
   player: {fileID: 1747400723}
   Enemy: {fileID: 176712107}
   Distance_: 0
+  AttackDistance: 2.5
+  StopAttackingDistance: 3
   c_PlayerController: {fileID: 1747400727}
 --- !u!136 &176712109
 CapsuleCollider:
@@ -7250,15 +7255,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 122897472}
   target: {fileID: 1747400723}
-  wanderRadius: 50
-  wanderDistance: 25
-  wanderJitter: 8
   camDetectTest: {fileID: 176712111}
   c_EmenyDeath: {fileID: 176712110}
   knockBackForce: 0
   knockBackTime: 0
   speed: 3
   walkRadius: 25
+  enemyAttack: {fileID: 120920034}
 --- !u!195 &176712113
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -7273,7 +7276,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 44
   m_AngularSpeed: 120
-  m_StoppingDistance: 1.18
+  m_StoppingDistance: 2.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -7299,7 +7302,7 @@ Transform:
   - {fileID: 1083479075}
   - {fileID: 342790598}
   m_Father: {fileID: 1926060617}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: -8.423, z: 0}
 --- !u!1 &177139843
 GameObject:
@@ -14798,12 +14801,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f010481db3df24382e4a48e13bb1ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BotScript: {fileID: 120920038}
   animator: {fileID: 1587693154}
   c_EmenyDeath: {fileID: 305609968}
   IsAttacking: 0
   player: {fileID: 1747400723}
   Enemy: {fileID: 305609965}
   Distance_: 0
+  AttackDistance: 2.5
+  StopAttackingDistance: 3
   c_PlayerController: {fileID: 1747400727}
 --- !u!136 &305609967
 CapsuleCollider:
@@ -14883,15 +14889,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1587693154}
   target: {fileID: 1747400723}
-  wanderRadius: 50
-  wanderDistance: 25
-  wanderJitter: 8
   camDetectTest: {fileID: 305609969}
   c_EmenyDeath: {fileID: 305609968}
   knockBackForce: 0
   knockBackTime: 0
   speed: 3
   walkRadius: 25
+  enemyAttack: {fileID: 120920034}
 --- !u!195 &305609971
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -14906,7 +14910,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 44
   m_AngularSpeed: 120
-  m_StoppingDistance: 1.18
+  m_StoppingDistance: 2.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -16349,12 +16353,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f010481db3df24382e4a48e13bb1ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BotScript: {fileID: 120920038}
   animator: {fileID: 201020624}
   c_EmenyDeath: {fileID: 338160913}
   IsAttacking: 0
   player: {fileID: 1747400723}
   Enemy: {fileID: 338160910}
   Distance_: 0
+  AttackDistance: 2.5
+  StopAttackingDistance: 3
   c_PlayerController: {fileID: 1747400727}
 --- !u!136 &338160912
 CapsuleCollider:
@@ -16434,15 +16441,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 201020624}
   target: {fileID: 1747400723}
-  wanderRadius: 50
-  wanderDistance: 25
-  wanderJitter: 8
   camDetectTest: {fileID: 338160914}
   c_EmenyDeath: {fileID: 338160913}
   knockBackForce: 0
   knockBackTime: 0
   speed: 3
   walkRadius: 25
+  enemyAttack: {fileID: 120920034}
 --- !u!195 &338160916
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -16457,7 +16462,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 44
   m_AngularSpeed: 120
-  m_StoppingDistance: 1.18
+  m_StoppingDistance: 2.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -19154,12 +19159,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f010481db3df24382e4a48e13bb1ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BotScript: {fileID: 383315449}
   animator: {fileID: 1021206996}
   c_EmenyDeath: {fileID: 383315447}
   IsAttacking: 0
   player: {fileID: 1747400723}
   Enemy: {fileID: 383315444}
   Distance_: 0
+  AttackDistance: 3.5
+  StopAttackingDistance: 5
   c_PlayerController: {fileID: 1747400727}
 --- !u!136 &383315446
 CapsuleCollider:
@@ -19213,7 +19221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ac7a638774464f42ba5ea97f2b3affe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 6.07
+  viewRadius: 9.06
   viewAngle: 360
   targetMask:
     serializedVersion: 2
@@ -19239,15 +19247,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1021206996}
   target: {fileID: 1747400723}
-  wanderRadius: 50
-  wanderDistance: 25
-  wanderJitter: 8
   camDetectTest: {fileID: 383315448}
   c_EmenyDeath: {fileID: 383315447}
   knockBackForce: 0
   knockBackTime: 0
   speed: 3
   walkRadius: 25
+  enemyAttack: {fileID: 383315445}
 --- !u!195 &383315450
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -19262,7 +19268,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 2
+  m_StoppingDistance: 3.4
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -19289,7 +19295,7 @@ Transform:
   - {fileID: 1021545893}
   - {fileID: 829605318}
   m_Father: {fileID: 1926060617}
-  m_RootOrder: 12
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &383734838
 GameObject:
@@ -24777,12 +24783,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f010481db3df24382e4a48e13bb1ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BotScript: {fileID: 0}
   animator: {fileID: 6839916422244297978}
   c_EmenyDeath: {fileID: 474329979}
   IsAttacking: 0
   player: {fileID: 8549948093929445301}
   Enemy: {fileID: 474329976}
   Distance_: 0
+  AttackDistance: 0
+  StopAttackingDistance: 0
   c_PlayerController: {fileID: 0}
 --- !u!136 &474329978
 CapsuleCollider:
@@ -24862,15 +24871,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 6839916422244297978}
   target: {fileID: 8549948093929445301}
-  wanderRadius: 50
-  wanderDistance: 25
-  wanderJitter: 8
   camDetectTest: {fileID: 474329980}
   c_EmenyDeath: {fileID: 474329979}
   knockBackForce: 0
   knockBackTime: 0
   speed: 0
   walkRadius: 0
+  enemyAttack: {fileID: 0}
 --- !u!195 &474329982
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -25905,12 +25912,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f010481db3df24382e4a48e13bb1ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BotScript: {fileID: 0}
   animator: {fileID: 1868226799}
   c_EmenyDeath: {fileID: 0}
   IsAttacking: 0
   player: {fileID: 0}
   Enemy: {fileID: 496933443}
   Distance_: 0
+  AttackDistance: 0
+  StopAttackingDistance: 0
   c_PlayerController: {fileID: 0}
 --- !u!136 &496933445
 CapsuleCollider:
@@ -25990,15 +26000,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   target: {fileID: 0}
-  wanderRadius: 50
-  wanderDistance: 25
-  wanderJitter: 8
   camDetectTest: {fileID: 496933447}
   c_EmenyDeath: {fileID: 0}
   knockBackForce: 0
   knockBackTime: 0
   speed: 0
   walkRadius: 0
+  enemyAttack: {fileID: 0}
 --- !u!195 &496933449
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -33788,7 +33796,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 665025351}
   m_LocalRotation: {x: 0.02853157, y: -0, z: -0, w: 0.9995929}
-  m_LocalPosition: {x: -5.117721, y: 1.0705371, z: -10.896365}
+  m_LocalPosition: {x: -5.1182947, y: 1.0705371, z: -10.896364}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -41889,12 +41897,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f010481db3df24382e4a48e13bb1ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BotScript: {fileID: 120920038}
   animator: {fileID: 1972210576}
   c_EmenyDeath: {fileID: 821508676}
   IsAttacking: 0
   player: {fileID: 1747400723}
   Enemy: {fileID: 821508673}
   Distance_: 0
+  AttackDistance: 2.5
+  StopAttackingDistance: 3
   c_PlayerController: {fileID: 1747400727}
 --- !u!136 &821508675
 CapsuleCollider:
@@ -41974,15 +41985,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1972210576}
   target: {fileID: 1747400723}
-  wanderRadius: 50
-  wanderDistance: 25
-  wanderJitter: 8
   camDetectTest: {fileID: 821508677}
   c_EmenyDeath: {fileID: 821508676}
   knockBackForce: 0
   knockBackTime: 0
   speed: 3
   walkRadius: 25
+  enemyAttack: {fileID: 120920034}
 --- !u!195 &821508679
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -41997,7 +42006,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 44
   m_AngularSpeed: 120
-  m_StoppingDistance: 1.18
+  m_StoppingDistance: 2.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -52676,15 +52685,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   target: {fileID: 0}
-  wanderRadius: 40
-  wanderDistance: 25
-  wanderJitter: 8
   camDetectTest: {fileID: 1030491118}
   c_EmenyDeath: {fileID: 0}
   knockBackForce: 0
   knockBackTime: 0
   speed: 0
   walkRadius: 0
+  enemyAttack: {fileID: 0}
 --- !u!195 &1030491116
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -52800,12 +52807,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f010481db3df24382e4a48e13bb1ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BotScript: {fileID: 0}
   animator: {fileID: 5173489332905441132}
   c_EmenyDeath: {fileID: 0}
   IsAttacking: 0
   player: {fileID: 0}
   Enemy: {fileID: 1030491114}
   Distance_: 0
+  AttackDistance: 0
+  StopAttackingDistance: 0
   c_PlayerController: {fileID: 0}
 --- !u!1 &1033133835 stripped
 GameObject:
@@ -56628,12 +56638,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f010481db3df24382e4a48e13bb1ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BotScript: {fileID: 120920038}
   animator: {fileID: 969317773}
   c_EmenyDeath: {fileID: 1104182437}
   IsAttacking: 0
   player: {fileID: 1747400723}
   Enemy: {fileID: 1104182434}
   Distance_: 0
+  AttackDistance: 2.5
+  StopAttackingDistance: 3
   c_PlayerController: {fileID: 1747400727}
 --- !u!136 &1104182436
 CapsuleCollider:
@@ -56713,15 +56726,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 969317773}
   target: {fileID: 1747400723}
-  wanderRadius: 50
-  wanderDistance: 25
-  wanderJitter: 8
   camDetectTest: {fileID: 1104182438}
   c_EmenyDeath: {fileID: 1104182437}
   knockBackForce: 0
   knockBackTime: 0
   speed: 3
   walkRadius: 25
+  enemyAttack: {fileID: 120920034}
 --- !u!195 &1104182440
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -56736,7 +56747,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 44
   m_AngularSpeed: 120
-  m_StoppingDistance: 1.18
+  m_StoppingDistance: 2.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -56763,7 +56774,7 @@ Transform:
   - {fileID: 1808807808}
   - {fileID: 1464047991}
   m_Father: {fileID: 1926060617}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 173.375, z: 0}
 --- !u!1 &1105384917
 GameObject:
@@ -57187,7 +57198,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1110042033}
   m_LocalRotation: {x: 0.028518954, y: -0.030526038, z: 0.00087133225, w: 0.9991267}
-  m_LocalPosition: {x: -3.7611835, y: 1.3310891, z: -6.115384}
+  m_LocalPosition: {x: -3.7629027, y: 1.3310891, z: -6.115494}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -67958,12 +67969,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f010481db3df24382e4a48e13bb1ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BotScript: {fileID: 120920038}
   animator: {fileID: 659628890}
   c_EmenyDeath: {fileID: 1380193262}
   IsAttacking: 0
   player: {fileID: 1747400723}
   Enemy: {fileID: 1380193259}
   Distance_: 0
+  AttackDistance: 2.5
+  StopAttackingDistance: 3
   c_PlayerController: {fileID: 1747400727}
 --- !u!136 &1380193261
 CapsuleCollider:
@@ -68043,15 +68057,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 659628890}
   target: {fileID: 1747400723}
-  wanderRadius: 50
-  wanderDistance: 25
-  wanderJitter: 8
   camDetectTest: {fileID: 1380193263}
   c_EmenyDeath: {fileID: 1380193262}
   knockBackForce: 0
   knockBackTime: 0
   speed: 3
   walkRadius: 25
+  enemyAttack: {fileID: 120920034}
 --- !u!195 &1380193265
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -68066,7 +68078,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 44
   m_AngularSpeed: 120
-  m_StoppingDistance: 1.18
+  m_StoppingDistance: 2.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -75023,12 +75035,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f010481db3df24382e4a48e13bb1ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BotScript: {fileID: 120920038}
   animator: {fileID: 1993158420}
   c_EmenyDeath: {fileID: 1567763577}
   IsAttacking: 0
   player: {fileID: 1747400723}
   Enemy: {fileID: 1567763574}
   Distance_: 0
+  AttackDistance: 2.5
+  StopAttackingDistance: 3
   c_PlayerController: {fileID: 1747400727}
 --- !u!136 &1567763576
 CapsuleCollider:
@@ -75108,15 +75123,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1993158420}
   target: {fileID: 1747400723}
-  wanderRadius: 50
-  wanderDistance: 25
-  wanderJitter: 8
   camDetectTest: {fileID: 1567763578}
   c_EmenyDeath: {fileID: 1567763577}
   knockBackForce: 0
   knockBackTime: 0
   speed: 3
   walkRadius: 25
+  enemyAttack: {fileID: 120920034}
 --- !u!195 &1567763580
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -75131,7 +75144,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 44
   m_AngularSpeed: 120
-  m_StoppingDistance: 1.18
+  m_StoppingDistance: 2.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -77127,12 +77140,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f010481db3df24382e4a48e13bb1ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BotScript: {fileID: 120920038}
   animator: {fileID: 1590028275}
   c_EmenyDeath: {fileID: 1614355455}
   IsAttacking: 0
   player: {fileID: 1747400723}
   Enemy: {fileID: 1614355452}
   Distance_: 0
+  AttackDistance: 2.5
+  StopAttackingDistance: 3
   c_PlayerController: {fileID: 1747400727}
 --- !u!136 &1614355454
 CapsuleCollider:
@@ -77212,15 +77228,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1590028275}
   target: {fileID: 1747400723}
-  wanderRadius: 50
-  wanderDistance: 25
-  wanderJitter: 8
   camDetectTest: {fileID: 1614355456}
   c_EmenyDeath: {fileID: 1614355455}
   knockBackForce: 0
   knockBackTime: 0
   speed: 3
   walkRadius: 25
+  enemyAttack: {fileID: 120920034}
 --- !u!195 &1614355458
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -77235,7 +77249,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 44
   m_AngularSpeed: 120
-  m_StoppingDistance: 1.18
+  m_StoppingDistance: 2.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -83581,6 +83595,7 @@ MonoBehaviour:
   MaxStamina: 2
   PlayerInputObject: {fileID: 1308391887}
   leaveBody: {fileID: 7166903911999502660, guid: b4b7e3343d0e2224ab3b283158f8c3fb, type: 3}
+  audioSource: {fileID: 0}
 --- !u!114 &1747400728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89604,7 +89619,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1883224067}
   m_LocalRotation: {x: 0.020174868, y: -0.70681894, z: 0.020174868, w: 0.70681894}
-  m_LocalPosition: {x: 82.42717, y: 2.1844358, z: -1.6787864}
+  m_LocalPosition: {x: 82.42717, y: 2.1844358, z: -1.6791853}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -90111,12 +90126,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f010481db3df24382e4a48e13bb1ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BotScript: {fileID: 120920038}
   animator: {fileID: 1070611245}
   c_EmenyDeath: {fileID: 1887833328}
   IsAttacking: 0
   player: {fileID: 1747400723}
   Enemy: {fileID: 1887833325}
   Distance_: 0
+  AttackDistance: 2.5
+  StopAttackingDistance: 3
   c_PlayerController: {fileID: 1747400727}
 --- !u!136 &1887833327
 CapsuleCollider:
@@ -90196,15 +90214,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1070611245}
   target: {fileID: 1747400723}
-  wanderRadius: 50
-  wanderDistance: 25
-  wanderJitter: 8
   camDetectTest: {fileID: 1887833329}
   c_EmenyDeath: {fileID: 1887833328}
   knockBackForce: 0
   knockBackTime: 0
   speed: 3
   walkRadius: 25
+  enemyAttack: {fileID: 120920034}
 --- !u!195 &1887833331
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -90219,7 +90235,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 44
   m_AngularSpeed: 120
-  m_StoppingDistance: 1.18
+  m_StoppingDistance: 2.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -91788,9 +91804,9 @@ Transform:
   - {fileID: 1939078034}
   - {fileID: 1887833332}
   - {fileID: 305609972}
-  - {fileID: 383315451}
   - {fileID: 1104182441}
   - {fileID: 176712114}
+  - {fileID: 383315451}
   m_Father: {fileID: 0}
   m_RootOrder: 55
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -92405,12 +92421,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f010481db3df24382e4a48e13bb1ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BotScript: {fileID: 120920038}
   animator: {fileID: 589751326}
   c_EmenyDeath: {fileID: 1939078030}
   IsAttacking: 0
   player: {fileID: 1747400723}
   Enemy: {fileID: 1939078027}
   Distance_: 0
+  AttackDistance: 2.5
+  StopAttackingDistance: 3
   c_PlayerController: {fileID: 1747400727}
 --- !u!136 &1939078029
 CapsuleCollider:
@@ -92490,15 +92509,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 589751326}
   target: {fileID: 1747400723}
-  wanderRadius: 50
-  wanderDistance: 25
-  wanderJitter: 8
   camDetectTest: {fileID: 1939078031}
   c_EmenyDeath: {fileID: 1939078030}
   knockBackForce: 0
   knockBackTime: 0
   speed: 3
   walkRadius: 25
+  enemyAttack: {fileID: 120920034}
 --- !u!195 &1939078033
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -92513,7 +92530,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 44
   m_AngularSpeed: 120
-  m_StoppingDistance: 1.18
+  m_StoppingDistance: 2.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -93570,12 +93587,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f010481db3df24382e4a48e13bb1ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BotScript: {fileID: 120920038}
   animator: {fileID: 240108967}
   c_EmenyDeath: {fileID: 1970828467}
   IsAttacking: 0
   player: {fileID: 1747400723}
   Enemy: {fileID: 1970828464}
   Distance_: 0
+  AttackDistance: 2.5
+  StopAttackingDistance: 3
   c_PlayerController: {fileID: 1747400727}
 --- !u!136 &1970828466
 CapsuleCollider:
@@ -93655,15 +93675,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 240108967}
   target: {fileID: 1747400723}
-  wanderRadius: 50
-  wanderDistance: 25
-  wanderJitter: 8
   camDetectTest: {fileID: 1970828468}
   c_EmenyDeath: {fileID: 1970828467}
   knockBackForce: 0
   knockBackTime: 0
   speed: 3
   walkRadius: 25
+  enemyAttack: {fileID: 120920034}
 --- !u!195 &1970828470
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -93678,7 +93696,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 44
   m_AngularSpeed: 120
-  m_StoppingDistance: 1.18
+  m_StoppingDistance: 2.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -96835,12 +96853,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f010481db3df24382e4a48e13bb1ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BotScript: {fileID: 120920038}
   animator: {fileID: 796411554}
   c_EmenyDeath: {fileID: 2049768003}
   IsAttacking: 0
   player: {fileID: 1747400723}
   Enemy: {fileID: 2049768000}
   Distance_: 0
+  AttackDistance: 2.5
+  StopAttackingDistance: 3
   c_PlayerController: {fileID: 1747400727}
 --- !u!136 &2049768002
 CapsuleCollider:
@@ -96920,15 +96941,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 796411554}
   target: {fileID: 1747400723}
-  wanderRadius: 50
-  wanderDistance: 25
-  wanderJitter: 8
   camDetectTest: {fileID: 2049768004}
   c_EmenyDeath: {fileID: 2049768003}
   knockBackForce: 0
   knockBackTime: 0
   speed: 3
   walkRadius: 25
+  enemyAttack: {fileID: 120920034}
 --- !u!195 &2049768006
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -96943,7 +96962,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 44
   m_AngularSpeed: 120
-  m_StoppingDistance: 1.18
+  m_StoppingDistance: 2.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -97070,12 +97089,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f010481db3df24382e4a48e13bb1ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BotScript: {fileID: 120920038}
   animator: {fileID: 1086478371}
   c_EmenyDeath: {fileID: 2054508143}
   IsAttacking: 0
   player: {fileID: 1747400723}
   Enemy: {fileID: 2054508140}
   Distance_: 0
+  AttackDistance: 2.5
+  StopAttackingDistance: 3
   c_PlayerController: {fileID: 1747400727}
 --- !u!136 &2054508142
 CapsuleCollider:
@@ -97155,15 +97177,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1086478371}
   target: {fileID: 1747400723}
-  wanderRadius: 50
-  wanderDistance: 25
-  wanderJitter: 8
   camDetectTest: {fileID: 2054508144}
   c_EmenyDeath: {fileID: 2054508143}
   knockBackForce: 0
   knockBackTime: 0
   speed: 3
   walkRadius: 25
+  enemyAttack: {fileID: 120920034}
 --- !u!195 &2054508146
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -97178,7 +97198,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 44
   m_AngularSpeed: 120
-  m_StoppingDistance: 1.18
+  m_StoppingDistance: 2.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -102640,6 +102660,7 @@ MonoBehaviour:
   MaxStamina: 2
   PlayerInputObject: {fileID: 1318148781}
   leaveBody: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!95 &919132147864911116
 Animator:
   serializedVersion: 4
@@ -113050,6 +113071,7 @@ MonoBehaviour:
   MaxStamina: 2
   PlayerInputObject: {fileID: 1318148781}
   leaveBody: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!4 &4981672675248981361
 Transform:
   m_ObjectHideFlags: 0
@@ -115994,15 +116016,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 8326926370289276571}
   target: {fileID: 8549948093929445301}
-  wanderRadius: 50
-  wanderDistance: 25
-  wanderJitter: 8
   camDetectTest: {fileID: 6435131421770619924}
   c_EmenyDeath: {fileID: 6435131421770619925}
   knockBackForce: 0
   knockBackTime: 0
   speed: 0
   walkRadius: 0
+  enemyAttack: {fileID: 0}
 --- !u!114 &6435131421770619924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116079,12 +116099,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f010481db3df24382e4a48e13bb1ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BotScript: {fileID: 0}
   animator: {fileID: 8326926370289276571}
   c_EmenyDeath: {fileID: 6435131421770619925}
   IsAttacking: 0
   player: {fileID: 8549948093929445301}
   Enemy: {fileID: 6435131421770620392}
   Distance_: 0
+  AttackDistance: 0
+  StopAttackingDistance: 0
   c_PlayerController: {fileID: 0}
 --- !u!1 &6435131421770620392
 GameObject:

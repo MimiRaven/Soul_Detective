@@ -11,9 +11,9 @@ public class Bot : MonoBehaviour
     public GameObject target;
     //Drive ds;
 
-    public float wanderRadius = 1;
-    public float wanderDistance = 5;
-    public float wanderJitter = 5;
+   //public float wanderRadius = 1;
+   //public float wanderDistance = 5;
+   //public float wanderJitter = 5;
     public CamDetectTest camDetectTest;
     public C_EmenyDeath c_EmenyDeath;
 
@@ -24,6 +24,8 @@ public class Bot : MonoBehaviour
 
     [Range(0, 100)] public float speed;
     [Range(1, 500)] public float walkRadius;
+
+    public EnemyAttack enemyAttack;
 
 
     // Start is called before the first frame update
@@ -116,15 +118,25 @@ public class Bot : MonoBehaviour
             {
                 Wander();
             }
-            else
+            else if(camDetectTest.EnemyInRange == true & enemyAttack.IsAttacking == false) 
             {
                 Seek(target.transform.position);
             }
+            
 
             if (agent.speed >= 1)
             {
                 animator.SetBool("IsWalking", true);
             }
+
+       //     if(enemyAttack.IsAttacking == true)
+       // {
+       //     speed = 0;
+       // }
+       // else
+       // {
+       //     speed = 3;
+       // }
 
        
         //}

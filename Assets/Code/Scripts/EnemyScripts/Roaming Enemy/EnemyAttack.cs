@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyAttack : MonoBehaviour
 {
+    public Bot BotScript;
 
     public Animator animator;
     public C_EmenyDeath c_EmenyDeath;
@@ -14,7 +16,12 @@ public class EnemyAttack : MonoBehaviour
     public GameObject Enemy;
     public float Distance_;
 
+    public float AttackDistance;
+    public float StopAttackingDistance;
+
     public C_PlayerController c_PlayerController;
+
+   
 
     // public GameObject Weapon;
 
@@ -22,6 +29,10 @@ public class EnemyAttack : MonoBehaviour
     void Start()
     {
         //Weapon.SetActive(true);
+       // agent = this.GetComponent<NavMeshAgent>();
+       
+
+      
     }
 
     
@@ -33,25 +44,32 @@ public class EnemyAttack : MonoBehaviour
         Distance_ = Vector3.Distance(player.transform.position, Enemy.transform.position);
 
         
-        if(Distance_ < 5 && c_PlayerController.Possesed == true)
+        if(Distance_ < AttackDistance && c_PlayerController.Possesed == true)
         {
             IsAttacking = true;
+            //BotScript.speed = 0;
         }
-        else if (Distance_ > 5)
+
+
+        if (Distance_ > StopAttackingDistance)
         {
             IsAttacking = false;
+            //BotScript.speed = 3;
+
         }
 
         if (IsAttacking == true && c_EmenyDeath.EnemyCurrentHealth > 0)
         {
 
              animator.SetBool("IsAttacking", true);
+           
             //Weapon.SetActive(true);
         }
         else
         {
            // Weapon.SetActive(false);
             animator.SetBool("IsAttacking", false);
+           
         }
         //is attacking
 
