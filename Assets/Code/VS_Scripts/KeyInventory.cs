@@ -6,6 +6,7 @@ public class KeyInventory : MonoBehaviour
 {
     public float KeyCount;
     public GameObject Door;
+    public GameObject Door1;
 
     public AudioSource audioSource;
 
@@ -19,9 +20,15 @@ public class KeyInventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(KeyCount == 1)
+        {
+            Door1.SetActive(false);
+            audioSource.Play();
+        }
+
         if(KeyCount == 2)
         {
-            Door.SetActive(false);
+            Door1.SetActive(false);
             audioSource.Play();
         }
 
