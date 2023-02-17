@@ -11,12 +11,14 @@ public class C_LocOnRange : MonoBehaviour
 	public LayerMask targetMask;
 	public LayerMask obstacleMask;
 
-	[HideInInspector]
+	//[HideInInspector]
 	public List<Transform> visibleTargets = new List<Transform>();
 
 	public bool EnemyInRange;
 
-	void Start()
+    public C_EnemyDetector EnemyMoveto;
+
+    void Start()
 	{
 		//StartCoroutine("FindTargetsWithDelay", .2f);
 		//EnemyInRange = false;
@@ -25,7 +27,16 @@ public class C_LocOnRange : MonoBehaviour
 	void Update()
     {
 		FindVisibleTargets();
-	}
+
+        if (EnemyInRange == true)
+        {
+            EnemyMoveto.enemyContact = true;
+        }
+        else
+        {
+            EnemyMoveto.enemyContact = false;
+        }
+    }
 
 	//IEnumerator FindTargetsWithDelay(float delay)
 	//{
