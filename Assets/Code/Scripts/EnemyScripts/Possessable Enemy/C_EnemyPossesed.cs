@@ -66,9 +66,15 @@ public class C_EnemyPossesed : MonoBehaviour
     // public AudioClip Key;
     //public AudioSource audioSource;
 
-   // public AudioSource audioSource;
+    // public AudioSource audioSource;
 
     //public ParticleSystem leaveBody;
+
+    public GameObject RightHand, LeftHand;
+
+    public GameObject TargetObject;
+
+    public GameObject LayerObject;
 
 
     private void Awake()
@@ -133,6 +139,9 @@ public class C_EnemyPossesed : MonoBehaviour
         
         Possesion();
         
+        
+
+
     }
 
   
@@ -160,6 +169,9 @@ public class C_EnemyPossesed : MonoBehaviour
             //leaveBody.Stop();
             // audioSource.Play();
             //leaveBody.Play();
+
+            TargetObject.SetActive(false);
+            LayerObject.layer = 7;
         }
         else
         {
@@ -175,6 +187,10 @@ public class C_EnemyPossesed : MonoBehaviour
             //leaveBody.Stop();
             //agent.enable = false;
             //audioSource.Stop();
+            //RightHand.tag = "EnemyWeapon";
+            //LeftHand.tag = "EnemyWeapon";
+            TargetObject.SetActive(true);
+            LayerObject.layer = 8;
         }
 
     }

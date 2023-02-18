@@ -706,7 +706,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""af5ce87e-fb82-4ee3-bda5-5dcddcc0351b"",
-                    ""path"": ""<Keyboard>/x"",
+                    ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

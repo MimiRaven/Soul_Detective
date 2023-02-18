@@ -26,6 +26,8 @@ public class C_EmenyDeath : MonoBehaviour
     public float KnockbackForce = 250;
 
     public AudioSource audioSource;
+
+    public C_EnemyPossesed c_EnemyPossesed;
     //private AudioClip clip;
 
     void Start()
@@ -73,6 +75,10 @@ public class C_EmenyDeath : MonoBehaviour
         if (isColliding) return;
         isColliding = false;
         Debug.Log("Collided");
+
+        if(c_EnemyPossesed.Possesed == false)
+        {
+
 
         if (col.collider.tag == "weapon")
         {
@@ -128,6 +134,20 @@ public class C_EmenyDeath : MonoBehaviour
 
             Debug.Log("Enemy Damaged");
         }
+        }
+
+        if (c_EnemyPossesed.Possesed == true)
+        {
+           if (col.collider.tag == "EnemyWeapon")
+           {
+               EnemyTakeDamage();
+               Debug.Log("Enemy Damaged");
+               Knockback();
+               isColliding = true;
+               audioSource.Play();
+           }
+
+        }
 
         //if(col.collider.tag == "Player")
         //{
@@ -166,7 +186,7 @@ public class C_EmenyDeath : MonoBehaviour
     {
         if (EnemyCurrentHealth <= 0)
         {
-           
+            c_EnemyPossesed.Possesed = false;
             healthBarUI.SetActive(false);
             animator.SetTrigger("Death");
             animator.SetBool("IsAttacking", false);

@@ -17,6 +17,8 @@ public class C_LocOnRange : MonoBehaviour
 	public bool EnemyInRange;
 
     public C_EnemyDetector EnemyMoveto;
+	public C_PossesedEnemyDetector c_PossesedEnemyDetector;
+
 
     void Start()
 	{
@@ -31,10 +33,12 @@ public class C_LocOnRange : MonoBehaviour
         if (EnemyInRange == true)
         {
             EnemyMoveto.enemyContact = true;
+            c_PossesedEnemyDetector.enemyContact= true;
         }
         else
         {
             EnemyMoveto.enemyContact = false;
+			c_PossesedEnemyDetector.enemyContact= false;
         }
     }
 
