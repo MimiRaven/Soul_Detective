@@ -63,6 +63,8 @@ public class C_PlayerController : MonoBehaviour
 
     public AudioSource audioSource;
 
+    public PlayerAttack playerAttack;
+
     // public float displayTime = 4.0f;
     // public GameObject dialogBox1;
     // public GameObject dialogBox2;
@@ -237,6 +239,7 @@ public class C_PlayerController : MonoBehaviour
             //PlayerInputObject.SetActive(true);
             gameObject.layer = 7;
             leaveBody.Stop();
+            
         }
         else 
         { 
@@ -247,7 +250,7 @@ public class C_PlayerController : MonoBehaviour
             PlayerModel.SetActive(false);
             //PlayerInputObject.SetActive(false);
             gameObject.layer = 0;
-
+            playerAttack.FaceEnemy = false; 
             leaveBody.Stop();
 
         }

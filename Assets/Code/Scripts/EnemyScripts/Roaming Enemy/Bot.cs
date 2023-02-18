@@ -27,6 +27,10 @@ public class Bot : MonoBehaviour
 
     public EnemyAttack enemyAttack;
 
+    public PlayerTracker playerTracker;
+
+    //public Transform Target;
+
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +40,8 @@ public class Bot : MonoBehaviour
 
         agent.speed= speed;
         agent.SetDestination(RandomNavMeshLocation());
+
+        //Target = playerTracker.closestEnemy;
     }
 
     public Vector3 RandomNavMeshLocation() 
@@ -120,7 +126,7 @@ public class Bot : MonoBehaviour
             }
             else if(camDetectTest.EnemyInRange == true & enemyAttack.IsAttacking == false) 
             {
-                Seek(target.transform.position);
+                Seek(playerTracker.closestEnemy.transform.position);
             }
             
 

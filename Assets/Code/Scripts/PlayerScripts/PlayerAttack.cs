@@ -24,6 +24,8 @@ public class PlayerAttack : MonoBehaviour
 
     public GameObject AttackColider;
 
+    public bool FaceEnemy;
+
     public void Awake()
     {
         AttackAction = playerInput.actions["Attack"];
@@ -79,6 +81,7 @@ public class PlayerAttack : MonoBehaviour
         {
 
             Attacking();
+            FaceEnemy = true;
         }
 
 
@@ -98,6 +101,7 @@ public class PlayerAttack : MonoBehaviour
     public void ColliderOff()
     {
         AttackColider.SetActive(false);
+        FaceEnemy = false;
     }
 
     public void Attacking()
