@@ -154,7 +154,7 @@ public class C_EnemyPossesed : MonoBehaviour
             EnemyCams.SetActive(true);
             
             //TimerOn = true;
-            objectRb.drag = 1;
+            //objectRb.drag = 1;
             WeaponWheel.SetActive(false);
             PlayerInputObject.SetActive(true);
             //leaveBody.Stop();
@@ -168,7 +168,7 @@ public class C_EnemyPossesed : MonoBehaviour
             //c_PlayerController.Possesed = true;
            // TimerOn = false;
             EnemyCams.SetActive(false);
-            objectRb.drag = 100;
+            //objectRb.drag = 100;
             WeaponWheel.SetActive(true);
             PlayerInputObject.SetActive(false);
             //leaveBody.Play();
