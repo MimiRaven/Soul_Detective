@@ -43,25 +43,25 @@ public class C_enemyWeaponCollider : MonoBehaviour
           PosRightHandCollider.SetActive(true);
 
         }
-        else
+            
+        if(c_EnemyPossesed.Possesed == false)
         {
-         RightHandCollider.SetActive(true);
-
+            RightHandCollider.SetActive(true);
         }
     }
 
     public void RightColliderOff()
     {
-        if(c_EnemyPossesed.Possesed == true)
-        {
+       //if(c_EnemyPossesed.Possesed == true)
+       //{
+       //
+       //}
+       //else
+       //{
+       //
+       //}
           PosRightHandCollider.SetActive(false);
-
-        }
-        else
-        {
-
           RightHandCollider.SetActive(false);
-        }
         
     }
 
@@ -72,7 +72,7 @@ public class C_enemyWeaponCollider : MonoBehaviour
             PosLeftHandCollider.SetActive(true);
 
         }
-        else
+        if (c_EnemyPossesed.Possesed == false)
         {
             LeftHandCollider.SetActive(true);
 
@@ -81,15 +81,15 @@ public class C_enemyWeaponCollider : MonoBehaviour
 
     public void LeftColliderOff() 
     {
-        if (c_EnemyPossesed.Possesed == true)
-        {
+       //if (c_EnemyPossesed.Possesed == true)
+       //{
+       //
+       //}
+       //else
+       //{
+       //
+       //}
           PosLeftHandCollider.SetActive(false);
-
-        }
-        else
-        {
-
             LeftHandCollider.SetActive(false);
-        }
     }   
 }

@@ -172,6 +172,7 @@ public class C_EnemyPossesed : MonoBehaviour
 
             TargetObject.SetActive(false);
             LayerObject.layer = 7;
+            LayerObject.tag = "Player";
         }
         else
         {
@@ -191,6 +192,7 @@ public class C_EnemyPossesed : MonoBehaviour
             //LeftHand.tag = "EnemyWeapon";
             TargetObject.SetActive(true);
             LayerObject.layer = 8;
+            LayerObject.tag = "Enemy1";
         }
 
     }
