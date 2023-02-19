@@ -131,9 +131,11 @@ public class C_Possesion : MonoBehaviour
                              if (hit.transform.TryGetComponent<C_EnemyPossesed>(out C_EnemyPossesed ts))
                                  ts.Possesed = true;
 
-                             if(ts.Possesed == true)
+                             if(ts.Possesed == true && ts.PuzzleEnemy == false)
                               {
-                             //c_PossesionTimmer.TimeLeft = SetCoolDownTime;
+
+                                    
+                           
                              c_PossesionTimmer.TimerOn = true;
                              c_PlayerController.Possesed = false;
                              PossesionRayShot = false;
@@ -141,16 +143,23 @@ public class C_Possesion : MonoBehaviour
                              
 
                              }
-
-                        if (hit.transform.TryGetComponent<C_PuzzleEnemyPossesion>(out C_PuzzleEnemyPossesion Ps))
-                            Ps.Possesed = true;
-
-                        if(Ps.Possesed == true)
+                             else if(ts.Possesed == true && ts.PuzzleEnemy == true)
                         {
                             c_PlayerController.Possesed = false;
                             PossesionRayShot = false;
-                            c_PossesionTimmer.TimerCanvas.SetActive(false);
+                            TimerOn = true;
                         }
+
+                       //if (hit.transform.TryGetComponent<C_PuzzleEnemyPossesion>(out C_PuzzleEnemyPossesion Ps))
+                       //    Ps.Possesed = true;
+                       //Debug.Log("PuzzleScriptHit");
+                       //if (Ps.Possesed == true)
+                       //{
+                       //    
+                       //    c_PlayerController.Possesed = false;
+                       //    PossesionRayShot = false;
+                       //    c_PossesionTimmer.TimerCanvas.SetActive(false);
+                       //}
 
 
 

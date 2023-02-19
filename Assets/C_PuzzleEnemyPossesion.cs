@@ -182,7 +182,7 @@ public class C_PuzzleEnemyPossesion : MonoBehaviour
             TargetObject.SetActive(false);
             LayerObject.layer = 7;
             LayerObject.tag = "Player";
-            c_PossesionTimmer.TimerOn = false;
+            //c_PossesionTimmer.TimerOn = false;
         }
         else
         {

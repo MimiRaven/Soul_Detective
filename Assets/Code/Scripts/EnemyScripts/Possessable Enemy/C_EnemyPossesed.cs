@@ -143,12 +143,12 @@ public class C_EnemyPossesed : MonoBehaviour
         Possesion();
          
 
-        if(PuzzleEnemy == true)
-        {
-            c_PossesionTimmer.TimerOn = false;
-        }
+       //if(PuzzleEnemy == true)
+       //{
+       //    c_PossesionTimmer.TimerOn = false;
+       //}
 
-        if(c_PossesionTimmer.TimeLeft <= 0)
+        if(c_PossesionTimmer.TimeLeft <= 0 && PuzzleEnemy == false)
         {
             Possesed= false;
             c_PlayerController.Possesed = true;
@@ -274,6 +274,7 @@ public class C_EnemyPossesed : MonoBehaviour
         Debug.Log("QuitPressed");
         Possesed = false;
         c_PlayerController.Possesed = true;
+        c_PossesionTimmer.TimerOn = false;
         //leaveBody.Play();                                     //
         //leaveBody.Stop();
 
@@ -282,8 +283,9 @@ public class C_EnemyPossesed : MonoBehaviour
     private void StopExitPossesion()
     {
         Possesed = false;
+        c_PlayerController.Possesed = true;
         //leaveBody.Play();
         //leaveBody.Stop();
-        c_PossesionTimmer.TimerOn = false;//
+       // c_PossesionTimmer.TimerOn = false;//
     }
 }

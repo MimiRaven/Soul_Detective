@@ -28,7 +28,7 @@ public class C_PossesionTimmer : MonoBehaviour
 
         if(TimeLeft>= 0)
         {
-            c_PlayerController.Possesed = true;
+            //c_PlayerController.Possesed = true;
            
         }
 
@@ -45,13 +45,14 @@ public class C_PossesionTimmer : MonoBehaviour
 
         if (TimerOn)
         {
+            c_PlayerController.Possesed = false;
 
             if (TimeLeft > 0)
             {
                 TimeLeft -= Time.deltaTime;
                 updateTimer(TimeLeft);
                 TimerCanvas.SetActive(true);
-                c_PlayerController.Possesed = false;
+                //c_PlayerController.Possesed = false;
                 
             }
             else
@@ -60,8 +61,9 @@ public class C_PossesionTimmer : MonoBehaviour
                 TimerOn = false;
                 TimerCanvas.SetActive(false);
                 // TimeLeft = SetCoolDownTime;
-               c_PlayerController.Possesed = true;
+                //c_PlayerController.Possesed = true;
                 //TimeLeft = SetCoolDownTime;
+               // c_PlayerController.Possesed = true;
 
             }
 
@@ -70,6 +72,7 @@ public class C_PossesionTimmer : MonoBehaviour
         {
             TimerCanvas.SetActive(false);
             TimeLeft = SetCoolDownTime;
+           
         }
     }
 
