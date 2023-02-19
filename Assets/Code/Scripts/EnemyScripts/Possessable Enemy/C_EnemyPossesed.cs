@@ -78,6 +78,8 @@ public class C_EnemyPossesed : MonoBehaviour
 
     public C_PossesionTimmer c_PossesionTimmer;
 
+    public bool PuzzleEnemy;
+
     private void Awake()
     {
         StopPosAction = playerInput.actions["StopPossesion"];
@@ -140,6 +142,11 @@ public class C_EnemyPossesed : MonoBehaviour
         
         Possesion();
          
+
+        if(PuzzleEnemy == true)
+        {
+            c_PossesionTimmer.TimerOn = false;
+        }
 
         if(c_PossesionTimmer.TimeLeft <= 0)
         {

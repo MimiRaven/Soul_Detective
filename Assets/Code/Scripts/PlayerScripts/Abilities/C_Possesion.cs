@@ -125,7 +125,8 @@ public class C_Possesion : MonoBehaviour
 
                      if (Physics.Raycast(theRay, out RaycastHit hit, range))
                      {
-                        
+                       
+
                              Debug.Log("Push button active");
                              if (hit.transform.TryGetComponent<C_EnemyPossesed>(out C_EnemyPossesed ts))
                                  ts.Possesed = true;
@@ -140,7 +141,20 @@ public class C_Possesion : MonoBehaviour
                              
 
                              }
-                         
+
+                        if (hit.transform.TryGetComponent<C_PuzzleEnemyPossesion>(out C_PuzzleEnemyPossesion Ps))
+                            Ps.Possesed = true;
+
+                        if(Ps.Possesed == true)
+                        {
+                            c_PlayerController.Possesed = false;
+                            PossesionRayShot = false;
+                            c_PossesionTimmer.TimerCanvas.SetActive(false);
+                        }
+
+
+
+
 
 
 
