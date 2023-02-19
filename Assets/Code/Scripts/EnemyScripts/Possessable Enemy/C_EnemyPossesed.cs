@@ -76,6 +76,7 @@ public class C_EnemyPossesed : MonoBehaviour
 
     public GameObject LayerObject;
 
+    public C_PossesionTimmer c_PossesionTimmer;
 
     private void Awake()
     {
@@ -138,9 +139,13 @@ public class C_EnemyPossesed : MonoBehaviour
     {
         
         Possesion();
-        
-        
+         
 
+        if(c_PossesionTimmer.TimeLeft <= 0)
+        {
+            Possesed= false;
+            c_PlayerController.Possesed = true;
+        }
 
     }
 
@@ -271,6 +276,7 @@ public class C_EnemyPossesed : MonoBehaviour
     {
         Possesed = false;
         //leaveBody.Play();
-        //leaveBody.Stop();                                     //
+        //leaveBody.Stop();
+        c_PossesionTimmer.TimerOn = false;//
     }
 }
