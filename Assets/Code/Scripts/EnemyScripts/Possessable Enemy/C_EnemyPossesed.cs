@@ -76,6 +76,9 @@ public class C_EnemyPossesed : MonoBehaviour
 
     public GameObject LayerObject;
 
+    public C_PossesionTimmer c_PossesionTimmer;
+
+    public bool PuzzleEnemy;
 
     private void Awake()
     {
@@ -138,9 +141,18 @@ public class C_EnemyPossesed : MonoBehaviour
     {
         
         Possesion();
-        
-        
+         
 
+       //if(PuzzleEnemy == true)
+       //{
+       //    c_PossesionTimmer.TimerOn = false;
+       //}
+
+        if(c_PossesionTimmer.TimeLeft <= 0 && PuzzleEnemy == false)
+        {
+            Possesed= false;
+            c_PlayerController.Possesed = true;
+        }
 
     }
 
@@ -262,6 +274,7 @@ public class C_EnemyPossesed : MonoBehaviour
         Debug.Log("QuitPressed");
         Possesed = false;
         c_PlayerController.Possesed = true;
+        c_PossesionTimmer.TimerOn = false;
         //leaveBody.Play();                                     //
         //leaveBody.Stop();
 
@@ -270,7 +283,9 @@ public class C_EnemyPossesed : MonoBehaviour
     private void StopExitPossesion()
     {
         Possesed = false;
+        c_PlayerController.Possesed = true;
         //leaveBody.Play();
-        //leaveBody.Stop();                                     //
+        //leaveBody.Stop();
+       // c_PossesionTimmer.TimerOn = false;//
     }
 }

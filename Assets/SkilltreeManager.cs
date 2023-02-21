@@ -49,6 +49,15 @@ public class SkilltreeManager : MonoBehaviour
     public bool PossesionTimeUpgrade3;
 
 
+    public Button PossesionCoolDownTimmerUpgradeButton1;
+    public Button PossesionCoolDownTimmerUpgradeButton2;
+    public Button PossesionCoolDownTimmerUpgradeButton3;
+
+    public bool PossesionCoolDownTimeUpgrade1;
+    public bool PossesionCoolDownTimeUpgrade2;
+    public bool PossesionCoolDownTimeUpgrade3;
+
+
 
     public GameObject PlayerWeapon;
 
@@ -78,6 +87,7 @@ public class SkilltreeManager : MonoBehaviour
 
     public C_RangeAttack c_RangeAttack;
     public C_Possesion c_Possesion;
+    public C_PossesionTimmer c_PossesionTimmer;
     public C_XpScore c_XpScore;
 
 
@@ -238,7 +248,7 @@ public class SkilltreeManager : MonoBehaviour
         if (c_XpScore.SkillPoints >= 1)
         {
             PossesionTimmerUpgradeButton1.interactable = false;
-            c_Possesion.SetCoolDownTime += 1;
+            c_PossesionTimmer.SetCoolDownTime += 1;
             c_XpScore.SkillPoints -= 1;
             PossesionTimeUpgrade1 = true;
         }
@@ -250,7 +260,7 @@ public class SkilltreeManager : MonoBehaviour
         if (c_XpScore.SkillPoints >= 2 && PossesionTimeUpgrade1 == true)
         {
             PossesionTimmerUpgradeButton2.interactable = false;
-            c_Possesion.SetCoolDownTime += 1;
+            c_PossesionTimmer.SetCoolDownTime += 1;
             c_XpScore.SkillPoints -= 2;
             PossesionTimeUpgrade2 = true;
         }
@@ -261,9 +271,44 @@ public class SkilltreeManager : MonoBehaviour
         if (c_XpScore.SkillPoints >= 3 && PossesionTimeUpgrade2 == true)
         {
             PossesionTimmerUpgradeButton3.interactable = false;
-            c_Possesion.SetCoolDownTime += 1;
+            c_PossesionTimmer.SetCoolDownTime += 1;
             c_XpScore.SkillPoints -= 3;
             PossesionTimeUpgrade3 = true;
+
+        }
+    }
+
+    public void CoolDownPossesionTimmerUpgrade1()
+    {
+        if (c_XpScore.SkillPoints >= 1)
+        {
+            PossesionCoolDownTimmerUpgradeButton1.interactable = false;
+            c_Possesion.SetCoolDownTime -= 1;
+            c_XpScore.SkillPoints -= 1;
+            PossesionCoolDownTimeUpgrade1 = true;
+        }
+
+    }
+
+    public void CoolDownPossesionTimmerUpgrade2()
+    {
+        if (c_XpScore.SkillPoints >= 2 && PossesionCoolDownTimeUpgrade1 == true)
+        {
+            PossesionCoolDownTimmerUpgradeButton2.interactable = false;
+            c_Possesion.SetCoolDownTime -= 1;
+            c_XpScore.SkillPoints -= 2;
+            PossesionCoolDownTimeUpgrade2 = true;
+        }
+    }
+
+    public void CoolDownPossesionTimmerUpgrade3()
+    {
+        if (c_XpScore.SkillPoints >= 3 && PossesionCoolDownTimeUpgrade2 == true)
+        {
+            PossesionCoolDownTimmerUpgradeButton3.interactable = false;
+            c_Possesion.SetCoolDownTime -= 1;
+            c_XpScore.SkillPoints -= 3;
+            PossesionCoolDownTimeUpgrade3 = true;
 
         }
     }
