@@ -26,6 +26,9 @@ public class C_EmenyDeath : MonoBehaviour
     public float KnockbackForce = 250;
 
     public AudioSource audioSource;
+
+    public C_EnemyPossesed c_EnemyPossesed;
+    public C_PlayerController c_PlayerController;
     //private AudioClip clip;
 
     void Start()
@@ -68,11 +71,29 @@ public class C_EmenyDeath : MonoBehaviour
        
     }
 
+    void OnTriggerEnter(Collider collision)
+    {
+        if (isColliding) return;
+        isColliding = true;
+
+        if (collision.gameObject.tag == "EnemyWeapon" &&  c_EnemyPossesed.Possesed == true)
+        {
+            EnemyTakeDamage();
+        }
+    }
+
+
     void OnCollisionEnter(Collision col)
     {
         if (isColliding) return;
         isColliding = false;
         Debug.Log("Collided");
+
+       
+
+        if (c_EnemyPossesed.Possesed == false)
+        {
+
 
         if (col.collider.tag == "weapon")
         {
@@ -128,6 +149,19 @@ public class C_EmenyDeath : MonoBehaviour
 
             Debug.Log("Enemy Damaged");
         }
+        }
+
+       //if (c_EnemyPossesed.Possesed == true)
+       //{
+       //   if (col.collider.tag == "EnemyWeapon")
+       //   {
+       //        Debug.Log("Possesed EnemyHit");
+       //        EnemyCurrentHealth -= 1;
+       //        Debug.Log("Enemy Damaged");
+       //  
+       //   }
+       //
+       //}
 
         //if(col.collider.tag == "Player")
         //{
@@ -166,7 +200,14 @@ public class C_EmenyDeath : MonoBehaviour
     {
         if (EnemyCurrentHealth <= 0)
         {
-           
+            if(c_EnemyPossesed.Possesed == true)
+            {
+                c_EnemyPossesed.Possesed = false;
+                c_PlayerController.Possesed = true;
+            }
+
+            //c_PlayerController.Possesed = true;
+           // c_EnemyPossesed.Possesed = false;
             healthBarUI.SetActive(false);
             animator.SetTrigger("Death");
             animator.SetBool("IsAttacking", false);

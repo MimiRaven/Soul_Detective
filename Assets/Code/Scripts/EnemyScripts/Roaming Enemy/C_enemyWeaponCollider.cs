@@ -7,6 +7,13 @@ public class C_enemyWeaponCollider : MonoBehaviour
     public GameObject RightHandCollider;
     public GameObject LeftHandCollider;
 
+    public GameObject PosRightHandCollider;
+    public GameObject PosLeftHandCollider;
+
+    public C_EnemyPossesed c_EnemyPossesed;
+
+    public bool FaceEnemy;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,24 +26,70 @@ public class C_enemyWeaponCollider : MonoBehaviour
         
     }
 
+    public void StartTurnToEnemy()
+    {
+        FaceEnemy = true;
+    }
+
+    public void EndTurnToEnemy()
+    {
+        FaceEnemy = false;
+    }
+
     public void RightColliderON()
     {
-        RightHandCollider.SetActive(true);
+        if(c_EnemyPossesed.Possesed == true)
+        {
+          PosRightHandCollider.SetActive(true);
+
+        }
+            
+        if(c_EnemyPossesed.Possesed == false)
+        {
+            RightHandCollider.SetActive(true);
+        }
     }
 
     public void RightColliderOff()
     {
-        RightHandCollider.SetActive(false);
+       //if(c_EnemyPossesed.Possesed == true)
+       //{
+       //
+       //}
+       //else
+       //{
+       //
+       //}
+          PosRightHandCollider.SetActive(false);
+          RightHandCollider.SetActive(false);
         
     }
 
     public void LeftColliderON()
     {
-        LeftHandCollider.SetActive(true);
+        if (c_EnemyPossesed.Possesed == true)
+        {
+            PosLeftHandCollider.SetActive(true);
+
+        }
+        if (c_EnemyPossesed.Possesed == false)
+        {
+            LeftHandCollider.SetActive(true);
+
+        }
     }
 
     public void LeftColliderOff() 
     {
-        LeftHandCollider.SetActive(false);
+       //if (c_EnemyPossesed.Possesed == true)
+       //{
+       //
+       //}
+       //else
+       //{
+       //
+       //}
+          PosLeftHandCollider.SetActive(false);
+            LeftHandCollider.SetActive(false);
     }   
 }

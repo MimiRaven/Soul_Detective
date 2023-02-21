@@ -21,7 +21,8 @@ public class EnemyAttack : MonoBehaviour
 
     public C_PlayerController c_PlayerController;
 
-   
+    public PlayerTracker playerTracker;
+
 
     // public GameObject Weapon;
 
@@ -41,10 +42,10 @@ public class EnemyAttack : MonoBehaviour
     void Update()
     {
 
-        Distance_ = Vector3.Distance(player.transform.position, Enemy.transform.position);
+        Distance_ = Vector3.Distance(playerTracker.closestEnemy.transform.position, Enemy.transform.position);
 
         
-        if(Distance_ < AttackDistance && c_PlayerController.Possesed == true)
+        if(Distance_ < AttackDistance)
         {
             IsAttacking = true;
             //BotScript.speed = 0;
