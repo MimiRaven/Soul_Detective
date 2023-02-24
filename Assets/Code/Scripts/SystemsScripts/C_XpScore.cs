@@ -42,4 +42,18 @@ public class C_XpScore : MonoBehaviour
 
         C_UIxpBar.instance.SetValue(CurrentScore / (float)MaxScore);
     }
+
+    void OnTriggerEnter(Collider collision)
+    {
+
+        if (collision.gameObject.tag == "XPpickup")
+        {
+
+            CurrentScore += 1;
+            Destroy(collision.gameObject);
+        }
+
+
+
+    }
 }
