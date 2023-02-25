@@ -7,6 +7,10 @@ public class C_OpenDoorWithTeleButton : MonoBehaviour
     public GameObject ClosedDoor;
     public GameObject OpenDoor;
 
+    public GameObject SideQuest1Text;
+    public GameObject CompleteQuest1Text;
+    public GameObject QuestionMarks;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +31,10 @@ public class C_OpenDoorWithTeleButton : MonoBehaviour
         {
             ClosedDoor.SetActive(false);
             OpenDoor.SetActive(true);
+
+            SideQuest1Text.SetActive(false);
+            QuestionMarks.SetActive(false);
+            CompleteQuest1Text.SetActive(true);
         }
     }
 }

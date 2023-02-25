@@ -130,23 +130,16 @@ public class SkilltreeManager : MonoBehaviour
     {
         if (c_Telekinesis.ObjectGrabbed == false)
         {
-            c_TimeManagement.TimeStop = true;
-            SkillTreeCanvas.SetActive(true);
-            //Time.timeScale = 0f;
-            c_PlayerController.WeaponWheel = true;
-            MainCam.SetActive(false);
-            AimCam.SetActive(false);
-            //Cursor.visible = true;
+            WheelIsOn = !WheelIsOn; 
 
-            //playerAttack.IsAbleToAttack = false;
-
-            WheelIsOn = true;
-
-            //if(c_PlayerController.Possesed == false)
-            //{
-            //    Time.timeScale = 0f;
-            //    Cursor.visible = true;
-            //}
+           if(WheelIsOn)
+           {
+               WheelActivated();
+           }
+           else
+           {
+               WheelDeactivated();
+           }
 
 
         }
@@ -155,6 +148,33 @@ public class SkilltreeManager : MonoBehaviour
 
     void WheelActiveStop()
     {
+        
+    }
+
+     public void WheelActivated()
+     {
+        WheelIsOn = true;
+
+        c_TimeManagement.TimeStop = true;
+        SkillTreeCanvas.SetActive(true);
+        //Time.timeScale = 0f;
+        c_PlayerController.WeaponWheel = true;
+        MainCam.SetActive(false);
+        AimCam.SetActive(false);
+        //Cursor.visible = true;
+
+        //playerAttack.IsAbleToAttack = false;
+
+
+        //if(c_PlayerController.Possesed == false)
+        //{
+        //    Time.timeScale = 0f;
+        //    Cursor.visible = true;
+        //}
+     }
+
+    public void WheelDeactivated()
+    {
         c_TimeManagement.TimeStop = false;
         SkillTreeCanvas.SetActive(false);
         //Time.timeScale = 1f;
@@ -162,11 +182,13 @@ public class SkilltreeManager : MonoBehaviour
         MainCam.SetActive(true);
         AimCam.SetActive(true);
         //Cursor.visible = false;
-       // playerAttack.IsAbleToAttack = true;
+        // playerAttack.IsAbleToAttack = true;
         WheelIsOn = false;
 
         //if (c_PlayerController.Possesed == false)
     }
+
+
 
     //Ability Timers Upgrades
 

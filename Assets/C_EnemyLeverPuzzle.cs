@@ -16,8 +16,13 @@ public class C_EnemyLeverPuzzle : MonoBehaviour
     public C_PlayerController C_PlayerController;
     public C_PossesedEnemyAttack C_PossesedEnemyAttack;
 
-  //  public Behaviour c_EnemyPossesed;
-   // public Behaviour c_EnemyAttack;
+    public GameObject SideQuest1Text;
+    public GameObject CompleteQuest1Text;
+    public GameObject QuestionMarks;
+
+
+    //  public Behaviour c_EnemyPossesed;
+    // public Behaviour c_EnemyAttack;
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +51,10 @@ public class C_EnemyLeverPuzzle : MonoBehaviour
             LeverUp.SetActive(false);
             PuzzleEnemy.SetActive(false);
             LeverDown.SetActive(true);
-            
+
+            SideQuest1Text.SetActive(false);
+            QuestionMarks.SetActive(false);
+            CompleteQuest1Text.SetActive(true);
             //c_EnemyPossesed.enabled= false;
             //c_EnemyAttack.enabled= false;
             //Bot.enabled= false;

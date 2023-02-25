@@ -6,6 +6,12 @@ public class C_DetroyObjectWithTeleButton : MonoBehaviour
 {
     public GameObject HazardObject;
 
+    public GameObject SideQuest1Text;
+    public GameObject CompleteQuest1Text;
+
+    public GameObject QuestionMarks;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +31,9 @@ public class C_DetroyObjectWithTeleButton : MonoBehaviour
         if (col.collider.tag == "NotActive")
         {
             HazardObject.SetActive(false);
+            SideQuest1Text.SetActive(false);
+            CompleteQuest1Text.SetActive(true);
+            QuestionMarks.SetActive(false);
         }
     }
  }
