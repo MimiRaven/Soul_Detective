@@ -29,6 +29,7 @@ public class C_PlayerHealth : MonoBehaviour
 
     public TextMeshProUGUI TimerUI;
     public GameObject TimerCanvas;
+    public AudioSource audioSource;
 
     public float SetCoolDownTime;
     public float TimeLeft;
@@ -113,6 +114,7 @@ public class C_PlayerHealth : MonoBehaviour
             if (collision.gameObject.tag == "EnemyWeapon")
             {
                 ChangeHealth(-1);
+                audioSource.Play();
                 animator.SetTrigger("Hurt 0");
                 
                 if (shield.activeInHierarchy)

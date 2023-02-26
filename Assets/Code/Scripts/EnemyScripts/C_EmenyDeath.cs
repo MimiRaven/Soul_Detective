@@ -29,7 +29,7 @@ public class C_EmenyDeath : MonoBehaviour
 
     public C_EnemyPossesed c_EnemyPossesed;
     public C_PlayerController c_PlayerController;
-    //private AudioClip clip;
+    private AudioClip clip;
 
     void Start()
     {
@@ -79,6 +79,7 @@ public class C_EmenyDeath : MonoBehaviour
         if (collision.gameObject.tag == "EnemyWeapon" &&  c_EnemyPossesed.Possesed == true)
         {
             EnemyTakeDamage();
+            audioSource.Play();
         }
     }
 
@@ -104,14 +105,14 @@ public class C_EmenyDeath : MonoBehaviour
             Debug.Log("Enemy Damaged");
             Knockback();
             isColliding = true;
-            audioSource.Play();
+
         }
 
 
         if (col.collider.tag == "Active")
         {
             Debug.Log("Attack hit");
-            Knockback();
+                Knockback();
             EnemyTakeDamage();
         }
 
@@ -119,7 +120,8 @@ public class C_EmenyDeath : MonoBehaviour
         if (col.collider.tag == "BoostedWeapon")
         {
             BoostedWeaponDamage();
-            Knockback();
+                audioSource.Play();
+                Knockback();
 
             Debug.Log("Enemy Damaged");
         }
@@ -129,7 +131,8 @@ public class C_EmenyDeath : MonoBehaviour
         if (col.collider.tag == "WeaponUpgraded1")
         {
             EnemyCurrentHealth -= 2;
-            Knockback();
+                audioSource.Play();
+                Knockback();
 
             Debug.Log("Enemy Damaged");
         }
@@ -137,7 +140,8 @@ public class C_EmenyDeath : MonoBehaviour
         if (col.collider.tag == "WeaponUpgraded2")
         {
             EnemyCurrentHealth -= 3;
-            Knockback();
+                audioSource.Play();
+                Knockback();
 
             Debug.Log("Enemy Damaged");
         }
@@ -145,7 +149,8 @@ public class C_EmenyDeath : MonoBehaviour
         if (col.collider.tag == "WeaponUpgraded3")
         {
             EnemyCurrentHealth -= 4;
-            Knockback();
+                audioSource.Play();
+                Knockback();
 
             Debug.Log("Enemy Damaged");
         }
@@ -186,7 +191,7 @@ public class C_EmenyDeath : MonoBehaviour
     void EnemyTakeDamage()
     {
         EnemyCurrentHealth -= 1;
-
+        audioSource.Play();
         //audioSource.PlayOneShot(clip);
     }
 
@@ -212,6 +217,7 @@ public class C_EmenyDeath : MonoBehaviour
             animator.SetTrigger("Death");
             animator.SetBool("IsAttacking", false);
             TimerOn = true;
+            //audioSource.Play();
             EnemyIsDead = true;
             //Destroy(gameObject);
 

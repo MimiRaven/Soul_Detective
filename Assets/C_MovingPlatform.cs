@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,6 @@ public class C_MovingPlatform : MonoBehaviour
     [SerializeField]
     float changeDirectionDelay;
 
-
     private Transform destinationTarget, departTarget;
 
     private float startTime;
@@ -28,13 +28,12 @@ public class C_MovingPlatform : MonoBehaviour
     {
         departTarget = startPoint;
         destinationTarget = endPoint;
-
         startTime = Time.time;
         journeyLength = Vector3.Distance(departTarget.position, destinationTarget.position);
     }
 
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         Move();
     }
@@ -90,20 +89,13 @@ public class C_MovingPlatform : MonoBehaviour
 
 
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            other.transform.parent = transform;
-
-        }
+            other.transform.SetParent(transform);
     }
 
-    void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            other.transform.parent = null;
-        }
+            other.transform.SetParent(null);
     }
 }

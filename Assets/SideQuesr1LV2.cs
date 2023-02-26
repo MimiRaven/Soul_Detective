@@ -11,11 +11,13 @@ public class SideQuesr1LV2 : MonoBehaviour
     public GameObject QuestionMarks;
 
     public GameObject HeadIcon;
-    
+    public AudioSource audioSource;
+    private static GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -26,6 +28,7 @@ public class SideQuesr1LV2 : MonoBehaviour
             IncompleteQuestText.SetActive(true);
             QuestionMarks.SetActive(false);
             HeadIcon.SetActive(false);
+            audioSource.Play();
         }
     }
 }
