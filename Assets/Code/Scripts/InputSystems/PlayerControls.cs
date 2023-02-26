@@ -876,6 +876,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""ObjectiveMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b641fcba-6247-4ddc-8b72-220af9ebc85a"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ObjectiveMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
