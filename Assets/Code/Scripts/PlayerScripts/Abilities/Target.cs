@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class Target : MonoBehaviour
 {
@@ -15,7 +16,8 @@ public class Target : MonoBehaviour
 
     public bool Dropped;
 
-    public ParticleSystem telekinesis;
+   // public ParticleSystem telekinesis;
+    public VisualEffect TeleVfxEffect;
 
 
     //void FixedUpdate()
@@ -42,7 +44,8 @@ public class Target : MonoBehaviour
 
     public void Start()
     {
-        telekinesis.Stop();
+       // telekinesis.Stop();
+        TeleVfxEffect.Stop();
     }
 
     public void Pull(Vector3 direction)
@@ -67,7 +70,8 @@ public class Target : MonoBehaviour
         objectRb.drag = 5;
         Debug.Log("Object Grabbed");
         Dropped = false;
-        telekinesis.Play();
+        //telekinesis.Play();
+        TeleVfxEffect.Play();
     }
 
    //public void Drop(Transform objectGrabPointTransform)
@@ -94,8 +98,8 @@ public class Target : MonoBehaviour
             objectRb.drag = 0;
             objectRb.useGravity = true;
             Debug.Log("Object Dropped");
-            telekinesis.Stop();
-
+            //  telekinesis.Stop();
+            TeleVfxEffect.Stop();
 
         }
     }

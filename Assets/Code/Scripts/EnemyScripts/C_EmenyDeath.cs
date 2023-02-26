@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
 public class C_EmenyDeath : MonoBehaviour
 {
@@ -30,6 +31,9 @@ public class C_EmenyDeath : MonoBehaviour
     public C_EnemyPossesed c_EnemyPossesed;
     public C_PlayerController c_PlayerController;
     private AudioClip clip;
+
+    public VisualEffect HitEffect;
+
 
     void Start()
     {
@@ -105,7 +109,7 @@ public class C_EmenyDeath : MonoBehaviour
             Debug.Log("Enemy Damaged");
             Knockback();
             isColliding = true;
-
+            
         }
 
 
@@ -192,6 +196,7 @@ public class C_EmenyDeath : MonoBehaviour
     {
         EnemyCurrentHealth -= 1;
         audioSource.Play();
+        HitEffect.Play();
         //audioSource.PlayOneShot(clip);
     }
 

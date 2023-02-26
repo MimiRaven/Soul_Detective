@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class C_Throwableobject : MonoBehaviour
 {
     public bool WeaponActive;
-
-   // AudioSource audioSource;
+   // public VisualEffect TeleVfxEffect;
+    // AudioSource audioSource;
     //public AudioClip holdTelekinesis;
 
 
     void Start()
     {
         //audioSource = GetComponent<AudioSource>();
+       // TeleVfxEffect.Stop();
     }
     void Update()
     {
@@ -20,12 +22,14 @@ public class C_Throwableobject : MonoBehaviour
        {
            //PlaySound(holdTelekinesis);
            gameObject.tag = "Active";
+         //  TeleVfxEffect.Play();
        }
        
        if (WeaponActive == false)
        {
             gameObject.tag = "NotActive";
-       }
+            //TeleVfxEffect.Stop();
+        }
     }
 
 
