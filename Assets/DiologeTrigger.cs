@@ -19,6 +19,8 @@ public class DiologeTrigger : MonoBehaviour
 
     private InputAction AdvanceDialogue;
 
+    public AudioSource audioSource;
+
     private void Awake()
     {
         AdvanceDialogue = playerInput.actions["Diolouge"];
@@ -49,7 +51,7 @@ public class DiologeTrigger : MonoBehaviour
             //diologe.StartDialogue();
             diologe.TextEnded = false;
             //ResetT();
-
+            
         }
 
     }
@@ -67,6 +69,7 @@ public class DiologeTrigger : MonoBehaviour
             diologe.index = 0;
             NPCdiologeBox.SetActive(false);
             diologe.TextEnded = false;
+            //audioSource.Play();
         }
     }
     // Start is called before the first frame update
@@ -85,6 +88,12 @@ public class DiologeTrigger : MonoBehaviour
         if (DiologeStarted == true)
         {
             //diologe.StartDialogue();
+            
+        }
+
+        if(diologe.index == 0 && DiologeStarted)
+        {
+            audioSource.Play();
         }
     }
 
