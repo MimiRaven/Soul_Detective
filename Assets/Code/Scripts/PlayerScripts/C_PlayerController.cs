@@ -100,7 +100,7 @@ public class C_PlayerController : MonoBehaviour
 
        // currentHealth = maxHealth;
 
-        Cursor.visible = false;
+       // Cursor.visible = false;
 
         Possesed = true;
 
@@ -260,7 +260,7 @@ public class C_PlayerController : MonoBehaviour
     {
         if (WeaponWheel == false)
         {
-            Cursor.visible = false;
+           // Cursor.visible = false;
 
             //Player Movement Code
             groundedPlayer = controller.isGrounded;

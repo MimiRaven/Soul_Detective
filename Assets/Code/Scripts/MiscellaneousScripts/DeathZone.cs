@@ -5,14 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class DeathZone : MonoBehaviour
 {
-
+    public C_PlayerHealth C_PlayerHealth;
     void OnTriggerEnter(Collider other)
     {
-        C_PlayerController player = other.gameObject.GetComponent<C_PlayerController>();
+       // C_PlayerController player = other.gameObject.GetComponent<C_PlayerController>();
 
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            C_PlayerHealth.Respwan();
+
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

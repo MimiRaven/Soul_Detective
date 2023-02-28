@@ -29,4 +29,16 @@ public class Lv2endtrigger : MonoBehaviour
 
         }
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+       
+
+        if (other.CompareTag("LV2End"))
+        {
+            SceneManager.LoadScene("Main Menu");
+
+           
+        }
+    }
 }

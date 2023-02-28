@@ -20,6 +20,10 @@ public class CursorController : MonoBehaviour
         {
            Cursor.visible = true;
         }
+        else
+        {
+            Cursor.visible = false;
+        }
         //else
         //{
         //    Cursor.visible = false;

@@ -22,4 +22,14 @@ public class EnemyPlacementRecet : MonoBehaviour
             transform.position = StartingPoint.position;
         }
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+       
+
+        if (other.CompareTag("PlatformArea"))
+        {
+            transform.position = StartingPoint.position;
+        }
+    }
 }

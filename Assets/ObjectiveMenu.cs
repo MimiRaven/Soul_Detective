@@ -43,13 +43,13 @@ public class ObjectiveMenu : MonoBehaviour
         {
             //c_TimeManagement.TimeStop = true;
             //Time.timeScale = 0f;
-            Cursor.visible = true;
+            //Cursor.visible = true;
         }
         else
         {
             //c_TimeManagement.TimeStop = false;
             //Time.timeScale = 1f;
-            Cursor.visible = false;
+            //Cursor.visible = false;
         }
     }
 
