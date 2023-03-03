@@ -23,7 +23,7 @@ public class Lv2endtrigger : MonoBehaviour
     {
         if (collision.gameObject.tag == "LV2End")
         {
-            SceneManager.LoadScene("Main Menu");
+            SceneManager.LoadScene("HubWorld");
 
 
 
@@ -36,7 +36,7 @@ public class Lv2endtrigger : MonoBehaviour
 
         if (other.CompareTag("LV2End"))
         {
-            SceneManager.LoadScene("Main Menu");
+            SceneManager.LoadScene("HubWorld");
 
            
         }

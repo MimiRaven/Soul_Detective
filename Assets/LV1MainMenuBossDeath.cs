@@ -19,7 +19,7 @@ public class LV1MainMenuBossDeath : MonoBehaviour
     {
         if(emenyDeath.EnemyCurrentHealth == 0)
         {
-            SceneManager.LoadScene("Main Menu");
+            SceneManager.LoadScene("HubWorld");
         }
     }
 }

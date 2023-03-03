@@ -21,7 +21,7 @@ public class LV3BossManager : MonoBehaviour
     {
         if(Boss1Dead && Boss2Dead && Boss3Dead)
         {
-            SceneManager.LoadScene("Main Menu");
+            SceneManager.LoadScene("HubWorld");
         }
     }
 }
