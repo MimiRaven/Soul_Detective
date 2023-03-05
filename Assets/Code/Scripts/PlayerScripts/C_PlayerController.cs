@@ -121,12 +121,14 @@ public class C_PlayerController : MonoBehaviour
         {
             
              ActiveRunning();
-
-            
+           // animator.SetBool("IsRunning", true);
+           //animator.SetBool("Walking", false);
+           //animator.SetBool("Idleing", false);
         }
         else
         {
-            Resting();         
+            Resting();
+           // animator.SetBool("IsRunning", false);
         }
     }
 
@@ -136,14 +138,22 @@ public class C_PlayerController : MonoBehaviour
         {
             playerSpeed = 10;
             CurrentStamina -= Time.deltaTime;
+            animator.SetBool("IsRunning", true);
+            animator.SetBool("Walking", false);
+            animator.SetBool("Idleing", false);
 
+            // animator.SetBool("Walking", false);
+            //animator.SetBool("Idleing", false);
         }
         else
         {
             playerSpeed = 5;
+            animator.SetBool("IsRunning", false);
 
 
         }
+
+
 
     }
 
@@ -151,6 +161,8 @@ public class C_PlayerController : MonoBehaviour
     {       
         if (CurrentStamina < MaxStamina)
         {
+            animator.SetBool("IsRunning", false);
+            
             playerSpeed = 5;
             CurrentStamina += Time.deltaTime;
         }
@@ -266,7 +278,9 @@ public class C_PlayerController : MonoBehaviour
             groundedPlayer = controller.isGrounded;
           if (groundedPlayer && playerVelocity.y < 0)
           {
-              playerVelocity.y = 0f;
+                animator.SetBool("Jump", false);
+                animator.SetBool("Run Jump", false);
+                playerVelocity.y = 0f;
           }
 
           Vector2 input = moveAction.ReadValue<Vector2>();
@@ -301,8 +315,33 @@ public class C_PlayerController : MonoBehaviour
           if (jumpAction.triggered && groundedPlayer)
           {
               playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+                animator.SetBool("Jump", true);
+                animator.SetBool("Idleing", false);
+                animator.SetBool("Walking", false);
+                animator.SetBool("IsRunning", false);
+
+               // animator.SetTrigger("Jumo 0");
           }
-          playerVelocity.y += gravityValue * Time.deltaTime;
+            else
+            {
+               // animator.SetBool("Jump", false);
+            }
+
+
+          if(jumpAction.triggered && groundedPlayer && isRunning )
+            {
+                animator.SetBool("Run Jump", true);
+                //animator.SetBool("Walking", false);
+               // animator.SetBool("IsRunning", false);
+            }
+
+            if (jumpAction.triggered && groundedPlayer && isMoving)
+            {
+                animator.SetBool("Run Jump", true);
+                //animator.SetBool("Walking", false);
+                // animator.SetBool("IsRunning", false);
+            }
+            playerVelocity.y += gravityValue * Time.deltaTime;
           controller.Move(playerVelocity * Time.deltaTime);
 
         }
