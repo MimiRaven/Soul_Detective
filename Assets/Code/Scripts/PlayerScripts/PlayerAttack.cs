@@ -39,10 +39,10 @@ public class PlayerAttack : MonoBehaviour
 
     public void Update()
     {
-       if(isAttacking && animator.GetCurrentAnimatorStateInfo(1).normalizedTime >= animationFinishedTime)
-       {
-           isAttacking = false;
-       }
+        if (isAttacking && animator.GetCurrentAnimatorStateInfo(1).normalizedTime >= animationFinishedTime)
+        {
+            isAttacking = false;
+        }
 
 
         //if (isAttacking == true)
@@ -61,7 +61,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnEnable()
     {
-        
+
         AttackAction.performed += _ => AttackStart();
         AttackAction.canceled += _ => AttackStop();
 
@@ -108,8 +108,8 @@ public class PlayerAttack : MonoBehaviour
     {
         if (!isAttacking)
         {
-        animator.SetTrigger("IsAttacking");
-        StartCoroutine(InitialiseAttack());
+            animator.SetTrigger("IsAttacking");
+            StartCoroutine(InitialiseAttack());
 
         }
     }
@@ -119,5 +119,6 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         isAttacking = true;
     }
+
 
 }
