@@ -9,6 +9,8 @@ public class MainMenu : MonoBehaviour
 
   public AudioSource audioSource;
   public Button startButton = null;
+  public Button levelBackButton = null;
+  public Button settingsBackButton = null;
   public Button ctrlBackButton = null;
   public Button credBackButton = null;
   public Button quitButton = null;
@@ -70,31 +72,83 @@ public class MainMenu : MonoBehaviour
     {
         levelsScreen.SetActive(true);
         mainMenuScreen.SetActive(false);
+        settingsScreen.SetActive(false);
         ctrlsScreen.SetActive(false);
+        kmScreen.SetActive(false);
+        controllerScreen.SetActive(false);
         creditsScreen.SetActive(false);
+
+        levelBackButton.Select();
+        audioSource.Play();
+    }
+
+    public void SeeSettings()
+    {
+        mainMenuScreen.SetActive(false);
+        settingsScreen.SetActive(true);
+        ctrlsScreen.SetActive(false);
+        kmScreen.SetActive(false);
+        controllerScreen.SetActive(false);
+        creditsScreen.SetActive(false);
+        levelsScreen.SetActive(false);
+
+        settingsBackButton.Select();
+        audioSource.Play();
+    }
+
+    public void SeeControls()
+  {
+    mainMenuScreen.SetActive(false);
+    ctrlsScreen.SetActive(true);
+    settingsScreen.SetActive(false);
+    kmScreen.SetActive(false);
+    controllerScreen.SetActive(false);
+    creditsScreen.SetActive(false);
+    levelsScreen.SetActive(false);
+
+    ctrlBackButton.Select();
+    audioSource.Play();
+  }
+
+    public void SeeKM()
+    {
+        mainMenuScreen.SetActive(false);
+        settingsScreen.SetActive(false);
+        ctrlsScreen.SetActive(false);
+        kmScreen.SetActive(true);
+        controllerScreen.SetActive(false);
+        creditsScreen.SetActive(false);
+        levelsScreen.SetActive(false);
 
         ctrlBackButton.Select();
         audioSource.Play();
     }
-  public void SeeControls()
-  {
-    mainMenuScreen.SetActive(false);
-    ctrlsScreen.SetActive(true);
-    creditsScreen.SetActive(false);
+
+    public void SeeController()
+    {
+        mainMenuScreen.SetActive(false);
+        settingsScreen.SetActive(false);
+        ctrlsScreen.SetActive(false);
+        kmScreen.SetActive(false);
+        controllerScreen.SetActive(true);
+        creditsScreen.SetActive(false);
         levelsScreen.SetActive(false);
 
         ctrlBackButton.Select();
-    audioSource.Play();
-  }
+        audioSource.Play();
+    }
 
-  public void SeeCredits()
+    public void SeeCredits()
   {
     mainMenuScreen.SetActive(false);
     ctrlsScreen.SetActive(false);
+    settingsScreen.SetActive(false);
+    kmScreen.SetActive(false);
+    controllerScreen.SetActive(false);
     creditsScreen.SetActive(true);
-        levelsScreen.SetActive(false);
+    levelsScreen.SetActive(false);
 
-        credBackButton.Select();
+    credBackButton.Select();
     audioSource.Play();
   }
 
@@ -103,12 +157,14 @@ public class MainMenu : MonoBehaviour
     mainMenuScreen.SetActive(true);
     ctrlsScreen.SetActive(false);
     creditsScreen.SetActive(false);
-        levelsScreen.SetActive(false);
+    kmScreen.SetActive(false);
+    controllerScreen.SetActive(false);
+    levelsScreen.SetActive(false);
 
-        startButton.Select();
+    startButton.Select();
     audioSource.Play();
   }
 
   [SerializeField]
-  GameObject mainMenuScreen = null, ctrlsScreen = null, creditsScreen = null, levelsScreen = null;
+  GameObject mainMenuScreen = null, settingsScreen = null, ctrlsScreen = null, kmScreen = null, controllerScreen = null, creditsScreen = null, levelsScreen = null;
 }
