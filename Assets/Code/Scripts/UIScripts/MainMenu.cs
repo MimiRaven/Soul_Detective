@@ -8,11 +8,14 @@ public class MainMenu : MonoBehaviour
 {
 
   public AudioSource audioSource;
+ // public Button startGameSaveSystemButton = null;
   public Button startButton = null;
   public Button levelBackButton = null;
   public Button settingsBackButton = null;
   public Button ctrlBackButton = null;
   public Button credBackButton = null;
+    public Button SaveSystemBackButton = null;
+
   public Button quitButton = null;
   public Button Level1Button = null;
   public Button Level2Button = null;
@@ -25,6 +28,7 @@ public class MainMenu : MonoBehaviour
         UnlockMouse();
     audioSource.Stop();
   }
+
   public void StartGame()
   {
     SceneManager.LoadScene("IntroCutscene"); 
@@ -68,8 +72,24 @@ public class MainMenu : MonoBehaviour
         Cursor.visible = true;
     }
 
+    public void SeePlayMenu()
+    {
+        PlayGameSaveSystemScreen.SetActive(true);
+        levelsScreen.SetActive(false);
+        mainMenuScreen.SetActive(false);
+        settingsScreen.SetActive(false);
+        ctrlsScreen.SetActive(false);
+        kmScreen.SetActive(false);
+        controllerScreen.SetActive(false);
+        creditsScreen.SetActive(false);
+
+        SaveSystemBackButton.Select();
+        audioSource.Play();
+    }
+
     public void SeeLevels()
     {
+        
         levelsScreen.SetActive(true);
         mainMenuScreen.SetActive(false);
         settingsScreen.SetActive(false);
@@ -77,6 +97,7 @@ public class MainMenu : MonoBehaviour
         kmScreen.SetActive(false);
         controllerScreen.SetActive(false);
         creditsScreen.SetActive(false);
+        PlayGameSaveSystemScreen.SetActive(false);
 
         levelBackButton.Select();
         audioSource.Play();
@@ -91,6 +112,7 @@ public class MainMenu : MonoBehaviour
         controllerScreen.SetActive(false);
         creditsScreen.SetActive(false);
         levelsScreen.SetActive(false);
+        PlayGameSaveSystemScreen.SetActive(false);
 
         settingsBackButton.Select();
         audioSource.Play();
@@ -105,8 +127,9 @@ public class MainMenu : MonoBehaviour
     controllerScreen.SetActive(false);
     creditsScreen.SetActive(false);
     levelsScreen.SetActive(false);
+        PlayGameSaveSystemScreen.SetActive(false);
 
-    ctrlBackButton.Select();
+        ctrlBackButton.Select();
     audioSource.Play();
   }
 
@@ -119,6 +142,7 @@ public class MainMenu : MonoBehaviour
         controllerScreen.SetActive(false);
         creditsScreen.SetActive(false);
         levelsScreen.SetActive(false);
+        PlayGameSaveSystemScreen.SetActive(false);
 
         ctrlBackButton.Select();
         audioSource.Play();
@@ -133,6 +157,7 @@ public class MainMenu : MonoBehaviour
         controllerScreen.SetActive(true);
         creditsScreen.SetActive(false);
         levelsScreen.SetActive(false);
+        PlayGameSaveSystemScreen.SetActive(false);
 
         ctrlBackButton.Select();
         audioSource.Play();
@@ -147,8 +172,9 @@ public class MainMenu : MonoBehaviour
     controllerScreen.SetActive(false);
     creditsScreen.SetActive(true);
     levelsScreen.SetActive(false);
+        PlayGameSaveSystemScreen.SetActive(false);
 
-    credBackButton.Select();
+        credBackButton.Select();
     audioSource.Play();
   }
 
@@ -160,11 +186,12 @@ public class MainMenu : MonoBehaviour
     kmScreen.SetActive(false);
     controllerScreen.SetActive(false);
     levelsScreen.SetActive(false);
+        PlayGameSaveSystemScreen.SetActive(false);
 
-    startButton.Select();
+        startButton.Select();
     audioSource.Play();
   }
 
   [SerializeField]
-  GameObject mainMenuScreen = null, settingsScreen = null, ctrlsScreen = null, kmScreen = null, controllerScreen = null, creditsScreen = null, levelsScreen = null;
+  GameObject mainMenuScreen = null, settingsScreen = null, ctrlsScreen = null, kmScreen = null, controllerScreen = null, creditsScreen = null, levelsScreen = null, PlayGameSaveSystemScreen = null;
 }

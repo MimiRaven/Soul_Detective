@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.VFX;
 
-public class C_EmenyDeath : MonoBehaviour
+public class C_EmenyDeath : MonoBehaviour, IDataPersistence
 {
     public Animator animator;
     public C_XpScore c_XpScore;
-    public bool isColliding ;
+    public bool isColliding;
     //public EnemyHealth enemyHealth;
 
     public float MaxHealth;
@@ -22,7 +22,7 @@ public class C_EmenyDeath : MonoBehaviour
 
     public bool EnemyIsDead;
 
-   // public GameObject Bot;
+    // public GameObject Bot;
     public float range = 100f;
     public float KnockbackForce = 250;
 
@@ -33,6 +33,37 @@ public class C_EmenyDeath : MonoBehaviour
     private AudioClip clip;
 
     public VisualEffect HitEffect;
+
+    [SerializeField] private string id;
+
+
+
+    // public bool EnemyIsDead;
+    public GameObject Self;
+
+    [ContextMenu("Generate guid for id")]
+    private void GenerateGuid()
+    {
+        id = System.Guid.NewGuid().ToString();
+    }
+
+    public void LoadData(GameData data)
+    {
+        data.EnemysKilled.TryGetValue(id, out EnemyIsDead);
+        if (EnemyIsDead)
+        {
+            Self.SetActive(false);
+        }
+    }
+
+    public void SaveData(GameData data)
+    {
+        if (data.EnemysKilled.ContainsKey(id))
+        {
+            data.EnemysKilled.Remove(id);
+        }
+        data.EnemysKilled.Add(id, EnemyIsDead);
+    }
 
 
     void Start()
@@ -45,13 +76,26 @@ public class C_EmenyDeath : MonoBehaviour
         //audioSource = GetComponent<AudioSource>(); 
         //audioSource.Stop();
     }
-    
+
 
     void Update()
     {
         isColliding = false;
         slider.value = CalculateHealth();
         EnemyDeath();
+
+        if (EnemyIsDead)
+        {
+            TimerOn = false;
+            Self.SetActive(false);
+            // DeathTimer= 5;
+            //c_XpScore.CurrentScore += 1;
+        }
+
+        if (DeathTimer == 1)
+        {
+            c_XpScore.CurrentScore += 1;
+        }
 
         if (EnemyCurrentHealth == 0)
         {
@@ -64,15 +108,28 @@ public class C_EmenyDeath : MonoBehaviour
         //}
         if (TimerOn)
         {
-            
+
             DeathTimer -= Time.deltaTime;
             if (DeathTimer <= 0)
             {
                 c_XpScore.CurrentScore += 1;
-                Destroy(gameObject);
+                EnemyIsDead = true;
+                //TimerOn = false;
+
+
+                //Destroy(gameObject);
             }
         }
-       
+        else
+        {
+            DeathTimer = 5;
+        }
+
+    }
+
+    public void GainXP()
+    {
+        c_XpScore.CurrentScore += 1;
     }
 
     void OnTriggerEnter(Collider collision)
@@ -80,7 +137,7 @@ public class C_EmenyDeath : MonoBehaviour
         if (isColliding) return;
         isColliding = true;
 
-        if (collision.gameObject.tag == "EnemyWeapon" &&  c_EnemyPossesed.Possesed == true)
+        if (collision.gameObject.tag == "EnemyWeapon" && c_EnemyPossesed.Possesed == true)
         {
             EnemyTakeDamage();
             audioSource.Play();
@@ -94,83 +151,83 @@ public class C_EmenyDeath : MonoBehaviour
         isColliding = false;
         Debug.Log("Collided");
 
-       
+
 
         if (c_EnemyPossesed.Possesed == false)
         {
 
 
-        if (col.collider.tag == "weapon")
-        {
-            EnemyTakeDamage();
-            //col.collider.GetComponent<EnemyHealth>().TakeDamage(1);
-            // Destroy(gameObject);
-            //script.TakeDamage(1);
-            Debug.Log("Enemy Damaged");
-            Knockback();
-            isColliding = true;
-            
-        }
-
-
-        if (col.collider.tag == "Active")
-        {
-            Debug.Log("Attack hit");
+            if (col.collider.tag == "weapon")
+            {
+                EnemyTakeDamage();
+                //col.collider.GetComponent<EnemyHealth>().TakeDamage(1);
+                // Destroy(gameObject);
+                //script.TakeDamage(1);
+                Debug.Log("Enemy Damaged");
                 Knockback();
-            EnemyTakeDamage();
-        }
+                isColliding = true;
+
+            }
 
 
-        if (col.collider.tag == "BoostedWeapon")
-        {
-            BoostedWeaponDamage();
+            if (col.collider.tag == "Active")
+            {
+                Debug.Log("Attack hit");
+                Knockback();
+                EnemyTakeDamage();
+            }
+
+
+            if (col.collider.tag == "BoostedWeapon")
+            {
+                BoostedWeaponDamage();
                 audioSource.Play();
                 Knockback();
 
-            Debug.Log("Enemy Damaged");
-        }
+                Debug.Log("Enemy Damaged");
+            }
 
 
 
-        if (col.collider.tag == "WeaponUpgraded1")
-        {
-            EnemyCurrentHealth -= 2;
+            if (col.collider.tag == "WeaponUpgraded1")
+            {
+                EnemyCurrentHealth -= 2;
                 audioSource.Play();
                 Knockback();
 
-            Debug.Log("Enemy Damaged");
-        }
+                Debug.Log("Enemy Damaged");
+            }
 
-        if (col.collider.tag == "WeaponUpgraded2")
-        {
-            EnemyCurrentHealth -= 3;
+            if (col.collider.tag == "WeaponUpgraded2")
+            {
+                EnemyCurrentHealth -= 3;
                 audioSource.Play();
                 Knockback();
 
-            Debug.Log("Enemy Damaged");
-        }
+                Debug.Log("Enemy Damaged");
+            }
 
-        if (col.collider.tag == "WeaponUpgraded3")
-        {
-            EnemyCurrentHealth -= 4;
+            if (col.collider.tag == "WeaponUpgraded3")
+            {
+                EnemyCurrentHealth -= 4;
                 audioSource.Play();
                 Knockback();
 
-            Debug.Log("Enemy Damaged");
-        }
+                Debug.Log("Enemy Damaged");
+            }
         }
 
-       //if (c_EnemyPossesed.Possesed == true)
-       //{
-       //   if (col.collider.tag == "EnemyWeapon")
-       //   {
-       //        Debug.Log("Possesed EnemyHit");
-       //        EnemyCurrentHealth -= 1;
-       //        Debug.Log("Enemy Damaged");
-       //  
-       //   }
-       //
-       //}
+        //if (c_EnemyPossesed.Possesed == true)
+        //{
+        //   if (col.collider.tag == "EnemyWeapon")
+        //   {
+        //        Debug.Log("Possesed EnemyHit");
+        //        EnemyCurrentHealth -= 1;
+        //        Debug.Log("Enemy Damaged");
+        //  
+        //   }
+        //
+        //}
 
         //if(col.collider.tag == "Player")
         //{
@@ -180,16 +237,16 @@ public class C_EmenyDeath : MonoBehaviour
 
     }
 
-   //void OnCollisionExit(Collision col)
-   //{
-   //    if (col.collider.tag == "weapon")
-   //    {
-   //        isColliding = false;
-   //        Debug.Log("Collison Exit");
-   //    }
-   //
-   //
-   //}
+    //void OnCollisionExit(Collision col)
+    //{
+    //    if (col.collider.tag == "weapon")
+    //    {
+    //        isColliding = false;
+    //        Debug.Log("Collison Exit");
+    //    }
+    //
+    //
+    //}
 
 
     void EnemyTakeDamage()
@@ -210,20 +267,23 @@ public class C_EmenyDeath : MonoBehaviour
     {
         if (EnemyCurrentHealth <= 0)
         {
-            if(c_EnemyPossesed.Possesed == true)
+
+            //c_XpScore.CurrentScore += (1);
+
+            if (c_EnemyPossesed.Possesed == true)
             {
                 c_EnemyPossesed.Possesed = false;
                 c_PlayerController.Possesed = true;
             }
 
             //c_PlayerController.Possesed = true;
-           // c_EnemyPossesed.Possesed = false;
+            // c_EnemyPossesed.Possesed = false;
             healthBarUI.SetActive(false);
             animator.SetTrigger("Death");
             animator.SetBool("IsAttacking", false);
             TimerOn = true;
             //audioSource.Play();
-            EnemyIsDead = true;
+            //EnemyIsDead = true;
             //Destroy(gameObject);
 
         }
@@ -242,7 +302,7 @@ public class C_EmenyDeath : MonoBehaviour
 
     void Knockback()
     {
-       // Bot.transform.position += transform.forward * Time.deltaTime * KnockbackForce;
+        // Bot.transform.position += transform.forward * Time.deltaTime * KnockbackForce;
     }
 
 }
