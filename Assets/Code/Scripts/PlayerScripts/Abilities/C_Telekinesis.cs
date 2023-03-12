@@ -10,7 +10,7 @@ public class C_Telekinesis : MonoBehaviour
     [SerializeField]
     private PlayerInput playerInput;
 
-    
+
     public float range = 100;
 
     public bool ObjectPush;
@@ -18,7 +18,7 @@ public class C_Telekinesis : MonoBehaviour
     public bool GrabObject;
 
     public bool ObjectGrabbed;
-    
+
 
     public bool AimOn;
 
@@ -67,12 +67,12 @@ public class C_Telekinesis : MonoBehaviour
 
         if (SwitchAimCam.AimOn == false)
         {
-            
+
             GrabStop();
 
         }
 
-       
+
     }
 
     void Timmer()
@@ -114,18 +114,18 @@ public class C_Telekinesis : MonoBehaviour
     {
         if (SwitchAimCam.AimOn == true && GrabObject)
         {
-            if(TimerOn == false)
+            if (TimerOn == false)
             {
                 Vector3 direction = Vector3.forward;
                 Ray theRay = new Ray(transform.position, transform.TransformDirection(direction * range));
                 Debug.DrawRay(transform.position, transform.TransformDirection(direction * range));
-                
+
                 if (Physics.Raycast(theRay, out RaycastHit hit, range))
                 {
                     if (hit.transform.TryGetComponent<Target>(out ts))
                     {
                         ts.Grab(objectGrabPointTransform);
-                
+
                         ObjectGrabbed = true;
                         GrabObject = false;
 
@@ -164,7 +164,7 @@ public class C_Telekinesis : MonoBehaviour
 
     private void OnEnable()
     {
-        
+
 
 
         //telikinisis
@@ -184,7 +184,7 @@ public class C_Telekinesis : MonoBehaviour
 
     private void OnDisable()
     {
-        
+
 
         //telikinisis
         PullAction.performed -= _ => PullStart();
@@ -255,7 +255,7 @@ public class C_Telekinesis : MonoBehaviour
     {
         ObjectDropped = false;
         //ObjectGrabbed = false;
-        
+
 
     }
 
@@ -264,12 +264,12 @@ public class C_Telekinesis : MonoBehaviour
     {
 
         //if (ObjectGrabbed == false)
-       // {
-             GrabObject = true;
+        // {
+        GrabObject = true;
 
         //}
 
-        
+
 
 
 

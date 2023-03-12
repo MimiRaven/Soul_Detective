@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class C_XpScore : MonoBehaviour
+public class C_XpScore : MonoBehaviour, IDataPersistence
 {
 
     public int CurrentScore;
@@ -23,6 +23,19 @@ public class C_XpScore : MonoBehaviour
     {
         //DontDestroyOnLoad(this.gameObject);
     }
+
+    public void LoadData(GameData data)
+    {
+        this.SkillPoints = data.SkillPoints;
+        this.CurrentScore = data.CurrentXpAmmount;
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.SkillPoints = this.SkillPoints;
+        data.CurrentXpAmmount = this.CurrentScore;
+    }
+
 
     // Update is called once per frame
     void Update()

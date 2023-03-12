@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class C_PauseManager : MonoBehaviour
 {
+    [Header("Change Scene Saveing")]
+    [SerializeField] private DataPersistenceManager dataPersistenceManager;
+
     public PauseMenu pauseMenu;
     public AudioSource audioSource;
 
@@ -27,26 +30,31 @@ public class C_PauseManager : MonoBehaviour
         mainmenuButton.Select();
         audioSource.Play();
         SceneManager.LoadScene("Main Menu");
+        dataPersistenceManager.SaveGame();
     }
 
     public void HubWorld()
     {
         SceneManager.LoadScene("HubWorld");
+        dataPersistenceManager.SaveGame();
     }
 
-      public void Level1()
+    public void Level1()
     {
         SceneManager.LoadScene("Level 1");
+        dataPersistenceManager.SaveGame();
     }
 
     public void Level2()
     {
         SceneManager.LoadScene("Level 2");
+        dataPersistenceManager.SaveGame();
     }
 
     public void Level3()
     {
         SceneManager.LoadScene("Level 3");
+        dataPersistenceManager.SaveGame();
     }
     public void GamePlayDemo()
     {

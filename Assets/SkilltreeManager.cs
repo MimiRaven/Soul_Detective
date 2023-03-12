@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class SkilltreeManager : MonoBehaviour
+public class SkilltreeManager : MonoBehaviour, IDataPersistence
 {
     [SerializeField]
     private PlayerInput playerInput;
@@ -12,17 +12,17 @@ public class SkilltreeManager : MonoBehaviour
 
     public GameObject SkillTreeCanvas;
 
-   //public GameObject telekinesis;
-   //public GameObject RangeAttack;
-   //public GameObject Possesion;
+    //public GameObject telekinesis;
+    //public GameObject RangeAttack;
+    //public GameObject Possesion;
 
     public GameObject TeleTimer, RangeTimer, PosTimer;
 
     //public GameObject TeleIcon, RangeIcon, PosIcon;
 
-   //public Button telekinesisButton;
-   //public Button RangeAttackButton;
-   //public Button PossesionButton;
+    //public Button telekinesisButton;
+    //public Button RangeAttackButton;
+    //public Button PossesionButton;
 
     public Button TelekinesisTimmerUpgradeButton1;
     public Button TelekinesisTimmerUpgradeButton2;
@@ -76,7 +76,7 @@ public class SkilltreeManager : MonoBehaviour
 
     public C_PlayerController c_PlayerController;
 
-   // public PlayerAttack playerAttack;
+    // public PlayerAttack playerAttack;
 
     public bool WheelIsOn;
 
@@ -110,8 +110,140 @@ public class SkilltreeManager : MonoBehaviour
         {
             //c_TimeManagement.TimeStop = false;
             //Time.timeScale = 1f;
-           // Cursor.visible = false;
+            // Cursor.visible = false;
         }
+
+        if (TeleTimeUpgrade1 == true)
+        {
+            TelekinesisTimmerUpgradeButton1.interactable = false;
+        }
+
+        if (TeleTimeUpgrade2 == true)
+        {
+            TelekinesisTimmerUpgradeButton2.interactable = false;
+        }
+
+        if (TeleTimeUpgrade3 == true)
+        {
+            TelekinesisTimmerUpgradeButton3.interactable = false;
+        }
+
+        if (RangeAttTimeUpgrade1 == true)
+        {
+            RangeAttackTimmerUpgradeButton1.interactable = false;
+            c_RangeAttack.SetCoolDownTime = 4;
+        }
+
+        if (RangeAttTimeUpgrade2 == true)
+        {
+            RangeAttackTimmerUpgradeButton2.interactable = false;
+            c_RangeAttack.SetCoolDownTime = 2;
+        }
+
+        if (RangeAttTimeUpgrade3 == true)
+        {
+            RangeAttackTimmerUpgradeButton3.interactable = false;
+            c_RangeAttack.SetCoolDownTime = 0;
+        }
+
+        if (PossesionTimeUpgrade1 == true)
+        {
+            PossesionTimmerUpgradeButton1.interactable = false;
+            c_PossesionTimmer.SetCoolDownTime = 5;
+        }
+
+        if (PossesionTimeUpgrade2 == true)
+        {
+            PossesionTimmerUpgradeButton2.interactable = false;
+            c_PossesionTimmer.SetCoolDownTime = 6;
+        }
+
+        if (PossesionTimeUpgrade3 == true)
+        {
+            PossesionTimmerUpgradeButton3.interactable = false;
+            c_PossesionTimmer.SetCoolDownTime = 7;
+        }
+
+        if (PossesionCoolDownTimeUpgrade1 == true)
+        {
+            PossesionCoolDownTimmerUpgradeButton1.interactable = false;
+            c_Possesion.SetCoolDownTime = 3;
+        }
+        if (PossesionCoolDownTimeUpgrade2 == true)
+        {
+            PossesionCoolDownTimmerUpgradeButton2.interactable = false;
+            c_Possesion.SetCoolDownTime = 2;
+        }
+        if (PossesionCoolDownTimeUpgrade3 == true)
+        {
+            PossesionCoolDownTimmerUpgradeButton3.interactable = false;
+            c_Possesion.SetCoolDownTime = 1;
+        }
+
+        if (PlayerWeaponUpgrade1 == true)
+        {
+            PlayerWeaponUpgradeButton1.interactable = false;
+            PlayerWeapon.tag = "WeaponUpgraded1";
+        }
+        if (PlayerWeaponUpgrade2 == true)
+        {
+            PlayerWeaponUpgradeButton2.interactable = false;
+            PlayerWeapon.tag = "WeaponUpgraded2";
+        }
+        if (PlayerWeaponUpgrade3 == true)
+        {
+            PlayerWeaponUpgradeButton3.interactable = false;
+            PlayerWeapon.tag = "WeaponUpgraded3";
+        }
+
+
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.TeleTimeUpgrade1 = data.TeleTimeUpgrade1;
+        this.TeleTimeUpgrade2 = data.TeleTimeUpgrade2;
+        this.TeleTimeUpgrade3 = data.TeleTimeUpgrade3;
+
+        this.RangeAttTimeUpgrade1 = data.RangeAttTimeUpgrade1;
+        this.RangeAttTimeUpgrade2 = data.RangeAttTimeUpgrade2;
+        this.RangeAttTimeUpgrade3 = data.RangeAttTimeUpgrade3;
+
+        this.PossesionTimeUpgrade1 = data.PossesionTimeUpgrade1;
+        this.PossesionTimeUpgrade2 = data.PossesionTimeUpgrade2;
+        this.PossesionTimeUpgrade3 = data.PossesionTimeUpgrade3;
+
+        this.PossesionCoolDownTimeUpgrade1 = data.PossesionCoolDownTimeUpgrade1;
+        this.PossesionCoolDownTimeUpgrade2 = data.PossesionCoolDownTimeUpgrade2;
+        this.PossesionCoolDownTimeUpgrade3 = data.PossesionCoolDownTimeUpgrade3;
+
+        this.PlayerWeaponUpgrade1 = data.PlayerWeaponUpgrade1;
+        this.PlayerWeaponUpgrade2 = data.PlayerWeaponUpgrade2;
+        this.PlayerWeaponUpgrade3 = data.PlayerWeaponUpgrade3;
+
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.TeleTimeUpgrade1 = this.TeleTimeUpgrade1;
+        data.TeleTimeUpgrade2 = this.TeleTimeUpgrade2;
+        data.TeleTimeUpgrade3 = this.TeleTimeUpgrade3;
+
+        data.RangeAttTimeUpgrade1 = this.RangeAttTimeUpgrade1;
+        data.RangeAttTimeUpgrade2 = this.RangeAttTimeUpgrade2;
+        data.RangeAttTimeUpgrade3 = this.RangeAttTimeUpgrade3;
+
+        data.PossesionTimeUpgrade1 = this.PossesionTimeUpgrade1;
+        data.PossesionTimeUpgrade2 = this.PossesionTimeUpgrade2;
+        data.PossesionTimeUpgrade3 = this.PossesionTimeUpgrade3;
+
+        data.PossesionCoolDownTimeUpgrade1 = this.PossesionCoolDownTimeUpgrade1;
+        data.PossesionCoolDownTimeUpgrade2 = this.PossesionCoolDownTimeUpgrade2;
+        data.PossesionCoolDownTimeUpgrade3 = this.PossesionCoolDownTimeUpgrade3;
+
+        data.PlayerWeaponUpgrade1 = this.PlayerWeaponUpgrade1;
+        data.PlayerWeaponUpgrade2 = this.PlayerWeaponUpgrade2;
+        data.PlayerWeaponUpgrade3 = this.PlayerWeaponUpgrade3;
     }
 
     private void OnEnable()
@@ -130,16 +262,16 @@ public class SkilltreeManager : MonoBehaviour
     {
         if (c_Telekinesis.ObjectGrabbed == false)
         {
-            WheelIsOn = !WheelIsOn; 
+            WheelIsOn = !WheelIsOn;
 
-           if(WheelIsOn)
-           {
-               WheelActivated();
-           }
-           else
-           {
-               WheelDeactivated();
-           }
+            if (WheelIsOn)
+            {
+                WheelActivated();
+            }
+            else
+            {
+                WheelDeactivated();
+            }
 
 
         }
@@ -148,11 +280,11 @@ public class SkilltreeManager : MonoBehaviour
 
     void WheelActiveStop()
     {
-        
+
     }
 
-     public void WheelActivated()
-     {
+    public void WheelActivated()
+    {
         WheelIsOn = true;
 
         c_TimeManagement.TimeStop = true;
@@ -171,7 +303,7 @@ public class SkilltreeManager : MonoBehaviour
         //    Time.timeScale = 0f;
         //    Cursor.visible = true;
         //}
-     }
+    }
 
     public void WheelDeactivated()
     {
@@ -195,12 +327,14 @@ public class SkilltreeManager : MonoBehaviour
     //Telekinesis Timmer Upgrades
     public void TelekinesisTimmerUpgrade1()
     {
-        if(c_XpScore.SkillPoints >= 1)
+        if (c_XpScore.SkillPoints >= 1)
         {
-             TelekinesisTimmerUpgradeButton1.interactable = false;
+            // TelekinesisTimmerUpgradeButton1.interactable = false;
             c_Telekinesis.SetCoolDownTime -= 1;
             c_XpScore.SkillPoints -= 1;
             TeleTimeUpgrade1 = true;
+
+
         }
 
     }
@@ -209,10 +343,10 @@ public class SkilltreeManager : MonoBehaviour
     {
         if (c_XpScore.SkillPoints >= 2 && TeleTimeUpgrade1 == true)
         {
-            TelekinesisTimmerUpgradeButton2.interactable = false;
+            // TelekinesisTimmerUpgradeButton2.interactable = false;
             c_Telekinesis.SetCoolDownTime -= 1;
             c_XpScore.SkillPoints -= 2;
-            TeleTimeUpgrade2= true;
+            TeleTimeUpgrade2 = true;
         }
     }
 
@@ -220,7 +354,7 @@ public class SkilltreeManager : MonoBehaviour
     {
         if (c_XpScore.SkillPoints >= 3 && TeleTimeUpgrade2 == true)
         {
-            TelekinesisTimmerUpgradeButton3.interactable = false;
+            // TelekinesisTimmerUpgradeButton3.interactable = false;
             c_Telekinesis.SetCoolDownTime -= 1;
             c_XpScore.SkillPoints -= 3;
             TeleTimeUpgrade3 = true;
@@ -233,8 +367,8 @@ public class SkilltreeManager : MonoBehaviour
     {
         if (c_XpScore.SkillPoints >= 1)
         {
-            RangeAttackTimmerUpgradeButton1.interactable = false;
-            c_RangeAttack.SetCoolDownTime -= 1;
+            // RangeAttackTimmerUpgradeButton1.interactable = false;
+            //c_RangeAttack.SetCoolDownTime -= 1;
             c_XpScore.SkillPoints -= 1;
             RangeAttTimeUpgrade1 = true;
         }
@@ -245,8 +379,8 @@ public class SkilltreeManager : MonoBehaviour
     {
         if (c_XpScore.SkillPoints >= 2 && RangeAttTimeUpgrade1 == true)
         {
-            RangeAttackTimmerUpgradeButton2.interactable = false;
-            c_RangeAttack.SetCoolDownTime -= 1;
+            //RangeAttackTimmerUpgradeButton2.interactable = false;
+            // c_RangeAttack.SetCoolDownTime -= 1;
             c_XpScore.SkillPoints -= 2;
             RangeAttTimeUpgrade2 = true;
         }
@@ -256,8 +390,8 @@ public class SkilltreeManager : MonoBehaviour
     {
         if (c_XpScore.SkillPoints >= 3 && RangeAttTimeUpgrade2 == true)
         {
-            RangeAttackTimmerUpgradeButton3.interactable = false;
-            c_RangeAttack.SetCoolDownTime -= 1;
+            // RangeAttackTimmerUpgradeButton3.interactable = false;
+            //c_RangeAttack.SetCoolDownTime -= 1;
             c_XpScore.SkillPoints -= 3;
             RangeAttTimeUpgrade3 = true;
 
@@ -269,8 +403,8 @@ public class SkilltreeManager : MonoBehaviour
     {
         if (c_XpScore.SkillPoints >= 1)
         {
-            PossesionTimmerUpgradeButton1.interactable = false;
-            c_PossesionTimmer.SetCoolDownTime += 1;
+            // PossesionTimmerUpgradeButton1.interactable = false;
+            // c_PossesionTimmer.SetCoolDownTime += 1;
             c_XpScore.SkillPoints -= 1;
             PossesionTimeUpgrade1 = true;
         }
@@ -281,8 +415,8 @@ public class SkilltreeManager : MonoBehaviour
     {
         if (c_XpScore.SkillPoints >= 2 && PossesionTimeUpgrade1 == true)
         {
-            PossesionTimmerUpgradeButton2.interactable = false;
-            c_PossesionTimmer.SetCoolDownTime += 1;
+            // PossesionTimmerUpgradeButton2.interactable = false;
+            //c_PossesionTimmer.SetCoolDownTime += 1;
             c_XpScore.SkillPoints -= 2;
             PossesionTimeUpgrade2 = true;
         }
@@ -292,8 +426,8 @@ public class SkilltreeManager : MonoBehaviour
     {
         if (c_XpScore.SkillPoints >= 3 && PossesionTimeUpgrade2 == true)
         {
-            PossesionTimmerUpgradeButton3.interactable = false;
-            c_PossesionTimmer.SetCoolDownTime += 1;
+            //PossesionTimmerUpgradeButton3.interactable = false;
+            // c_PossesionTimmer.SetCoolDownTime += 1;
             c_XpScore.SkillPoints -= 3;
             PossesionTimeUpgrade3 = true;
 
@@ -304,8 +438,8 @@ public class SkilltreeManager : MonoBehaviour
     {
         if (c_XpScore.SkillPoints >= 1)
         {
-            PossesionCoolDownTimmerUpgradeButton1.interactable = false;
-            c_Possesion.SetCoolDownTime -= 1;
+            //PossesionCoolDownTimmerUpgradeButton1.interactable = false;
+            // c_Possesion.SetCoolDownTime -= 1;
             c_XpScore.SkillPoints -= 1;
             PossesionCoolDownTimeUpgrade1 = true;
         }
@@ -316,8 +450,8 @@ public class SkilltreeManager : MonoBehaviour
     {
         if (c_XpScore.SkillPoints >= 2 && PossesionCoolDownTimeUpgrade1 == true)
         {
-            PossesionCoolDownTimmerUpgradeButton2.interactable = false;
-            c_Possesion.SetCoolDownTime -= 1;
+            //PossesionCoolDownTimmerUpgradeButton2.interactable = false;
+            // c_Possesion.SetCoolDownTime -= 1;
             c_XpScore.SkillPoints -= 2;
             PossesionCoolDownTimeUpgrade2 = true;
         }
@@ -327,8 +461,8 @@ public class SkilltreeManager : MonoBehaviour
     {
         if (c_XpScore.SkillPoints >= 3 && PossesionCoolDownTimeUpgrade2 == true)
         {
-            PossesionCoolDownTimmerUpgradeButton3.interactable = false;
-            c_Possesion.SetCoolDownTime -= 1;
+            //PossesionCoolDownTimmerUpgradeButton3.interactable = false;
+            // c_Possesion.SetCoolDownTime -= 1;
             c_XpScore.SkillPoints -= 3;
             PossesionCoolDownTimeUpgrade3 = true;
 
@@ -339,8 +473,8 @@ public class SkilltreeManager : MonoBehaviour
     {
         if (c_XpScore.SkillPoints >= 1)
         {
-            PlayerWeaponUpgradeButton1.interactable = false;
-            PlayerWeapon.tag = "WeaponUpgraded1";
+            // PlayerWeaponUpgradeButton1.interactable = false;
+            // PlayerWeapon.tag = "WeaponUpgraded1";
             c_XpScore.SkillPoints -= 1;
             PlayerWeaponUpgrade1 = true;
         }
@@ -350,8 +484,8 @@ public class SkilltreeManager : MonoBehaviour
     {
         if (c_XpScore.SkillPoints >= 2 && PlayerWeaponUpgrade1 == true)
         {
-            PlayerWeaponUpgradeButton2.interactable = false;
-            PlayerWeapon.tag = "WeaponUpgraded2";
+            // PlayerWeaponUpgradeButton2.interactable = false;
+            // PlayerWeapon.tag = "WeaponUpgraded2";
             c_XpScore.SkillPoints -= 2;
             PlayerWeaponUpgrade2 = true;
         }
@@ -361,8 +495,8 @@ public class SkilltreeManager : MonoBehaviour
     {
         if (c_XpScore.SkillPoints >= 3 && PlayerWeaponUpgrade2 == true)
         {
-            PlayerWeaponUpgradeButton3.interactable = false;
-            PlayerWeapon.tag = "WeaponUpgraded3";
+            //PlayerWeaponUpgradeButton3.interactable = false;
+            //PlayerWeapon.tag = "WeaponUpgraded3";
             c_XpScore.SkillPoints -= 3;
             PlayerWeaponUpgrade3 = true;
 
