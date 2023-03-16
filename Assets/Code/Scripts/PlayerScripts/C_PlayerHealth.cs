@@ -151,6 +151,11 @@ public class C_PlayerHealth : MonoBehaviour
             else
             {
                 animator.SetTrigger("IsBlockingHit");
+                if (collision.gameObject.tag == "EnemyWeapon")
+                {
+                    player.CurrentStamina -= 1;
+                }
+
             }
 
         }

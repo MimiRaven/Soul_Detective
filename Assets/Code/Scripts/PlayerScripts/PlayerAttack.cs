@@ -36,6 +36,8 @@ public class PlayerAttack : MonoBehaviour
     public bool secondAttackDone;
     public bool thirdAttackDone;
 
+    public bool AttackActive;
+
 
 
     public void Awake()
@@ -51,37 +53,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void Update()
     {
-        // if(isAttacking && animator.GetCurrentAnimatorStateInfo(1).normalizedTime >= animationFinishedTime)
-        // {
-        // isAttacking = false;
-        // }
-
-
-        //if (isAttacking == true)
-        //{
-        //    AttackColider.SetActive(true);
-        //    
-        //}
-        //else
-        //{
-        //    AttackColider.SetActive(false);
-        //   
-        //}
-
-
-        //if (anim.GetCurrentAnimatorStateInfo(1).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(1).IsName("hit1"))
-        //{
-        //    anim.SetBool("hit1", false);
-        //}
-        //if (anim.GetCurrentAnimatorStateInfo(1).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(1).IsName("hit2"))
-        //{
-        //    anim.SetBool("hit2", false);
-        //}
-        //if (anim.GetCurrentAnimatorStateInfo(1).normalizedTime > 0.7f && anim.GetCurrentAnimatorStateInfo(1).IsName("hit3"))
-        //{
-        //    anim.SetBool("hit3", false);
-        //    noOfClicks = 0;
-        //}
+       
 
 
         if (Time.time - lastClickedTime > maxComboDelay)
@@ -89,17 +61,7 @@ public class PlayerAttack : MonoBehaviour
             noOfClicks = 0;
         }
 
-        //cooldown time
-        // if (Time.time > nextFireTime)
-        // {
-        //     // Check for mouse input
-        //     if (Input.GetMouseButtonDown(0))
-        //     {
-        //         OnClick();
-        //
-        //     }
-        // }
-
+       
 
         if (noOfClicks == 0)
         {
@@ -108,62 +70,34 @@ public class PlayerAttack : MonoBehaviour
             anim.SetBool("hit1", false);
             anim.SetBool("hit2", false);
             anim.SetBool("hit3", false);
-            //secondAttackDone = false;
-            //secondAttackDone = false;
-            // anim.SetBool("hit1", false);
-            //anim.SetBool("hit2", false);
+
+            AttackActive = false;
+
+
+
+        }
+
+        if(noOfClicks > 0)
+        {
+            AttackActive = true;
         }
 
         if (noOfClicks >= 1 && !firstAttackDone)
         {
             anim.SetBool("hit1", true);
-            //  firstAttackDone = false;
-            // secondAttackDone= false;
+           
         }
 
-        //if (noOfClicks >= 2 && firstAttackDone)
-        //{
-        //    //anim.SetBool("hit1", false);
-        //    anim.SetBool("hit2", true);
-        //}
-        //if (noOfClicks >= 3 && secondAttackDone)
-        //{
-        //    //firstAttackDone= false;
-        //    // anim.SetBool("hit2", false);
-        //    anim.SetBool("hit3", true);
-        //}
+       
     }
 
     void OnClick()
     {
-        //so it looks at how many clicks have been made and if one animation has finished playing starts another one.
+        
         lastClickedTime = Time.time;
         noOfClicks++;
 
         noOfClicks = Mathf.Clamp(noOfClicks, 0, 3);
-
-
-        //if (noOfClicks == 1 && !firstAttackDone)
-        //{
-        //    anim.SetBool("hit1", true);
-        //    //  firstAttackDone = false;
-        //    // secondAttackDone= false;
-        //}
-        //
-        //if (noOfClicks == 2 && firstAttackDone)
-        //{
-        //    //anim.SetBool("hit1", false);
-        //    anim.SetBool("hit2", true);
-        //}
-        //if (noOfClicks == 3 && secondAttackDone)
-        //{
-        //    //firstAttackDone= false;
-        //    // anim.SetBool("hit2", false);
-        //    anim.SetBool("hit3", true);
-        //}
-
-
-
 
     }
 
@@ -176,13 +110,12 @@ public class PlayerAttack : MonoBehaviour
 
         firstAttackDone = true;
         secondAttackDone = false;
-        //anim.SetBool("hit1", false);
+        
         anim.SetBool("hit1", false);
 
         if (noOfClicks >= 2 && firstAttackDone)
         {
-            //anim.SetBool("hit1", false);
-            //anim.SetBool("hit1", false);
+      
             anim.SetBool("hit2", true);
         }
     }
@@ -196,23 +129,19 @@ public class PlayerAttack : MonoBehaviour
 
         firstAttackDone = false;
         secondAttackDone = true;
-        //firstAttackDone= false;
+       
         anim.SetBool("hit2", false);
 
         if (noOfClicks >= 3 && secondAttackDone)
         {
-            // anim.SetBool("hit2", false);
-            //anim.SetBool("hit1", false);
+           
             anim.SetBool("hit3", true);
         }
     }
 
     void thirdAttack()
     {
-        //if (noOfClicks == 3)
-        //{
-        //    noOfClicks = 0;
-        //}
+      
         secondAttackDone = false;
         anim.SetBool("hit3", false);
     }
@@ -283,10 +212,6 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    // IEnumerator InitialiseAttack()
-    //{
-    //yield return new WaitForSeconds(0.1f);
-    //isAttacking = true;
-    //}
+    
 
 }

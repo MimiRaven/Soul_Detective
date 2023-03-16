@@ -65,6 +65,9 @@ public class C_PlayerController : MonoBehaviour
 
     public PlayerAttack playerAttack;
 
+    public PlayerAttack PlayerAttack;
+    public PlayerBlock PlayerBlock;
+
     // public float displayTime = 4.0f;
     // public GameObject dialogBox1;
     // public GameObject dialogBox2;
@@ -125,16 +128,48 @@ public class C_PlayerController : MonoBehaviour
            //animator.SetBool("Walking", false);
            //animator.SetBool("Idleing", false);
         }
+        else if(playerAttack.AttackActive == false || PlayerBlock.IsBlocking == false)
+        {
+            playerSpeed = 5;
+            Resting();
+        }
+        //else if(playerAttack.AttackActive == false || PlayerBlock.IsBlocking == false)
+        //{
+        //    Resting();
+        //   // animator.SetBool("IsRunning", false);
+        //}
+
+        if (playerAttack.AttackActive == true || PlayerBlock.IsBlocking == true)
+        {
+            playerSpeed = 0;
+        }
         else
         {
-            Resting();
-           // animator.SetBool("IsRunning", false);
+            
+            //isMoving= true;
+        }
+       // else if (playerAttack.AttackActive == false || PlayerBlock.IsBlocking == false)
+       // {
+       //     Resting();
+       // }
+
+    }
+
+    void BlockingFunction()
+    {
+        if(playerAttack.AttackActive == true || PlayerBlock.IsBlocking == true)
+        {
+            playerSpeed = 0;
+        }
+        else if(playerAttack.AttackActive == false || PlayerBlock.IsBlocking == false)
+        {
+           // playerSpeed = 5;
         }
     }
 
     void ActiveRunning()
     {
-        if (CurrentStamina >= 0)
+        if (CurrentStamina > 0 && playerAttack.AttackActive == false || PlayerBlock.IsBlocking == false)
         {
             playerSpeed = 10;
             CurrentStamina -= Time.deltaTime;
@@ -147,53 +182,38 @@ public class C_PlayerController : MonoBehaviour
         }
         else
         {
-            playerSpeed = 5;
-            animator.SetBool("IsRunning", false);
+           // playerSpeed = 5;
+           // animator.SetBool("IsRunning", false);
 
 
         }
 
-
+        
 
     }
 
     void Resting()
     {       
-        if (CurrentStamina < MaxStamina)
+        if (CurrentStamina < MaxStamina && PlayerBlock.IsBlocking == false)
         {
-            animator.SetBool("IsRunning", false);
+           // animator.SetBool("IsRunning", false);
             
-            playerSpeed = 5;
+            //playerSpeed = 5;
             CurrentStamina += Time.deltaTime;
         }
     }
 
-   //void DodgeFunction()
-   //{
-   //    //Sprinter.instance.SetValue(CurrentStamina / MaxStamina);
-   //   if (isDodging & !isRunning)
-   //   {
-   //       if (WeaponWheel == false)
-   //       {
-   //           ActiveDodge();
-   //       }
-   //   }
-   //   else
-   //   {
-   //       Resting();
-   //   }
-   //}
-   //
-   //void ActiveDodge()
-   //{
-   //   if (CurrentStamina >= 0)
-   //   {
-   //       playerSpeed = 30;
-   //       CurrentStamina -= Time.deltaTime;
-   //   
-   //   }
-   //   
-   //}
+    void Blocking()
+    {
+        playerSpeed = 0;
+    }
+
+    void Attacking()
+    {
+
+    }
+
+
 
     void Awake()
     {
@@ -205,6 +225,14 @@ public class C_PlayerController : MonoBehaviour
         Sprinter.instance.SetValue(CurrentStamina / MaxStamina);
         IsPossesed();
         RunningFunction();
+
+        if(CurrentStamina <= 0)
+        {
+            playerAttack.AttackActive =false;
+            PlayerBlock.IsBlocking =false;
+        }
+
+        //BlockingFunction();
        // DodgeFunction();
         //soulsUI.text = "Souls: " + souls.ToString();
 
@@ -235,6 +263,23 @@ public class C_PlayerController : MonoBehaviour
         {
             QuitGame();
         }
+
+        if (playerSpeed < 10)
+        {
+            animator.SetBool("IsRunning", false);
+        }
+
+        //if(playerAttack.AttackActive== true || PlayerBlock.IsBlocking == true)
+        //{
+        //    //Blocking();
+        //}
+        //else
+        //{
+        //   //playerSpeed = 5;
+        //   //Resting();
+        //}
+
+
     }
 
     void IsPossesed()
@@ -272,9 +317,10 @@ public class C_PlayerController : MonoBehaviour
     {
         if (WeaponWheel == false)
         {
-           // Cursor.visible = false;
+            // Cursor.visible = false;
 
             //Player Movement Code
+          
             groundedPlayer = controller.isGrounded;
           if (groundedPlayer && playerVelocity.y < 0)
           {
