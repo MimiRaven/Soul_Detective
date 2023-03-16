@@ -19,12 +19,25 @@ public class PlayerBlock : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+    }
+    private void Awake()
+    {
         Block = playerInput.actions["Block"];
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(IsBlocking == true)
+        {
+            anim.SetBool("IsBlocking", true);
+        }
+        else
+        {
+            anim.SetBool("IsBlocking", false);
+        }
+
 
     }
 
@@ -47,6 +60,7 @@ public class PlayerBlock : MonoBehaviour
     void BlockStart()
     {
         IsBlocking = true;
+        Debug.Log("Controlpressed");
     }
 
     void BlockSop()

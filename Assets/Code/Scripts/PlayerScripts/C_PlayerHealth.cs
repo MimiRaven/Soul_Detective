@@ -37,6 +37,8 @@ public class C_PlayerHealth : MonoBehaviour
 
     public GameObject HealthUI1, HealthUI2, HealthUI3;
 
+    public PlayerBlock playerBlock;
+
 
     //public bool 
 
@@ -111,37 +113,46 @@ public class C_PlayerHealth : MonoBehaviour
             if (isColliding) return;
             isColliding = true;
 
-            if (collision.gameObject.tag == "EnemyWeapon")
+            if(playerBlock.IsBlocking == false)
             {
-                ChangeHealth(-1);
-                audioSource.Play();
-                animator.SetTrigger("Hurt 0");
+                if (collision.gameObject.tag == "EnemyWeapon")
+                {
+                    ChangeHealth(-1);
+                    audioSource.Play();
+                    animator.SetTrigger("Hurt 0");
+                    
+                    if (shield.activeInHierarchy)
+                   {
+                        if (hits > 1)
+                        {
+                            shield.SetActive(true);
+                            hits -= 1;
+                        }
+                        else
+                        {
+                            shield.SetActive(false);
+                        }
+                   } 
+                   else
+                   {
+                       TimerOn = true;
+                       TimeLeft = SetCoolDownTime;
+                       ChangeHealth(-1);
+                   }
+                }
                 
-                if (shield.activeInHierarchy)
-               {
-                    if (hits > 1)
-                    {
-                        shield.SetActive(true);
-                        hits -= 1;
-                    }
-                    else
-                    {
-                        shield.SetActive(false);
-                    }
-               } 
-               else
-               {
-                   TimerOn = true;
-                   TimeLeft = SetCoolDownTime;
-                   ChangeHealth(-1);
-               }
+                if (collision.gameObject.tag == "Shield")
+                {
+                   shield.SetActive(true);
+                   Destroy(collision.gameObject);
+                }
+
             }
-            
-            if (collision.gameObject.tag == "Shield")
+            else
             {
-               shield.SetActive(true);
-               Destroy(collision.gameObject);
+                animator.SetTrigger("IsBlockingHit");
             }
+
         }
     }
 
