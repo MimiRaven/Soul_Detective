@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIHealthBar : MonoBehaviour
+public class UIHealthBar : MonoBehaviour, IDataPersistence
 {
     public static UIHealthBar instance { get; private set; }
 
@@ -13,6 +13,18 @@ public class UIHealthBar : MonoBehaviour
     void Awake()
     {
         instance = this;
+    }
+
+    public void LoadData(GameData data)
+    {
+        //this.currentHealth = data.PlayerCurrentHealth;
+        
+    }
+
+    public void SaveData(GameData data)
+    {
+       // data.PlayerCurrentHealth = this.currentHealth;
+        
     }
 
     void Start()

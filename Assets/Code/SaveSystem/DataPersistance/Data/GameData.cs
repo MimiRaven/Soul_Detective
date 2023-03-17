@@ -6,6 +6,10 @@ using UnityEngine;
 [System.Serializable]
 public class GameData
 {
+
+    public int PlayerCurrentHealth;
+    public int PlayerCurrentLives;
+
     //Save Menu Continue Button
     public long lastUpdated;
 
@@ -13,7 +17,6 @@ public class GameData
     //public Vector3 playerPosition;
 
     //Enterd Levels bool
-
 
 
     //EnemyTracker
@@ -49,6 +52,8 @@ public class GameData
     {
         this.SkillPoints = 0;
         this.CurrentXpAmmount= 0;
+        this.PlayerCurrentLives = 3;
+        this.PlayerCurrentHealth = 10;
       //  playerPosition= Vector3.zero;
         
         EnemysKilled= new SerializableDictionary<string,bool>();

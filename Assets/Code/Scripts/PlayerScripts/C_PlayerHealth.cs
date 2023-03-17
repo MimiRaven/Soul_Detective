@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class C_PlayerHealth : MonoBehaviour
+public class C_PlayerHealth : MonoBehaviour, IDataPersistence
 {
     public C_PlayerController player;
 
@@ -45,12 +45,25 @@ public class C_PlayerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth;
+        //currentHealth = maxHealth;
+        //PlayerLives = 3;
 
-        respawnPoint = player.transform.position;
+       //respawnPoint = player.transform.position;
 
        shield = transform.Find("Shield").gameObject;
        shield.SetActive(false);
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.currentHealth = data.PlayerCurrentHealth;
+        this.PlayerLives = data.PlayerCurrentLives;
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.PlayerCurrentHealth = this.currentHealth;
+        data.PlayerCurrentLives = this.PlayerLives;
     }
 
     void Update()
@@ -172,7 +185,7 @@ public class C_PlayerHealth : MonoBehaviour
         {
             PlayerLives -= 1;
             Respwan();
-            //SceneManager.LoadScene(2);
+            
         }
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
@@ -185,7 +198,7 @@ public class C_PlayerHealth : MonoBehaviour
         Debug.Log("PlayerRespawned");
         player.transform.position = respawnPoint;
         currentHealth = maxHealth;
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        
     }
 
     public void SetSpawnPoint(Vector3 newPosition)
