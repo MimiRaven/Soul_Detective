@@ -82,6 +82,7 @@ public class C_PlayerHealth : MonoBehaviour, IDataPersistence
         PlayerLoss();
         PlayerDeath();
 
+        UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
 
         isColliding = false;
     }
@@ -188,7 +189,7 @@ public class C_PlayerHealth : MonoBehaviour, IDataPersistence
             
         }
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
+        //UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
     }
 
 
