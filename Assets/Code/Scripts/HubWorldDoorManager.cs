@@ -27,7 +27,7 @@ public class HubWorldDoorManager : MonoBehaviour
         if(levelManager.Lv1Complete == true)
         {
 
-            //Level1DoorOpen.tag = ("Untagged");
+           
             Level1DoorOpen.SetActive(false);
             Level1DoorClosed.SetActive(true);
         }
@@ -39,7 +39,7 @@ public class HubWorldDoorManager : MonoBehaviour
             Level2DoorClosed.SetActive(true);
         }
 
-        if(Level3DoorOpen == true)
+        if(levelManager.Lv3Complete == true)
         {
             Level3DoorOpen.SetActive(false);
             Level3DoorClosed.SetActive(true);

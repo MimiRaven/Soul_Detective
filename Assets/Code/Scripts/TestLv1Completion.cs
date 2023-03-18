@@ -27,6 +27,20 @@ public class TestLv1Completion : MonoBehaviour
             SceneManager.LoadScene("HubWorld");
 
         }
+
+        if (collision.gameObject.tag == "Lv2Complete")
+        {
+            levelManager.Lv2Complete = true;
+            SceneManager.LoadScene("HubWorld");
+
+        }
+
+        if (collision.gameObject.tag == "Lv3Complete")
+        {
+            levelManager.Lv3Complete = true;
+            SceneManager.LoadScene("HubWorld");
+
+        }
     }
 
 

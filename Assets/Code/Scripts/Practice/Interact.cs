@@ -56,16 +56,19 @@ public class Interact : MonoBehaviour
         if(Level1Range == true)
         {
             SceneManager.LoadScene("Level 1");
+            Level1Range= false;
         }
 
         if(Level2Range == true)
         {
             SceneManager.LoadScene("Level 2");
+            Level2Range= false;
         }
 
         if(Level3Range == true)
         {
             SceneManager.LoadScene("Level 3");
+            Level3Range= false;
         }
 
         if(TypeWriterRange == true)
