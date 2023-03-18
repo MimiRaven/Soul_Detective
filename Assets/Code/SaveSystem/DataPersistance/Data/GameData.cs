@@ -23,6 +23,11 @@ public class GameData
     //EnemyTracker
     public SerializableDictionary<string,bool> EnemysKilled;
 
+    //Level Completion Tracker
+    public bool Level1Complete;
+    public bool Level2Complete;
+    public bool Level3Complete;
+
 
 
 

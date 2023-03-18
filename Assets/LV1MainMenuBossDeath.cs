@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class LV1MainMenuBossDeath : MonoBehaviour
 {
     public C_EmenyDeath emenyDeath;
+    public LevelCompletionManager levelManager;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,7 @@ public class LV1MainMenuBossDeath : MonoBehaviour
         if(emenyDeath.EnemyCurrentHealth == 0)
         {
             SceneManager.LoadScene("HubWorld");
+            levelManager.Lv1Complete = true;
         }
     }
 }

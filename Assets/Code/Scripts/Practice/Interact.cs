@@ -37,6 +37,13 @@ public class Interact : MonoBehaviour
     void Start()
     {
         SkillTreeCanvas.SetActive(false);
+
+        if (SceneManager.GetActiveScene().name == "HubWorld")
+        {
+            Level1Range = false;
+            Level2Range = false;
+            Level3Range = false;
+        }
     }
 
     void Update()
@@ -100,6 +107,20 @@ public class Interact : MonoBehaviour
         if(other.tag == "Typewriter")
         {
             TypeWriterRange = false;
+        }
+        if (other.tag == "Level 1")
+        {
+            Level1Range = false;
+        }
+
+        if (other.tag == "Level 2")
+        {
+            Level2Range = false;
+        }
+
+        if (other.tag == "Level 3")
+        {
+            Level3Range = false;
         }
     }
 }
