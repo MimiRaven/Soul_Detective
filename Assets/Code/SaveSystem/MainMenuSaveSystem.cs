@@ -14,6 +14,8 @@ public class MainMenuSaveSystem : MonoBehaviour
     [SerializeField] private Button continueGameButton;
     [SerializeField] private Button loadGameButton;
 
+    [SerializeField] private CurrentSceneManager currentSceneManager;
+
     public GameObject Self;
 
     private void Start()
@@ -44,7 +46,33 @@ public class MainMenuSaveSystem : MonoBehaviour
         DisableMenuButtons();
         // load the next scene - which will in turn load the game because of 
         // OnSceneLoaded() in the DataPersistenceManager
-        SceneManager.LoadSceneAsync("HubWorld");
+       // SceneManager.LoadSceneAsync("HubWorld");
+
+        if(currentSceneManager.CurerntlyInHubWorld == true)
+        {
+            SceneManager.LoadSceneAsync("HubWorld");
+
+        }
+
+        if (currentSceneManager.CurrentlyInLevel1 == true)
+        {
+            SceneManager.LoadSceneAsync("Level 1");
+
+        }
+
+        if (currentSceneManager.CurrentlyInLevel2 == true)
+        {
+            SceneManager.LoadSceneAsync("Level 2");
+
+        }
+
+        if (currentSceneManager.CurrentlyInLevel3 == true)
+        {
+            SceneManager.LoadSceneAsync("Level 3");
+
+        }
+
+
     }
 
     private void DisableMenuButtons()

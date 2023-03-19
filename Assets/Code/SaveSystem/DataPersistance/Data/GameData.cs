@@ -28,6 +28,12 @@ public class GameData
     public bool Level2Complete;
     public bool Level3Complete;
 
+    //Tracking Current Level
+    public bool InHubWorld;
+    public bool InLevel1;
+    public bool InLevel2;
+    public bool InLevel3;
+
 
 
 
