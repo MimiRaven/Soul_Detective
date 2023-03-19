@@ -19,28 +19,35 @@ public class PlayerPositionTracker : MonoBehaviour, IDataPersistence
     // Start is called before the first frame update
     void Start()
     {
-        if (SceneManager.GetActiveScene().name == "HubWorld")
-        {
-            this.transform.position = HubSpawnPoint;
 
-        }
+      //if (!DataPersistenceManager.instance.HasGameData())
+      //{
+      //    
+      //}
 
-        if (SceneManager.GetActiveScene().name == "Level 1")
-        {
-            this.transform.position = Level1SpawnPoint;
-        }
-
-
-        if (SceneManager.GetActiveScene().name == "Level 2")
-        {
-            this.transform.position = PositionInLevel2;
-        }
-
-
-        if (SceneManager.GetActiveScene().name == "Level 3")
-        {
-            this.transform.position = PositionInLevel3;
-        }
+        //Undo
+       // if (SceneManager.GetActiveScene().name == "HubWorld")
+       // {
+       //     this.transform.position = HubSpawnPoint.transform.position;
+       //
+       // }
+       //
+       // if (SceneManager.GetActiveScene().name == "Level 1")
+       // {
+       //     this.transform.position = Level1SpawnPoint.transform.position;
+       // }
+       //
+       //
+       // if (SceneManager.GetActiveScene().name == "Level 2")
+       // {
+       //     this.transform.position = Level2SpawnPoint.transform.position;
+       // }
+       //
+       //
+       // if (SceneManager.GetActiveScene().name == "Level 3")
+       // {
+       //     this.transform.position = Level3SpawnPoint.transform.position;
+       // }
     }
 
     // Update is called once per frame
@@ -55,28 +62,30 @@ public class PlayerPositionTracker : MonoBehaviour, IDataPersistence
        //this.PositionInLevel2 = data.playerPositionInLevel2;
        //this.PositionInLevel3 = data.playerPositionInLevel3;
 
-        if (SceneManager.GetActiveScene().name == "HubWorld")
-        {
-            this.transform.position = data.playerPositionInHubWorld;
 
-        }
-
-        if (SceneManager.GetActiveScene().name == "Level 1")
-        {
-            this.transform.position = data.playerPositionInLevel1;
-        }
-
-
-        if (SceneManager.GetActiveScene().name == "Level 2")
-        {
-            this.transform.position = data.playerPositionInLevel2;
-        }
-
-
-        if (SceneManager.GetActiveScene().name == "Level 3")
-        {
-            this.transform.position = data.playerPositionInLevel3;
-        }
+        //Undo
+       //if (SceneManager.GetActiveScene().name == "HubWorld")
+       //{
+       //    this.transform.position = data.playerPositionInHubWorld;
+       //
+       //}
+       //
+       //if (SceneManager.GetActiveScene().name == "Level 1")
+       //{
+       //    this.transform.position = data.playerPositionInLevel1;
+       //}
+       //
+       //
+       //if (SceneManager.GetActiveScene().name == "Level 2")
+       //{
+       //    this.transform.position = data.playerPositionInLevel2;
+       //}
+       //
+       //
+       //if (SceneManager.GetActiveScene().name == "Level 3")
+       //{
+       //    this.transform.position = data.playerPositionInLevel3;
+       //}
     }
 
     public void SaveData(GameData data)
@@ -86,32 +95,35 @@ public class PlayerPositionTracker : MonoBehaviour, IDataPersistence
        //data.playerPositionInLevel2 = this.PositionInLevel2;
        //data.playerPositionInLevel3 = this.PositionInLevel3;
 
-        if (SceneManager.GetActiveScene().name == "HubWorld")
-        {
-            data.playerPositionInHubWorld = this.transform.position;
-
-        }
-
-        if (SceneManager.GetActiveScene().name == "Level 1")
-        {
-            data.playerPositionInLevel1 = this.transform.position;
-
-        }
 
 
-        if (SceneManager.GetActiveScene().name == "Level 2")
-        {
-            data.playerPositionInLevel2 = this.transform.position;
-
-        }
-
-
-        if (SceneManager.GetActiveScene().name == "Level 3")
-        {
-            data.playerPositionInLevel3 = this.transform.position;
-
-        }
-
+        //Undo
+       //if (SceneManager.GetActiveScene().name == "HubWorld")
+       //{
+       //    data.playerPositionInHubWorld = this.transform.position;
+       //
+       //}
+       //
+       //if (SceneManager.GetActiveScene().name == "Level 1")
+       //{
+       //    data.playerPositionInLevel1 = this.transform.position;
+       //
+       //}
+       //
+       //
+       //if (SceneManager.GetActiveScene().name == "Level 2")
+       //{
+       //    data.playerPositionInLevel2 = this.transform.position;
+       //
+       //}
+       //
+       //
+       //if (SceneManager.GetActiveScene().name == "Level 3")
+       //{
+       //    data.playerPositionInLevel3 = this.transform.position;
+       //
+       //}
+       //
     }
 
 
