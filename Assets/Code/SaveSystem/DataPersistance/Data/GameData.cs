@@ -15,7 +15,10 @@ public class GameData
     public long lastUpdated;
 
     //PlayerPosition
-    //public Vector3 playerPosition;
+    public Vector3 playerPositionInHubWorld;
+    public Vector3 playerPositionInLevel1;
+    public Vector3 playerPositionInLevel2;
+    public Vector3 playerPositionInLevel3;
 
     //Enterd Levels bool
 
