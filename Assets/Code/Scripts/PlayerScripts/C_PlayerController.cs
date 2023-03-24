@@ -133,11 +133,6 @@ public class C_PlayerController : MonoBehaviour
             playerSpeed = 5;
             Resting();
         }
-        //else if(playerAttack.AttackActive == false || PlayerBlock.IsBlocking == false)
-        //{
-        //    Resting();
-        //   // animator.SetBool("IsRunning", false);
-        //}
 
         if (playerAttack.AttackActive == true || PlayerBlock.IsBlocking == true)
         {
@@ -180,13 +175,7 @@ public class C_PlayerController : MonoBehaviour
             // animator.SetBool("Walking", false);
             //animator.SetBool("Idleing", false);
         }
-        else
-        {
-           // playerSpeed = 5;
-           // animator.SetBool("IsRunning", false);
-
-
-        }
+        
 
         
 
@@ -198,7 +187,7 @@ public class C_PlayerController : MonoBehaviour
         {
            // animator.SetBool("IsRunning", false);
             
-            //playerSpeed = 5;
+           //playerSpeed = 5;
             CurrentStamina += Time.deltaTime;
         }
     }
@@ -230,7 +219,9 @@ public class C_PlayerController : MonoBehaviour
         {
             playerAttack.AttackActive =false;
             PlayerBlock.IsBlocking =false;
+            isRunning= false;
         }
+
 
         //BlockingFunction();
        // DodgeFunction();
