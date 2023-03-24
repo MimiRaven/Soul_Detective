@@ -11,12 +11,16 @@ public class Interact : MonoBehaviour
     public bool Level3Range;
     public bool TypeWriterRange;
 
+    public bool SkillTreeOn;
+
+    public SkilltreeManager SkilltreeManager;
+
     [SerializeField]
     private PlayerInput playerInput;
 
     private InputAction Interaction;
 
-    public GameObject SkillTreeCanvas;
+   // public GameObject SkillTreeCanvas;
 
     private void Awake()
     {
@@ -36,7 +40,7 @@ public class Interact : MonoBehaviour
     }
     void Start()
     {
-        SkillTreeCanvas.SetActive(false);
+        //SkillTreeCanvas.SetActive(false);
 
         if (SceneManager.GetActiveScene().name == "HubWorld")
         {
@@ -73,13 +77,24 @@ public class Interact : MonoBehaviour
 
         if(TypeWriterRange == true)
         {
-            SkillTreeCanvas.SetActive(true);
+            SkillTreeOn = !SkillTreeOn;
+
+            if(SkillTreeOn)
+            {
+            SkilltreeManager.WheelActivated();
+
+            }
+            else
+            {
+                SkilltreeManager.WheelDeactivated();
+            }
+            // SkillTreeCanvas.SetActive(true);
         }
     }
 
     public void InteractStop()
     {
-
+        //SkilltreeManager.WheelDeactivated();
     }
 
     void OnTriggerEnter(Collider other)
