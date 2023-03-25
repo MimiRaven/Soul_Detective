@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Level1SideQuestManager : MonoBehaviour
+public class Level1SideQuestManager : MonoBehaviour, IDataPersistence
 {
 
     public bool Quest1Complete;
@@ -10,10 +10,11 @@ public class Level1SideQuestManager : MonoBehaviour
     public bool Quest3Complete;
     public bool Quest4Complete;
     public bool Quest5Complete;
+    public bool Quest5_1Complete;
 
     [Header("Quest 1 Variables")]
     //public GameObject Q1ClosedGate;
-    //public GameObject Q1OpenGate;
+    public GameObject BrokenFence;
     public GameObject Q1SideQuest1Text;
     public GameObject Q1CompleteQuest1Text;
     public GameObject Q1QuestionMarks;
@@ -43,17 +44,36 @@ public class Level1SideQuestManager : MonoBehaviour
     public GameObject Q4KeyObject;
 
     [Header("Quest 5 Variables")]
-   // public GameObject Q5Door;
-   
+     public GameObject Q5Door;
+    public GameObject Q5Door2;
+
+
     public GameObject Q5SideQuest1Text;
     public GameObject Q5CompleteQuest1Text;
     public GameObject Q5QuestionMarks;
-    //public GameObject Q5KeyObject;
+     public GameObject Q5KeyObject;
 
     // Start is called before the first frame update
     void Start()
     {
         
+    }
+    public void LoadData(GameData data)
+    {
+        this.Quest1Complete = data.Quest1;
+        this.Quest2Complete = data.Quest2;
+        this.Quest3Complete = data.Quest3;
+        this.Quest4Complete = data.Quest4;
+        this.Quest5Complete = data.Quest5;
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.Quest1 = this.Quest1Complete;
+        data.Quest2 = this.Quest2Complete;
+        data.Quest3 = this.Quest3Complete;
+        data.Quest4 = this.Quest4Complete;
+        data.Quest5 = this.Quest5Complete;
     }
 
     // Update is called once per frame
@@ -73,6 +93,7 @@ public class Level1SideQuestManager : MonoBehaviour
             Q1SideQuest1Text.SetActive(false);
             Q1CompleteQuest1Text.SetActive(true);
             Q1QuestionMarks.SetActive(false);
+            BrokenFence.SetActive(false);
         }
 
         if(Quest2Complete== true)
@@ -109,16 +130,21 @@ public class Level1SideQuestManager : MonoBehaviour
             Q4KeyObject.SetActive(false);
         }
 
+        if (Quest5_1Complete == true)
+        {
+            Q5Door.SetActive(false);
+        }
+
         if (Quest5Complete)
         {
 
-          //  Q5Door.SetActive(false);
-           // Q5Door2.SetActive(false);
+             
+             Q5Door2.SetActive(false);
 
             Q5SideQuest1Text.SetActive(false);
             Q5CompleteQuest1Text.SetActive(true);
             Q5QuestionMarks.SetActive(false);
-            //Q4KeyObject.SetActive(false);
+             Q4KeyObject.SetActive(false);
         }
     }
 

@@ -63,6 +63,14 @@ public class GameData
     public bool PlayerWeaponUpgrade1;
     public bool PlayerWeaponUpgrade2;
     public bool PlayerWeaponUpgrade3;
+
+
+    //Level 1 Quest Values
+    public bool Quest1;
+    public bool Quest2;
+    public bool Quest3;
+    public bool Quest4;
+    public bool Quest5;
     public GameData()
     {
         this.SkillPoints = 0;
@@ -94,6 +102,13 @@ public class GameData
         this.PlayerWeaponUpgrade1 = false;
         this.PlayerWeaponUpgrade2 = false;
         this.PlayerWeaponUpgrade3 = false;
+
+        //Level 1
+        Quest1= false;
+        Quest2= false;
+        Quest3= false;
+        Quest4= false;
+        Quest5= false;
 
     }
 }
