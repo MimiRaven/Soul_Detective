@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class LV1OpenGateWithButton : MonoBehaviour
 {
-    public GameObject ClosedGate;
-    public GameObject OpenGate;
+   //public GameObject ClosedGate;
+   //public GameObject OpenGate;
+   //
+   //public GameObject SideQuest1Text;
+   //public GameObject CompleteQuest1Text;
+   //
+   //public GameObject QuestionMarks;
 
-    public GameObject SideQuest1Text;
-    public GameObject CompleteQuest1Text;
-
-    public GameObject QuestionMarks;
+    public Level1SideQuestManager level1SideQuestManager;
 
 
     // Start is called before the first frame update
@@ -31,12 +33,14 @@ public class LV1OpenGateWithButton : MonoBehaviour
 
         if (col.collider.tag == "NotActive")
         {
-            ClosedGate.SetActive(false);
-            OpenGate.SetActive(true);
-
-            SideQuest1Text.SetActive(false);
-            CompleteQuest1Text.SetActive(true);
-            QuestionMarks.SetActive(false);
+            level1SideQuestManager.Quest1Complete = true;
+            
+         //ClosedGate.SetActive(false);
+         //OpenGate.SetActive(true);
+         //
+         //SideQuest1Text.SetActive(false);
+         //CompleteQuest1Text.SetActive(true);
+         //QuestionMarks.SetActive(false);
         }
     }
 }

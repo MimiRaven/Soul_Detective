@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PossPickingUpKeyToOpenDoorNoQuest : MonoBehaviour
 {
+    public Level1SideQuestManager questManager;
+
     public GameObject Door;
 
     public GameObject PuzzleEnemy;
@@ -25,33 +27,36 @@ public class PossPickingUpKeyToOpenDoorNoQuest : MonoBehaviour
         
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Key")
-        {
-            C_PlayerController.Possesed = true;
-            C_EnemyPossesed.Possesed = false;
-            PuzzleEnemy.SetActive(false);
-
-            Door.SetActive(false);
-          
-
-          
-
-            Destroy(gameObject);
-
-        }
-    }
+  //void OnCollisionEnter(Collision collision)
+  //{
+  //    if (collision.gameObject.tag == "Key")
+  //    {
+  //        C_PlayerController.Possesed = true;
+  //        C_EnemyPossesed.Possesed = false;
+  //        PuzzleEnemy.SetActive(false);
+  //
+  //        Door.SetActive(false);
+  //      
+  //
+  //      
+  //
+  //        Destroy(gameObject);
+  //
+  //    }
+  //}
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Key")
         {
+
+            questManager.Quest4Complete = true;
+
             C_PlayerController.Possesed = true;
             C_EnemyPossesed.Possesed = false;
             PuzzleEnemy.SetActive(false);
 
-            Door.SetActive(false);
+           // Door.SetActive(false);
         
 
           

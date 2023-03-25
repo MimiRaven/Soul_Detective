@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Lvl1Opendoorwithbutton : MonoBehaviour
 {
+    //public Level1SideQuestManager questManager;
+
     public GameObject ClosedDoor;
     public GameObject OpenDoor;
 
@@ -13,6 +15,7 @@ public class Lvl1Opendoorwithbutton : MonoBehaviour
 
         if (col.collider.tag == "NotActive")
         {
+            //questManager.Quest5Complete = true;
             ClosedDoor.SetActive(false);
             OpenDoor.SetActive(true);
         }

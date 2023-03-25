@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class LV1KeyPickUpOpenGate : MonoBehaviour
 {
-    public GameObject SideQuest1Text;
-    public GameObject CompleteQuest1Text;
-
-    public GameObject QuestionMarks;
-
-    public GameObject ClosedGate;
-    public GameObject OpenGate;
+   //public GameObject SideQuest1Text;
+   //public GameObject CompleteQuest1Text;
+   //
+   //public GameObject QuestionMarks;
+   //
+   //public GameObject ClosedGate;
+   //public GameObject OpenGate;
 
     public GameObject PuzzleEnemy;
 
@@ -18,6 +18,8 @@ public class LV1KeyPickUpOpenGate : MonoBehaviour
     // public Bot Bot;
     public C_PlayerController C_PlayerController;
     public C_PossesedEnemyAttack C_PossesedEnemyAttack;
+
+    public Level1SideQuestManager QuestManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,40 +32,43 @@ public class LV1KeyPickUpOpenGate : MonoBehaviour
 
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Key")
-        {
-            C_PlayerController.Possesed = true;
-            C_EnemyPossesed.Possesed = false;
-            PuzzleEnemy.SetActive(false);
-
-            ClosedGate.SetActive(false);
-            OpenGate.SetActive(true);
-
-            SideQuest1Text.SetActive(false);
-            CompleteQuest1Text.SetActive(true);
-            QuestionMarks.SetActive(false);
-
-            Destroy(gameObject); 
-
-        }
-    }
+  //void OnCollisionEnter(Collision collision)
+  //{
+  //    if (collision.gameObject.tag == "Key")
+  //    {
+  //        C_PlayerController.Possesed = true;
+  //        C_EnemyPossesed.Possesed = false;
+  //        PuzzleEnemy.SetActive(false);
+  //
+  //        ClosedGate.SetActive(false);
+  //        OpenGate.SetActive(true);
+  //
+  //        SideQuest1Text.SetActive(false);
+  //        CompleteQuest1Text.SetActive(true);
+  //        QuestionMarks.SetActive(false);
+  //
+  //        Destroy(gameObject); 
+  //
+  //    }
+  //}
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Key")
         {
+
+            QuestManager.Quest2Complete = true;
+
             C_PlayerController.Possesed = true;
             C_EnemyPossesed.Possesed = false;
             PuzzleEnemy.SetActive(false);
 
-            ClosedGate.SetActive(false);
-            OpenGate.SetActive(true);
-
-            SideQuest1Text.SetActive(false);
-            CompleteQuest1Text.SetActive(true);
-            QuestionMarks.SetActive(false);
+          //ClosedGate.SetActive(false);
+          //OpenGate.SetActive(true);
+          //
+          //SideQuest1Text.SetActive(false);
+          //CompleteQuest1Text.SetActive(true);
+          //QuestionMarks.SetActive(false);
 
             Destroy(gameObject);
 

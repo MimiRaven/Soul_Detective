@@ -6,27 +6,29 @@ public class LV1PlayerKeyPickup : MonoBehaviour
 {
     public GameObject Door;
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Key")
-        {
-           
+    public Level1SideQuestManager SideQuestManager;
 
-            Door.SetActive(false);
-
-
-
-
-            Destroy(collision.gameObject);
-
-        }
-    }
+   //void OnCollisionEnter(Collision collision)
+   //{
+   //    if (collision.gameObject.tag == "Key")
+   //    {
+   //       
+   //
+   //        Door.SetActive(false);
+   //
+   //
+   //
+   //
+   //        Destroy(collision.gameObject);
+   //
+   //    }
+   //}
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Key")
         {
-          
+          SideQuestManager.Quest5Complete = true;
 
             Door.SetActive(false);
 

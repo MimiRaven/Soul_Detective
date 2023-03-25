@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BreakFenceQuest : MonoBehaviour
 {
+    public Level1SideQuestManager SideQuestManager;
 
     public GameObject SideQuest1Text;
     public GameObject CompleteQuest1Text;
@@ -25,9 +26,11 @@ public class BreakFenceQuest : MonoBehaviour
     {
         if (collision.gameObject.tag == "Active")
         {
-            SideQuest1Text.SetActive(false);
-            CompleteQuest1Text.SetActive(true);
-            QuestionMarks.SetActive(false);
+            SideQuestManager.Quest1Complete = true;
+
+          // SideQuest1Text.SetActive(false);
+          // CompleteQuest1Text.SetActive(true);
+          // QuestionMarks.SetActive(false);
 
         }
     }
