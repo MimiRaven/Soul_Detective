@@ -33,7 +33,7 @@ public class LV1OpenGateWithButton : MonoBehaviour
 
         if (col.collider.tag == "NotActive")
         {
-            level1SideQuestManager.Quest1Complete = true;
+            level1SideQuestManager.Quest2Complete = true;
             
          //ClosedGate.SetActive(false);
          //OpenGate.SetActive(true);

@@ -43,12 +43,12 @@ public class Level1SideQuestManager : MonoBehaviour
     public GameObject Q4KeyObject;
 
     [Header("Quest 5 Variables")]
-    public GameObject Q5Door;
+   // public GameObject Q5Door;
    
     public GameObject Q5SideQuest1Text;
     public GameObject Q5CompleteQuest1Text;
     public GameObject Q5QuestionMarks;
-    public GameObject Q5KeyObject;
+    //public GameObject Q5KeyObject;
 
     // Start is called before the first frame update
     void Start()
@@ -115,9 +115,9 @@ public class Level1SideQuestManager : MonoBehaviour
           //  Q5Door.SetActive(false);
            // Q5Door2.SetActive(false);
 
-            Q4SideQuest1Text.SetActive(false);
-            Q4CompleteQuest1Text.SetActive(true);
-            Q4QuestionMarks.SetActive(false);
+            Q5SideQuest1Text.SetActive(false);
+            Q5CompleteQuest1Text.SetActive(true);
+            Q5QuestionMarks.SetActive(false);
             //Q4KeyObject.SetActive(false);
         }
     }

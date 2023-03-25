@@ -57,7 +57,7 @@ public class LV1KeyPickUpOpenGate : MonoBehaviour
         if (other.gameObject.tag == "Key")
         {
 
-            QuestManager.Quest2Complete = true;
+            QuestManager.Quest3Complete = true;
 
             C_PlayerController.Possesed = true;
             C_EnemyPossesed.Possesed = false;
