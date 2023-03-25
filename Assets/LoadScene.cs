@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class LoadScene : MonoBehaviour
 {
+    public GameObject LoadingScreen;
+
     public static LoadScene Instance;
 
     void Awake()
@@ -22,6 +24,21 @@ public class LoadScene : MonoBehaviour
 
     public void LoadLevel(string sceneName)
     {
+        StartCoroutine(LoadSceneAsync(sceneName));
+    }
+
+    IEnumerator LoadSceneAsync(string sceneName)
+    {
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
+
+        LoadingScreen.SetActive(true);
+
+        while (!operation.isDone)
+        {
+            float progressValue = Mathf.Clamp01(operation.progress / 0.9f);
+
+            yield return null;
+        }
+
     }
 }

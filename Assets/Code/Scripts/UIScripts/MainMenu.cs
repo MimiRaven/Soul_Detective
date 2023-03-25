@@ -12,9 +12,12 @@ public class MainMenu : MonoBehaviour
   public Button startButton = null;
   public Button levelBackButton = null;
   public Button settingsBackButton = null;
+  public Button accessBackButton = null;
+  public Button KMBackButton = null;
+  public Button conBackButton = null;
   public Button ctrlBackButton = null;
   public Button credBackButton = null;
-    public Button SaveSystemBackButton = null;
+  public Button SaveSystemBackButton = null;
 
   public Button quitButton = null;
   public Button Level1Button = null;
@@ -78,6 +81,7 @@ public class MainMenu : MonoBehaviour
         levelsScreen.SetActive(false);
         mainMenuScreen.SetActive(false);
         settingsScreen.SetActive(false);
+        accessibilitiesScreen.SetActive(false);
         ctrlsScreen.SetActive(false);
         kmScreen.SetActive(false);
         controllerScreen.SetActive(false);
@@ -93,6 +97,7 @@ public class MainMenu : MonoBehaviour
         levelsScreen.SetActive(true);
         mainMenuScreen.SetActive(false);
         settingsScreen.SetActive(false);
+        accessibilitiesScreen.SetActive(false);
         ctrlsScreen.SetActive(false);
         kmScreen.SetActive(false);
         controllerScreen.SetActive(false);
@@ -107,6 +112,7 @@ public class MainMenu : MonoBehaviour
     {
         mainMenuScreen.SetActive(false);
         settingsScreen.SetActive(true);
+        accessibilitiesScreen.SetActive(false);
         ctrlsScreen.SetActive(false);
         kmScreen.SetActive(false);
         controllerScreen.SetActive(false);
@@ -118,18 +124,35 @@ public class MainMenu : MonoBehaviour
         audioSource.Play();
     }
 
+    public void SeeAccessibilities()
+    {
+        mainMenuScreen.SetActive(false);
+        settingsScreen.SetActive(false);
+        accessibilitiesScreen.SetActive(true);
+        ctrlsScreen.SetActive(false);
+        kmScreen.SetActive(false);
+        controllerScreen.SetActive(false);
+        creditsScreen.SetActive(false);
+        levelsScreen.SetActive(false);
+        PlayGameSaveSystemScreen.SetActive(false);
+
+        accessBackButton.Select();
+        audioSource.Play();
+    }
+
     public void SeeControls()
   {
     mainMenuScreen.SetActive(false);
     ctrlsScreen.SetActive(true);
     settingsScreen.SetActive(false);
+    accessibilitiesScreen.SetActive(false);
     kmScreen.SetActive(false);
     controllerScreen.SetActive(false);
     creditsScreen.SetActive(false);
     levelsScreen.SetActive(false);
-        PlayGameSaveSystemScreen.SetActive(false);
+    PlayGameSaveSystemScreen.SetActive(false);
 
-        ctrlBackButton.Select();
+    ctrlBackButton.Select();
     audioSource.Play();
   }
 
@@ -137,6 +160,7 @@ public class MainMenu : MonoBehaviour
     {
         mainMenuScreen.SetActive(false);
         settingsScreen.SetActive(false);
+        accessibilitiesScreen.SetActive(false);
         ctrlsScreen.SetActive(false);
         kmScreen.SetActive(true);
         controllerScreen.SetActive(false);
@@ -144,7 +168,7 @@ public class MainMenu : MonoBehaviour
         levelsScreen.SetActive(false);
         PlayGameSaveSystemScreen.SetActive(false);
 
-        ctrlBackButton.Select();
+        KMBackButton.Select();
         audioSource.Play();
     }
 
@@ -152,6 +176,7 @@ public class MainMenu : MonoBehaviour
     {
         mainMenuScreen.SetActive(false);
         settingsScreen.SetActive(false);
+        accessibilitiesScreen.SetActive(false);
         ctrlsScreen.SetActive(false);
         kmScreen.SetActive(false);
         controllerScreen.SetActive(true);
@@ -159,7 +184,7 @@ public class MainMenu : MonoBehaviour
         levelsScreen.SetActive(false);
         PlayGameSaveSystemScreen.SetActive(false);
 
-        ctrlBackButton.Select();
+        conBackButton.Select();
         audioSource.Play();
     }
 
@@ -168,30 +193,33 @@ public class MainMenu : MonoBehaviour
     mainMenuScreen.SetActive(false);
     ctrlsScreen.SetActive(false);
     settingsScreen.SetActive(false);
+    accessibilitiesScreen.SetActive(false);
     kmScreen.SetActive(false);
     controllerScreen.SetActive(false);
     creditsScreen.SetActive(true);
     levelsScreen.SetActive(false);
-        PlayGameSaveSystemScreen.SetActive(false);
+    PlayGameSaveSystemScreen.SetActive(false);
 
-        credBackButton.Select();
+    credBackButton.Select();
     audioSource.Play();
   }
 
   public void GoBack()
   {
     mainMenuScreen.SetActive(true);
+    settingsScreen.SetActive(false);
+    accessibilitiesScreen.SetActive(false);
     ctrlsScreen.SetActive(false);
     creditsScreen.SetActive(false);
     kmScreen.SetActive(false);
     controllerScreen.SetActive(false);
     levelsScreen.SetActive(false);
-        PlayGameSaveSystemScreen.SetActive(false);
+    PlayGameSaveSystemScreen.SetActive(false);
 
-        startButton.Select();
+    startButton.Select();
     audioSource.Play();
   }
 
-  [SerializeField]
-  GameObject mainMenuScreen = null, settingsScreen = null, ctrlsScreen = null, kmScreen = null, controllerScreen = null, creditsScreen = null, levelsScreen = null, PlayGameSaveSystemScreen = null;
+    [SerializeField]
+    GameObject mainMenuScreen = null, settingsScreen = null, accessibilitiesScreen = null, ctrlsScreen = null, kmScreen = null, controllerScreen = null, creditsScreen = null, levelsScreen = null, PlayGameSaveSystemScreen = null;
 }

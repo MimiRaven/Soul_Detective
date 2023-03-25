@@ -13,6 +13,7 @@ public class MainMenuSaveSystem : MonoBehaviour
     [SerializeField] private Button newGameButton;
     [SerializeField] private Button continueGameButton;
     [SerializeField] private Button loadGameButton;
+    [SerializeField] private Button backButton;
 
     [SerializeField] private CurrentSceneManager currentSceneManager;
 
@@ -32,13 +33,14 @@ public class MainMenuSaveSystem : MonoBehaviour
         saveSlotsMenu.ActivateMenu(false);
         //Self.SetActive(false);
         this.DeactivateMenu();
+        backButton.Select();
     }
 
     public void OnLoadGameClicked()
     {
         saveSlotsMenu.ActivateMenu(true);
         this.DeactivateMenu();
-
+        backButton.Select();
     }
 
     public void OnContinueGameClicked()
