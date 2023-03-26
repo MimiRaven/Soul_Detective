@@ -47,10 +47,10 @@ public class C_EnemyLeverPuzzle : MonoBehaviour
             C_PlayerController.Possesed = true;
             C_EnemyPossesed.Possesed = false;
            // PuzzleEnemy.SetActive(false);
-            Hazard.SetActive(false);
-            LeverUp.SetActive(false);
+           // Hazard.SetActive(false);
+           // LeverUp.SetActive(false);
             PuzzleEnemy.SetActive(false);
-            LeverDown.SetActive(true);
+            //LeverDown.SetActive(true);
 
             SideQuest1Text.SetActive(false);
             QuestionMarks.SetActive(false);
