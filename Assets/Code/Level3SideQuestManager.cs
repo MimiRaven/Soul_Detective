@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Level3SideQuestManager : MonoBehaviour
+public class Level3SideQuestManager : MonoBehaviour, IDataPersistence
 {
     public bool Quest1Complete;
     public bool Quest2Complete;
@@ -23,7 +23,7 @@ public class Level3SideQuestManager : MonoBehaviour
 
     public bool FinalBossDead;
 
-    public GameObject BossDoor;
+    //public GameObject BossDoor;
     public GameObject BossDoorTransportObject;
 
     public GameObject Boss1AliveText;
@@ -80,7 +80,12 @@ public class Level3SideQuestManager : MonoBehaviour
 
     public void LoadData(GameData data)
     {
-       //this.RightBossDead = data.RightBossDead;
+       this.Boss1Dead = data.FirstBossDead;
+        this.Boss2Dead = data.SecondBossDead;
+        this.Boss3Dead= data.ThirdBossDead;
+        this.AllMiniBossesDead = data.MiniBossesDead;
+        this.FinalBossDead= data.FinalBossDead;
+
        //this.LeftBossDead = data.LeftBossDead;
        //this.Quest1Complete = data.LV2Quest1;
        //this.Quest2Complete = data.LV2Quest2;
@@ -90,6 +95,11 @@ public class Level3SideQuestManager : MonoBehaviour
 
     public void SaveData(GameData data)
     {
+        data.FinalBossDead= this.Boss1Dead;
+        data.SecondBossDead= this.Boss2Dead;
+        data.ThirdBossDead= this.Boss3Dead;
+        data.MiniBossesDead = this.AllMiniBossesDead;
+        data.FinalBossDead= this.FinalBossDead;
        // data.RightBossDead = this.RightBossDead;
        // data.LeftBossDead = this.LeftBossDead;
        // data.LV2Quest1 = this.Quest1Complete;
@@ -131,6 +141,13 @@ public class Level3SideQuestManager : MonoBehaviour
         {
             AllBossAliveText.SetActive(false);
             AllBossDeadText.SetActive(true);
+
+            BossDoorTransportObject.SetActive(true);
+        }
+
+        if(FinalBossDead== true)
+        {
+
         }
 
        //if (Quest1Complete == true)

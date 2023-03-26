@@ -83,6 +83,13 @@ public class GameData
     public bool LV2Quest2;
     public bool LV2Quest3;
     public bool LV2Quest4;
+
+    //Level 3 Quest Value
+    public bool FirstBossDead;
+    public bool SecondBossDead;
+    public bool ThirdBossDead;
+    public bool MiniBossesDead;
+    public bool FinalBossDead;
     public GameData()
     {
         this.SkillPoints = 0;
@@ -132,6 +139,13 @@ public class GameData
 
         LV2Boss1Dead= false;
         LV2Boss2Dead= false;
+
+        //Level 3
+        FirstBossDead= false;
+        SecondBossDead= false;
+        ThirdBossDead= false;
+        MiniBossesDead= false;
+        FinalBossDead= false;
 
     }
 }
