@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class LV3BossManager : MonoBehaviour
 {
+    public Level3SideQuestManager SideQuestManager;
+
     public bool Boss1Dead;
     public bool Boss2Dead;
     public bool Boss3Dead;
@@ -19,9 +21,25 @@ public class LV3BossManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Boss1Dead)
+        {
+            SideQuestManager.Boss1Dead = true;
+        }
+        if(Boss2Dead)
+        {
+            SideQuestManager.Boss2Dead = true;
+
+        }
+        if(Boss3Dead)
+        {
+            SideQuestManager.Boss3Dead= true;
+        }
+
         if(Boss1Dead && Boss2Dead && Boss3Dead)
         {
-            SceneManager.LoadScene("HubWorld");
+
+            SideQuestManager.AllMiniBossesDead= true;
+            //SceneManager.LoadScene("HubWorld");
         }
     }
 }
