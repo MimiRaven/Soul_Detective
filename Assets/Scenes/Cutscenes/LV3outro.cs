@@ -69,9 +69,13 @@ public class LV3outro : MonoBehaviour
 
     public void StartSkip()
     {
-        //SKipPressed = true;
-        Debug.Log("Skip Button Pressed");
-        SceneManager.LoadScene("Win Screen");
+        if (SceneManager.GetActiveScene().name == "Lv3 outro")
+        {
+
+                //SKipPressed = true;
+                Debug.Log("Skip Button Pressed");
+            SceneManager.LoadScene("Win Screen");
+        }
     }
 
     public void CancelSkip()

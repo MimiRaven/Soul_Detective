@@ -69,9 +69,14 @@ public class LV1Intro : MonoBehaviour
 
     public void StartSkip()
     {
-        //SKipPressed = true;
-        Debug.Log("Skip Button Pressed");
-        SceneManager.LoadScene("Level 1");
+        if (SceneManager.GetActiveScene().name == "Lv1 intro")
+        {
+        
+          //SKipPressed = true;
+          Debug.Log("Skip Button Pressed");
+          SceneManager.LoadScene("Level 1");
+
+        }
     }
 
     public void CancelSkip()

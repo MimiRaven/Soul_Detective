@@ -69,9 +69,13 @@ public class LV3intro : MonoBehaviour
 
     public void StartSkip()
     {
-        //SKipPressed = true;
-        Debug.Log("Skip Button Pressed");
-        SceneManager.LoadScene("Level 3");
+        if (SceneManager.GetActiveScene().name == "Lv3 intro")
+        {
+
+             //SKipPressed = true;
+            Debug.Log("Skip Button Pressed");
+             SceneManager.LoadScene("Level 3");
+        }
     }
 
     public void CancelSkip()

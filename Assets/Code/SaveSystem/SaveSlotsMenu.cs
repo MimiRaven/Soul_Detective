@@ -36,29 +36,35 @@ public class SaveSlotsMenu : MonoBehaviour
         {
             // create a new game - which will initialize our data to a clean slate
          DataPersistenceManager.instance.NewGame();
-            SceneManager.LoadSceneAsync("Lv1 intro");
+            SceneManager.LoadScene("Lv1 intro");
+
+            //if (currentSceneManager.CurerntlyInHubWorld == true)
+            //{
+            //    SceneManager.LoadSceneAsync("Lv1 intro");
+            //
+            //}
         }
 
         // load the scene - which will in turn save the game because of OnSceneUnloaded() in the DataPersistenceManager
-        if (currentSceneManager.CurerntlyInHubWorld == true)
+        if (currentSceneManager.CurerntlyInHubWorld == true && isLoadingGame)
         {
             SceneManager.LoadSceneAsync("HubWorld");
 
         }
 
-        if (currentSceneManager.CurrentlyInLevel1 == true)
+        if (currentSceneManager.CurrentlyInLevel1 == true && isLoadingGame)
         {
             SceneManager.LoadSceneAsync("Level 1");
 
         }
 
-        if (currentSceneManager.CurrentlyInLevel2 == true)
+        if (currentSceneManager.CurrentlyInLevel2 == true && isLoadingGame)
         {
             SceneManager.LoadSceneAsync("Level 2");
 
         }
 
-        if (currentSceneManager.CurrentlyInLevel3 == true)
+        if (currentSceneManager.CurrentlyInLevel3 == true && isLoadingGame)
         {
             SceneManager.LoadSceneAsync("Level 3");
 

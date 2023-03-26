@@ -69,9 +69,13 @@ public class LV1Outro : MonoBehaviour
 
     public void StartSkip()
     {
-        //SKipPressed = true;
-        Debug.Log("Skip Button Pressed");
-        SceneManager.LoadScene("HubWorld");
+        if (SceneManager.GetActiveScene().name == "Lv1 outro")
+        {
+                //SKipPressed = true;
+                Debug.Log("Skip Button Pressed");
+            SceneManager.LoadScene("HubWorld");
+
+        }
     }
 
     public void CancelSkip()

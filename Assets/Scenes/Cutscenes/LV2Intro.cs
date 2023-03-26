@@ -69,9 +69,13 @@ public class LV2Intro : MonoBehaviour
 
     public void StartSkip()
     {
-        //SKipPressed = true;
-        Debug.Log("Skip Button Pressed");
-        SceneManager.LoadScene("Level 2");
+        if (SceneManager.GetActiveScene().name == "Lv2 intro")
+        {
+
+             //SKipPressed = true;
+             Debug.Log("Skip Button Pressed");
+         SceneManager.LoadScene("Level 2");
+        }
     }
 
     public void CancelSkip()
