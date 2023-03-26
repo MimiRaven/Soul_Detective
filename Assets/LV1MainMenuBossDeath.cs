@@ -8,6 +8,7 @@ public class LV1MainMenuBossDeath : MonoBehaviour
 {
     public C_EmenyDeath emenyDeath;
     public LevelCompletionManager levelManager;
+    public Level1SideQuestManager level1SideQuestManager;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,8 @@ public class LV1MainMenuBossDeath : MonoBehaviour
     {
         if(emenyDeath.EnemyCurrentHealth == 0)
         {
-            SceneManager.LoadScene("HubWorld");
+            level1SideQuestManager.BossDead = true;
+           // SceneManager.LoadScene("HubWorld");
             levelManager.Lv1Complete = true;
         }
     }

@@ -128,13 +128,13 @@ public class C_PlayerController : MonoBehaviour
            //animator.SetBool("Walking", false);
            //animator.SetBool("Idleing", false);
         }
-        else if(playerAttack.AttackActive == false || PlayerBlock.IsBlocking == false)
+        else if( PlayerBlock.IsBlocking == false)
         {
             playerSpeed = 5;
             Resting();
         }
 
-        if (playerAttack.AttackActive == true || PlayerBlock.IsBlocking == true)
+        if ( PlayerBlock.IsBlocking == true)
         {
             playerSpeed = 0;
         }

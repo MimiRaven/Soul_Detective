@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class C_DetroyObjectWithTeleButton : MonoBehaviour
 {
+    public Level2SideQuestManager SideQuestManager;
+
     public GameObject HazardObject;
 
     public GameObject SideQuest1Text;
@@ -30,10 +32,12 @@ public class C_DetroyObjectWithTeleButton : MonoBehaviour
 
         if (col.collider.tag == "NotActive")
         {
-            HazardObject.SetActive(false);
-            SideQuest1Text.SetActive(false);
-            CompleteQuest1Text.SetActive(true);
-            QuestionMarks.SetActive(false);
+            SideQuestManager.Quest1Complete= true;
+
+          //HazardObject.SetActive(false);
+          //SideQuest1Text.SetActive(false);
+          //CompleteQuest1Text.SetActive(true);
+          //QuestionMarks.SetActive(false);
         }
     }
  }

@@ -23,7 +23,7 @@ public class Win : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene("Vertical Slice Level");
+        SceneManager.LoadScene("HubWorld");
     }
 
     public void MainMenu()
