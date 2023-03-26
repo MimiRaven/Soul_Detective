@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Level1SideQuestManager : MonoBehaviour, IDataPersistence
 {
@@ -11,6 +12,9 @@ public class Level1SideQuestManager : MonoBehaviour, IDataPersistence
     public bool Quest4Complete;
     public bool Quest5Complete;
     public bool Quest5_1Complete;
+
+    [Header("Main Objective Variables")]
+    public bool BossDead;
 
     [Header("Quest 1 Variables")]
     //public GameObject Q1ClosedGate;
@@ -84,6 +88,11 @@ public class Level1SideQuestManager : MonoBehaviour, IDataPersistence
 
      public void QuestUpdate()
     {
+        if (BossDead)
+        {
+            SceneManager.LoadScene("Lv1 outro");
+        }
+
         if(Quest1Complete == true)
         {
 

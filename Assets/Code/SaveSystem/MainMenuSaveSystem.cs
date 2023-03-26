@@ -41,6 +41,8 @@ public class MainMenuSaveSystem : MonoBehaviour
         saveSlotsMenu.ActivateMenu(true);
         this.DeactivateMenu();
         backButton.Select();
+
+
     }
 
     public void OnContinueGameClicked()

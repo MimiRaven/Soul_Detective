@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class C_OpenDoorWithTeleButton : MonoBehaviour
 {
+    public Level2SideQuestManager Level2SideQuestManager;
     public GameObject ClosedDoor;
     public GameObject OpenDoor;
 
@@ -29,12 +30,14 @@ public class C_OpenDoorWithTeleButton : MonoBehaviour
 
         if (col.collider.tag == "GreenBox")
         {
-            ClosedDoor.SetActive(false);
-            OpenDoor.SetActive(true);
+            Level2SideQuestManager.Quest2Complete = true;
 
-            SideQuest1Text.SetActive(false);
-            QuestionMarks.SetActive(false);
-            CompleteQuest1Text.SetActive(true);
+           //ClosedDoor.SetActive(false);
+           //OpenDoor.SetActive(true);
+           //
+           //SideQuest1Text.SetActive(false);
+           //QuestionMarks.SetActive(false);
+           //CompleteQuest1Text.SetActive(true);
         }
     }
 }

@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class C_EnemyLeverPuzzle : MonoBehaviour
 {
-    public GameObject LeverUp;
-    public GameObject LeverDown;
 
-    public GameObject Hazard;
+    public Level2SideQuestManager Level2SideQuestManager;
+    //public GameObject LeverUp;
+    //public GameObject LeverDown;
+
+    //public GameObject Hazard;
 
     public GameObject PuzzleEnemy;
 
@@ -16,9 +18,9 @@ public class C_EnemyLeverPuzzle : MonoBehaviour
     public C_PlayerController C_PlayerController;
     public C_PossesedEnemyAttack C_PossesedEnemyAttack;
 
-    public GameObject SideQuest1Text;
-    public GameObject CompleteQuest1Text;
-    public GameObject QuestionMarks;
+   // public GameObject SideQuest1Text;
+   // public GameObject CompleteQuest1Text;
+   // public GameObject QuestionMarks;
 
 
     //  public Behaviour c_EnemyPossesed;
@@ -42,19 +44,20 @@ public class C_EnemyLeverPuzzle : MonoBehaviour
 
         if (col.collider.tag == "weapon")
         {
-          
+            Level2SideQuestManager.Quest3Complete = true;
+
            // C_PossesedEnemyAttack.isAttacking = false;
             C_PlayerController.Possesed = true;
             C_EnemyPossesed.Possesed = false;
            // PuzzleEnemy.SetActive(false);
-            Hazard.SetActive(false);
-            LeverUp.SetActive(false);
+           // Hazard.SetActive(false);
+           // LeverUp.SetActive(false);
             PuzzleEnemy.SetActive(false);
-            LeverDown.SetActive(true);
+            //LeverDown.SetActive(true);
 
-            SideQuest1Text.SetActive(false);
-            QuestionMarks.SetActive(false);
-            CompleteQuest1Text.SetActive(true);
+           // SideQuest1Text.SetActive(false);
+           // QuestionMarks.SetActive(false);
+           // CompleteQuest1Text.SetActive(true);
             //c_EnemyPossesed.enabled= false;
             //c_EnemyAttack.enabled= false;
             //Bot.enabled= false;
