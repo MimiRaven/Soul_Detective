@@ -2,14 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Level2SideQuestManager : MonoBehaviour
+public class Level2SideQuestManager : MonoBehaviour, IDataPersistence
 {
     public bool Quest1Complete;
     public bool Quest2Complete;
     public bool Quest3Complete;
     public bool Quest4Complete;
-    public bool Quest5Complete;
-    public bool Quest5_1Complete;
+
+    public bool RightBossDead;
+    public bool LeftBossDead;
+    // public bool Quest5Complete;
+    // public bool Quest5_1Complete;
+
+    [Header("Quest 1 Variables")]
+    //public GameObject Q1ClosedGate;
+    public GameObject RightBossAliveText;
+    public GameObject LeftBossAliveText;
+    public GameObject RightBossDeadText;
+    public GameObject LeftBossDeadText;
 
     [Header("Quest 1 Variables")]
     //public GameObject Q1ClosedGate;
@@ -54,8 +64,39 @@ public class Level2SideQuestManager : MonoBehaviour
         QuestUpdate();
     }
 
+    public void LoadData(GameData data)
+    {
+        this.RightBossDead = data.RightBossDead;
+        this.LeftBossDead = data.LeftBossDead;
+        this.Quest1Complete = data.LV2Quest1;
+        this.Quest2Complete = data.LV2Quest2;
+        this.Quest3Complete = data.LV2Quest3;
+        this.Quest4Complete = data.LV2Quest4;
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.RightBossDead = this.RightBossDead;
+        data.LeftBossDead = this.LeftBossDead;
+        data.LV2Quest1 = this.Quest1Complete;
+        data.LV2Quest2 = this.Quest2Complete;
+        data.LV2Quest3 = this.Quest3Complete;
+        data.LV2Quest4 = this.Quest4Complete;
+    }
+
     public void QuestUpdate()
     {
+        if (RightBossDead)
+        {
+            RightBossAliveText.SetActive(false);
+            RightBossDeadText.SetActive(true);
+        }
+        if (LeftBossDead)
+        {
+            LeftBossAliveText.SetActive(false);
+            LeftBossDeadText.SetActive(true);
+        }
+
         if (Quest1Complete == true)
         {
 

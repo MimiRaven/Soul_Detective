@@ -28,7 +28,7 @@ public class Level2PuzzleKey : MonoBehaviour
     {
         if (other.gameObject.tag == "Key")
         {
-            SideQuestManager.Quest5Complete = true;
+            SideQuestManager.Quest4Complete = true;
 
             XPObject1.SetActive(true);
             XPObject2.SetActive(true);
@@ -39,7 +39,7 @@ public class Level2PuzzleKey : MonoBehaviour
 
 
 
-            Destroy(other.gameObject);
+          //  Destroy(other.gameObject);
 
         }
     }
