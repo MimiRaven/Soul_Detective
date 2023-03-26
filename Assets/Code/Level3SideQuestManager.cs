@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Level3SideQuestManager : MonoBehaviour, IDataPersistence
 {
@@ -147,7 +148,7 @@ public class Level3SideQuestManager : MonoBehaviour, IDataPersistence
 
         if(FinalBossDead== true)
         {
-
+            SceneManager.LoadScene("Lv3 outro");
         }
 
        //if (Quest1Complete == true)
