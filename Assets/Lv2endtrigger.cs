@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Lv2endtrigger : MonoBehaviour
 {
-
+    public Level2SideQuestManager SideQuestManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,9 +37,10 @@ public class Lv2endtrigger : MonoBehaviour
 
         if (other.CompareTag("LV2End"))
         {
+            SideQuestManager.Level2Complete = true;
             SceneManager.LoadScene("Lv2 outro");
 
-           
+          
         }
     }
 }

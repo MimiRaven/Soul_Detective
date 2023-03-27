@@ -10,6 +10,8 @@ public class Level3SideQuestManager : MonoBehaviour, IDataPersistence
     public bool Quest3Complete;
     public bool Quest4Complete;
 
+    public bool Level3Complete;
+
     
     // public bool Quest5Complete;
     // public bool Quest5_1Complete;
@@ -86,6 +88,7 @@ public class Level3SideQuestManager : MonoBehaviour, IDataPersistence
         this.Boss3Dead= data.ThirdBossDead;
         this.AllMiniBossesDead = data.MiniBossesDead;
         this.FinalBossDead= data.FinalBossDead;
+        this.Level3Complete = data.Level3Complete;
 
        //this.LeftBossDead = data.LeftBossDead;
        //this.Quest1Complete = data.LV2Quest1;
@@ -101,6 +104,7 @@ public class Level3SideQuestManager : MonoBehaviour, IDataPersistence
         data.ThirdBossDead= this.Boss3Dead;
         data.MiniBossesDead = this.AllMiniBossesDead;
         data.FinalBossDead= this.FinalBossDead;
+        data.Level3Complete= this.Level3Complete;
        // data.RightBossDead = this.RightBossDead;
        // data.LeftBossDead = this.LeftBossDead;
        // data.LV2Quest1 = this.Quest1Complete;
@@ -148,6 +152,7 @@ public class Level3SideQuestManager : MonoBehaviour, IDataPersistence
 
         if(FinalBossDead== true)
         {
+            Level3Complete = true;
             SceneManager.LoadScene("Lv3 outro");
         }
 

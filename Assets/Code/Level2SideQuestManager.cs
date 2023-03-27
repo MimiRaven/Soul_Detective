@@ -11,6 +11,8 @@ public class Level2SideQuestManager : MonoBehaviour, IDataPersistence
 
     public bool RightBossDead;
     public bool LeftBossDead;
+
+    public bool Level2Complete; 
     // public bool Quest5Complete;
     // public bool Quest5_1Complete;
 
@@ -72,6 +74,7 @@ public class Level2SideQuestManager : MonoBehaviour, IDataPersistence
         this.Quest2Complete = data.LV2Quest2;
         this.Quest3Complete = data.LV2Quest3;
         this.Quest4Complete = data.LV2Quest4;
+        this.Level2Complete = data.Level2Complete;
     }
 
     public void SaveData(GameData data)
@@ -82,6 +85,7 @@ public class Level2SideQuestManager : MonoBehaviour, IDataPersistence
         data.LV2Quest2 = this.Quest2Complete;
         data.LV2Quest3 = this.Quest3Complete;
         data.LV2Quest4 = this.Quest4Complete;
+        data.Level2Complete = this.Level2Complete;
     }
 
     public void QuestUpdate()

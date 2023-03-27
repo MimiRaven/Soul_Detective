@@ -92,6 +92,9 @@ public class GameData
     public bool FinalBossDead;
     public GameData()
     {
+        Level1Complete = false;
+        Level2Complete = false;
+            Level3Complete = false;
         this.SkillPoints = 0;
         this.CurrentXpAmmount= 0;
         this.PlayerCurrentLives = 3;

@@ -38,13 +38,13 @@ public class BossDeathManager : MonoBehaviour, IDataPersistence
         if (Boss1Dead)
         {
             Boss1Door.SetActive(false);
-            SideQuestManager.RightBossDead= true;
+            SideQuestManager.LeftBossDead= true;
 
         }
         if (Boss2Dead)
         {
             Boss2Door.SetActive(false);
-            SideQuestManager.LeftBossDead= true;
+            SideQuestManager.RightBossDead= true;
         }
 
         if(Boss1Dead && Boss2Dead == true)
