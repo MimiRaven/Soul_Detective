@@ -65,13 +65,13 @@ public class Interact : MonoBehaviour
 
         if(Level2Range == true)
         {
-            SceneManager.LoadScene("Level 2");
+            SceneManager.LoadScene("Lv2 intro");
             Level2Range= false;
         }
 
         if(Level3Range == true)
         {
-            SceneManager.LoadScene("Level 3");
+            SceneManager.LoadScene("Lv3 intro");
             Level3Range= false;
         }
 
