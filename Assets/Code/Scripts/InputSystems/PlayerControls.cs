@@ -625,7 +625,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""77fa8289-874c-4abd-bc96-3fe247487dd3"",
-                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""path"": ""<Gamepad>/dpad/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -847,6 +847,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""id"": ""f1fcfc2b-a3ca-43a4-a941-2588dddf450f"",
                     ""path"": ""<Keyboard>/b"",
                     ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Block"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""48433238-128b-4000-b55b-976e3800cf39"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""interactions"": ""Hold"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Block"",
