@@ -131,7 +131,7 @@ public class C_PlayerHealth : MonoBehaviour, IDataPersistence
             {
                 if (collision.gameObject.tag == "EnemyWeapon")
                 {
-                    ChangeHealth(-1);
+                    // ChangeHealth(-1);
                     audioSource.Play();
                     animator.SetTrigger("Hurt 0");
                     
