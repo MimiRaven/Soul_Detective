@@ -6,13 +6,13 @@ using TMPro;
 public class C_XrayVision : MonoBehaviour
 {
     private float boostTimer;
-    private bool boosting;
+    public bool boosting;
 
     public GameObject LockOnCanvas;
     public TextMeshProUGUI BoostedUI;
 
 
-    public GameObject XrayCam,AimXrayCam;
+    public GameObject XrayCam, AimXrayCam;
 
     public C_SwitchAimCam c_SwitchAimCam;
 
@@ -28,34 +28,34 @@ public class C_XrayVision : MonoBehaviour
     {
         if (boosting)
         {
-            if(c_SwitchAimCam.AimOn == false)
-            {
-                XrayCam.SetActive(true);
-                AimXrayCam.SetActive(false);
-            }
-            else
-            {
-                XrayCam.SetActive(false);
-                AimXrayCam.SetActive(true);
-            }
+            //if(c_SwitchAimCam.AimOn == false)
+            //{
+            //    XrayCam.SetActive(true);
+            //    AimXrayCam.SetActive(false);
+            //}
+            //else
+            //{
+            //    XrayCam.SetActive(false);
+            //    AimXrayCam.SetActive(true);
+            //}
 
-            LockOnCanvas.SetActive(true);
+            //LockOnCanvas.SetActive(true);
             //XrayCam.SetActive(true);
             boostTimer += Time.deltaTime;
             if (boostTimer >= 5)
             {
-                
+
                 boostTimer = 0;
                 boosting = false;
                 BoostedUI.text = "XRay Active";
             }
         }
-        else
-        {
-            LockOnCanvas.SetActive(false);
-            XrayCam.SetActive(false);
-            AimXrayCam.SetActive(false);
-        }
+        //else
+        //{
+        //    LockOnCanvas.SetActive(false);
+        //    XrayCam.SetActive(false);
+        //    AimXrayCam.SetActive(false);
+        //}
 
         //XrayCam.SetActive(true);
     }
@@ -65,7 +65,7 @@ public class C_XrayVision : MonoBehaviour
 
         if (collision.gameObject.tag == "XRayBoostPickUp")
         {
-            
+
             Destroy(collision.gameObject);
             boosting = true;
         }
