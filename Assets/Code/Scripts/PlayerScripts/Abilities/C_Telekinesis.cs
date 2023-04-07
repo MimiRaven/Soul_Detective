@@ -10,6 +10,7 @@ public class C_Telekinesis : MonoBehaviour
     [SerializeField]
     private PlayerInput playerInput;
 
+    [SerializeField] private LayerMask layerMask;
 
     public float range = 100;
 

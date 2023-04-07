@@ -10,6 +10,8 @@ public class C_Possesion : MonoBehaviour
     [SerializeField]
     private PlayerInput playerInput;
 
+    [SerializeField] private LayerMask layerMask;
+
     public bool PossesionRayShot;
     public float range = 100;
 
