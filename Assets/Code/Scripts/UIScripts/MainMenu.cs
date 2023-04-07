@@ -34,31 +34,37 @@ public class MainMenu : MonoBehaviour
 
   public void StartGame()
   {
-    SceneManager.LoadScene("IntroCutscene"); 
+        Cursor.lockState = CursorLockMode.Confined;
+        SceneManager.LoadScene("IntroCutscene"); 
   }
 
    public void HubWorld()
     {
+        Cursor.lockState = CursorLockMode.Confined;
         SceneManager.LoadScene("HubWorld");
     }
 
   public void Level1()
     {
+        Cursor.lockState = CursorLockMode.Confined;
         SceneManager.LoadScene("Level 1");
     }
 
     public void Level2()
     {
+        Cursor.lockState = CursorLockMode.Confined;
         SceneManager.LoadScene("Level 2");
     }
 
     public void Level3()
     {
+        Cursor.lockState = CursorLockMode.Confined;
         SceneManager.LoadScene("Level 3");
     }
 
     public void GamePlayDemo()
     {
+        Cursor.lockState = CursorLockMode.Confined;
         SceneManager.LoadScene("GamePlay Demo");
     }
 

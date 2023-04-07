@@ -60,6 +60,7 @@ public class PauseMenu : MonoBehaviour
     }
     void ActivateMenu()
     {
+        Cursor.lockState = CursorLockMode.None;
         //Time.timeScale = 0f;
         c_TimeManagement.TimeStop = true;
         MainCam.SetActive(false);
@@ -74,6 +75,7 @@ public class PauseMenu : MonoBehaviour
 
     public void DeactivateMenu()
     {
+        Cursor.lockState = CursorLockMode.Confined;
         //Time.timeScale = 1f;
         c_TimeManagement.TimeStop = false;
         MainCam.SetActive(true);

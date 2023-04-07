@@ -24,6 +24,7 @@ public class LV3intro : MonoBehaviour
     }
     void Start()
     {
+        VideoPlayer.SetDirectAudioVolume(0, PlayerPrefs.GetFloat("diagvolpref"));
         VideoPlayer.loopPointReached += LoadScene;
     }
     void LoadScene(VideoPlayer vp)

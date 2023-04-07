@@ -15,6 +15,9 @@ public class SoundManager : MonoBehaviour
     private float soundEffectFloat;
     public AudioSource masterAudio;
     public AudioSource [] soundEffectAudio;
+    //arin dialog volume stuff
+    float diagvol;
+    public Slider diagvolslider;
 
     void Start()
     {
@@ -37,6 +40,7 @@ public class SoundManager : MonoBehaviour
             volumeSlider.value = volumeFloat;
             soundEffectFloat = PlayerPrefs.GetFloat(SoundEffectPref);
             soundEffectSlider.value = soundEffectFloat;
+            diagvolslider.value = PlayerPrefs.GetFloat("diagvolpref");
         }
     }
 
@@ -62,5 +66,11 @@ public class SoundManager : MonoBehaviour
         {
             soundEffectAudio[i].volume = soundEffectSlider.value;
         }
+    }
+    //arin method for dialog sound updates
+    public void UpdateDiag()
+    {
+        //diagvol = diagvolslider.value;
+        PlayerPrefs.SetFloat("diagvolpref", diagvolslider.value);
     }
 }

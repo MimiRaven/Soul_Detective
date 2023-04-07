@@ -26,6 +26,7 @@ public class SaveSlotsMenu : MonoBehaviour
 
     public void OnSaveSlotClicked(SaveSlot saveSlot)
     {
+        Cursor.lockState = CursorLockMode.Confined;
         // disable all buttons
         DisableMenuButtons();
 
