@@ -17,10 +17,23 @@ public class LV2Intro : MonoBehaviour
     public float SkipCount;
     public bool SKipPressed;
 
+    public GameObject LoadingScreen;
+    public static LV2Intro Instance;
+
 
     private void Awake()
     {
         SkipAction = playerInput.actions["SkipCutsceen"];
+
+        if (Instance == null)
+        {
+            Instance = this;
+            //  DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
     void Start()
     {
@@ -29,12 +42,28 @@ public class LV2Intro : MonoBehaviour
     }
     void LoadScene(VideoPlayer vp)
     {
-        SceneManager.LoadScene("Level 2");
+        StartCoroutine(LoadSceneAsync("Level 2"));
     }
+    public IEnumerator LoadSceneAsync(string sceneName)
+    {
+        LoadingScreen.SetActive(true);
 
+        AsyncOperation Lv2 = SceneManager.LoadSceneAsync("Level 2");
+
+        while (!Lv2.isDone)
+        {
+
+            float progressValue = Mathf.Clamp01(Lv2.progress / 0.9f);
+            // slider.value = progressValue;
+
+            //LoadingBarFill.fillAmount= progressValue;
+
+            yield return null;
+        }
+    }
     private void Update()
     {
-        if (SkipCount >= 5) { SceneManager.LoadScene("Level 2"); }
+        if (SkipCount >= 5) { StartCoroutine(LoadSceneAsync("Level 2")); }
 
         if (SkipCount <= 0)
         {
@@ -75,7 +104,7 @@ public class LV2Intro : MonoBehaviour
 
              //SKipPressed = true;
              Debug.Log("Skip Button Pressed");
-         SceneManager.LoadScene("Level 2");
+            StartCoroutine(LoadSceneAsync("Level 2"));
         }
     }
 

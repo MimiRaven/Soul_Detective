@@ -19,7 +19,7 @@ public class LV1MainMenuBossDeath : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(emenyDeath.EnemyCurrentHealth == 0)
+        if(emenyDeath.EnemyCurrentHealth <= 0)
         {
             level1SideQuestManager.BossDead = true;
            // SceneManager.LoadScene("HubWorld");

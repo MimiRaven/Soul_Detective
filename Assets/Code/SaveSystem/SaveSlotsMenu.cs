@@ -13,11 +13,11 @@ public class SaveSlotsMenu : MonoBehaviour
     [SerializeField] private Button backButton;
 
     [SerializeField] private CurrentSceneManager currentSceneManager;
-
+    [SerializeField] private LoadScene LoadManager;
 
     private SaveSlot[] saveSlots;
 
-    private bool isLoadingGame = false;
+    public bool isLoadingGame = false;
 
     private void Awake()
     {
@@ -37,7 +37,7 @@ public class SaveSlotsMenu : MonoBehaviour
         {
             // create a new game - which will initialize our data to a clean slate
          DataPersistenceManager.instance.NewGame();
-            SceneManager.LoadScene("Lv1 intro");
+            StartCoroutine(LoadManager.LoadSceneAsync("Lv1 intro"));
 
             //if (currentSceneManager.CurerntlyInHubWorld == true)
             //{
@@ -49,25 +49,29 @@ public class SaveSlotsMenu : MonoBehaviour
         // load the scene - which will in turn save the game because of OnSceneUnloaded() in the DataPersistenceManager
         if (currentSceneManager.CurerntlyInHubWorld == true && isLoadingGame)
         {
-            SceneManager.LoadSceneAsync("HubWorld");
+            //SceneManager.LoadSceneAsync("HubWorld");
+            StartCoroutine(LoadManager.LoadSceneAsync("HubWorld"));
 
         }
 
         if (currentSceneManager.CurrentlyInLevel1 == true && isLoadingGame)
         {
-            SceneManager.LoadSceneAsync("Level 1");
+            //SceneManager.LoadSceneAsync("Level 1");
+            StartCoroutine(LoadManager.LoadSceneAsync("Level 1"));
 
         }
 
         if (currentSceneManager.CurrentlyInLevel2 == true && isLoadingGame)
         {
-            SceneManager.LoadSceneAsync("Level 2");
+            // SceneManager.LoadSceneAsync("Level 2");
+            StartCoroutine(LoadManager.LoadSceneAsync("Level 2"));
 
         }
 
         if (currentSceneManager.CurrentlyInLevel3 == true && isLoadingGame)
         {
-            SceneManager.LoadSceneAsync("Level 3");
+            // SceneManager.LoadSceneAsync("Level 3");
+            StartCoroutine(LoadManager.LoadSceneAsync("Level 3"));
 
         }
     }

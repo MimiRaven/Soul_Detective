@@ -16,7 +16,7 @@ public class BossKeyScript2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (C_EmenyDeath.EnemyCurrentHealth == 0)
+        if (C_EmenyDeath.EnemyCurrentHealth <= 1)
         {
             BossDeathManager.Boss2Dead = true;
         }

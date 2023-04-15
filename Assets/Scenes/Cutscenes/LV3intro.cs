@@ -17,6 +17,8 @@ public class LV3intro : MonoBehaviour
     public float SkipCount;
     public bool SKipPressed;
 
+    public GameObject LoadingScreen;
+    public static LV3intro Instance;
 
     private void Awake()
     {
@@ -29,12 +31,12 @@ public class LV3intro : MonoBehaviour
     }
     void LoadScene(VideoPlayer vp)
     {
-        SceneManager.LoadScene("Level 3");
+        StartCoroutine(LoadSceneAsync("Level 3"));
     }
 
     private void Update()
     {
-        if (SkipCount >= 5) { SceneManager.LoadScene("Level 3"); }
+        if (SkipCount >= 5) { StartCoroutine(LoadSceneAsync("Level 3")); }
 
         if (SkipCount <= 0)
         {
@@ -51,7 +53,23 @@ public class LV3intro : MonoBehaviour
         }
 
     }
+    public IEnumerator LoadSceneAsync(string sceneName)
+    {
+        LoadingScreen.SetActive(true);
 
+        AsyncOperation LV3 = SceneManager.LoadSceneAsync("Lv3 intro");
+
+        while (!LV3.isDone)
+        {
+
+            float progressValue = Mathf.Clamp01(LV3.progress / 0.9f);
+            // slider.value = progressValue;
+
+            //LoadingBarFill.fillAmount= progressValue;
+
+            yield return null;
+        }
+    }
 
     private void OnEnable()
     {
@@ -75,7 +93,7 @@ public class LV3intro : MonoBehaviour
 
              //SKipPressed = true;
             Debug.Log("Skip Button Pressed");
-             SceneManager.LoadScene("Level 3");
+            StartCoroutine(LoadSceneAsync("Level 3"));
         }
     }
 

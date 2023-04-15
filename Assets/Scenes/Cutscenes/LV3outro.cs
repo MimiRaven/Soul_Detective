@@ -17,6 +17,9 @@ public class LV3outro : MonoBehaviour
     public float SkipCount;
     public bool SKipPressed;
 
+    public GameObject LoadingScreen;
+    public static LV3intro Instance;
+
 
     private void Awake()
     {
@@ -29,12 +32,12 @@ public class LV3outro : MonoBehaviour
     }
     void LoadScene(VideoPlayer vp)
     {
-        SceneManager.LoadScene("Win Screen");
+        StartCoroutine(LoadSceneAsync("Win Screen"));
     }
 
     private void Update()
     {
-        if (SkipCount >= 5) { SceneManager.LoadScene("Win Screen"); }
+        if (SkipCount >= 5) { StartCoroutine(LoadSceneAsync("Win Screen")); }
 
         if (SkipCount <= 0)
         {
@@ -50,6 +53,24 @@ public class LV3outro : MonoBehaviour
             SkipCount -= Time.deltaTime;
         }
 
+    }
+
+    public IEnumerator LoadSceneAsync(string sceneName)
+    {
+        LoadingScreen.SetActive(true);
+
+        AsyncOperation WinScreen = SceneManager.LoadSceneAsync("Win Screen");
+
+        while (!WinScreen.isDone)
+        {
+
+            float progressValue = Mathf.Clamp01(WinScreen.progress / 0.9f);
+            // slider.value = progressValue;
+
+            //LoadingBarFill.fillAmount= progressValue;
+
+            yield return null;
+        }
     }
 
 
@@ -75,7 +96,7 @@ public class LV3outro : MonoBehaviour
 
                 //SKipPressed = true;
                 Debug.Log("Skip Button Pressed");
-            SceneManager.LoadScene("Win Screen");
+            StartCoroutine(LoadSceneAsync("Win Screen"));
         }
     }
 

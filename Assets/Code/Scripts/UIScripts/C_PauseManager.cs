@@ -20,6 +20,13 @@ public class C_PauseManager : MonoBehaviour
     public Button Level2Button = null;
     public Button Level3Button = null;
 
+
+    public bool GoToHub;
+    public bool GoToMainMenu;
+
+
+    public PauseLevelLoader pauseLevelLoader;
+
     public void Start()
     {
         Cursor.visible = true;
@@ -29,13 +36,18 @@ public class C_PauseManager : MonoBehaviour
     {
         mainmenuButton.Select();
         audioSource.Play();
-        SceneManager.LoadScene("Main Menu");
+        GoToMainMenu = true;
+        StartCoroutine(pauseLevelLoader.LoadSceneAsync("Main Menu"));
+        //SceneManager.LoadScene("Main Menu");
         dataPersistenceManager.SaveGame();
     }
 
     public void HubWorld()
     {
-        SceneManager.LoadScene("HubWorld");
+        GoToHub = true;
+        // SceneManager.LoadScene("HubWorld");
+        StartCoroutine(pauseLevelLoader.LoadSceneAsync("HubWorld"));
+        
         dataPersistenceManager.SaveGame();
     }
 

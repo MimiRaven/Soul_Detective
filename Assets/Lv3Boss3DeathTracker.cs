@@ -16,7 +16,7 @@ public class Lv3Boss3DeathTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (emenyDeath.EnemyCurrentHealth == 0)
+        if (emenyDeath.EnemyCurrentHealth <= 1)
         {
             LV3BossManager.Boss3Dead = true;
 

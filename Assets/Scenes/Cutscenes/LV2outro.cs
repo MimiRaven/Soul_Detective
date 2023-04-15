@@ -17,6 +17,9 @@ public class LV2outro : MonoBehaviour
     public float SkipCount;
     public bool SKipPressed;
 
+    public GameObject LoadingScreen;
+    public static LV2outro Instance;
+
 
     private void Awake()
     {
@@ -29,12 +32,12 @@ public class LV2outro : MonoBehaviour
     }
     void LoadScene(VideoPlayer vp)
     {
-        SceneManager.LoadScene("HubWorld");
+        StartCoroutine(LoadSceneAsync("HubWorld"));
     }
 
     private void Update()
     {
-        if (SkipCount >= 5) { SceneManager.LoadScene("HubWorld"); }
+        if (SkipCount >= 5) { StartCoroutine(LoadSceneAsync("HubWorld")); }
 
         if (SkipCount <= 0)
         {
@@ -52,6 +55,23 @@ public class LV2outro : MonoBehaviour
 
     }
 
+    public IEnumerator LoadSceneAsync(string sceneName)
+    {
+        LoadingScreen.SetActive(true);
+
+        AsyncOperation Lv2 = SceneManager.LoadSceneAsync("Level 2");
+
+        while (!Lv2.isDone)
+        {
+
+            float progressValue = Mathf.Clamp01(Lv2.progress / 0.9f);
+            // slider.value = progressValue;
+
+            //LoadingBarFill.fillAmount= progressValue;
+
+            yield return null;
+        }
+    }
 
     private void OnEnable()
     {
@@ -74,7 +94,7 @@ public class LV2outro : MonoBehaviour
         {
             //SKipPressed = true;
             Debug.Log("Skip Button Pressed");
-        SceneManager.LoadScene("HubWorld");
+            StartCoroutine(LoadSceneAsync("HubWorld"));
 
         }
     }

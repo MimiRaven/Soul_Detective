@@ -17,10 +17,23 @@ public class LV1Outro : MonoBehaviour
     public float SkipCount;
     public bool SKipPressed;
 
+    public GameObject LoadingScreen;
+    public static LV1Outro Instance;
+
 
     private void Awake()
     {
         SkipAction = playerInput.actions["SkipCutsceen"];
+
+        if (Instance == null)
+        {
+            Instance = this;
+            //  DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
     void Start()
     {
@@ -29,12 +42,30 @@ public class LV1Outro : MonoBehaviour
     }
     void LoadScene(VideoPlayer vp)
     {
-        SceneManager.LoadScene("HubWorld");
+        StartCoroutine(LoadSceneAsync("HubWorld"));
+    }
+
+    public IEnumerator LoadSceneAsync(string sceneName)
+    {
+        LoadingScreen.SetActive(true);
+
+        AsyncOperation Hub = SceneManager.LoadSceneAsync("HubWorld");
+
+        while (!Hub.isDone)
+        {
+
+            float progressValue = Mathf.Clamp01(Hub.progress / 0.9f);
+            // slider.value = progressValue;
+
+            //LoadingBarFill.fillAmount= progressValue;
+
+            yield return null;
+        }
     }
 
     private void Update()
     {
-        if (SkipCount >= 5) { SceneManager.LoadScene("HubWorld"); }
+        if (SkipCount >= 5) { StartCoroutine(LoadSceneAsync("HubWorld")); }
 
         if (SkipCount <= 0)
         {
@@ -74,7 +105,7 @@ public class LV1Outro : MonoBehaviour
         {
                 //SKipPressed = true;
                 Debug.Log("Skip Button Pressed");
-            SceneManager.LoadScene("HubWorld");
+            StartCoroutine(LoadSceneAsync("HubWorld"));
 
         }
     }

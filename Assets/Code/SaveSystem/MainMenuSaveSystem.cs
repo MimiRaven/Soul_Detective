@@ -16,6 +16,7 @@ public class MainMenuSaveSystem : MonoBehaviour
     [SerializeField] private Button backButton;
 
     [SerializeField] private CurrentSceneManager currentSceneManager;
+    [SerializeField] private ContinueLoadManager ContinueLoad;
 
     public GameObject Self;
 
@@ -50,29 +51,33 @@ public class MainMenuSaveSystem : MonoBehaviour
         DisableMenuButtons();
         // load the next scene - which will in turn load the game because of 
         // OnSceneLoaded() in the DataPersistenceManager
-       // SceneManager.LoadSceneAsync("HubWorld");
+        // SceneManager.LoadSceneAsync("HubWorld");
 
-        if(currentSceneManager.CurerntlyInHubWorld == true)
+        if (currentSceneManager.CurerntlyInHubWorld == true)
         {
-            SceneManager.LoadSceneAsync("HubWorld");
+            // SceneManager.LoadSceneAsync("HubWorld");
+            StartCoroutine(ContinueLoad.LoadSceneAsync("HubWorld"));
 
         }
 
         if (currentSceneManager.CurrentlyInLevel1 == true)
         {
-            SceneManager.LoadSceneAsync("Level 1");
+            //SceneManager.LoadSceneAsync("Level 1");
+            StartCoroutine(ContinueLoad.LoadSceneAsync("Level 1"));
 
         }
 
         if (currentSceneManager.CurrentlyInLevel2 == true)
         {
-            SceneManager.LoadSceneAsync("Level 2");
+            //SceneManager.LoadSceneAsync("Level 2");
+            StartCoroutine(ContinueLoad.LoadSceneAsync("Level 2"));
 
         }
 
         if (currentSceneManager.CurrentlyInLevel3 == true)
         {
-            SceneManager.LoadSceneAsync("Level 3");
+            //SceneManager.LoadSceneAsync("Level 3");
+            StartCoroutine(ContinueLoad.LoadSceneAsync("Level 3"));
 
         }
 

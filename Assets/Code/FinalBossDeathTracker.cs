@@ -15,7 +15,7 @@ public class FinalBossDeathTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (emenyDeath.EnemyCurrentHealth == 0)
+        if (emenyDeath.EnemyCurrentHealth <= 1)
         {
             questManager.FinalBossDead = true;
 
