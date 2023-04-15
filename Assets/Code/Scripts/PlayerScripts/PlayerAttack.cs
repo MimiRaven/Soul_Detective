@@ -91,6 +91,14 @@ public class PlayerAttack : MonoBehaviour
        
     }
 
+    void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.tag == "EnemyWeapon")
+        {
+            noOfClicks = 0;
+        }
+    }
+
     void OnClick()
     {
         
@@ -141,7 +149,7 @@ public class PlayerAttack : MonoBehaviour
 
     void thirdAttack()
     {
-      
+        //noOfClicks = 0;
         secondAttackDone = false;
         anim.SetBool("hit3", false);
     }
