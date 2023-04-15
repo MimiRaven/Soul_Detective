@@ -5,6 +5,7 @@ using UnityEngine;
 public class LayerPosSwitch : MonoBehaviour
 {
     public C_EnemyPossesed EnemyPossesed;
+   // public LayerSwitch LayerSwitch;
 
     // Start is called before the first frame update
     void Start()
@@ -15,7 +16,7 @@ public class LayerPosSwitch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(EnemyPossesed.Possesed == true)
+        if (EnemyPossesed.Possesed == true )
         {
             this.gameObject.layer = LayerMask.NameToLayer("Possesion");
 
