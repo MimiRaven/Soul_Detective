@@ -59,12 +59,12 @@ public class LV2outro : MonoBehaviour
     {
         LoadingScreen.SetActive(true);
 
-        AsyncOperation Lv2 = SceneManager.LoadSceneAsync("Level 2");
+        AsyncOperation Hub = SceneManager.LoadSceneAsync("HubWorld");
 
-        while (!Lv2.isDone)
+        while (!Hub.isDone)
         {
 
-            float progressValue = Mathf.Clamp01(Lv2.progress / 0.9f);
+            float progressValue = Mathf.Clamp01(Hub.progress / 0.9f);
             // slider.value = progressValue;
 
             //LoadingBarFill.fillAmount= progressValue;

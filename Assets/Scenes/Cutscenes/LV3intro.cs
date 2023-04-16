@@ -57,7 +57,7 @@ public class LV3intro : MonoBehaviour
     {
         LoadingScreen.SetActive(true);
 
-        AsyncOperation LV3 = SceneManager.LoadSceneAsync("Lv3 intro");
+        AsyncOperation LV3 = SceneManager.LoadSceneAsync("Level 3");
 
         while (!LV3.isDone)
         {

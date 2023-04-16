@@ -122,19 +122,24 @@ public class C_PlayerController : MonoBehaviour
         Sprinter.instance.SetValue(CurrentStamina / MaxStamina);
         if (isRunning & !isDodging & isMoving)
         {
-            
-             ActiveRunning();
-           // animator.SetBool("IsRunning", true);
-           //animator.SetBool("Walking", false);
-           //animator.SetBool("Idleing", false);
+
+            ActiveRunning();
+            // animator.SetBool("IsRunning", true);
+            //animator.SetBool("Walking", false);
+            //animator.SetBool("Idleing", false);
         }
-        else if( PlayerBlock.IsBlocking == false)
+        else if (PlayerBlock.IsBlocking == false || playerAttack.AttackMovementActive == false)
         {
             playerSpeed = 5;
             Resting();
         }
 
-        if ( PlayerBlock.IsBlocking == true)
+        if (playerAttack.AttackMovementActive == true)
+        {
+            playerSpeed = 10;
+        }
+
+        if (PlayerBlock.IsBlocking == true || playerAttack.AttackActive == true && playerAttack.AttackMovementActive == false)
         {
             playerSpeed = 0;
         }

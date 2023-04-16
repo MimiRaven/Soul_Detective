@@ -38,6 +38,8 @@ public class PlayerAttack : MonoBehaviour
 
     public bool AttackActive;
 
+    public bool AttackMovementActive;
+
 
 
     public void Awake()
@@ -53,7 +55,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void Update()
     {
-       
+
 
 
         if (Time.time - lastClickedTime > maxComboDelay)
@@ -61,7 +63,7 @@ public class PlayerAttack : MonoBehaviour
             noOfClicks = 0;
         }
 
-       
+
 
         if (noOfClicks == 0)
         {
@@ -77,7 +79,7 @@ public class PlayerAttack : MonoBehaviour
 
         }
 
-        if(noOfClicks > 0)
+        if (noOfClicks > 0)
         {
             AttackActive = true;
         }
@@ -85,23 +87,15 @@ public class PlayerAttack : MonoBehaviour
         if (noOfClicks >= 1 && !firstAttackDone)
         {
             anim.SetBool("hit1", true);
-           
+
         }
 
-       
-    }
 
-    void OnTriggerEnter(Collider collision)
-    {
-        if (collision.gameObject.tag == "EnemyWeapon")
-        {
-            noOfClicks = 0;
-        }
     }
 
     void OnClick()
     {
-        
+
         lastClickedTime = Time.time;
         noOfClicks++;
 
@@ -118,12 +112,12 @@ public class PlayerAttack : MonoBehaviour
 
         firstAttackDone = true;
         secondAttackDone = false;
-        
+
         anim.SetBool("hit1", false);
 
         if (noOfClicks >= 2 && firstAttackDone)
         {
-      
+
             anim.SetBool("hit2", true);
         }
     }
@@ -137,24 +131,31 @@ public class PlayerAttack : MonoBehaviour
 
         firstAttackDone = false;
         secondAttackDone = true;
-       
+
         anim.SetBool("hit2", false);
 
         if (noOfClicks >= 3 && secondAttackDone)
         {
-           
+
+
             anim.SetBool("hit3", true);
         }
     }
 
     void thirdAttack()
     {
-        //noOfClicks = 0;
+
         secondAttackDone = false;
         anim.SetBool("hit3", false);
     }
 
-
+    void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.tag == "EnemyWeapon")
+        {
+            noOfClicks = 0;
+        }
+    }
 
 
     private void OnEnable()
@@ -210,6 +211,8 @@ public class PlayerAttack : MonoBehaviour
         FaceEnemy = false;
     }
 
+
+
     public void Attacking()
     {
         if (!isAttacking)
@@ -220,6 +223,16 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    
+    public void AttackMovementOn()
+    {
+        AttackMovementActive = true;
+    }
+
+    public void AttackMovementOff()
+    {
+        AttackMovementActive = false;
+    }
+
+
 
 }
