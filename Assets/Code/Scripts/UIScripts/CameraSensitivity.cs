@@ -9,7 +9,7 @@ public class CameraSensitivity : MonoBehaviour
     public Slider slider;
     public float mouseSensitivity;
     public Transform playerbody;
-    float xRotation = 0f;
+    float xRotation = 0.1f;
 
     public CinemachineFreeLook cinemachineVirtualCamera;
     private void Start()
