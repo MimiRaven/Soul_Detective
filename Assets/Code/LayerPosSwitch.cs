@@ -8,6 +8,8 @@ public class LayerPosSwitch : MonoBehaviour
     public C_XrayVision Xray;
 
     public bool xRayActive;
+    public bool PossesionActive;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,11 @@ public class LayerPosSwitch : MonoBehaviour
     {
         PossesedSwitch();
         XraySwitch();
+
+        if(EnemyPossesed.Possesed == true)
+        {
+            PossesionActive= true;
+        }
 
         if (EnemyPossesed.Possesed == false && Xray.boosting == false)
         {
@@ -35,11 +42,11 @@ public class LayerPosSwitch : MonoBehaviour
     {
         if (EnemyPossesed.Possesed == true)
         {
-            this.gameObject.layer = LayerMask.NameToLayer("Possesed");
+            this.gameObject.layer = LayerMask.NameToLayer("Possesion");
 
             foreach (Transform child in this.GetComponentsInChildren<Transform>(true))
             {
-                child.gameObject.layer = LayerMask.NameToLayer("Possesed");  // add any layer you want. 
+                child.gameObject.layer = LayerMask.NameToLayer("Possesion");  // add any layer you want. 
             }
         }
     }

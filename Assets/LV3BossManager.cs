@@ -11,6 +11,7 @@ public class LV3BossManager : MonoBehaviour
     public bool Boss2Dead;
     public bool Boss3Dead;
 
+    public GameObject BossDoor;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +38,7 @@ public class LV3BossManager : MonoBehaviour
 
         if(Boss1Dead && Boss2Dead && Boss3Dead)
         {
-
+            BossDoor.SetActive(false);
             SideQuestManager.AllMiniBossesDead= true;
             //SceneManager.LoadScene("HubWorld");
         }
