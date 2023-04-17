@@ -23,7 +23,7 @@ public class SoundManager : MonoBehaviour
     {
         firstPlayInt = PlayerPrefs.GetInt(FirstPlay);
 
-        if(firstPlayInt == 0)
+        if(firstPlayInt == 0.1)
         {
             volumeFloat = .125f;
             soundEffectFloat = .75f;
