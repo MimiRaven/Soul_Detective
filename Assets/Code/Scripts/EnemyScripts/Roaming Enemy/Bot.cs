@@ -135,23 +135,10 @@ public class Bot : MonoBehaviour
                 animator.SetBool("IsWalking", true);
             }
 
-       //     if(enemyAttack.IsAttacking == true)
-       // {
-       //     speed = 0;
-       // }
-       // else
-       // {
-       //     speed = 3;
-       // }
-
-       
-        //}
-        //else
-        //{
-        //    knockBackCounter -= Time.deltaTime;
-        //}
-        //Seek(target.transform.position);
-        //Wander();
+            if(c_EmenyDeath.EnemyCurrentHealth <= 0)
+        {
+            agent.speed = 0;
+        }
     }
 
     //public void Knockback(Vector3 direction)
