@@ -45,6 +45,7 @@ public class C_PauseManager : MonoBehaviour
     public void HubWorld()
     {
         GoToHub = true;
+        Cursor.lockState = CursorLockMode.Confined;
         // SceneManager.LoadScene("HubWorld");
         StartCoroutine(pauseLevelLoader.LoadSceneAsync("HubWorld"));
         

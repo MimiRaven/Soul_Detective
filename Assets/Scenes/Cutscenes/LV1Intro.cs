@@ -20,10 +20,23 @@ public class LV1Intro : MonoBehaviour
     public GameObject LoadingScreen;
     public static LV1Intro Instance;
 
+    //clip references
+    public VideoClip subs;
+    public VideoClip nosubs;
+
 
     private void Awake()
     {
         SkipAction = playerInput.actions["SkipCutsceen"];
+
+        if (PlayerPrefs.GetInt("subsON") == 0)
+        {
+            VideoPlayer.clip = subs;
+        }
+        else
+        {
+            VideoPlayer.clip = nosubs;
+        }
 
         if (Instance == null)
         {
@@ -101,7 +114,7 @@ public class LV1Intro : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "Lv1 intro")
         {
-        
+            VideoPlayer.Pause();
           //SKipPressed = true;
           Debug.Log("Skip Button Pressed");
             StartCoroutine(LoadSceneAsync("Level 1"));

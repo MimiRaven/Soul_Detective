@@ -20,10 +20,21 @@ public class LV2outro : MonoBehaviour
     public GameObject LoadingScreen;
     public static LV2outro Instance;
 
+    //clip references
+    public VideoClip subs;
+    public VideoClip nosubs;
 
     private void Awake()
     {
         SkipAction = playerInput.actions["SkipCutsceen"];
+        if (PlayerPrefs.GetInt("subsON") == 0)
+        {
+            VideoPlayer.clip = subs;
+        }
+        else
+        {
+            VideoPlayer.clip = nosubs;
+        }
     }
     void Start()
     {
@@ -92,6 +103,7 @@ public class LV2outro : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "Lv2 outro")
         {
+            VideoPlayer.Pause();
             //SKipPressed = true;
             Debug.Log("Skip Button Pressed");
             StartCoroutine(LoadSceneAsync("HubWorld"));
