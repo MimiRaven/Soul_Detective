@@ -40,7 +40,7 @@ public class C_XpScore : MonoBehaviour, IDataPersistence
     // Update is called once per frame
     void Update()
     {
-        soulsUI.text = "SkillPoints: " + SkillPoints.ToString();
+        soulsUI.text = " " + SkillPoints.ToString();
         GainPoint();
     }
 
