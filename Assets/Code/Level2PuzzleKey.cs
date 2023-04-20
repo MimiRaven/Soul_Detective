@@ -6,12 +6,7 @@ using UnityEngine.ProBuilder.Shapes;
 public class Level2PuzzleKey : MonoBehaviour
 {
     public Level2SideQuestManager SideQuestManager;
-    public GameObject XPObject1;
-    public GameObject XPObject2;
-    public GameObject XPObject3;
-    public GameObject XPObject4;
-    public GameObject XPObject5;
-    public GameObject XPObject6;
+    public GameObject LootObject;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,12 +25,8 @@ public class Level2PuzzleKey : MonoBehaviour
         {
             SideQuestManager.Quest4Complete = true;
 
-            XPObject1.SetActive(true);
-            XPObject2.SetActive(true);
-            XPObject3.SetActive(true);
-            XPObject4.SetActive(true);
-            XPObject5.SetActive(true);
-            XPObject6.SetActive(true);
+            LootObject.SetActive(true);
+          
 
 
 

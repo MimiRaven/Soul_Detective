@@ -9,6 +9,8 @@ public class Level2SideQuestManager : MonoBehaviour, IDataPersistence
     public bool Quest3Complete;
     public bool Quest4Complete;
 
+    public bool KillingEnemyQuest;
+
     public bool RightBossDead;
     public bool LeftBossDead;
 
@@ -53,6 +55,13 @@ public class Level2SideQuestManager : MonoBehaviour, IDataPersistence
     public GameObject Q4CompleteQuest1Text;
     public GameObject Q4QuestionMarks;
     public GameObject Q4KeyObject;
+
+    //[Header("Kill Enemys Quest")]
+    // public GameObject Q4Door;
+   //public GameObject Q4SideQuest1Text;
+   //public GameObject Q4CompleteQuest1Text;
+   //public GameObject Q4QuestionMarks;
+   //public GameObject Q4KeyObject;
 
 
     // Start is called before the first frame update
@@ -148,6 +157,8 @@ public class Level2SideQuestManager : MonoBehaviour, IDataPersistence
             Q4QuestionMarks.SetActive(false);
            
         }
+
+
 
     }
 }
