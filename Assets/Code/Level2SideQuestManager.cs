@@ -10,6 +10,7 @@ public class Level2SideQuestManager : MonoBehaviour, IDataPersistence
     public bool Quest4Complete;
 
     public bool KillingEnemyQuest;
+    public bool RiddleQuest;
 
     public bool RightBossDead;
     public bool LeftBossDead;
