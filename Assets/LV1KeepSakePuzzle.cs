@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class LV1KeepSakePuzzle : MonoBehaviour
 {
+    public Level1SideQuestManager level1SideQuestManager;
+    public GameObject KeepSakeItem;
+
+    public bool KeepSakeObtained;
+
+    public GameObject QuestPrize;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,11 +28,20 @@ public class LV1KeepSakePuzzle : MonoBehaviour
     {
 
 
-        if (other.CompareTag("LV2End"))
+        if (other.CompareTag("KeepSake"))
         {
-           
+            KeepSakeItem.SetActive(false);
+            KeepSakeObtained= true;
 
+        }
 
+        if (other.CompareTag("KeepSakeFinishArea"))
+        {
+            if(KeepSakeObtained)
+            {
+                level1SideQuestManager.KeepSakeQuest = true;
+                QuestPrize.SetActive(true);
+            }
         }
     }
 }

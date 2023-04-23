@@ -13,6 +13,8 @@ public class Level1SideQuestManager : MonoBehaviour, IDataPersistence
     public bool Quest5Complete;
     public bool Quest5_1Complete;
 
+
+
     [Header("Main Objective Variables")]
     public bool BossDead;
 
@@ -57,6 +59,23 @@ public class Level1SideQuestManager : MonoBehaviour, IDataPersistence
     public GameObject Q5QuestionMarks;
      public GameObject Q5KeyObject;
 
+
+    [Header("Keep Sake Quest ")]
+    public bool KeepSakeQuest;
+    public GameObject KSSideQuest1Text;
+    public GameObject KSCompleteQuest1Text;
+    public GameObject KSQuestionMarks;
+
+    [Header("Escory Quest ")]
+    public bool EscortQuest;
+    public GameObject EscortSideQuest1Text;
+    public GameObject EscortCompleteQuest1Text;
+    public GameObject EscortQuestionMarks;
+    public GameObject EscortedNpc;
+    public GameObject StartNpc;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,6 +88,8 @@ public class Level1SideQuestManager : MonoBehaviour, IDataPersistence
         this.Quest3Complete = data.Quest3;
         this.Quest4Complete = data.Quest4;
         this.Quest5Complete = data.Quest5;
+        this.KeepSakeQuest= data.KeepSakeQuest;
+        this.EscortQuest = data.EscortQuest;
     }
 
     public void SaveData(GameData data)
@@ -78,6 +99,8 @@ public class Level1SideQuestManager : MonoBehaviour, IDataPersistence
         data.Quest3 = this.Quest3Complete;
         data.Quest4 = this.Quest4Complete;
         data.Quest5 = this.Quest5Complete;
+        data.KeepSakeQuest= this.KeepSakeQuest;
+        data.EscortQuest= this.EscortQuest;
     }
 
     // Update is called once per frame
@@ -91,6 +114,24 @@ public class Level1SideQuestManager : MonoBehaviour, IDataPersistence
         if (BossDead)
         {
             SceneManager.LoadScene("Lv1 outro");
+        }
+
+        if(KeepSakeQuest == true)
+        {
+            KSSideQuest1Text.SetActive(false);
+            KSCompleteQuest1Text.SetActive(true);
+            KSQuestionMarks.SetActive(false);
+        }
+
+        if(EscortQuest == true)
+        {
+            EscortSideQuest1Text.SetActive(false);
+            EscortCompleteQuest1Text.SetActive(true);
+            EscortQuestionMarks.SetActive (false);
+            EscortedNpc.SetActive(true);
+            StartNpc.SetActive(false);
+
+
         }
 
         if(Quest1Complete == true)
@@ -153,7 +194,7 @@ public class Level1SideQuestManager : MonoBehaviour, IDataPersistence
             Q5SideQuest1Text.SetActive(false);
             Q5CompleteQuest1Text.SetActive(true);
             Q5QuestionMarks.SetActive(false);
-             Q4KeyObject.SetActive(false);
+            //Q5KeyObject.SetActive(false);
         }
     }
 

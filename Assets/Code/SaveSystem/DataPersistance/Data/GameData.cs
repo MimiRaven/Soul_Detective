@@ -72,6 +72,9 @@ public class GameData
     public bool Quest4;
     public bool Quest5;
 
+    public bool KeepSakeQuest;
+    public bool EscortQuest;
+
     //Level 1 Quest Value
     public bool RightBossDead;
     public bool LeftBossDead;
@@ -131,9 +134,11 @@ public class GameData
         Quest3= false;
         Quest4= false;
         Quest5= false;
+        KeepSakeQuest = false;
+        EscortQuest = false;
 
         //Level 2
-        RightBossDead= false;
+        RightBossDead = false;
         LeftBossDead= false;
         LV2Quest1= false;
         LV2Quest2= false;
