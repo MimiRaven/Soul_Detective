@@ -16,6 +16,8 @@ public class Lv2SkyScraperPuzzle : MonoBehaviour
 
     public Level2SideQuestManager Level2SideQuestManager;
 
+    public GameObject QuestPrize;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +35,7 @@ public class Lv2SkyScraperPuzzle : MonoBehaviour
         if(CorrectAnswerChosen == true)
         {
             Level2SideQuestManager.RiddleQuest = true;
+            QuestPrize.SetActive(true);
            // PlayerObject.transform.position = CompleteTeleportPoint.transform.position;
             
         }

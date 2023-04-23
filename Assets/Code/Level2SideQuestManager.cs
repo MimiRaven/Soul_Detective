@@ -16,6 +16,8 @@ public class Level2SideQuestManager : MonoBehaviour, IDataPersistence
     public bool LeftBossDead;
 
     public bool Level2Complete; 
+
+    
     // public bool Quest5Complete;
     // public bool Quest5_1Complete;
 
@@ -28,10 +30,13 @@ public class Level2SideQuestManager : MonoBehaviour, IDataPersistence
 
     [Header("Quest 1 Variables")]
     //public GameObject Q1ClosedGate;
-    public GameObject Debris;
+   // public GameObject Debris;
     public GameObject Q1SideQuest1Text;
     public GameObject Q1CompleteQuest1Text;
     public GameObject Q1QuestionMarks;
+
+    public GameObject RiddelTeleportObject;
+    //public GameObject PuzzleQuest;
 
     [Header("Quest 2 Variables")]
     public GameObject Q2ClosedGate;
@@ -57,12 +62,19 @@ public class Level2SideQuestManager : MonoBehaviour, IDataPersistence
     public GameObject Q4QuestionMarks;
     public GameObject Q4KeyObject;
 
+    [Header("Quest 4 Variables")]
+    // public GameObject Q4Door;
+    public GameObject KESideQuest1Text;
+    public GameObject KECompleteQuest1Text;
+    public GameObject KEQuestionMarks;
+    
+
     //[Header("Kill Enemys Quest")]
     // public GameObject Q4Door;
-   //public GameObject Q4SideQuest1Text;
-   //public GameObject Q4CompleteQuest1Text;
-   //public GameObject Q4QuestionMarks;
-   //public GameObject Q4KeyObject;
+    //public GameObject Q4SideQuest1Text;
+    //public GameObject Q4CompleteQuest1Text;
+    //public GameObject Q4QuestionMarks;
+    //public GameObject Q4KeyObject;
 
 
     // Start is called before the first frame update
@@ -85,6 +97,8 @@ public class Level2SideQuestManager : MonoBehaviour, IDataPersistence
         this.Quest3Complete = data.LV2Quest3;
         this.Quest4Complete = data.LV2Quest4;
         this.Level2Complete = data.Level2Complete;
+        this.RiddleQuest = data.RiddleQuest;
+        this.KillingEnemyQuest = data.ProspectorQuest;
     }
 
     public void SaveData(GameData data)
@@ -96,6 +110,8 @@ public class Level2SideQuestManager : MonoBehaviour, IDataPersistence
         data.LV2Quest3 = this.Quest3Complete;
         data.LV2Quest4 = this.Quest4Complete;
         data.Level2Complete = this.Level2Complete;
+        data.RiddleQuest = this.RiddleQuest;
+        data.ProspectorQuest = this.KillingEnemyQuest;
     }
 
     public void QuestUpdate()
@@ -111,16 +127,31 @@ public class Level2SideQuestManager : MonoBehaviour, IDataPersistence
             LeftBossDeadText.SetActive(true);
         }
 
+        if(KillingEnemyQuest == true)
+        {
+            KECompleteQuest1Text.SetActive(true);
+            KEQuestionMarks.SetActive(false);
+            KESideQuest1Text.SetActive(false);
+        }
+
+        if(RiddleQuest == true)
+        {
+            Q1SideQuest1Text.SetActive(false);
+            Q1CompleteQuest1Text.SetActive(true);
+            Q1QuestionMarks.SetActive(false);
+            RiddelTeleportObject.SetActive(false);
+        }
+
         if (Quest1Complete == true)
         {
 
             //Q1ClosedGate.SetActive(false);
             //Q1OpenGate.SetActive(true);
 
-            Q1SideQuest1Text.SetActive(false);
-            Q1CompleteQuest1Text.SetActive(true);
-            Q1QuestionMarks.SetActive(false);
-            Debris.SetActive(false);
+           // Q1SideQuest1Text.SetActive(false);
+           // Q1CompleteQuest1Text.SetActive(true);
+           // Q1QuestionMarks.SetActive(false);
+            //Debris.SetActive(false);
         }
 
         if (Quest2Complete == true)

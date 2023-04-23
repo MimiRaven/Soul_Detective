@@ -75,7 +75,7 @@ public class GameData
     public bool KeepSakeQuest;
     public bool EscortQuest;
 
-    //Level 1 Quest Value
+    //Level 2 Quest Value
     public bool RightBossDead;
     public bool LeftBossDead;
 
@@ -86,6 +86,9 @@ public class GameData
     public bool LV2Quest2;
     public bool LV2Quest3;
     public bool LV2Quest4;
+
+    public bool RiddleQuest;
+    public bool ProspectorQuest;
 
     //Level 3 Quest Value
     public bool FirstBossDead;
@@ -148,8 +151,11 @@ public class GameData
         LV2Boss1Dead= false;
         LV2Boss2Dead= false;
 
+        RiddleQuest = false;
+        ProspectorQuest = false;
+
         //Level 3
-        FirstBossDead= false;
+        FirstBossDead = false;
         SecondBossDead= false;
         ThirdBossDead= false;
         MiniBossesDead= false;
