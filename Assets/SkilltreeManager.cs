@@ -12,9 +12,11 @@ public class SkilltreeManager : MonoBehaviour, IDataPersistence
 
     public GameObject SkillTreeCanvas;
 
-    //public GameObject telekinesis;
-    //public GameObject RangeAttack;
-    //public GameObject Possesion;
+   // public GameObject telekinesisUI;
+    public GameObject RangeAttackUI;
+    public GameObject PossesionCoolDownUI;
+    public GameObject PossesionTimmerUI;
+    public GameObject AttackUI;
 
     public GameObject TeleTimer, RangeTimer, PosTimer;
 
@@ -127,73 +129,87 @@ public class SkilltreeManager : MonoBehaviour, IDataPersistence
         {
             TelekinesisTimmerUpgradeButton3.interactable = false;
         }
-
+        ////
+        
         if (RangeAttTimeUpgrade1 == true)
         {
             RangeAttackTimmerUpgradeButton1.interactable = false;
             c_RangeAttack.SetCoolDownTime = 4;
+            RangeAttackUI.SetActive(true);
         }
 
         if (RangeAttTimeUpgrade2 == true)
         {
             RangeAttackTimmerUpgradeButton2.interactable = false;
             c_RangeAttack.SetCoolDownTime = 2;
+            RangeAttackUI.SetActive(true);
         }
 
         if (RangeAttTimeUpgrade3 == true)
         {
             RangeAttackTimmerUpgradeButton3.interactable = false;
             c_RangeAttack.SetCoolDownTime = 0;
+            RangeAttackUI.SetActive(true);
         }
-
+        //
         if (PossesionTimeUpgrade1 == true)
         {
             PossesionTimmerUpgradeButton1.interactable = false;
             c_PossesionTimmer.SetCoolDownTime = 5;
+            PossesionTimmerUI.SetActive(true);
         }
 
         if (PossesionTimeUpgrade2 == true)
         {
             PossesionTimmerUpgradeButton2.interactable = false;
             c_PossesionTimmer.SetCoolDownTime = 6;
+            PossesionTimmerUI.SetActive(true);
         }
 
         if (PossesionTimeUpgrade3 == true)
         {
             PossesionTimmerUpgradeButton3.interactable = false;
             c_PossesionTimmer.SetCoolDownTime = 7;
+            PossesionTimmerUI.SetActive(true);
         }
-
+        ///
         if (PossesionCoolDownTimeUpgrade1 == true)
         {
             PossesionCoolDownTimmerUpgradeButton1.interactable = false;
             c_Possesion.SetCoolDownTime = 3;
+            PossesionCoolDownUI.SetActive(true) ;
+
         }
         if (PossesionCoolDownTimeUpgrade2 == true)
         {
             PossesionCoolDownTimmerUpgradeButton2.interactable = false;
             c_Possesion.SetCoolDownTime = 2;
+            PossesionCoolDownUI.SetActive(true);
         }
         if (PossesionCoolDownTimeUpgrade3 == true)
         {
             PossesionCoolDownTimmerUpgradeButton3.interactable = false;
             c_Possesion.SetCoolDownTime = 1;
+            PossesionCoolDownUI.SetActive(true);
         }
 
         if (PlayerWeaponUpgrade1 == true)
         {
             PlayerWeaponUpgradeButton1.interactable = false;
             PlayerWeapon.tag = "WeaponUpgraded1";
+            AttackUI.SetActive(true);
         }
         if (PlayerWeaponUpgrade2 == true)
         {
             PlayerWeaponUpgradeButton2.interactable = false;
             PlayerWeapon.tag = "WeaponUpgraded2";
+            AttackUI.SetActive(true);
         }
         if (PlayerWeaponUpgrade3 == true)
         {
             PlayerWeaponUpgradeButton3.interactable = false;
             PlayerWeapon.tag = "WeaponUpgraded3";
+            AttackUI.SetActive(true);
         }
 
 

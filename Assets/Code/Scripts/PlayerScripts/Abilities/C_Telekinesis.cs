@@ -153,7 +153,7 @@ public class C_Telekinesis : MonoBehaviour
                     {
                         ts.Dropped = true;
                         ObjectGrabbed = false;
-                        TimerOn = true;
+                       // TimerOn = true;
                         TimeLeft = SetCoolDownTime;
                         Debug.Log("RayCast Hit Obj");
                         audioSource.Stop();
