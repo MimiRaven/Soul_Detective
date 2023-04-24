@@ -38,36 +38,43 @@ public class Level3SideQuestManager : MonoBehaviour, IDataPersistence
     public GameObject Boss3DeadText;
     public GameObject Boss4DeadText;
 
-//[Header("Quest 1 Variables")]
-////public GameObject Q1ClosedGate;
-//public GameObject Debris;
-//public GameObject Q1SideQuest1Text;
-//public GameObject Q1CompleteQuest1Text;
-//public GameObject Q1QuestionMarks;
-//
-//[Header("Quest 2 Variables")]
-//public GameObject Q2ClosedGate;
-//public GameObject Q2OpenGate;
-//public GameObject Q2SideQuest1Text;
-//public GameObject Q2CompleteQuest1Text;
-//public GameObject Q2QuestionMarks;
-////public GameObject Q2KeyObject;
-//
-//[Header("Quest 3 Variables")]
-//public GameObject Q3ClosedGate;
-//public GameObject Q3OpenGate;
-//public GameObject Q3SideQuest1Text;
-//
-//public GameObject Q3CompleteQuest1Text;
-//public GameObject Q3QuestionMarks;
-//public GameObject Hazard;
-//
-//[Header("Quest 4 Variables")]
-//// public GameObject Q4Door;
-//public GameObject Q4SideQuest1Text;
-//public GameObject Q4CompleteQuest1Text;
-//public GameObject Q4QuestionMarks;
-//public GameObject Q4KeyObject;
+    [Header("Main Quest 1 Variables")]
+    public bool FetchQuest;
+    public GameObject FQSideQuest1Text;
+    public GameObject FQCompleteQuest1Text;
+    public GameObject FQQuestionMarks;
+
+
+    //[Header("Quest 1 Variables")]
+    ////public GameObject Q1ClosedGate;
+    //public GameObject Debris;
+    //public GameObject Q1SideQuest1Text;
+    //public GameObject Q1CompleteQuest1Text;
+    //public GameObject Q1QuestionMarks;
+    //
+    //[Header("Quest 2 Variables")]
+    //public GameObject Q2ClosedGate;
+    //public GameObject Q2OpenGate;
+    //public GameObject Q2SideQuest1Text;
+    //public GameObject Q2CompleteQuest1Text;
+    //public GameObject Q2QuestionMarks;
+    ////public GameObject Q2KeyObject;
+    //
+    //[Header("Quest 3 Variables")]
+    //public GameObject Q3ClosedGate;
+    //public GameObject Q3OpenGate;
+    //public GameObject Q3SideQuest1Text;
+    //
+    //public GameObject Q3CompleteQuest1Text;
+    //public GameObject Q3QuestionMarks;
+    //public GameObject Hazard;
+    //
+    //[Header("Quest 4 Variables")]
+    //// public GameObject Q4Door;
+    //public GameObject Q4SideQuest1Text;
+    //public GameObject Q4CompleteQuest1Text;
+    //public GameObject Q4QuestionMarks;
+    //public GameObject Q4KeyObject;
 
 
     // Start is called before the first frame update
@@ -125,6 +132,14 @@ public class Level3SideQuestManager : MonoBehaviour, IDataPersistence
        //    LeftBossAliveText.SetActive(false);
        //    LeftBossDeadText.SetActive(true);
        //}
+
+        if(FetchQuest == true)
+        {
+            FQSideQuest1Text.SetActive(false);
+            FQCompleteQuest1Text.SetActive(true);
+            FQQuestionMarks.SetActive(false);
+
+        }
 
         if(Boss1Dead == true) 
         { 
