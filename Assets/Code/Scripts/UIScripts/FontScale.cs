@@ -51,12 +51,12 @@ public class FontScale : MonoBehaviour
         //runs a size change IF custom font size has been enabled
         if (PlayerPrefs.GetInt("FontSizeON") == 0)
         {
-            ChangeFont();
+            ChangeFontSize();
         }
         
     }
 
-    public void ChangeFont()
+    public void ChangeFontSize()
     {
         Debug.Log("arin im changing font size");
         FontSize = PlayerPrefs.GetFloat("FontSize");
