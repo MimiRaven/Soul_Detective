@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class FontToggle : MonoBehaviour
 {
     public Toggle fontstoggle;//link to UI object
+    public GameObject warningtxt;
     public void Start()//sets starting state
     {
         if (PlayerPrefs.GetInt("FontSizeON") == 0)//custom font on
@@ -20,6 +21,7 @@ public class FontToggle : MonoBehaviour
         {
             fontstoggle.isOn = false;
             PlayerPrefs.SetInt("FontSizeON", 1);
+            warningtxt.SetActive(true);
         }
 
     }
@@ -28,6 +30,7 @@ public class FontToggle : MonoBehaviour
     {
         if (fontstoggle.isOn == true)
         {
+            warningtxt.SetActive(false);
             PlayerPrefs.SetInt("FontSizeON", 0);
             Debug.Log("arin sizes will be on");
         }
@@ -35,6 +38,11 @@ public class FontToggle : MonoBehaviour
         {
             PlayerPrefs.SetInt("FontSizeON", 1);
             Debug.Log("arin sizes will be off");
+            warningtxt.SetActive(true);
+
         }
     }
+
+
+    
 }
