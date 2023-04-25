@@ -1,3 +1,4 @@
+using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -29,6 +30,7 @@ public class C_PlayerController : MonoBehaviour
    // bool isRunning;
 
     private Transform cameraTransfrom;
+    private InputActionMap player;
 
     private InputAction moveAction;
     private InputAction jumpAction;
@@ -387,6 +389,12 @@ public class C_PlayerController : MonoBehaviour
           controller.Move(playerVelocity * Time.deltaTime);
 
         }
+    }
+
+    public void UpdateControls()
+    {
+        var rebinds = PlayerPrefs.GetString("rebinds");
+        player.asset.LoadBindingOverridesFromJson(rebinds);
     }
 
     void OnQuit()

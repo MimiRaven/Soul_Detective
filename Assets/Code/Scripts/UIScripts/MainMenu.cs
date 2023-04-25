@@ -18,6 +18,8 @@ public class MainMenu : MonoBehaviour
   public Button ctrlBackButton = null;
   public Button credBackButton = null;
   public Button SaveSystemBackButton = null;
+  public Button CustomControlsbutton = null;
+  public Button RebindBackbutton = null;
 
   public Button quitButton = null;
   public Button Level1Button = null;
@@ -130,6 +132,23 @@ public class MainMenu : MonoBehaviour
         audioSource.Play();
     }
 
+    public void SeeRebind()
+    {
+        mainMenuScreen.SetActive(false);
+        settingsScreen.SetActive(false);
+        rebindScreen.SetActive(true);
+        accessibilitiesScreen.SetActive(false);
+        ctrlsScreen.SetActive(false);
+        kmScreen.SetActive(false);
+        controllerScreen.SetActive(false);
+        creditsScreen.SetActive(false);
+        levelsScreen.SetActive(false);
+        PlayGameSaveSystemScreen.SetActive(false);
+
+        RebindBackbutton.Select();
+        audioSource.Play();
+    }
+
     public void SeeAccessibilities()
     {
         mainMenuScreen.SetActive(false);
@@ -227,5 +246,5 @@ public class MainMenu : MonoBehaviour
   }
 
     [SerializeField]
-    GameObject mainMenuScreen = null, settingsScreen = null, accessibilitiesScreen = null, ctrlsScreen = null, kmScreen = null, controllerScreen = null, creditsScreen = null, levelsScreen = null, PlayGameSaveSystemScreen = null;
+    GameObject mainMenuScreen = null, settingsScreen = null, rebindScreen = null, accessibilitiesScreen = null, ctrlsScreen = null, kmScreen = null, controllerScreen = null, creditsScreen = null, levelsScreen = null, PlayGameSaveSystemScreen = null;
 }
