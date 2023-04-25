@@ -74,7 +74,7 @@ public class PlayerAttack : MonoBehaviour
             anim.SetBool("hit3", false);
 
             AttackActive = false;
-
+            FaceEnemy = false;
 
 
         }

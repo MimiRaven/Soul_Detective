@@ -13,6 +13,9 @@ public class LV3BossManager : MonoBehaviour
 
     public GameObject BossDoor;
 
+    public GameObject Text;
+    public float TimeLeft;
+    public bool TimerOn;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +25,11 @@ public class LV3BossManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Boss1Dead)
+
+        Timmer();
+
+
+        if (Boss1Dead)
         {
             SideQuestManager.Boss1Dead = true;
         }
@@ -40,7 +47,46 @@ public class LV3BossManager : MonoBehaviour
         {
             BossDoor.SetActive(false);
             SideQuestManager.AllMiniBossesDead= true;
+            Text.SetActive(true);
+            TimerOn = true;
+            TimeLeft = 5;
             //SceneManager.LoadScene("HubWorld");
         }
+    }
+
+    void Timmer()
+    {
+
+        if (TimerOn)
+        {
+
+            if (TimeLeft > 0)
+            {
+                TimeLeft -= Time.deltaTime;
+                updateTimer(TimeLeft);
+                // TimerCanvas.SetActive(true);
+            }
+            else
+            {
+                Debug.Log("Time is Up");
+                
+                TimerOn = false;
+                Text.SetActive(false);
+       
+                //TimerCanvas.SetActive(false);
+
+            }
+
+        }
+    }
+
+    void updateTimer(float currentTime)
+    {
+        currentTime += 1;
+
+        float minutes = Mathf.FloorToInt(currentTime / 60);
+        float seconds = Mathf.FloorToInt(currentTime % 60);
+        //TimerUI.text = "Range Cooldown: " + string.Format("{0:0}", seconds);
+
     }
 }

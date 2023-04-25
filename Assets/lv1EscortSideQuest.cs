@@ -24,8 +24,8 @@ public class lv1EscortSideQuest : MonoBehaviour
     {
         if (Npcdiologe.TextEnded == true)
         {
-            NpcCollected = true;
-            StartingNpc.SetActive(false);
+          //  NpcCollected = true;
+            //StartingNpc.SetActive(false);
         }
     }
 
@@ -38,8 +38,8 @@ public class lv1EscortSideQuest : MonoBehaviour
             if (NpcCollected == true)
             {
                // EscortedNpc.SetActive(true);
-                QuestPrize.SetActive(true);
-                Level1SideQuestManager.EscortQuest = true; 
+               // QuestPrize.SetActive(true);
+              //  Level1SideQuestManager.EscortQuest = true; 
             }
 
 

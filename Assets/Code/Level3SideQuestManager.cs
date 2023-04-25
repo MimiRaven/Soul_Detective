@@ -38,11 +38,11 @@ public class Level3SideQuestManager : MonoBehaviour, IDataPersistence
     public GameObject Boss3DeadText;
     public GameObject Boss4DeadText;
 
-    [Header("Main Quest 1 Variables")]
-    public bool FetchQuest;
-    public GameObject FQSideQuest1Text;
-    public GameObject FQCompleteQuest1Text;
-    public GameObject FQQuestionMarks;
+  //[Header("Main Quest 1 Variables")]
+  //public bool FetchQuest;
+  //public GameObject FQSideQuest1Text;
+  //public GameObject FQCompleteQuest1Text;
+  //public GameObject FQQuestionMarks;
 
 
     //[Header("Quest 1 Variables")]
@@ -133,13 +133,13 @@ public class Level3SideQuestManager : MonoBehaviour, IDataPersistence
        //    LeftBossDeadText.SetActive(true);
        //}
 
-        if(FetchQuest == true)
-        {
-            FQSideQuest1Text.SetActive(false);
-            FQCompleteQuest1Text.SetActive(true);
-            FQQuestionMarks.SetActive(false);
-
-        }
+       // if(FetchQuest == true)
+       // {
+       //     FQSideQuest1Text.SetActive(false);
+       //     FQCompleteQuest1Text.SetActive(true);
+       //     FQQuestionMarks.SetActive(false);
+       //
+       // }
 
         if(Boss1Dead == true) 
         { 
