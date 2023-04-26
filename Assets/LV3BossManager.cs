@@ -47,9 +47,9 @@ public class LV3BossManager : MonoBehaviour
         {
             BossDoor.SetActive(false);
             SideQuestManager.AllMiniBossesDead= true;
-            Text.SetActive(true);
+            
             TimerOn = true;
-            TimeLeft = 5;
+            //TimeLeft = 5;
             //SceneManager.LoadScene("HubWorld");
         }
     }
@@ -62,6 +62,7 @@ public class LV3BossManager : MonoBehaviour
 
             if (TimeLeft > 0)
             {
+                Text.SetActive(true);
                 TimeLeft -= Time.deltaTime;
                 updateTimer(TimeLeft);
                 // TimerCanvas.SetActive(true);
